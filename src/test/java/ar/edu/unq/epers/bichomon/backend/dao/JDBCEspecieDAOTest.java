@@ -6,8 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.CHOCOLATE;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class JDBCEspecieDAOTest {
 
@@ -34,6 +33,30 @@ public class JDBCEspecieDAOTest {
         assertEquals(this.pejelagarto.getCantidadBichos(), otraMismaEspecie.getCantidadBichos());
 
         assertTrue(this.pejelagarto != otraMismaEspecie);
+    }
+    @Test
+    public void al_actualizar_los_objetos_son_similares() {
+        this.dao.guardar(this.pejelagarto);
+        this.pejelagarto.setPeso(20);
+        this.pejelagarto.setAltura(400);
+
+        //Los personajes son iguales
+
+        Especie otraMismaEspecie= this.dao.recuperar("pejelagarto");
+        assertEquals(this.pejelagarto.getNombre(), otraMismaEspecie.getNombre());
+        assertFalse(this.pejelagarto.getPeso() == otraMismaEspecie.getPeso());
+        assertEquals(this.pejelagarto.getAltura(), otraMismaEspecie.getAltura());
+        assertEquals(this.pejelagarto.getCantidadBichos(), otraMismaEspecie.getCantidadBichos());
+
+        assertTrue(this.pejelagarto != otraMismaEspecie);
+        System.out.println("altura peso "+this.pejelagarto.getAltura()+this.pejelagarto.getPeso());
+        this.dao.actualizar(this.pejelagarto);
+
+         Especie otraMismaEspecie1= this.dao.recuperar("pejelagarto");
+        assertEquals(this.pejelagarto.getNombre(), otraMismaEspecie1.getNombre());
+        assertEquals(this.pejelagarto.getPeso(), otraMismaEspecie1.getPeso());
+        assertEquals(this.pejelagarto.getAltura(), otraMismaEspecie1.getAltura());
+        assertEquals(this.pejelagarto.getCantidadBichos(), otraMismaEspecie1.getCantidadBichos());
     }
 
 }
