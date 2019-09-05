@@ -74,6 +74,7 @@ public class JDBCEspecieDAO implements EspecieDAO {
         /*Para implementar*/
         return null;
     }
+
     public void restart(){
         this.executeWithConnection(conn ->{
             PreparedStatement sp = conn.prepareStatement("DELETE FROM specie WHERE id>=?");
@@ -81,7 +82,7 @@ public class JDBCEspecieDAO implements EspecieDAO {
             sp.execute();
 
             if(sp.getUpdateCount() < 1){
-                throw new RuntimeException("no se encontro ningun objeto");
+                throw new JDBCEspecieDAOError("no se encontro ningun objeto");
             }
             sp.close();
             return null;
@@ -94,7 +95,7 @@ public class JDBCEspecieDAO implements EspecieDAO {
         try {
             return bloque.executeWith(connection);
         } catch (SQLException e) {
-            throw new RuntimeException("Error no esperado", e);
+            throw new JDBCEspecieDAOError("Error no esperado", e);
         } finally {
             this.closeConnection(connection);
         }
@@ -103,7 +104,7 @@ public class JDBCEspecieDAO implements EspecieDAO {
         try {
             return DriverManager.getConnection(url);
         } catch (SQLException e) {
-            throw new RuntimeException("No se puede establecer una conexion", e);
+            throw new JDBCEspecieDAOError("No se puede establecer una conexion", e);
         }
     }
     private void closeConnection(Connection connection) {

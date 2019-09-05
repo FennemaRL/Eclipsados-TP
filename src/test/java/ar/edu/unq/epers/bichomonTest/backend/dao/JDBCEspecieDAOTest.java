@@ -1,12 +1,14 @@
 package ar.edu.unq.epers.bichomonTest.backend.dao;
 
 import ar.edu.unq.epers.bichomon.backend.dao.impl.JDBCEspecieDAO;
+import ar.edu.unq.epers.bichomon.backend.dao.impl.JDBCEspecieDAOError;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.CHOCOLATE;
+import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.TIERRA;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -45,12 +47,12 @@ public class JDBCEspecieDAOTest {
 
         assertTrue(this.pejelagarto != otraMismaEspecie);
     }
-    @Test (expected=RuntimeException.class)
+    @Test (expected= JDBCEspecieDAOError.class)
     public void al_guardar_dos_veces_el_mismo_objeto_Levanta_excepcion_por_constraint_Id() {
         this.dao.guardar(this.pejelagarto);
         this.dao.guardar(this.pejelagarto);
     }
-    @Test (expected=RuntimeException.class)
+    @Test (expected=JDBCEspecieDAOError.class)
     public void al_guardar_dos_objetos_con_el_mismo_nombre_levanta_excepcion_por_constraint_Nombre() {
         this.dao.guardar(this.pejelagarto);
         this.dao.guardar(this.pejelagarto2);
