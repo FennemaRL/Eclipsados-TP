@@ -37,7 +37,7 @@ public class JDBCEspecieDAO implements EspecieDAO {
 
     @Override
     public void actualizar(Especie especie) {
-    /*Para implementar*/
+        /*Para implementar*/
     }
 
     @Override
@@ -74,9 +74,23 @@ public class JDBCEspecieDAO implements EspecieDAO {
         /*Para implementar*/
         return null;
     }
+    public void restart(){
+        this.executeWithConnection(conn ->{
+            PreparedStatement sp = conn.prepareStatement("DELETE FROM specie WHERE id>=?");
+            sp.setInt(1,0);
+            sp.execute();
+
+            if(sp.getUpdateCount() < 1){
+                throw new RuntimeException("no se encontro ningun objeto");
+            }
+            sp.close();
+            return null;
+
+        });
+    }
 
     private <T> T executeWithConnection(ConnectionBlock<T> bloque) {
-        Connection connection = this.openConnection("jdbc:mysql://localhost:3306/bichomon_go_jdbc?user=root&password=password");
+        Connection connection = this.openConnection("jdbc:mysql://localhost:3306/bichomon_go_jdbc?user=root&password=password&useSSL=false");
         try {
             return bloque.executeWith(connection);
         } catch (SQLException e) {
@@ -100,3 +114,4 @@ public class JDBCEspecieDAO implements EspecieDAO {
         }
     }
 }
+
