@@ -71,8 +71,20 @@ public class JDBCEspecieDAO implements EspecieDAO {
 
     @Override
     public List<Especie> recuperarTodos() {
-        /*Para implementar*/
-        return null;
+        //List<String> lsEspecies = new ArrayList <String>();
+        List<Especie> res = new ArrayList<Especie>();
+
+        return this.executeWithConnection(conn -> {
+            PreparedStatement sp = conn.prepareStatement("SELECT nombre FROM specie ");
+            ResultSet resultSet = sp.executeQuery();
+
+            while(resultSet.next()){
+
+                res.add(recuperar(resultSet.getString("nombre")));
+            }
+        sp.close();
+        return res;
+        });
     }
 
     public void restart(){
@@ -91,7 +103,7 @@ public class JDBCEspecieDAO implements EspecieDAO {
     }
 
     private <T> T executeWithConnection(ConnectionBlock<T> bloque) {
-        Connection connection = this.openConnection("jdbc:mysql://localhost:3306/bichomon_go_jdbc?user=root&password=password&useSSL=false");
+        Connection connection = this.openConnection("jdbc:mysql://localhost:3306/bichomon_go_jdbc?user=root&password=1234&useSSL=false&serverTimezone=UTC");
         try {
             return bloque.executeWith(connection);
         } catch (SQLException e) {

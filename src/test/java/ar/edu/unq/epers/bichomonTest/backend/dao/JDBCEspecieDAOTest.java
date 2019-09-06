@@ -7,6 +7,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.CHOCOLATE;
 import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.TIERRA;
 import static org.junit.Assert.assertEquals;
@@ -57,4 +60,23 @@ public class JDBCEspecieDAOTest {
         this.dao.guardar(this.pejelagarto);
         this.dao.guardar(this.pejelagarto2);
     }
+
+    @Test
+    public void al_recuperarTodo_recupero_las_especies_guardadas(){
+
+        this.dao.guardar(pejelagarto);
+        List<Especie> lesp = new ArrayList<Especie>();
+        lesp.add(pejelagarto);
+        assertEquals(this.dao.recuperarTodos(),lesp);
+    }
+
 }
+
+
+
+
+
+
+
+
+
