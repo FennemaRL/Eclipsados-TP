@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50035487-6c0d-45d2-a910-48dae4e2b2b2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/JDBCEspecieDAOError.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/data/DataServiceImp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontest/backend/DataService/DataServiceTest.java" afterDir="false" />
+    <list default="true" id="3bf854a9-83b4-44e8-bdc3-0107ad4e3017" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/EspecieDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/EspecieDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/JDBCEspecieDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/JDBCEspecieDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/frontend/mock/EspecieDAOMock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/frontend/mock/EspecieDAOMock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomon/backend/dao/JDBCEspecieDAOTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/JDBCEspecieDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/JDBCEspecieDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bichomon-go.iml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,44 +13,12 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>crea</find>
-    </findStrings>
-    <replaceStrings>
-      <replace />
-    </replaceStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$/src/main/resources</dir>
-    </dirStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="625" />
-    <option name="y" value="160" />
-    <option name="width" value="950" />
-    <option name="height" value="787" />
-  </component>
-  <component name="ProjectId" id="1QTlvZ3sLtDbAZyibZvuY7QXbYc" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1QTeMS8eise5xUCMnxjuAVuo3PA" />
   <component name="PropertiesComponent">
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
-    &gt;&gt;&gt;&gt;&gt;&gt;&gt; 9e00684
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -69,7 +32,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in bichomon-go">
+  <component name="RunManager">
     <configuration name="All in bichomon-go" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <option name="PACKAGE_NAME" value="" />
@@ -78,90 +41,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DataServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomontest.backend.DataService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomontest.backend.DataService" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomontest.backend.DataService.DataServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JDBCEspecieDAOTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomonTest.backend.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTest.backend.dao" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTest.backend.dao.JDBCEspecieDAOTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JDBCEspecieDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomonTest.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTest.dao" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTest.dao.JDBCEspecieDAOTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JDBCEspecieDAOTest.al_actualizar_los_objetos_son_similares" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomon.backend.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomon.backend.dao" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomon.backend.dao.JDBCEspecieDAOTest" />
-      <option name="METHOD_NAME" value="al_actualizar_los_objetos_son_similares" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JDBCEspecieDAOTest.al_guardar_y_luego_recuperar_se_obtiene_objetos_similares" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomonTest.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTest.dao" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTest.dao.JDBCEspecieDAOTest" />
-      <option name="METHOD_NAME" value="al_guardar_y_luego_recuperar_se_obtiene_objetos_similares" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in bichomon-go" />
-        <item itemvalue="JUnit.DataServiceTest" />
-        <item itemvalue="JUnit.JDBCEspecieDAOTest (1)" />
-        <item itemvalue="JUnit.JDBCEspecieDAOTest.al_guardar_y_luego_recuperar_se_obtiene_objetos_similares" />
-        <item itemvalue="JUnit.JDBCEspecieDAOTest" />
       </list>
     </recent_temporary>
   </component>
@@ -170,11 +52,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="50035487-6c0d-45d2-a910-48dae4e2b2b2" name="Default Changelist" comment="" />
-      <created>1567623594877</created>
+      <changelist id="3bf854a9-83b4-44e8-bdc3-0107ad4e3017" name="Default Changelist" comment="" />
+      <created>1567798965014</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1567623594877</updated>
+      <updated>1567798965014</updated>
     </task>
     <servers />
   </component>
@@ -183,9 +65,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
