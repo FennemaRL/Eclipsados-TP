@@ -38,14 +38,15 @@ public class JDBCEspecieDAO implements EspecieDAO {
     @Override
     public void actualizar(Especie especie) {
         this.executeWithConnection(conn ->{
-            PreparedStatement sp = conn.prepareStatement("UPDATE specie  SET (nombre, peso, altura, tipo_Bicho, cantidad_Bichos WHERE id=?) VALUES(?,?,?,?,?)");
-            sp.setInt(1,especie.getId());//condition where
-            sp.setString(2, especie.getNombre());
-            sp.setInt(3,especie.getPeso());
-            sp.setInt(4,especie.getAltura());
-            sp.setString(5,especie.getTipo().toString());
-            sp.setInt(6,especie.getCantidadBichos());
-            sp.execute();
+            PreparedStatement sp = conn.prepareStatement("UPDATE specie  SET nombre=?, peso=?, altura=?, tipo_Bicho=?, cantidad_Bichos=? WHERE id=? ");//VALUES(?,?,?,?,?)");
+
+            sp.setString(1, especie.getNombre());
+            sp.setInt(2,especie.getPeso());
+            sp.setInt(3,especie.getAltura());
+            sp.setString(4,especie.getTipo().toString());
+            sp.setInt(5,especie.getCantidadBichos());
+            sp.setInt(6,especie.getId());//condition where
+            sp.executeUpdate();
 
             if(sp.getUpdateCount() != 1){
                 throw new RuntimeException("no se inserto la especie " + especie);

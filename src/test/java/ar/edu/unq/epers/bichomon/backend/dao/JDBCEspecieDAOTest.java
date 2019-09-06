@@ -45,11 +45,12 @@ public class JDBCEspecieDAOTest {
         Especie otraMismaEspecie= this.dao.recuperar("pejelagarto");
         assertEquals(this.pejelagarto.getNombre(), otraMismaEspecie.getNombre());
         assertFalse(this.pejelagarto.getPeso() == otraMismaEspecie.getPeso());
-        assertEquals(this.pejelagarto.getAltura(), otraMismaEspecie.getAltura());
+        assertFalse(this.pejelagarto.getAltura() ==otraMismaEspecie.getAltura());
         assertEquals(this.pejelagarto.getCantidadBichos(), otraMismaEspecie.getCantidadBichos());
 
         assertTrue(this.pejelagarto != otraMismaEspecie);
         System.out.println("altura peso "+this.pejelagarto.getAltura()+this.pejelagarto.getPeso());
+
         this.dao.actualizar(this.pejelagarto);
 
          Especie otraMismaEspecie1= this.dao.recuperar("pejelagarto");
@@ -57,6 +58,11 @@ public class JDBCEspecieDAOTest {
         assertEquals(this.pejelagarto.getPeso(), otraMismaEspecie1.getPeso());
         assertEquals(this.pejelagarto.getAltura(), otraMismaEspecie1.getAltura());
         assertEquals(this.pejelagarto.getCantidadBichos(), otraMismaEspecie1.getCantidadBichos());
+    }
+    @Test
+    public void al_actualizar_id_inexistente_no_actualiza() {
+        this.dao.actualizar(this.pejelagarto);
+
     }
 
 }
