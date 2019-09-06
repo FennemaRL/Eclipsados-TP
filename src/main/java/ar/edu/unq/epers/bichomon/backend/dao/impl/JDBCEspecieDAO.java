@@ -48,13 +48,14 @@ public class JDBCEspecieDAO implements EspecieDAO {
             sp.setInt(6,especie.getId());//condition where
             sp.executeUpdate();
 
-            if(sp.getUpdateCount() != 1){
-                throw new RuntimeException("no se inserto la especie " + especie);
+            if(sp.getUpdateCount() < 1){
+                throw new JDBCEspecieDAOError("no se actualizo " + especie);
             }
             sp.close();
             return null;
 
         });
+
     }
 
     @Override
@@ -91,17 +92,30 @@ public class JDBCEspecieDAO implements EspecieDAO {
         /*Para implementar*/
         return null;
     }
+
     public void restart(){
+        this.executeWithConnection(conn ->{
+            PreparedStatement sp = conn.prepareStatement("DELETE FROM specie WHERE id>=?");
+            sp.setInt(1,0);
+            sp.execute();
 
+            if(sp.getUpdateCount() < 1){
+                throw new JDBCEspecieDAOError("no se encontro ningun objeto");
+            }
+            sp.close();
+            return null;
 
+        });
     }
 
     private <T> T executeWithConnection(ConnectionBlock<T> bloque) {
-        Connection connection = this.openConnection("jdbc:mysql://localhost:3306/bichomon_go_jdbc?user=root&password=Leo1234!");
+
+        Connection connection = this.openConnection("jdbc:mysql://localhost:3306/bichomon_go_jdbc?user=root&password=Viejo1234!&useSSL=false");
+
         try {
             return bloque.executeWith(connection);
         } catch (SQLException e) {
-            throw new RuntimeException("Error no esperado", e);
+            throw new JDBCEspecieDAOError("Error no esperado", e);
         } finally {
             this.closeConnection(connection);
         }
@@ -110,7 +124,7 @@ public class JDBCEspecieDAO implements EspecieDAO {
         try {
             return DriverManager.getConnection(url);
         } catch (SQLException e) {
-            throw new RuntimeException("No se puede establecer una conexion", e);
+            throw new JDBCEspecieDAOError("No se puede establecer una conexion", e);
         }
     }
     private void closeConnection(Connection connection) {
@@ -121,3 +135,4 @@ public class JDBCEspecieDAO implements EspecieDAO {
         }
     }
 }
+

@@ -93,6 +93,11 @@ public class EspecieDAOMock implements EspecieDAO {
 	}
 
 	@Override
+	public void restart() {
+
+	}
+
+	@Override
 	public void actualizar(Especie especie) {
 	}
 
