@@ -37,7 +37,25 @@ public class JDBCEspecieDAO implements EspecieDAO {
 
     @Override
     public void actualizar(Especie especie) {
-        /*Para implementar*/
+        this.executeWithConnection(conn ->{
+            PreparedStatement sp = conn.prepareStatement("UPDATE specie  SET nombre=?, peso=?, altura=?, tipo_Bicho=?, cantidad_Bichos=? WHERE id=? ");//VALUES(?,?,?,?,?)");
+
+            sp.setString(1, especie.getNombre());
+            sp.setInt(2,especie.getPeso());
+            sp.setInt(3,especie.getAltura());
+            sp.setString(4,especie.getTipo().toString());
+            sp.setInt(5,especie.getCantidadBichos());
+            sp.setInt(6,especie.getId());//condition where
+            sp.executeUpdate();
+
+            if(sp.getUpdateCount() < 1){
+                throw new JDBCEspecieDAOError("no se actualizo " + especie);
+            }
+            sp.close();
+            return null;
+
+        });
+
     }
 
     @Override
@@ -103,7 +121,9 @@ public class JDBCEspecieDAO implements EspecieDAO {
     }
 
     private <T> T executeWithConnection(ConnectionBlock<T> bloque) {
-        Connection connection = this.openConnection("jdbc:mysql://localhost:3306/bichomon_go_jdbc?user=root&password=1234&useSSL=false&serverTimezone=UTC");
+
+        Connection connection = this.openConnection("jdbc:mysql://localhost:3306/bichomon_go_jdbc?user=root&password=Viejo1234!&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
+
         try {
             return bloque.executeWith(connection);
         } catch (SQLException e) {

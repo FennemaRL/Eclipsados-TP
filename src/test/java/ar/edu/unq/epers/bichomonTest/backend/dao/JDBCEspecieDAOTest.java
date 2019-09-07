@@ -11,9 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.CHOCOLATE;
-import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.TIERRA;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.Assert.*;
 
 public class JDBCEspecieDAOTest {
 
@@ -34,6 +33,7 @@ public class JDBCEspecieDAOTest {
     }
     @After
     public void restarModelo(){
+        this.dao.guardar(new Especie(99999999,"papa",CHOCOLATE));
         this.dao.restart();
     }
 
@@ -50,7 +50,39 @@ public class JDBCEspecieDAOTest {
 
         assertTrue(this.pejelagarto != otraMismaEspecie);
     }
-    @Test (expected= JDBCEspecieDAOError.class)
+
+    @Test
+    public void al_actualizar_los_objetos_son_similares() {
+        this.dao.guardar(this.pejelagarto);
+        this.pejelagarto.setPeso(20);
+        this.pejelagarto.setAltura(400);
+
+        //Los personajes son iguales
+
+        Especie otraMismaEspecie= this.dao.recuperar("pejelagarto");
+        assertEquals(this.pejelagarto.getNombre(), otraMismaEspecie.getNombre());
+        assertFalse(this.pejelagarto.getPeso() == otraMismaEspecie.getPeso());
+        assertFalse(this.pejelagarto.getAltura() ==otraMismaEspecie.getAltura());
+        assertEquals(this.pejelagarto.getCantidadBichos(), otraMismaEspecie.getCantidadBichos());
+
+        assertTrue(this.pejelagarto != otraMismaEspecie);
+        System.out.println("altura peso "+this.pejelagarto.getAltura()+this.pejelagarto.getPeso());
+
+        this.dao.actualizar(this.pejelagarto);
+
+         Especie otraMismaEspecie1= this.dao.recuperar("pejelagarto");
+        assertEquals(this.pejelagarto.getNombre(), otraMismaEspecie1.getNombre());
+        assertEquals(this.pejelagarto.getPeso(), otraMismaEspecie1.getPeso());
+        assertEquals(this.pejelagarto.getAltura(), otraMismaEspecie1.getAltura());
+        assertEquals(this.pejelagarto.getCantidadBichos(), otraMismaEspecie1.getCantidadBichos());
+    }
+    @Test(expected= JDBCEspecieDAOError.class)
+    public void al_actualizar_id_inexistente_no_actualiza() {
+        this.dao.actualizar(this.pejelagarto);
+    }
+
+
+    @Test(expected= JDBCEspecieDAOError.class)
     public void al_guardar_dos_veces_el_mismo_objeto_Levanta_excepcion_por_constraint_Id() {
         this.dao.guardar(this.pejelagarto);
         this.dao.guardar(this.pejelagarto);
@@ -65,9 +97,8 @@ public class JDBCEspecieDAOTest {
     public void al_recuperarTodo_recupero_las_especies_guardadas(){
 
         this.dao.guardar(pejelagarto);
-        List<Especie> lesp = new ArrayList<Especie>();
-        lesp.add(pejelagarto);
-        assertEquals(this.dao.recuperarTodos(),lesp);
+        Especie peje = this.dao.recuperarTodos().get(0);
+        assertEquals(peje.getNombre(),pejelagarto.getNombre());
     }
 
 }
