@@ -5,8 +5,7 @@ import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class JDBCEspecieDAO implements EspecieDAO {
     public JDBCEspecieDAO(){
@@ -89,7 +88,7 @@ public class JDBCEspecieDAO implements EspecieDAO {
 
     @Override
     public List<Especie> recuperarTodos() {
-        //List<String> lsEspecies = new ArrayList <String>();
+        List<String> lsEspecies = new ArrayList <String>();
         List<Especie> res = new ArrayList<Especie>();
 
         return this.executeWithConnection(conn -> {
@@ -101,9 +100,16 @@ public class JDBCEspecieDAO implements EspecieDAO {
                 res.add(recuperar(resultSet.getString("nombre")));
             }
         sp.close();
+            Collections.sort(res, new Comparator<Especie>() {
+                public int compare(Especie obj1, Especie obj2) {
+                    return obj1.getNombre().compareTo(obj2.getNombre());
+                }
+            });
         return res;
         });
     }
+
+
 
     public void restart(){
         this.executeWithConnection(conn ->{

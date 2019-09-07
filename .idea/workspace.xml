@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11029f39-fca2-4772-8151-d01993e61d48" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_6_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_6_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_15.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bichomon-go.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bichomon-go.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/JDBCEspecieDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/JDBCEspecieDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/JDBCEspecieDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/JDBCEspecieDAOTest.java" afterDir="false" />
     </list>
@@ -67,7 +61,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.JDBCEspecieDAOTest.al_recuperarTodo_recupero_las_especies_guardadas">
+  <component name="RunManager" selected="JUnit.JDBCEspecieDAOTest.al_recuperarTodo_recupero_las_especies_guardadas_en_orden_alfabetico">
     <configuration name="JDBCEspecieDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <extension name="coverage">
@@ -115,22 +109,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JDBCEspecieDAOTest.al_guardar_y_luego_recuperar_se_obtiene_objetos_similares" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomonTest.backend.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTest.backend.dao" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTest.backend.dao.JDBCEspecieDAOTest" />
-      <option name="METHOD_NAME" value="al_guardar_y_luego_recuperar_se_obtiene_objetos_similares" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="JDBCEspecieDAOTest.al_recuperarTodo_recupero_las_especies_guardadas" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <extension name="coverage">
@@ -147,13 +125,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="JDBCEspecieDAOTest.al_recuperarTodo_recupero_las_especies_guardadas_en_orden_alfabetico" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bichomon-go" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unq.epers.bichomonTest.backend.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTest.backend.dao" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTest.backend.dao.JDBCEspecieDAOTest" />
+      <option name="METHOD_NAME" value="al_recuperarTodo_recupero_las_especies_guardadas_en_orden_alfabetico" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.JDBCEspecieDAOTest.al_recuperarTodo_recupero_las_especies_guardadas_en_orden_alfabetico" />
         <item itemvalue="JUnit.JDBCEspecieDAOTest.al_recuperarTodo_recupero_las_especies_guardadas" />
         <item itemvalue="JUnit.JDBCEspecieDAOTest" />
         <item itemvalue="JUnit.JDBCEspecieDAOTest.al_guardar_dos_objetos_con_el_mismo_nombre_levanta_excepcion_por_constraint_Nombre" />
         <item itemvalue="JUnit.JDBCEspecieDAOTest.al_guardar_dos_veces_el_mismo_objeto_Levanta_excepcion_por_constraint_Id" />
-        <item itemvalue="JUnit.JDBCEspecieDAOTest.al_guardar_y_luego_recuperar_se_obtiene_objetos_similares" />
       </list>
     </recent_temporary>
   </component>
@@ -168,6 +162,7 @@
       <option name="presentableId" value="Default" />
       <updated>1567798894119</updated>
       <workItem from="1567798904211" duration="9835000" />
+      <workItem from="1567866368815" duration="2750000" />
     </task>
     <servers />
   </component>

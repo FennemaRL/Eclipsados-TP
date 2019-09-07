@@ -19,6 +19,7 @@ public class JDBCEspecieDAOTest {
     private JDBCEspecieDAO dao = new JDBCEspecieDAO();
     private Especie pejelagarto;
     private Especie pejelagarto2;
+    private Especie rFort;
 
     @Before
     public void crearModelo() {
@@ -30,6 +31,11 @@ public class JDBCEspecieDAOTest {
         this.pejelagarto.setPeso(151);
         this.pejelagarto.setAltura(1980);
         this.pejelagarto.setCantidadBichos(1);
+
+        this.rFort = new Especie(1,"fortmon",CHOCOLATE);
+        this.rFort.setPeso(110);
+        this.rFort.setAltura(100);
+        this.rFort.setCantidadBichos(1);
     }
     @After
     public void restarModelo(){
@@ -94,10 +100,14 @@ public class JDBCEspecieDAOTest {
     }
 
     @Test
-    public void al_recuperarTodo_recupero_las_especies_guardadas(){
+    public void al_recuperarTodo_recupero_las_especies_guardadas_en_orden_alfabetico(){
+
 
         this.dao.guardar(pejelagarto);
-        Especie peje = this.dao.recuperarTodos().get(0);
+        this.dao.guardar(rFort);
+        Especie ricky = this.dao.recuperarTodos().get(0);
+        Especie peje = this.dao.recuperarTodos().get(1);
+        assertEquals(ricky.getNombre(),rFort.getNombre());
         assertEquals(peje.getNombre(),pejelagarto.getNombre());
     }
 
