@@ -81,6 +81,9 @@ public class JDBCEspecieDAO implements EspecieDAO {
                 especie.setPeso(resultSet.getInt("Peso"));
                 especie.setCantidadBichos(resultSet.getInt("cantidad_Bichos"));
             }
+            if(sp.getUpdateCount() < 1){
+                throw new JDBCEspecieDAOError("especie inexistente " + especie);
+            }
             sp.close();
             return especie;
         });

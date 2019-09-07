@@ -79,6 +79,11 @@ public class JDBCEspecieDAOTest {
     }
 
 
+    @Test(expected = JDBCEspecieDAOError.class)
+    public void al_recuperar_un_nombre_inexistente_no_recupera(){
+        this.dao.recuperar("pejelagarto3");
+
+    }
     @Test(expected= JDBCEspecieDAOError.class)
     public void al_guardar_dos_veces_el_mismo_objeto_Levanta_excepcion_por_constraint_Id() {
         this.dao.guardar(this.pejelagarto);
