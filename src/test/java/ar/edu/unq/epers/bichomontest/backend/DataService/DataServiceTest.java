@@ -15,7 +15,6 @@ public class DataServiceTest {
     private JDBCEspecieDAO dao = new JDBCEspecieDAO();
     private DataService ds = new DataServiceImp(dao);
     private Especie pejelagarto ;
-    private Especie rojo ;
 
     @Before
     public void crearModelo() {
@@ -23,12 +22,15 @@ public class DataServiceTest {
         this.pejelagarto.setPeso(15);
         this.pejelagarto.setAltura(198);
         this.pejelagarto.setCantidadBichos(0);
-        this.rojo = new Especie(0,"rojo",TipoBicho.FUEGO);
     }
     @Test(expected= JDBCEspecieDAOError.class)
     public void al_guardar_un_objeto_con_el_mismo_de_otro_creado_por_el_Data_Service_Levanta_una_excepcion(){
         this.ds.crearSetDatosIniciales();
         this.dao.guardar(pejelagarto);
+    }
+    @Test(expected= JDBCEspecieDAOError.class)
+    public void borrar_datos_Levanta_una_excepcion(){
+        this.ds.eliminarDatos();
     }
     
 }

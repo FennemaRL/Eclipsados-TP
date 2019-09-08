@@ -65,24 +65,20 @@ public class JDBCEspecieDAO implements EspecieDAO {
             sp.setString(1, nombreEspecie);
             ResultSet resultSet = sp.executeQuery();
             Especie especie = null;
-            ArrayList tbl = new ArrayList<TipoBicho>();
-            for (int i = 0; i < TipoBicho.values().length; i=i+ 1){
-                tbl.add(TipoBicho.values()[i]);
-            }
             while(resultSet.next()){
                 if(especie != null)
                     throw  new RuntimeException("Existe mas de una especie con el nombre" + nombreEspecie);
 
                 String tipo =resultSet.getString("tipo_Bicho");
-                TipoBicho tb= (TipoBicho) tbl.stream().filter(tp-> tp.toString().equals(tipo)).toArray()[0];
+                TipoBicho tb=TipoBicho.valueOf(tipo);
                 int id= resultSet.getInt("id");
                 especie = new Especie (id,nombreEspecie, tb);
                 especie.setAltura(resultSet.getInt("Altura"));
                 especie.setPeso(resultSet.getInt("Peso"));
                 especie.setCantidadBichos(resultSet.getInt("cantidad_Bichos"));
             }
-            if(sp.getUpdateCount() < 1){
-                throw new JDBCEspecieDAOError("especie inexistente " + especie);
+            if(especie == null) {
+                throw new JDBCEspecieDAOError("no se encontro una especie con ese nombre ");
             }
             sp.close();
             return especie;

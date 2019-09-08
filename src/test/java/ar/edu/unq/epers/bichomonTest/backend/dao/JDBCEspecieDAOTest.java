@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.CHOCOLATE;
 
+import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.ELECTRICIDAD;
 import static org.junit.Assert.*;
 
 public class JDBCEspecieDAOTest {
@@ -24,9 +25,10 @@ public class JDBCEspecieDAOTest {
         this.pejelagarto.setAltura(198);
         this.pejelagarto.setCantidadBichos(0);
         this.pejelagarto2 = new Especie(1,"pejelagarto",CHOCOLATE);
-        this.pejelagarto.setPeso(151);
-        this.pejelagarto.setAltura(1980);
-        this.pejelagarto.setCantidadBichos(1);
+        this.pejelagarto2.setPeso(151);
+        this.pejelagarto2.setAltura(1980);
+        this.pejelagarto2.setCantidadBichos(1);
+
     }
     @After
     public void restarModelo(){
@@ -93,5 +95,11 @@ public class JDBCEspecieDAOTest {
     public void al_guardar_dos_objetos_con_el_mismo_nombre_levanta_excepcion_por_constraint_Nombre() {
         this.dao.guardar(this.pejelagarto);
         this.dao.guardar(this.pejelagarto2);
+    }
+    @Test (expected=JDBCEspecieDAOError.class)
+    public void se_intenta_guardar_dos_objetos_con_el_mismo_id_y_levanta_excepcion() {
+        this.dao.guardar(this.pejelagarto);
+        Especie pejelagarto3 = new Especie(0,"caja",ELECTRICIDAD);
+        this.dao.guardar(pejelagarto3);
     }
 }
