@@ -9,28 +9,39 @@ import ar.edu.unq.epers.bichomon.backend.service.data.DataServiceImp;
 import org.junit.Before;
 import org.junit.Test;
 
-import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.CHOCOLATE;
+import java.util.ArrayList;
+import java.util.List;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class DataServiceTest {
     private JDBCEspecieDAO dao = new JDBCEspecieDAO();
     private DataService ds = new DataServiceImp(dao);
-    private Especie pejelagarto ;
 
     @Before
-    public void crearModelo() {
-        this.pejelagarto = new Especie(1,"pejelagarto",CHOCOLATE);
-        this.pejelagarto.setPeso(15);
-        this.pejelagarto.setAltura(198);
-        this.pejelagarto.setCantidadBichos(0);
+    public void reset(){
+        ds.eliminarDatos();
     }
-    @Test(expected= JDBCEspecieDAOError.class)
-    public void al_guardar_un_objeto_con_el_mismo_de_otro_creado_por_el_Data_Service_Levanta_una_excepcion(){
+    @Test
+    public void al_cargar_datos_por_el_Data_Service(){ // test favorable cargar datos/ borrar datos
         this.ds.crearSetDatosIniciales();
-        this.dao.guardar(pejelagarto);
+        List<Especie> eList = new ArrayList<>();
+        assertFalse(eList.equals(dao.recuperarTodos()));
+
+        ds.eliminarDatos();
+
+        assertEquals(eList,dao.recuperarTodos());
     }
-    @Test(expected= JDBCEspecieDAOError.class)
-    public void borrar_datos_Levanta_una_excepcion(){
+    @Test (expected = JDBCEspecieDAOError.class) //test desfavorable
+    public void levanta_excepcion_al_tratar_de_cargar_datos_Con_el_Data_service_al_haber_una_especie_con_el_mismo_Id(){
+        this.dao.guardar(new Especie(1,"toco", TipoBicho.ELECTRICIDAD));
+        this.ds.crearSetDatosIniciales();
+    }
+    @Test
+    public void borrar_datos_cuando_no_hay_datos_inicializados(){ // test favorable datos
         this.ds.eliminarDatos();
+        List<Especie> eList = new ArrayList<>();
+        assertEquals(eList, dao.recuperarTodos() );
     }
     
 }

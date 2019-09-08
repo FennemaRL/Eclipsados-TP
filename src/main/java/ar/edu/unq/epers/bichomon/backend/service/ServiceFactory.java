@@ -1,5 +1,6 @@
 package ar.edu.unq.epers.bichomon.backend.service;
 
+import ar.edu.unq.epers.bichomon.backend.dao.impl.JDBCEspecieDAO;
 import ar.edu.unq.epers.bichomon.backend.service.data.DataService;
 import ar.edu.unq.epers.bichomon.backend.service.especie.EspecieService;
 import ar.edu.unq.epers.bichomon.backend.service.especie.EspecieServiceImpl;
@@ -20,8 +21,8 @@ public class ServiceFactory {
 	/**
 	 * @return un objeto que implementa {@link EspecieService}
 	 */
-	public EspecieService getEspecieService() {
-		return new EspecieServiceImpl(new EspecieDAOMock());
+	public EspecieService getEspecieService() {return new EspecieServiceImpl(new JDBCEspecieDAO());
+		//return new EspecieServiceImpl(new EspecieDAOMock());
 	}
 	
 	/**

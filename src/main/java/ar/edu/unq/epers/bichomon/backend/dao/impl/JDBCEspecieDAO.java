@@ -5,8 +5,7 @@ import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class JDBCEspecieDAO implements EspecieDAO {
     public JDBCEspecieDAO(){
@@ -30,7 +29,6 @@ public class JDBCEspecieDAO implements EspecieDAO {
             }
             sp.close();
             return null;
-
         });
 
     }
@@ -38,7 +36,7 @@ public class JDBCEspecieDAO implements EspecieDAO {
     @Override
     public void actualizar(Especie especie) {
         this.executeWithConnection(conn ->{
-            PreparedStatement sp = conn.prepareStatement("UPDATE specie  SET nombre=?, peso=?, altura=?, tipo_Bicho=?, cantidad_Bichos=? WHERE id=? ");//VALUES(?,?,?,?,?)");
+            PreparedStatement sp = conn.prepareStatement("UPDATE specie  SET nombre=?, peso=?, altura=?, tipo_Bicho=?, cantidad_Bichos=? WHERE id=? ");
 
             sp.setString(1, especie.getNombre());
             sp.setInt(2,especie.getPeso());
@@ -88,8 +86,19 @@ public class JDBCEspecieDAO implements EspecieDAO {
 
     @Override
     public List<Especie> recuperarTodos() {
-        /*Para implementar*/
-        return null;
+        List<Especie> res = new ArrayList<Especie>();
+
+        return this.executeWithConnection(conn -> {
+            PreparedStatement sp = conn.prepareStatement("SELECT nombre FROM specie ORDER BY nombre ASC");
+            ResultSet resultSet = sp.executeQuery();
+
+            while(resultSet.next()){
+
+                res.add(recuperar(resultSet.getString("nombre")));
+            }
+        sp.close();
+        return res;
+        });
     }
 
     public void restart(){
@@ -97,19 +106,14 @@ public class JDBCEspecieDAO implements EspecieDAO {
             PreparedStatement sp = conn.prepareStatement("DELETE FROM specie WHERE id>=?");
             sp.setInt(1,0);
             sp.execute();
-
-            if(sp.getUpdateCount() < 1){
-                throw new JDBCEspecieDAOError("no se encontro ningun objeto");
-            }
             sp.close();
             return null;
-
         });
     }
 
     private <T> T executeWithConnection(ConnectionBlock<T> bloque) {
 
-        Connection connection = this.openConnection("jdbc:mysql://localhost:3306/bichomon_go_jdbc?user=root&password=Viejo1234!&useSSL=false");
+        Connection connection = this.openConnection("jdbc:mysql://localhost:3306/bichomon_go_jdbc?user=root&password=Viejo1234!&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
 
         try {
             return bloque.executeWith(connection);
