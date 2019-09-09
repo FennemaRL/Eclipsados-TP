@@ -113,8 +113,8 @@ public class JDBCEspecieDAOTest {
         Especie ricky = this.dao.recuperarTodos().get(0);
         Especie peje = this.dao.recuperarTodos().get(1);
 
-        assertEquals(ricky.getNombre(),rFort.getNombre());
-        assertEquals(peje.getNombre(),pejelagarto.getNombre());
+        assertEquals(ricky.getNombre(), rFort.getNombre());
+        assertEquals(peje.getNombre(), pejelagarto.getNombre());
     }
     @Test
     public void al_recuperartodo_recupero_una_lista_vacia_por_que_no_hay_nada_guardado(){ // test recuperartodo desfavorable
