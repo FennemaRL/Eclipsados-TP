@@ -12,7 +12,6 @@ import java.util.List;
 
 import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.CHOCOLATE;
 
-import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.ELECTRICIDAD;
 import static org.junit.Assert.*;
 
 public class JDBCEspecieDAOTest {
@@ -72,20 +71,20 @@ public class JDBCEspecieDAOTest {
         assertEquals(this.pejelagarto.getCantidadBichos(), otraMismaEspecie1.getCantidadBichos());
     }
     @Test(expected= JDBCEspecieDAOError.class)
-    public void al_actualizar_id_inexistente_no_actualiza() { // test desfavorable actualizar
+    public void al_actualizar_id_inexistente_no_actualiza_y_levanta_excepcion() { // test desfavorable actualizar
 
         this.dao.actualizar(this.pejelagarto);
     }
 
 
     @Test(expected = JDBCEspecieDAOError.class)
-    public void al_recuperar_un_nombre_inexistente_no_recupera(){ // test desfavorable recuperar
+    public void al_recuperar_un_nombre_inexistente_no_recupera_y_levanta_excepcion(){ // test desfavorable recuperar
 
         this.dao.recuperar("pejelagarto3");
 
     }
     @Test(expected= JDBCEspecieDAOError.class)
-    public void al_guardar_dos_veces_el_mismo_objeto_Levanta_excepcion_por_constraint_Id() { // test constraint id
+    public void al_guardar_dos_veces_el_mismo_objeto_levanta_excepcion_por_constraint_Id() { // test constraint id
 
         this.dao.guardar(this.pejelagarto);
         this.pejelagarto.setNombre("papa");
