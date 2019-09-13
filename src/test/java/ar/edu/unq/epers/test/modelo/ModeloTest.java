@@ -1,5 +1,6 @@
 package ar.edu.unq.epers.test.modelo;
 
+import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho;
 import ar.edu.unq.epers.bichomon.backend.service.data.DataService;
@@ -14,6 +15,7 @@ import static org.junit.Assert.assertFalse;
 
 public class ModeloTest {
 
+    private Entrenador
     @Before
 
 }
