@@ -5,9 +5,7 @@ import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import org.joda.time.DateTime;
 import org.joda.time.JodaTimePermission;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Un {@link Bicho} existente en el sistema, el mismo tiene un nombre
@@ -26,7 +24,9 @@ public class Bicho {
 	private int energiaDeCombate;
 	private DateTime fechaCaptura;
 	private Integer victorias;
+	@ManyToOne
 	private Entrenador owner;
+
 
 	public Bicho(Especie especie, String nombre) {
 		this.especie = especie;
