@@ -1,4 +1,4 @@
-package ar.edu.unq.epers.bichomon.backend.dao.impl;
+package ar.edu.unq.epers.bichomon.backend.dao.impl.jdbc;
 
 import java.sql.SQLException;
 

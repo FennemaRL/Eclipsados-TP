@@ -1,6 +1,13 @@
 package ar.edu.unq.epers.bichomon.backend.model.bicho;
 
+import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
+import org.joda.time.DateTime;
+import org.joda.time.JodaTimePermission;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * Un {@link Bicho} existente en el sistema, el mismo tiene un nombre
@@ -8,16 +15,25 @@ import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
  * 
  * @author Charly Backend
  */
+@Entity
 public class Bicho {
+	@Id
+	@GeneratedValue
+	private Integer id;
 
 	private String nombre;
 	private Especie especie;
-	private int energia;
-	
+	private int energiaDeCombate;
+	private DateTime fechaCaptura;
+	private Integer victorias;
+	private Entrenador owner;
+
 	public Bicho(Especie especie, String nombre) {
 		this.especie = especie;
 		this.nombre = nombre;
 	}
+
+
 
 	/**
 	 * @return el nombre de un bicho (todos los bichos tienen
@@ -39,11 +55,9 @@ public class Bicho {
 	 * particular. Dicha cantidad crecerá (o decrecerá) conforme
 	 * a este bicho participe en combates contra otros bichomones.
 	 */
-	public int getEnergia() {
-		return this.energia;
-	}
+	public int getEnergia() { return this.energiaDeCombate;	}
 	public void setEnergia(int energia) {
-		this.energia = energia;
+		this.energiaDeCombate = energia;
 	}
 
 }

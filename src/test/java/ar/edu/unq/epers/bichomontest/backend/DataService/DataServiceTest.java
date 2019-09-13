@@ -1,7 +1,7 @@
 package ar.edu.unq.epers.bichomontest.backend.DataService;
 
-import ar.edu.unq.epers.bichomon.backend.dao.impl.JDBCEspecieDAO;
-import ar.edu.unq.epers.bichomon.backend.dao.impl.JDBCEspecieDAOError;
+import ar.edu.unq.epers.bichomon.backend.dao.impl.jdbc.JDBCEspecieDAO;
+import ar.edu.unq.epers.bichomon.backend.dao.impl.jdbc.JDBCEspecieDAOError;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho;
 import ar.edu.unq.epers.bichomon.backend.service.data.DataService;
