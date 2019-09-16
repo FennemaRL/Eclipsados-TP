@@ -31,9 +31,16 @@ public class Bicho {
 	public Bicho(Especie especie, String nombre) {
 		this.especie = especie;
 		this.nombre = nombre;
+		id = 1;
+		victorias = 0;
 	}
-
-
+	//constructor creado para testear la busqueda por id
+	public Bicho(Especie especie, String nombre, Integer id){
+		this.especie = especie;
+		this.nombre = nombre;
+		this.id = id;
+		victorias = 0;
+	}
 
 	/**
 	 * @return el nombre de un bicho (todos los bichos tienen
@@ -60,4 +67,28 @@ public class Bicho {
 		this.energiaDeCombate = energia;
 	}
 
+	public Integer getId() {
+		return this.id;
+	}
+
+    public boolean puedeEvolucionar() {
+		return ( especie.tieneSiguienteEvolucion() && especie.cumpleCondicion(this));
+    }
+
+	public Integer getVictorias() { return this.victorias;}
+
+	public DateTime getFechaCaptura() { return this.fechaCaptura; }
+
+
+	public Integer getNivelEntrenador() {
+		return owner.getNivel();
+	}
+
+	public void setFechaCaptura(DateTime unaFecha) {
+		this.fechaCaptura = unaFecha;
+	}
+
+	public void setOwner(Entrenador entrenador) {
+		this.owner = entrenador;
+	}
 }

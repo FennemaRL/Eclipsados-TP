@@ -1,9 +1,9 @@
 package ar.edu.unq.epers.bichomon.backend.model.ubicacion;
 
+public class Dojo extends Ubicacion{
 
-public abstract class Ubicacion {
 
-    public String nombreUbicacion;
+
 
 
 

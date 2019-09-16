@@ -1,110 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4c05e42-0735-46ef-a59c-c1a211c3d324" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="a4d3fc46-e4ec-4fa5-96f4-ff4a4d0457e4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/Exception/EntrenadorException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Dojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Guarderia.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Pueblo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/BichoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/BichoServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/EntrenadorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_18_1_GA.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/JDBCEspecieDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/JDBCEspecieDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bichomon-go.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/EntrenadorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/EntrenadorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/bicho/Bicho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/bicho/Bicho.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/entrenador/Entrenador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/entrenador/Entrenador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/especie/Especie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/especie/Especie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Ubicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Ubicacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/ModeloTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/ModeloTest.java" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/classes/" />
-    <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/JDBCEspecieDAOTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="115" column="40" selection-start-line="115" selection-start-column="40" selection-end-line="115" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/JDBCEspecieDAOTest.java" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="625" />
-    <option name="y" value="160" />
-    <option name="width" value="950" />
-    <option name="height" value="787" />
-  </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="epers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="epers" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
-  </component>
+  <component name="ProjectId" id="1QvJyZoUeLGElamf9HBMdb1Kvc7" />
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -118,77 +54,32 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="All in bichomon-go" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.All in bichomon-go" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d4c05e42-0735-46ef-a59c-c1a211c3d324" name="Default Changelist" comment="" />
-      <created>1568053154728</created>
+      <changelist id="a4d3fc46-e4ec-4fa5-96f4-ff4a4d0457e4" name="Default Changelist" comment="" />
+      <created>1568645397121</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1568053154728</updated>
+      <updated>1568645397121</updated>
+      <workItem from="1568645410663" duration="2290000" />
     </task>
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="All_in_bichomon-go - 2019.09.09 at 15h 19m 48s.xml">
-      <configuration name="All in bichomon-go" configurationId="JUnit" />
-    </history-entry>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="0" y="30" width="1920" height="1050" extended-state="6" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32899022" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-    </layout>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/JDBCEspecieDAOTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="115" column="40" selection-start-line="115" selection-start-column="40" selection-end-line="115" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

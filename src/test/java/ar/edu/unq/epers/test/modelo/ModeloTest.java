@@ -15,7 +15,6 @@ import static org.junit.Assert.assertFalse;
 
 public class ModeloTest {
 
-    private Entrenador
-    @Before
+
 
 }

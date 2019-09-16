@@ -6,5 +6,5 @@ public interface EntrenadorDAO {
 
     void guardar(Entrenador entrenador);
 
-    Entrenador recuperar(Integer id);
+    Entrenador recuperar(String nombreEntrenador);
 }

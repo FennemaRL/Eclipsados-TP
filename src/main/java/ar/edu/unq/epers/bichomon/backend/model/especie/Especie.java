@@ -1,6 +1,7 @@
 package ar.edu.unq.epers.bichomon.backend.model.especie;
 
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
+import org.joda.time.DateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,7 +25,15 @@ public class Especie {
 	private String urlFoto;
 	
 	private int cantidadBichos;
-	
+
+
+	//variables temporales a resolver posteriormente para determinar si puede evolucionar
+	private int nivelEvolucionActual;
+	private Integer nivelDeEnergiaNecesario;
+	private Integer cantidadDeVictoriasNecesarias;
+	private Integer nivelDelEntrenadorNecesario;
+	private DateTime fechaDeCaptura ;
+
 	public Especie(){
 	}
 	
@@ -32,6 +41,7 @@ public class Especie {
 	    this.id = id;
 		this.nombre = nombre;
 		this.tipo = tipo;
+		this.nivelEvolucionActual = 1;
 	}
 	
 	/**
@@ -118,5 +128,23 @@ public class Especie {
 		this.cantidadBichos++;
 		return new Bicho(this, nombreBicho);
 	}
-	
+
+	public void setCondicionesEvolucion(Integer energia, Integer victorias, Integer lvlEntrenador, DateTime fechaCaptura){
+		this.nivelDeEnergiaNecesario = energia;
+		this.cantidadDeVictoriasNecesarias = victorias;
+		this.nivelDelEntrenadorNecesario = lvlEntrenador;
+		this.fechaDeCaptura = fechaCaptura;
+	}
+
+	public Boolean tieneSiguienteEvolucion() {
+	 return	this.nivelEvolucionActual < 3 ;
+	}
+
+	public boolean cumpleCondicion(Bicho bicho) {
+
+		return (bicho.getEnergia()>nivelDeEnergiaNecesario ||
+				bicho.getVictorias()> cantidadDeVictoriasNecesarias ||
+				bicho.getFechaCaptura().isBefore(fechaDeCaptura) ||
+				bicho.getNivelEntrenador()> nivelDelEntrenadorNecesario);
+	}
 }
