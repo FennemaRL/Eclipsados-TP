@@ -41,6 +41,12 @@ public class Bicho {
 		this.id = id;
 		victorias = 0;
 	}
+	public Bicho(Especie especie){
+		this.especie = especie;
+		this.nombre = nombre;
+		this.id = id;
+		victorias = 0;
+	}
 
 	/**
 	 * @return el nombre de un bicho (todos los bichos tienen

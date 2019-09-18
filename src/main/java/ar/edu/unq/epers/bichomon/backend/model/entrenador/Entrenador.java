@@ -33,10 +33,10 @@ public class Entrenador {
     private Ubicacion ubicacion;
 
 
-    public Bicho getBichoConID(Integer bicho) {
+    public Bicho getBichoConID(Integer bichoId) {
         //Bicho bichoEncontrar = bichos.stream().findAny(b-> b.getId() == bicho) ;
-        Bicho bichoEncontrar = bichos.stream().filter(b-> b.getId() == bicho).findAny().orElse(null) ;
-        if (bichoEncontrar == null) throw new EntrenadorException(this, bicho);
+        Bicho bichoEncontrar = bichos.stream().filter(b-> b.getId() == bichoId).findAny().orElse(null) ;
+        if (bichoEncontrar == null) throw new EntrenadorException(this, bichoId);
         return bichoEncontrar;
     }
 
@@ -52,6 +52,10 @@ public class Entrenador {
 
     public Integer getNivel() { return this.nivel; }
 
+    public boolean tieneBichoConId(Integer bichoId){
+        return bichos.stream().filter(b-> b.getId() == bichoId).findAny().orElse(null) != null;
+
+    }
 
 
 

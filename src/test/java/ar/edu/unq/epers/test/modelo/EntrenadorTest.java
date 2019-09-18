@@ -4,20 +4,13 @@ import ar.edu.unq.epers.bichomon.backend.model.Exception.EntrenadorException;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
-import ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho;
-import ar.edu.unq.epers.bichomon.backend.service.data.DataService;
-import ar.edu.unq.epers.bichomon.backend.service.data.DataServiceImp;
 import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.CHOCOLATE;
 import static org.junit.Assert.*;
 
-public class EntrenadorTest {
+public class  EntrenadorTest {
 
         private Entrenador lukas;
         private Bicho leo;

@@ -34,6 +34,9 @@ public class Especie {
 	private Integer nivelDelEntrenadorNecesario;
 	private DateTime fechaDeCaptura ;
 
+	//especie raiz
+	private Especie especieRaiz;
+
 	public Especie(){
 	}
 	
@@ -42,6 +45,7 @@ public class Especie {
 		this.nombre = nombre;
 		this.tipo = tipo;
 		this.nivelEvolucionActual = 1;
+		especieRaiz = this;
 	}
 	
 	/**
@@ -147,4 +151,15 @@ public class Especie {
 				bicho.getFechaCaptura().isBefore(fechaDeCaptura) ||
 				bicho.getNivelEntrenador()> nivelDelEntrenadorNecesario);
 	}
+	public void setEspecieRaiz(Especie e){
+		especieRaiz= e;
+	}
+    public Especie getEspecieRaiz() {
+		return (especieRaiz.nombre == this.nombre)? especieRaiz: especieRaiz.getEspecieRaiz();
+
+    }
+
+    public void incrementarEnUnBicho() {
+		cantidadBichos = cantidadBichos +1;
+    }
 }
