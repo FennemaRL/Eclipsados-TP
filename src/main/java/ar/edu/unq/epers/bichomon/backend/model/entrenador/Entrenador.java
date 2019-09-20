@@ -9,19 +9,16 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+
 public class Entrenador {
 
-    @Id
-    @GeneratedValue
     private int id;
     private String name;
     private Integer experiencia;
     private Integer nivel;
-    @OneToMany(mappedBy ="owner", cascade =  CascadeType.ALL)
     private List<Bicho> bichos;
 
-    @ManyToOne
+
     private Ubicacion ubicacion;
 
     public Entrenador(){}

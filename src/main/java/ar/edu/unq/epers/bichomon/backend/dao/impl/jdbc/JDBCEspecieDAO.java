@@ -15,13 +15,12 @@ public class JDBCEspecieDAO implements EspecieDAO {
     @Override
     public void guardar(Especie especie) {
         this.executeWithConnection(conn ->{
-            PreparedStatement sp = conn.prepareStatement("INSERT INTO specie (id, nombre, peso, altura, tipo_Bicho, cantidad_Bichos) VALUES(?,?,?,?,?,?)");
-            sp.setInt(1,especie.getId());
-            sp.setString(2, especie.getNombre());
-            sp.setInt(3,especie.getPeso());
-            sp.setInt(4,especie.getAltura());
-            sp.setString(5,especie.getTipo().toString());
-            sp.setInt(6,especie.getCantidadBichos());
+            PreparedStatement sp = conn.prepareStatement("INSERT INTO specie (nombre, peso, altura, tipo_Bicho, cantidad_Bichos) VALUES(?,?,?,?,?)");
+            sp.setString(1, especie.getNombre());
+            sp.setInt(2,especie.getPeso());
+            sp.setInt(3,especie.getAltura());
+            sp.setString(4,especie.getTipo().toString());
+            sp.setInt(5,especie.getCantidadBichos());
             sp.execute();
 
             if(sp.getUpdateCount() != 1){
@@ -35,6 +34,8 @@ public class JDBCEspecieDAO implements EspecieDAO {
 
     @Override
     public void actualizar(Especie especie) {
+        if(especie.getId() == null)
+            throw new JDBCEspecieDAOError("La especie a actualizar no tiene id");
         this.executeWithConnection(conn ->{
             PreparedStatement sp = conn.prepareStatement("UPDATE specie  SET nombre=?, peso=?, altura=?, tipo_Bicho=?, cantidad_Bichos=? WHERE id=? ");
 
@@ -86,15 +87,15 @@ public class JDBCEspecieDAO implements EspecieDAO {
 
     @Override
     public List<Especie> recuperarTodos() {
-        List<Especie> res = new ArrayList<Especie>();
+        List<Especie> res = new ArrayList<>();
 
         return this.executeWithConnection(conn -> {
-            PreparedStatement sp = conn.prepareStatement("SELECT nombre FROM specie ORDER BY nombre ASC");
+            PreparedStatement sp = conn.prepareStatement("SELECT * FROM specie ORDER BY nombre ASC");
             ResultSet resultSet = sp.executeQuery();
 
             while(resultSet.next()){
-
-                res.add(recuperar(resultSet.getString("nombre")));
+                TipoBicho tp = TipoBicho.valueOf(resultSet.getString("tipo_Bicho"));
+                res.add(new Especie(resultSet.getInt("id"),resultSet.getString("nombre"),resultSet.getInt("peso"),resultSet.getInt("altura"),tp,resultSet.getInt("cant_Bichos")));
             }
         sp.close();
         return res;
@@ -103,8 +104,7 @@ public class JDBCEspecieDAO implements EspecieDAO {
 
     public void restart(){
         this.executeWithConnection(conn ->{
-            PreparedStatement sp = conn.prepareStatement("DELETE FROM specie WHERE id>=?");
-            sp.setInt(1,0);
+            PreparedStatement sp = conn.prepareStatement("TRUNCATE TABLE bichomon_go_jdbc.specie");
             sp.execute();
             sp.close();
             return null;

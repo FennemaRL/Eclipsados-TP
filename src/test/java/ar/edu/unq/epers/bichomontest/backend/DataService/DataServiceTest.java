@@ -6,6 +6,7 @@ import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho;
 import ar.edu.unq.epers.bichomon.backend.service.data.DataService;
 import ar.edu.unq.epers.bichomon.backend.service.data.DataServiceImp;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,6 +23,10 @@ public class DataServiceTest {
     public void reset(){
         ds.eliminarDatos();
     }
+    @After
+    public void reset1(){
+        ds.eliminarDatos();
+    }
     @Test
     public void al_cargar_datos_por_el_Data_Service(){ // test favorable cargar datos/ borrar datos
         this.ds.crearSetDatosIniciales();
@@ -33,8 +38,8 @@ public class DataServiceTest {
         assertEquals(eList,dao.recuperarTodos());
     }
     @Test (expected = JDBCEspecieDAOError.class) //test desfavorable
-    public void levanta_excepcion_al_tratar_de_cargar_datos_Con_el_Data_service_al_haber_una_especie_con_el_mismo_Id(){
-        this.dao.guardar(new Especie(1,"toco", TipoBicho.ELECTRICIDAD));
+    public void levanta_excepcion_al_tratar_de_cargar_datos_Con_el_Data_service_al_haber_una_especie_con_el_mismo_Nombre(){
+        this.dao.guardar(new Especie("Fortmon", TipoBicho.ELECTRICIDAD));
         this.ds.crearSetDatosIniciales();
     }
     @Test

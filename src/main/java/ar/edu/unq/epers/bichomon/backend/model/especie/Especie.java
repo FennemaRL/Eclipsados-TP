@@ -10,10 +10,9 @@ import javax.persistence.*;
  * 
  * @author Charly Backend
  */
-@Entity
+
 public class Especie {
-	@Id
-	@GeneratedValue
+
 	private Integer id;
 	private String nombre;
 	private int altura;
@@ -28,35 +27,39 @@ public class Especie {
 
 
 	//variables temporales a resolver posteriormente para determinar si puede evolucionar
-	private int nivelEvolucionActual;
 	private Integer nivelDeEnergiaNecesario;
 	private Integer cantidadDeVictoriasNecesarias;
 	private Integer nivelDelEntrenadorNecesario;
 	private DateTime fechaDeCaptura ;
 
 	//especie raiz
-	@OneToOne
+
 	private Especie especieRaiz;
-	@OneToOne
+
 	private Especie evo = null;
 
-	public Especie(){
-	}
-	
-	public Especie(int id, String nombre, TipoBicho tipo) {
-	    this.id = id;
+	public Especie(int id, String nombre, int peso, int altura, TipoBicho tp, int cant_bichos){
+		this.id = id;
 		this.nombre = nombre;
-		this.tipo = tipo;
-		this.nivelEvolucionActual = 1;
-		especieRaiz = this;
+		this.peso =peso;
+		this.altura =altura;
+		this.tipo =tp;
+		this.cantidadBichos=cant_bichos;
 	}
+
 	public Especie( String nombre, TipoBicho tipo) {
 		this.nombre = nombre;
 		this.tipo = tipo;
 		especieRaiz = this;
 		this.evo = null;
 	}
-	
+
+	public Especie(int i, String nombre, TipoBicho tipo) {
+		this.id= i;
+		this.nombre = nombre;
+		this.tipo =tipo;
+	}
+
 	/**
 	 * @return el nombre de la especie (por ejemplo: Perromon)
 	 */
@@ -149,9 +152,6 @@ public class Especie {
 		this.fechaDeCaptura = fechaCaptura;
 	}
 
-	public Boolean tieneSiguienteEvolucion() {
-	 return	this.nivelEvolucionActual < 3 ;
-	}
 
 	public boolean cumpleCondicion(Bicho bicho) {
 
@@ -172,4 +172,8 @@ public class Especie {
 		cantidadBichos = cantidadBichos +1;
     }
 	public void setEspecieEvo(Especie evo){this.evo = evo;}
+
+	public boolean puedeEvolucionar(Bicho bicho) {
+		return evo != null && this.cumpleCondicion(bicho);
+	}
 }

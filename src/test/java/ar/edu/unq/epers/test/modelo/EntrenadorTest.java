@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.CHOCOLATE;
 import static org.junit.Assert.*;
-
+/*
 public class  EntrenadorTest {
 
         private Entrenador lukas;
@@ -52,3 +52,4 @@ public class  EntrenadorTest {
 
 
 
+*/

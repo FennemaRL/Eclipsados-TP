@@ -7,16 +7,14 @@ import ar.edu.unq.epers.bichomon.backend.model.random.RandomBusqueda;
 
 import javax.persistence.*;
 import java.util.List;
-@Entity
+
 public class Pueblo extends Ubicacion{
 
-    @Transient
+
     private RandomBusqueda random;
-    @ManyToMany(cascade =  CascadeType.ALL)
+
     private List<Especie>  especies;
-    @ElementCollection
-    @CollectionTable(name="especiesProbabilidad", joinColumns=@JoinColumn(name="nombreUbicacion"))
-    @Column(name="probabilidad")
+
     private List<Integer> especiesProbabilidad;
     private int cantEntrenadores;
 

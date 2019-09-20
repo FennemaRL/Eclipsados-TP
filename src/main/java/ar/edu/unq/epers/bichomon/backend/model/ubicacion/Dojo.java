@@ -7,13 +7,13 @@ import ar.edu.unq.epers.bichomon.backend.model.random.RandomBusqueda;
 
 import javax.persistence.*;
 
-@Entity
+
 public class Dojo extends Ubicacion{
-    @ManyToOne
+
     private Entrenador entrenadorC;
-    @ManyToOne
+
     private Bicho bichoC;
-    @Transient
+
     private RandomBusqueda random ;
 
     public Dojo(String name, RandomBusqueda r) {

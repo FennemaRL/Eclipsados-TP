@@ -4,7 +4,7 @@ CREATE SCHEMA bichomon_go_jdbc;
 USE bichomon_go_jdbc;
 
 CREATE TABLE specie(
-    id int NOT NULL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL UNIQUE,
     peso int NOT NULL,
     altura int NOT NULL,

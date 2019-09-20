@@ -3,6 +3,7 @@ package ar.edu.unq.epers.bichomonTest.backend.dao;
 import ar.edu.unq.epers.bichomon.backend.dao.impl.jdbc.JDBCEspecieDAO;
 import ar.edu.unq.epers.bichomon.backend.dao.impl.jdbc.JDBCEspecieDAOError;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
+import ar.edu.unq.epers.bichomon.backend.service.data.DataServiceImp;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,17 +19,19 @@ public class JDBCEspecieDAOTest {
 
     private JDBCEspecieDAO dao = new JDBCEspecieDAO();
     private Especie pejelagarto;
+    private DataServiceImp data=new DataServiceImp(dao);
 
     @Before
     public void crearModelo() {
-        this.pejelagarto = new Especie(0,"pejelagarto",CHOCOLATE);
+        this.pejelagarto = new Especie("pejelagarto",CHOCOLATE);
         this.pejelagarto.setPeso(15);
         this.pejelagarto.setAltura(198);
         this.pejelagarto.setCantidadBichos(0);
+        this.dao.restart();
+
     }
     @After
     public void restarModelo(){
-        this.dao.guardar(new Especie(99999999,"papa",CHOCOLATE));
         this.dao.restart();
     }
 
@@ -48,27 +51,20 @@ public class JDBCEspecieDAOTest {
 
     @Test
     public void al_actualizar_los_objetos_son_similares() { // test favorable actualizar
-        this.dao.guardar(this.pejelagarto);
-        this.pejelagarto.setPeso(20);
-        this.pejelagarto.setAltura(400);
+        data.crearSetDatosIniciales();
 
-        //Los personajes son iguales
+        Especie otraMismaEspecie= this.dao.recuperar("Rojomon");
 
-        Especie otraMismaEspecie= this.dao.recuperar("pejelagarto");
-        assertEquals(this.pejelagarto.getNombre(), otraMismaEspecie.getNombre());
-        assertFalse(this.pejelagarto.getPeso() == otraMismaEspecie.getPeso());
-        assertFalse(this.pejelagarto.getAltura() == otraMismaEspecie.getAltura());
-        assertEquals(this.pejelagarto.getCantidadBichos(), otraMismaEspecie.getCantidadBichos());
-        assertTrue(this.pejelagarto != otraMismaEspecie);
+        otraMismaEspecie.setPeso(20);
+        otraMismaEspecie.setAltura(400);
 
+        this.dao.actualizar(otraMismaEspecie);
+        Especie otraMismaEspecie1= this.dao.recuperar("Rojomon");
 
-        this.dao.actualizar(this.pejelagarto);
-        Especie otraMismaEspecie1= this.dao.recuperar("pejelagarto");
-
-        assertEquals(this.pejelagarto.getNombre(), otraMismaEspecie1.getNombre());
-        assertEquals(this.pejelagarto.getPeso(), otraMismaEspecie1.getPeso());
-        assertEquals(this.pejelagarto.getAltura(), otraMismaEspecie1.getAltura());
-        assertEquals(this.pejelagarto.getCantidadBichos(), otraMismaEspecie1.getCantidadBichos());
+        assertEquals(otraMismaEspecie.getNombre(), otraMismaEspecie1.getNombre());
+        assertEquals(otraMismaEspecie.getPeso(), otraMismaEspecie1.getPeso());
+        assertEquals(otraMismaEspecie.getAltura(), otraMismaEspecie1.getAltura());
+        assertEquals(otraMismaEspecie.getCantidadBichos(), otraMismaEspecie1.getCantidadBichos());
     }
     @Test(expected= JDBCEspecieDAOError.class)
     public void al_actualizar_id_inexistente_no_actualiza_y_levanta_excepcion() { // test desfavorable actualizar
@@ -79,23 +75,16 @@ public class JDBCEspecieDAOTest {
 
     @Test(expected = JDBCEspecieDAOError.class)
     public void al_recuperar_un_nombre_inexistente_no_recupera_y_levanta_excepcion(){ // test desfavorable recuperar
-
+        data.crearSetDatosIniciales();
         this.dao.recuperar("pejelagarto3");
 
     }
-    @Test(expected= JDBCEspecieDAOError.class)
-    public void al_guardar_dos_veces_el_mismo_objeto_levanta_excepcion_por_constraint_Id() { // test constraint id
 
-        this.dao.guardar(this.pejelagarto);
-        this.pejelagarto.setNombre("papa");
-        this.dao.guardar(this.pejelagarto);
-    }
     @Test (expected=JDBCEspecieDAOError.class)
     public void al_guardar_dos_objetos_con_el_mismo_nombre_levanta_excepcion_por_constraint_Nombre() { // test contraint nombre
+        data.crearSetDatosIniciales();
 
-        this.dao.guardar(this.pejelagarto);
-
-        Especie pejelagarto2 = new Especie(1,"pejelagarto",CHOCOLATE);
+        Especie pejelagarto2 = new Especie("Rojomon",CHOCOLATE);
         pejelagarto2.setPeso(151);
         pejelagarto2.setAltura(1980);
         pejelagarto2.setCantidadBichos(1);
@@ -103,7 +92,7 @@ public class JDBCEspecieDAOTest {
     }
     @Test
     public void al_recuperarTodo_recupero_las_especies_guardadas_en_orden_alfabetico(){ // test recuperartodo favorable
-        Especie rFort = new Especie(1,"fortmon",CHOCOLATE);
+        Especie rFort = new Especie("fortmon",CHOCOLATE);
         rFort.setPeso(110);
         rFort.setAltura(100);
         rFort.setCantidadBichos(1);
