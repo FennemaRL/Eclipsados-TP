@@ -10,9 +10,10 @@ import javax.persistence.*;
  * 
  * @author Charly Backend
  */
-
+@Entity
 public class Especie {
-
+	@Id
+	@GeneratedValue
 	private Integer id;
 	private String nombre;
 	private int altura;
@@ -33,11 +34,12 @@ public class Especie {
 	private DateTime fechaDeCaptura ;
 
 	//especie raiz
-
+	@ManyToOne
 	private Especie especieRaiz;
-
+	@OneToOne
 	private Especie evo = null;
 
+	public Especie(){}
 	public Especie(int id, String nombre, int peso, int altura, TipoBicho tp, int cant_bichos){
 		this.id = id;
 		this.nombre = nombre;

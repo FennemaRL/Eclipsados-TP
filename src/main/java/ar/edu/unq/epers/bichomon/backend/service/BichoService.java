@@ -1,9 +1,6 @@
 package ar.edu.unq.epers.bichomon.backend.service;
 
-import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateBichoDao;
-import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateDAO;
-import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateEntrenadorDao;
-import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateEspecieDao;
+import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.*;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.BichomonError;
@@ -25,14 +22,19 @@ public class BichoService {
     }
 
     public Bicho buscar(String entrenador){
-       Entrenador e = (Entrenador) entrenadorDAO.recuperar(entrenador);
-        Bicho bicho = null;
-        try{
-           bicho = e.getUbicacion().capturar(e);
-           e.agregarBichomon(bicho);
-       }
-       catch (BichomonError error){
 
+        Bicho bicho = null;
+        Object e = entrenadorDAO.recuperar(entrenador);
+        System.out.print(e);
+        if(e == null)
+            throw new NoHayEntrenadorConEseNombre("no hay entrenador con ese nombre");
+        Entrenador entre = (Entrenador) e;
+        if(entre.puedeCapturar()){
+            try{
+            bicho = entre.getUbicacion().capturar(entre);
+            entre.agregarBichomon(bicho); //romper si tengo mas de los que puedo
+            }
+            catch (BichomonError error) {}
        }
        return bicho;
     }

@@ -7,24 +7,24 @@ import ar.edu.unq.epers.bichomon.backend.model.random.RandomBusqueda;
 
 import javax.persistence.*;
 
-
+@Entity
 public class Dojo extends Ubicacion{
-
+    @ManyToOne
     private Entrenador entrenadorC;
-
+    @ManyToOne
     private Bicho bichoC;
 
-    private RandomBusqueda random ;
-
-    public Dojo(String name, RandomBusqueda r) {
+    public Dojo(){
+        super();
+    }
+    public Dojo(String name) {
         super(name);
-        random = r;
     }
 
     @Override
     public Bicho capturar(Entrenador e) {
         Bicho br = null;
-        if(entrenadorC != null && entrenadorC.tieneBichoConId(bichoC.getId()) && random.busquedaExitosa(e,this)){
+        if(entrenadorC != null && entrenadorC.tieneBichoConId(bichoC.getId()) && RandomBusqueda.busquedaExitosa(e,this)){
             Especie esp = bichoC.getEspecie().getEspecieRaiz();
             br = new Bicho(esp);
             esp.incrementarEnUnBicho();

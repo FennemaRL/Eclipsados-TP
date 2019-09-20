@@ -14,14 +14,18 @@ import javax.validation.constraints.Null;
  * 
  * @author Charly Backend
  */
-
+@Entity
 public class Bicho {
+	@Id
+	@GeneratedValue
 	private Integer id;
 	private String nombre;
+	@ManyToOne
 	private Especie especie;
 	private int energiaDeCombate;
 	private DateTime fechaCaptura;
 	private Integer victorias;
+	@ManyToOne
 	private Entrenador owner;
 
 	public Bicho(){}

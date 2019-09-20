@@ -9,16 +9,18 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Entity
 public class Entrenador {
-
+    @Id
+    @GeneratedValue
     private int id;
     private String name;
     private Integer experiencia;
     private Integer nivel;
+    @OneToMany
     private List<Bicho> bichos;
 
-
+    @ManyToOne
     private Ubicacion ubicacion;
 
     public Entrenador(){}
@@ -64,5 +66,10 @@ public class Entrenador {
 
     public Ubicacion getUbicacion() {
         return ubicacion;
+    }
+
+    public boolean puedeCapturar() {
+        //calculo de bichomon mas 1
+        return false;
     }
 }

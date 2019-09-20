@@ -8,11 +8,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
 public class Guarderia extends Ubicacion{
-
+    @ManyToMany
     private List<Bicho> bichos ;
-
+    public Guarderia (){}
     public Guarderia(String name) {
         super(name);
         bichos = new ArrayList<>();
