@@ -5,12 +5,15 @@ import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.random.RandomBusqueda;
 
-import java.util.Random;
+import javax.persistence.*;
 
+@Entity
 public class Dojo extends Ubicacion{
-
+    @ManyToOne
     private Entrenador entrenadorC;
+    @ManyToOne
     private Bicho bichoC;
+    @Transient
     private RandomBusqueda random ;
 
     public Dojo(String name, RandomBusqueda r) {
@@ -21,7 +24,7 @@ public class Dojo extends Ubicacion{
     @Override
     public Bicho capturar(Entrenador e) {
         Bicho br = null;
-        if(entrenadorC != null && entrenadorC.tieneBichoConId(bichoC.getId()) && random.busquedaExitosa(e)){
+        if(entrenadorC != null && entrenadorC.tieneBichoConId(bichoC.getId()) && random.busquedaExitosa(e,this)){
             Especie esp = bichoC.getEspecie().getEspecieRaiz();
             br = new Bicho(esp);
             esp.incrementarEnUnBicho();

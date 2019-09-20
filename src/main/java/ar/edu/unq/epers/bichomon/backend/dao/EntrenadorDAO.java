@@ -1,4 +1,4 @@
-package ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate;
+package ar.edu.unq.epers.bichomon.backend.dao;
 
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 

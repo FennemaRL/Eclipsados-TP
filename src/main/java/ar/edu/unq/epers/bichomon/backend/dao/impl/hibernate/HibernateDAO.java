@@ -21,4 +21,8 @@ public class HibernateDAO<T> {
         Session session = TransactionRunner.getCurrentSession();
         return session.get(entityType, id);
     }
+    public T recuperar(Integer id){
+        Session session = TransactionRunner.getCurrentSession();
+        return session.get(entityType, id);
+    }
 }

@@ -6,6 +6,7 @@ import org.joda.time.DateTime;
 import org.joda.time.JodaTimePermission;
 
 import javax.persistence.*;
+import javax.validation.constraints.Null;
 
 /**
  * Un {@link Bicho} existente en el sistema, el mismo tiene un nombre
@@ -18,8 +19,8 @@ public class Bicho {
 	@Id
 	@GeneratedValue
 	private Integer id;
-
 	private String nombre;
+	@ManyToOne
 	private Especie especie;
 	private int energiaDeCombate;
 	private DateTime fechaCaptura;
@@ -27,23 +28,11 @@ public class Bicho {
 	@ManyToOne
 	private Entrenador owner;
 
+	public Bicho(){}
 
-	public Bicho(Especie especie, String nombre) {
-		this.especie = especie;
-		this.nombre = nombre;
-		id = 1;
-		victorias = 0;
-	}
 	//constructor creado para testear la busqueda por id
-	public Bicho(Especie especie, String nombre, Integer id){
-		this.especie = especie;
-		this.nombre = nombre;
-		this.id = id;
-		victorias = 0;
-	}
 	public Bicho(Especie especie){
 		this.especie = especie;
-		this.nombre = nombre;
 		this.id = id;
 		victorias = 0;
 	}

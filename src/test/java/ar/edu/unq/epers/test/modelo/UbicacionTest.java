@@ -1,7 +1,7 @@
 package ar.edu.unq.epers.test.modelo;
 
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
-import ar.edu.unq.epers.bichomon.backend.model.bicho.GuarderiaErrorNoBichomon;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.GuarderiaErrorNoBichomon;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.random.RandomBusqueda;
@@ -85,12 +85,12 @@ public class UbicacionTest {
         when(b.getEspecie()).thenReturn(esp);
         when(e.tieneBichoConId(1)).thenReturn(true);
         when(e.getBichoConID(1)).thenReturn(b);
-        when(r.busquedaExitosa(e)).thenReturn(true);
+        when(r.busquedaExitosa(e,dojo)).thenReturn(true);
         when(esp.getEspecieRaiz()).thenReturn(esp);
 
         dojo.retar(e,b);
-        Bicho b2 = dojo.capturar(e); // esto no funca mañana verlo
-        verify(r,times (1)).busquedaExitosa(e);
+        Bicho b2 = dojo.capturar(e);
+        verify(r,times (1)).busquedaExitosa(e,dojo);
         verify(esp,times(1)).getEspecieRaiz();
         verify(esp,times(1)).incrementarEnUnBicho();
         assertEquals(esp, b2.getEspecie());
@@ -106,34 +106,35 @@ public class UbicacionTest {
         List ep = new ArrayList<Integer>();
         ep.add(14);ep.add(86);
         Ubicacion pueblo = new Pueblo("1114",r,le,ep);
-        when(r.busquedaExitosa(e)).thenReturn(true);
+        when(r.busquedaExitosa(e,pueblo)).thenReturn(true);
         when(r.especiePorProbabilidad(le,ep)).thenReturn(le.get(0));
 
         Bicho bicho =pueblo.capturar(e);
-        verify(r,times(1)).busquedaExitosa(e);
+        verify(r,times(1)).busquedaExitosa(e,pueblo);
         verify(r,times(1)).especiePorProbabilidad(le,ep);
         verify(a,times(1)).incrementarEnUnBicho();
         assertEquals(bicho.getEspecie(),a);
     }
-    @Test
+    @Test (expected = CapturaFallida.class)
     public void al_intentar_capturar_en_un_pueblo_no_se_captura_(){ // caso malo
         Entrenador e = mock(Entrenador.class);
         RandomBusqueda r = mock(RandomBusqueda.class);
         Especie a = mock(Especie.class);
         Especie b = mock(Especie.class);
+        Ubicacion u= mock(Ubicacion.class);
         List<Especie> le = new ArrayList<>();
         le.add(a);le.add(b);
         List ep = new ArrayList<Integer>();
         ep.add(14);ep.add(86);
         Ubicacion pueblo = new Pueblo("1114",r,le,ep);
-        when(r.busquedaExitosa(e)).thenReturn(false);
+        when(r.busquedaExitosa(e,u)).thenReturn(false);
         when(r.especiePorProbabilidad(le,ep)).thenReturn(le.get(0));
 
         Bicho bicho =pueblo.capturar(e);
-        verify(r,times(1)).busquedaExitosa(e);
+      /*  verify(r,times(1)).busquedaExitosa(e,u);      //preguntar si usar excepcion o null
         verify(r,times(0)).especiePorProbabilidad(le,ep);
         verify(a,times(0)).incrementarEnUnBicho();
         assertTrue(bicho == null);
-    }
+    */}
 
 }

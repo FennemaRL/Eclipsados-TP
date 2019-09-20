@@ -12,3 +12,6 @@ CREATE TABLE specie(
     cantidad_Bichos int NOT NULL
 )
 ENGINE = InnoDB;
+
+Drop SCHEMA IF EXISTS epers_bichomon_hibernate;
+CREATE SCHEMA epers_bichomon_hibernate;

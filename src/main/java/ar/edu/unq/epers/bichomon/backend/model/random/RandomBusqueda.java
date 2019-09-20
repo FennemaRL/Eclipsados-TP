@@ -2,11 +2,13 @@ package ar.edu.unq.epers.bichomon.backend.model.random;
 
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 
+import javax.persistence.Entity;
 import java.util.List;
-
+@Entity
 public interface RandomBusqueda  {
-    boolean busquedaExitosa(Entrenador e);
+    boolean busquedaExitosa(Entrenador e, Ubicacion u);
 
     Especie especiePorProbabilidad(List<Especie> especiesUbicacion,List<Integer> probabilidad);
             //prec : la lista lb y la pb estan relacionadas donde cada posicion de una Especie tiene la misma posicion para su probabilidad de aparicion

@@ -1,18 +1,21 @@
 package ar.edu.unq.epers.bichomon.backend.model.ubicacion;
 
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
-import ar.edu.unq.epers.bichomon.backend.model.bicho.GuarderiaErrorNoBichomon;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
 public class Guarderia extends Ubicacion{
-
-    private List<Bicho> bichos = new ArrayList<Bicho>();
+    @ManyToMany
+    private List<Bicho> bichos ;
 
     public Guarderia(String name) {
         super(name);
+        bichos = new ArrayList<>();
     }
 
     @Override
@@ -22,7 +25,7 @@ public class Guarderia extends Ubicacion{
             e = bichos.get(0);
             bichos.remove(0);}
         else
-            throw new GuarderiaErrorNoBichomon("la guarderia "+this.nombreUbicacion+" no posee bichomones");
+            throw new GuarderiaErrorNoBichomon("la guarderia "+this.getNombreUbicacion()+" no posee bichomones");
         return e;
     }
     @Override

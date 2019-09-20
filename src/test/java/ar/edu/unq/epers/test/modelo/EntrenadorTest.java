@@ -20,7 +20,7 @@ public class  EntrenadorTest {
         public void prepare() {
                 lukas = new Entrenador( 1, "Lukas", 1, 1);
                 chocoMon = new Especie(1,"chocoMon",CHOCOLATE);
-                leo = new Bicho(chocoMon,"leo",1);
+                leo = new Bicho(chocoMon);
                 leo.setEnergia(20);
                 lukas.agregarBichomon(leo);
                 chocoMon.setCondicionesEvolucion(10,0,1, DateTime.parse("2020-11-10"));

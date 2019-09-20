@@ -3,8 +3,7 @@ package ar.edu.unq.epers.bichomon.backend.model.especie;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import org.joda.time.DateTime;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Representa una {@link Especie} de bicho.
@@ -14,6 +13,7 @@ import javax.persistence.Id;
 @Entity
 public class Especie {
 	@Id
+	@GeneratedValue
 	private Integer id;
 	private String nombre;
 	private int altura;
@@ -35,7 +35,10 @@ public class Especie {
 	private DateTime fechaDeCaptura ;
 
 	//especie raiz
+	@OneToOne
 	private Especie especieRaiz;
+	@OneToOne
+	private Especie evo = null;
 
 	public Especie(){
 	}
@@ -46,6 +49,12 @@ public class Especie {
 		this.tipo = tipo;
 		this.nivelEvolucionActual = 1;
 		especieRaiz = this;
+	}
+	public Especie( String nombre, TipoBicho tipo) {
+		this.nombre = nombre;
+		this.tipo = tipo;
+		especieRaiz = this;
+		this.evo = null;
 	}
 	
 	/**
@@ -130,7 +139,7 @@ public class Especie {
 
 	public Bicho crearBicho(String nombreBicho){
 		this.cantidadBichos++;
-		return new Bicho(this, nombreBicho);
+		return new Bicho(this);
 	}
 
 	public void setCondicionesEvolucion(Integer energia, Integer victorias, Integer lvlEntrenador, DateTime fechaCaptura){
@@ -162,4 +171,5 @@ public class Especie {
     public void incrementarEnUnBicho() {
 		cantidadBichos = cantidadBichos +1;
     }
+	public void setEspecieEvo(Especie evo){this.evo = evo;}
 }

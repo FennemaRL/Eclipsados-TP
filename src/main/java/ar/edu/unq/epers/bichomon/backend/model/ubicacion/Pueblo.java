@@ -5,13 +5,20 @@ import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.random.RandomBusqueda;
 
+import javax.persistence.*;
 import java.util.List;
-
+@Entity
 public class Pueblo extends Ubicacion{
 
+    @Transient
     private RandomBusqueda random;
+    @ManyToMany(cascade =  CascadeType.ALL)
     private List<Especie>  especies;
+    @ElementCollection
+    @CollectionTable(name="especiesProbabilidad", joinColumns=@JoinColumn(name="nombreUbicacion"))
+    @Column(name="probabilidad")
     private List<Integer> especiesProbabilidad;
+    private int cantEntrenadores;
 
     public Pueblo(String name) {
         super(name);
@@ -24,17 +31,24 @@ public class Pueblo extends Ubicacion{
         random = r;
         especies= le;
         especiesProbabilidad = ep;
+        cantEntrenadores=0;
     }
 
     @Override
     public Bicho capturar(Entrenador e) {
         Bicho br =null;
-        if(random.busquedaExitosa(e)){
+        Boolean resultadoCaptura=random.busquedaExitosa(e, this);
+        if(resultadoCaptura){
             Especie esp = random.especiePorProbabilidad(especies, especiesProbabilidad);
             br = new Bicho(esp);
             esp.incrementarEnUnBicho();
         }
+        if (!resultadoCaptura){
+            throw new CapturaFallida("no se capturo nada");
+        }
         return br;
-
+    }
+    public Integer getCantEntrenadores(){
+        return cantEntrenadores;
     }
 }

@@ -18,7 +18,13 @@ public class Entrenador {
     private String name;
     private Integer experiencia;
     private Integer nivel;
+    @OneToMany(mappedBy ="owner", cascade =  CascadeType.ALL)
+    private List<Bicho> bichos;
 
+    @ManyToOne
+    private Ubicacion ubicacion;
+
+    public Entrenador(){}
     public Entrenador(int id, String nombre, Integer exp, Integer lvl){
         this.id= id;
         this.name = nombre;
@@ -26,12 +32,13 @@ public class Entrenador {
         this.nivel= lvl;
         bichos = new ArrayList<Bicho>();
     }
-
-    @OneToMany(mappedBy="owner", cascade= CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Bicho> bichos;
-
-    private Ubicacion ubicacion;
-
+    public Entrenador( String nombre, Ubicacion u){
+        this.name = nombre;
+        this.experiencia= 0;
+        this.nivel= 0;
+        bichos = new ArrayList<Bicho>();
+        ubicacion = u;
+    }
 
     public Bicho getBichoConID(Integer bichoId) {
         //Bicho bichoEncontrar = bichos.stream().findAny(b-> b.getId() == bicho) ;
@@ -58,5 +65,7 @@ public class Entrenador {
     }
 
 
-
+    public Ubicacion getUbicacion() {
+        return ubicacion;
+    }
 }
