@@ -3,6 +3,7 @@ package ar.edu.unq.epers.bichomon.backend.service;
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.*;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
+import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.BichomonError;
 
 import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
@@ -47,5 +48,9 @@ public class BichoService {
 
     public void guardarEntrenador(Entrenador entre) {
         run(() -> this.entrenadorDAO.guardar(entre));
+    }
+
+    public void guardarEspecie(Especie esp) {
+        run(() -> this.especieDao.guardar(esp));
     }
 }

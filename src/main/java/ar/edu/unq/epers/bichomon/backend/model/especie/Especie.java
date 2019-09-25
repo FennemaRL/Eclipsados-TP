@@ -15,6 +15,7 @@ public class Especie {
 	@Id
 	@GeneratedValue
 	private Integer id;
+	@Column(unique = true)
 	private String nombre;
 	private int altura;
 	private int peso;
