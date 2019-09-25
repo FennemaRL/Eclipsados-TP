@@ -2,11 +2,9 @@ package ar.edu.unq.epers.bichomon.backend.model.bicho;
 
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
-import org.joda.time.DateTime;
-import org.joda.time.JodaTimePermission;
 
 import javax.persistence.*;
-import javax.validation.constraints.Null;
+import java.util.Date;
 
 /**
  * Un {@link Bicho} existente en el sistema, el mismo tiene un nombre
@@ -20,12 +18,12 @@ public class Bicho {
 	@GeneratedValue
 	private Integer id;
 	private String nombre;
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.ALL)
 	private Especie especie;
 	private int energiaDeCombate;
-	private DateTime fechaCaptura;
+	private Date fechaCaptura;
 	private Integer victorias;
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.ALL)
 	private Entrenador owner;
 
 	public Bicho(){}
@@ -72,18 +70,21 @@ public class Bicho {
 
 	public Integer getVictorias() { return this.victorias;}
 
-	public DateTime getFechaCaptura() { return this.fechaCaptura; }
+	public Date getFechaCaptura() {  return this.fechaCaptura; }
 
 
 	public Integer getNivelEntrenador() {
 		return owner.getNivel();
 	}
 
-	public void setFechaCaptura(DateTime unaFecha) {
+	public void setFechaCaptura(Date unaFecha) {
 		this.fechaCaptura = unaFecha;
 	}
 
 	public void setOwner(Entrenador entrenador) {
 		this.owner = entrenador;
+	}
+	public String toString(){
+		return id +" Especie: "+ especie.toString();
 	}
 }

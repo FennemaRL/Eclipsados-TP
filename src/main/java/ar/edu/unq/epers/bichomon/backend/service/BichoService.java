@@ -10,11 +10,11 @@ import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner
 
 public class BichoService {
 
-    private HibernateDAO entrenadorDAO;
+    private HibernateEntrenadorDao entrenadorDAO;
 
-    private HibernateDAO especieDao;
+    private HibernateEspecieDao especieDao;
 
-    private HibernateDAO bichoDao;
+    private HibernateBichoDao bichoDao;
 
     public BichoService(HibernateEntrenadorDao entrenadorDAO, HibernateEspecieDao especieDao, HibernateBichoDao bichoDao) {
         this.entrenadorDAO = entrenadorDAO;
@@ -25,19 +25,20 @@ public class BichoService {
     public Bicho buscar(String entrenador){
 
         Bicho bicho = null;
-        Object e = entrenadorDAO.recuperar(entrenador);
-        System.out.print(e);
-        if(e == null)
+        Entrenador e;
+        try{
+            e = recuperarEntrenador(entrenador);}
+        catch (ErrorRecuperar error) {
             throw new NoHayEntrenadorConEseNombre("no hay entrenador con ese nombre");
-        Entrenador entre = (Entrenador) e;
-        if(entre.puedeCapturar()){
-            try{
-            bicho = entre.getUbicacion().capturar(entre);
-            entre.agregarBichomon(bicho); //romper si tengo mas de los que puedo
             }
-            catch (BichomonError error) {}
-       }
+        Entrenador entre =  e;
+        bicho = entre.capturar();//romper si tengo mas de los que puedo
+
        return bicho;
+    }
+
+    private Entrenador recuperarEntrenador(String entrenador) {
+        return run(() -> this.entrenadorDAO.recuperar(entrenador));
     }
 
     public boolean puedeEvolucionar(String entrenador, Integer bicho){

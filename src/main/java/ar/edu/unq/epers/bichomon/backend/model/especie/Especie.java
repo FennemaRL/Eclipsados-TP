@@ -1,9 +1,9 @@
 package ar.edu.unq.epers.bichomon.backend.model.especie;
 
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
-import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Representa una {@link Especie} de bicho.
@@ -32,12 +32,12 @@ public class Especie {
 	private Integer nivelDeEnergiaNecesario;
 	private Integer cantidadDeVictoriasNecesarias;
 	private Integer nivelDelEntrenadorNecesario;
-	private DateTime fechaDeCaptura ;
+	private Integer tiempoAtranscurrir;
 
 	//especie raiz
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.ALL)
 	private Especie especieRaiz;
-	@OneToOne
+	@OneToOne (cascade = CascadeType.ALL)
 	private Especie evo = null;
 
 	public Especie(){}
@@ -148,19 +148,20 @@ public class Especie {
 		return new Bicho(this);
 	}
 
-	public void setCondicionesEvolucion(Integer energia, Integer victorias, Integer lvlEntrenador, DateTime fechaCaptura){
+	public void setCondicionesEvolucion(Integer energia, Integer victorias, Integer lvlEntrenador, Integer tiempotranscurrido){
 		this.nivelDeEnergiaNecesario = energia;
 		this.cantidadDeVictoriasNecesarias = victorias;
 		this.nivelDelEntrenadorNecesario = lvlEntrenador;
-		this.fechaDeCaptura = fechaCaptura;
+		this.tiempoAtranscurrir = tiempotranscurrido;
 	}
 
 
 	public boolean cumpleCondicion(Bicho bicho) {
+		int diffDais = (int) (new Date().getTime() - bicho.getFechaCaptura().getTime());
 
 		return (bicho.getEnergia()>nivelDeEnergiaNecesario ||
 				bicho.getVictorias()> cantidadDeVictoriasNecesarias ||
-				bicho.getFechaCaptura().isBefore(fechaDeCaptura) ||
+				diffDais >= tiempoAtranscurrir ||
 				bicho.getNivelEntrenador()> nivelDelEntrenadorNecesario);
 	}
 	public void setEspecieRaiz(Especie e){

@@ -30,7 +30,7 @@ public abstract class Ubicacion {
         throw new ZonaErronea("No puedes combatir aqui en "+this.nombreUbicacion);
     }
 
-    protected String getNombreUbicacion(){
+    public String getNombreUbicacion(){
         return nombreUbicacion;
     }
 }
