@@ -17,7 +17,7 @@ public class Entrenador {
     private String nombre;
     private Integer experiencia;
     private Integer nivel;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Bicho> bichos;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -52,9 +52,7 @@ public class Entrenador {
         bichos.add(unBicho);
     }
 
-    public boolean puedeEvolucionarBichoConID(Integer id) {
-        return getBichoConID(id).puedeEvolucionar();
-    }
+
 
     public Integer getNivel() { return this.nivel; }
 
@@ -70,10 +68,6 @@ public class Entrenador {
 
     public String getNombre(){return nombre;}
 
-    public boolean puedeCapturar() {
-        //calculo de bichomon mas 1
-        return false;
-    }
     public String toString(){
         final String[] b = {" "};
         bichos.forEach(bicho -> b[0] = b[0] + bicho.toString()+ " ");

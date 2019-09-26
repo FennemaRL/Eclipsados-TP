@@ -50,11 +50,14 @@ public class Especie {
 		this.cantidadBichos=cant_bichos;
 	}
 
-	public Especie( String nombre, TipoBicho tipo) {
+	public Especie( String nombre, TipoBicho tipo,  int peso, int altura, int cant_bichos) {
 		this.nombre = nombre;
 		this.tipo = tipo;
 		especieRaiz = this;
 		this.evo = null;
+		this.peso = peso;
+		this.altura = altura;
+		this.cantidadBichos=cant_bichos;
 	}
 
 	public Especie(int i, String nombre, TipoBicho tipo) {

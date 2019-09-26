@@ -28,7 +28,7 @@ public class hibernateEntrenadorDaoTest { //falta testear cosas y agregar constr
     public void crearModelo() {
         ubi = new Guarderia("1114");
         pepe = new Entrenador("pepe", ubi);
-        Bicho b = new Bicho(new Especie("arnaldo", TipoBicho.AGUA));
+        Bicho b = new Bicho(new Especie("arnaldo", TipoBicho.AGUA,1,1,0));
         b.setFechaCaptura(new Date());
         pepe.agregarBichomon(b);
     }

@@ -33,7 +33,6 @@ public class BichoService {
             }
         Entrenador entre =  e;
         bicho = entre.capturar();//romper si tengo mas de los que puedo
-
        return bicho;
     }
 

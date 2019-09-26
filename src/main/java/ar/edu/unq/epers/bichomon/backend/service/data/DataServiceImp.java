@@ -19,49 +19,49 @@ public class DataServiceImp implements DataService {
 
     @Override
     public void crearSetDatosIniciales() {
-        Especie red = new Especie( "Rojomon", TipoBicho.FUEGO);
+        Especie red = new Especie( "Rojomon", TipoBicho.FUEGO,1,1,0);
         red.setAltura(180);
         red.setPeso(75);
         red.setEnergiaIncial(100);
         red.setUrlFoto("/image/rojomon.jpg");
 
-        Especie amarillo = new Especie( "Amarillomon", TipoBicho.ELECTRICIDAD);
+        Especie amarillo = new Especie( "Amarillomon", TipoBicho.ELECTRICIDAD,1,1,0);
         amarillo.setAltura(170);
         amarillo.setPeso(69);
         amarillo.setEnergiaIncial(300);
         amarillo.setUrlFoto("/image/amarillomon.png");
 
-        Especie green = new Especie( "Verdemon", TipoBicho.PLANTA);
+        Especie green = new Especie( "Verdemon", TipoBicho.PLANTA,1,1,0);
         green.setAltura(150);
         green.setPeso(55);
         green.setEnergiaIncial(5000);
         green.setUrlFoto("/image/verdemon.jpg");
 
-        Especie turronmon = new Especie( "Tierramon", TipoBicho.TIERRA);
+        Especie turronmon = new Especie( "Tierramon", TipoBicho.TIERRA,1,1,0);
         turronmon.setAltura(1050);
         turronmon.setPeso(99);
         turronmon.setEnergiaIncial(5000);
         turronmon.setUrlFoto("/image/tierramon.jpg");
 
-        Especie fantasmon = new Especie( "Fantasmon", TipoBicho.AIRE);
+        Especie fantasmon = new Especie( "Fantasmon", TipoBicho.AIRE,1,1,0);
         fantasmon.setAltura(1050);
         fantasmon.setPeso(99);
         fantasmon.setEnergiaIncial(5000);
         fantasmon.setUrlFoto("/image/fantasmon.jpg");
 
-        Especie vampiron = new Especie("Vanpiron", TipoBicho.AIRE);
+        Especie vampiron = new Especie("Vanpiron", TipoBicho.AIRE,1,1,0);
         vampiron.setAltura(1050);
         vampiron.setPeso(99);
         vampiron.setEnergiaIncial(5000);
         vampiron.setUrlFoto("/image/vampiromon.jpg");
 
-        Especie fortmon = new Especie( "Fortmon", TipoBicho.CHOCOLATE);
+        Especie fortmon = new Especie( "Fortmon", TipoBicho.CHOCOLATE,1,1,0);
         fortmon.setAltura(1050);
         fortmon.setPeso(99);
         fortmon.setEnergiaIncial(5000);
         fortmon.setUrlFoto("/image/fortmon.png");
 
-        Especie dientemon = new Especie( "Dientemon", TipoBicho.AGUA);
+        Especie dientemon = new Especie( "Dientemon", TipoBicho.AGUA,1,1,0);
         dientemon.setAltura(1050);
         dientemon.setPeso(99);
         dientemon.setEnergiaIncial(5000);

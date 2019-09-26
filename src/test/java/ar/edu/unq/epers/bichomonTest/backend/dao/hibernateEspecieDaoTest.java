@@ -21,7 +21,7 @@ public class hibernateEspecieDaoTest{
 
     @Before
     public void crearModelo() {
-        this.pejelagarto = new Especie("pejelagarto",  TipoBicho.CHOCOLATE);
+        this.pejelagarto = new Especie("pejelagarto",  TipoBicho.CHOCOLATE,1,1,0);
         this.pejelagarto.setPeso(15);
         this.pejelagarto.setAltura(198);
         this.pejelagarto.setCantidadBichos(0);
@@ -66,7 +66,7 @@ public class hibernateEspecieDaoTest{
     @Test (expected= PersistenceException.class) //arreglar en clase
     public void al_guardar_dos_objetos_con_el_mismo_nombre_levanta_excepcion_por_constraint_Nombre() { // test contraint nombre
         run(() ->this.dao.guardar(this.pejelagarto));
-        Especie pejelagarto2 = new Especie("pejelagarto",CHOCOLATE);
+        Especie pejelagarto2 = new Especie("pejelagarto",CHOCOLATE,1,1,0);
         pejelagarto2.setPeso(151);
         pejelagarto2.setAltura(1980);
         pejelagarto2.setCantidadBichos(1);

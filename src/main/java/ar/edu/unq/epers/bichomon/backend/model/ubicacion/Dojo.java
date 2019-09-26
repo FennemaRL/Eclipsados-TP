@@ -3,6 +3,7 @@ package ar.edu.unq.epers.bichomon.backend.model.ubicacion;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
+import ar.edu.unq.epers.bichomon.backend.model.random.RandomBichomon;
 import ar.edu.unq.epers.bichomon.backend.model.random.RandomBusqueda;
 
 import javax.persistence.*;
@@ -13,18 +14,21 @@ public class Dojo extends Ubicacion{
     private Entrenador entrenadorC;
     @ManyToOne
     private Bicho bichoC;
+    @ManyToOne( cascade = CascadeType.ALL)
+    private RandomBichomon random ;
 
     public Dojo(){
         super();
     }
-    public Dojo(String name) {
+    public Dojo(String name, RandomBichomon rb) {
         super(name);
+        random = rb;
     }
 
     @Override
     public Bicho capturar(Entrenador e) {
         Bicho br = null;
-        if(entrenadorC != null && entrenadorC.tieneBichoConId(bichoC.getId()) && RandomBusqueda.busquedaExitosa(e,this)){
+        if(entrenadorC != null && entrenadorC.tieneBichoConId(bichoC.getId()) && random.busquedaExitosa(e,this)){
             Especie esp = bichoC.getEspecie().getEspecieRaiz();
             br = new Bicho(esp);
             esp.incrementarEnUnBicho();

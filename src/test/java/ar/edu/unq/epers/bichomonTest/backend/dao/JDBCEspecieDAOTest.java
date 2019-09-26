@@ -23,7 +23,7 @@ public class JDBCEspecieDAOTest {
 
     @Before
     public void crearModelo() {
-        this.pejelagarto = new Especie("pejelagarto",CHOCOLATE);
+        this.pejelagarto = new Especie("pejelagarto",CHOCOLATE,1,1,0);
         this.pejelagarto.setPeso(15);
         this.pejelagarto.setAltura(198);
         this.pejelagarto.setCantidadBichos(0);
@@ -84,7 +84,7 @@ public class JDBCEspecieDAOTest {
     public void al_guardar_dos_objetos_con_el_mismo_nombre_levanta_excepcion_por_constraint_Nombre() { // test contraint nombre
         data.crearSetDatosIniciales();
 
-        Especie pejelagarto2 = new Especie("Rojomon",CHOCOLATE);
+        Especie pejelagarto2 = new Especie("Rojomon",CHOCOLATE,1,1,0);
         pejelagarto2.setPeso(151);
         pejelagarto2.setAltura(1980);
         pejelagarto2.setCantidadBichos(1);
@@ -92,7 +92,7 @@ public class JDBCEspecieDAOTest {
     }
     @Test
     public void al_recuperarTodo_recupero_las_especies_guardadas_en_orden_alfabetico(){ // test recuperartodo favorable
-        Especie rFort = new Especie("fortmon",CHOCOLATE);
+        Especie rFort = new Especie("fortmon",CHOCOLATE,1,1,0);
         rFort.setPeso(110);
         rFort.setAltura(100);
         rFort.setCantidadBichos(1);
