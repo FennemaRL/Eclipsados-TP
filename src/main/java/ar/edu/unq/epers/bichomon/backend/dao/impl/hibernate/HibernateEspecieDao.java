@@ -19,7 +19,12 @@ public class HibernateEspecieDao extends HibernateDAO<Especie> implements Especi
 
     @Override
     public void actualizar(Especie especie) {
-
+        Session session = TransactionRunner.getCurrentSession();
+        try{
+            session.update(especie); }
+        catch (ConstraintViolationException e){
+            throw new ErrorRecuperar("No existe una Especie con ese nombre");
+        }
     }
 
     @Override
@@ -59,7 +64,7 @@ public class HibernateEspecieDao extends HibernateDAO<Especie> implements Especi
     public void guardar(Especie item) {
         Session session = TransactionRunner.getCurrentSession();
         try{
-        session.save(item);}
+        session.save(item); }
         catch (ConstraintViolationException e){
             throw new ErrorGuardar("Existe una Especie con ese nombre");
         }

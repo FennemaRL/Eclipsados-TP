@@ -40,7 +40,7 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
 
     @Test(expected = NoHayEntrenadorConEseNombre.class)
     public void al_buscar_un_Entrenador_que_no_existe_levanta_una_excepcion(){// busqueda desfavorable entrenador
-        assertEquals(bicho, bs.buscar("pepe"));
+        assertEquals(bicho, bs.buscar("pepe1"));
     }
 
     @Test

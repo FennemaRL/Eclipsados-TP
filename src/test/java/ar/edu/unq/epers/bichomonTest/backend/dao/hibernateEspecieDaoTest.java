@@ -21,7 +21,7 @@ public class hibernateEspecieDaoTest{
 
     @Before
     public void crearModelo() {
-        this.pejelagarto = new Especie("pejelagarto",  TipoBicho.CHOCOLATE,1,1,0);
+        this.pejelagarto = new Especie("pejelagarto0",  TipoBicho.CHOCOLATE,1,1,0);
         this.pejelagarto.setPeso(15);
         this.pejelagarto.setAltura(198);
         this.pejelagarto.setCantidadBichos(0);
@@ -30,16 +30,18 @@ public class hibernateEspecieDaoTest{
 
     @Test
     public void al_guardar_y_luego_recuperar_se_obtiene_objetos_similares() { //test favorable guardar/recuperar
-        run(() ->this.dao.guardar(this.pejelagarto));
+        Especie pejelagarto1 = new Especie("pejelagarto1",  TipoBicho.CHOCOLATE,1,1,0);
+        run(() ->this.dao.guardar(pejelagarto1));
 
-        Especie otraMismaEspecie=  run(() ->this.dao.recuperar(pejelagarto.getId()));
+        Especie otraMismaEspecie=  run(() ->this.dao.recuperar("pejelagarto1"));
 
-        assertEquals(this.pejelagarto.getNombre(), otraMismaEspecie.getNombre());
-        assertEquals(this.pejelagarto.getPeso(), otraMismaEspecie.getPeso());
-        assertEquals(this.pejelagarto.getAltura(), otraMismaEspecie.getAltura());
-        assertEquals(this.pejelagarto.getCantidadBichos(), otraMismaEspecie.getCantidadBichos());
-        assertTrue(this.pejelagarto != otraMismaEspecie);
-        assertEquals(pejelagarto.getId(), otraMismaEspecie.getId()) ;
+
+        assertEquals(pejelagarto1.getNombre(), otraMismaEspecie.getNombre());
+        assertEquals(pejelagarto1.getPeso(), otraMismaEspecie.getPeso());
+        assertEquals(pejelagarto1.getAltura(), otraMismaEspecie.getAltura());
+        assertEquals(pejelagarto1.getCantidadBichos(), otraMismaEspecie.getCantidadBichos());
+        assertTrue(pejelagarto1 != otraMismaEspecie);
+        assertEquals(pejelagarto1.getId(), otraMismaEspecie.getId()) ;
     }
     @Test
     public void al_actualizar_los_objetos_son_similares() { // test favorable actualizar
@@ -49,9 +51,8 @@ public class hibernateEspecieDaoTest{
         otraMismaEspecie.setPeso(20);
         otraMismaEspecie.setAltura(400);
 
-        run(()->this.dao.guardar(otraMismaEspecie));
-        Especie otraMismaEspecie1= run(()->this.dao.recuperar(otraMismaEspecie.getId()));
-
+        run(()->this.dao.actualizar(otraMismaEspecie));
+        Especie otraMismaEspecie1= run(()->this.dao.recuperar("pejelagarto0"));
         assertEquals(otraMismaEspecie.getNombre(), otraMismaEspecie1.getNombre());
         assertEquals(otraMismaEspecie.getPeso(), otraMismaEspecie1.getPeso());
         assertEquals(otraMismaEspecie.getAltura(), otraMismaEspecie1.getAltura());
