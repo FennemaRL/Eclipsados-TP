@@ -4,7 +4,7 @@ package ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate;
 import ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner;
 import org.hibernate.Session;
 
-public class HibernateDAO<T> {
+public abstract class HibernateDAO<T> {
 
     private Class<T> entityType;
 
@@ -25,4 +25,6 @@ public class HibernateDAO<T> {
         Session session = TransactionRunner.getCurrentSession();
         return session.get(entityType, id);
     }
+
+    abstract public void reset();
 }

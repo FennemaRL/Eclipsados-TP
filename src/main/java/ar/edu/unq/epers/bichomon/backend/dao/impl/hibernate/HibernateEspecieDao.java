@@ -50,6 +50,12 @@ public class HibernateEspecieDao extends HibernateDAO<Especie> implements Especi
             throw new ErrorRecuperar("no hay Especie con el nombre" +especienombre);
         return res;
     }
+
+    @Override
+    public void reset() {
+
+    }
+
     public void guardar(Especie item) {
         Session session = TransactionRunner.getCurrentSession();
         try{
