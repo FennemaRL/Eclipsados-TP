@@ -33,4 +33,8 @@ public abstract class Ubicacion {
     public String getNombreUbicacion(){
         return nombreUbicacion;
     }
+
+    public abstract String getEntrenadorName();
+
+    public abstract String getBichomonName();
 }

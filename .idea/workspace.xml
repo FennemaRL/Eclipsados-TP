@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e24ced01-9570-4285-8145-7f30d68cad3e" name="Default Changelist" comment="">
+    <list default="true" id="d8c2ccd2-c9cc-49a1-98cc-2bb338722fdf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/especie/Especie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/especie/Especie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Dojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Dojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Guarderia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Guarderia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Pueblo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Pueblo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Ubicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Ubicacion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/BichoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/BichoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestBichoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestBichoService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +22,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1RQLkQnAwmUYLBEYnPKld4LrCic" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1RRByOAlSY9ZBfIm2ZA7CuBRn1a" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -31,66 +38,34 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestBichoService.si_se_le_pregunta_a_un_entrenador_que_no_exciste_si_un_bichomon_puede_evolucionar_devuelve_una_exception">
-    <configuration name="TestBichoService.se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.UbicacionTest.al_capturar_en_un_dojo_con_campeon">
+    <configuration name="UbicacionTest.al_capturar_en_un_dojo_con_campeon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomontTestBichoService.*" />
+          <option name="PATTERN" value="ar.edu.unq.epers.test.modelo.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomontTestBichoService" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomontTestBichoService.TestBichoService" />
-      <option name="METHOD_NAME" value="se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar" />
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.test.modelo" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.test.modelo.UbicacionTest" />
+      <option name="METHOD_NAME" value="al_capturar_en_un_dojo_con_campeon" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestBichoService.se_le_pregunta_a_un_entrenador_ssi_su_bichomon_puede_evolucionar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UbicacionTest.guarderia_no_tiene_bichomones_y_lanza_una_excepcion_al_capturar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomontTestBichoService.*" />
+          <option name="PATTERN" value="ar.edu.unq.epers.test.modelo.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomontTestBichoService" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomontTestBichoService.TestBichoService" />
-      <option name="METHOD_NAME" value="se_le_pregunta_a_un_entrenador_ssi_su_bichomon_puede_evolucionar" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestBichoService.si_se_le_pregunta_a_un_entrenador_que_no_exciste_si_un_bichomon_puede_evolucionar_devuelve_una_exception" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomontTestBichoService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomontTestBichoService" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomontTestBichoService.TestBichoService" />
-      <option name="METHOD_NAME" value="si_se_le_pregunta_a_un_entrenador_que_no_exciste_si_un_bichomon_puede_evolucionar_devuelve_una_exception" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestBichoService.si_se_le_pregunta_a_un_entrenador_si_un_bichomon_puede_evolucionar_y_no_es_suyo_se_devuelve_una_exception" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomontTestBichoService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomontTestBichoService" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomontTestBichoService.TestBichoService" />
-      <option name="METHOD_NAME" value="si_se_le_pregunta_a_un_entrenador_si_un_bichomon_puede_evolucionar_y_no_es_suyo_se_devuelve_una_exception" />
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.test.modelo" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.test.modelo.UbicacionTest" />
+      <option name="METHOD_NAME" value="guarderia_no_tiene_bichomones_y_lanza_una_excepcion_al_capturar" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -98,10 +73,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestBichoService.si_se_le_pregunta_a_un_entrenador_que_no_exciste_si_un_bichomon_puede_evolucionar_devuelve_una_exception" />
-        <item itemvalue="JUnit.TestBichoService.si_se_le_pregunta_a_un_entrenador_si_un_bichomon_puede_evolucionar_y_no_es_suyo_se_devuelve_una_exception" />
-        <item itemvalue="JUnit.TestBichoService.se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar" />
-        <item itemvalue="JUnit.TestBichoService.se_le_pregunta_a_un_entrenador_ssi_su_bichomon_puede_evolucionar" />
+        <item itemvalue="JUnit.UbicacionTest.al_capturar_en_un_dojo_con_campeon" />
+        <item itemvalue="JUnit.UbicacionTest.guarderia_no_tiene_bichomones_y_lanza_una_excepcion_al_capturar" />
       </list>
     </recent_temporary>
   </component>
@@ -110,11 +83,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e24ced01-9570-4285-8145-7f30d68cad3e" name="Default Changelist" comment="" />
-      <created>1569594522397</created>
+      <changelist id="d8c2ccd2-c9cc-49a1-98cc-2bb338722fdf" name="Default Changelist" comment="" />
+      <created>1569620281678</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1569594522397</updated>
+      <updated>1569620281678</updated>
     </task>
     <servers />
   </component>

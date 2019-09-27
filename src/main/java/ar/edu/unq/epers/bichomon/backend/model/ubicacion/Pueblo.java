@@ -55,6 +55,17 @@ public class Pueblo extends Ubicacion{
         }
         return br;
     }
+
+    @Override
+    public String getEntrenadorName() {
+        return null;
+    }
+
+    @Override
+    public String getBichomonName() {
+        return null;
+    }
+
     public Integer getCantEntrenadores(){
         return cantEntrenadores;
     }

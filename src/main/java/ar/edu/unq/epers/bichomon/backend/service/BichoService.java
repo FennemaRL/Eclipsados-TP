@@ -36,7 +36,7 @@ public class BichoService {
        return bicho;
     }
 
-    private Entrenador recuperarEntrenador(String entrenador) {
+    private Entrenador recuperarEntrenador(String entrenador) { // Entrenador service
         return run(() -> this.entrenadorDAO.recuperar(entrenador));
     }
 

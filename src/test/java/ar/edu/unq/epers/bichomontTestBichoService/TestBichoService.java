@@ -9,6 +9,7 @@ import ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho;
 import ar.edu.unq.epers.bichomon.backend.model.random.RandomBichomon;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.*;
 import ar.edu.unq.epers.bichomon.backend.service.BichoService;
+import ar.edu.unq.epers.bichomon.backend.service.runner.SessionFactoryProvider;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.junit.After;
@@ -42,6 +43,7 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
     }
     @After
     public void tearDown(){
+        SessionFactoryProvider.destroy();
     }
 
     @Test(expected = NoHayEntrenadorConEseNombre.class)
@@ -76,7 +78,40 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
        bs.buscar("Mostaza2");
     }
     @Test
-    public void se_captura_un_bicho_Especie_bichorita_en_un_pueblo(){ //busqueda favorable pueble
+    public void se_captura_un_bicho_Especie_bichorita_en_un_dojo(){ //busqueda favorable dojo
+        RandomBichomon mr =new ProbabilidadNoRandom();
+        Especie esp =new Especie("bichorita2",TipoBicho.PLANTA, 1,1,0);
+        Bicho bicho =new Bicho(esp);
+
+        ubicacion = new Dojo("Chaparral",mr);
+        Entrenador entrenador = new Entrenador("Mostaza4",ubicacion);
+        entrenador.agregarBichomon(bicho);
+        ubicacion.retar(entrenador,bicho);
+
+        run(() ->edao.guardar(entrenador));
+
+        assertEquals(bicho.getEspecie().getNombre(),bs.buscar("Mostaza4").getEspecie().getNombre());
+    }
+    @Test(expected = CapturaFallida.class)
+    public void no_se_captura_un_bicho_en_un_dojo(){ //busqueda favorable dojo
+        RandomBichomon mr =new ProbabilidadNoRandomFalse();
+        Especie esp =new Especie("bichorita2",TipoBicho.PLANTA, 1,1,0);
+        Bicho bicho =new Bicho(esp);
+
+        ubicacion = new Dojo("Chaparral",mr);
+        Entrenador entrenador = new Entrenador("Mostaza4",ubicacion);
+        entrenador.agregarBichomon(bicho);
+        System.out.print(bicho +" bicho?");
+        ubicacion.retar(entrenador,bicho);
+
+        run(() ->edao.guardar(entrenador));
+
+        System.out.print(ubicacion.getEntrenadorName() +" entrenador "+ ubicacion.getBichomonName() +" bichomon ");
+
+        bs.buscar("Mostaza4");
+    }
+    @Test
+    public void se_captura_un_bicho_Especie_bichorita_en_un_pueblo(){ //busqueda favorable pueblo
         RandomBichomon mr =new ProbabilidadNoRandom();
         ArrayList<Especie> esp = new ArrayList<>();
         esp.add(new Especie("bichorita",TipoBicho.PLANTA, 1,1,0));
@@ -92,21 +127,7 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
         assertEquals(esp.get(0).getNombre(),bichocap.getEspecie().getNombre());
         assertEquals(1, bichocap.getEspecie().getCantidadBichos());
     }
-    @Test
-    public void se_captura_un_bicho_Especie_bichorita_en_un_dojo(){ //busqueda favorable pueble
-        RandomBichomon mr =new ProbabilidadNoRandom();
-        Especie esp =new Especie("bichorita2",TipoBicho.PLANTA, 1,1,0);
-        Bicho bicho =new Bicho(esp);
 
-        ubicacion = new Dojo("Chaparral",mr);
-        Entrenador entrenador = new Entrenador("Mostaza4",ubicacion);
-        entrenador.agregarBichomon(bicho);
-        ubicacion.retar(entrenador,bicho);
-
-        run(() ->edao.guardar(entrenador));
-
-        assertEquals(bicho.getEspecie().getNombre(),bs.buscar("Mostaza4").getEspecie().getNombre());
-    }
 
     @Test
     public void se_le_pregunta_a_un_entrenador_ssi_su_bichomon_puede_evolucionar(){

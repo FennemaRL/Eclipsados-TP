@@ -54,4 +54,14 @@ public class Dojo extends Ubicacion{
 
     }
 
+    @Override
+    public String getEntrenadorName() {
+        return entrenadorC.getNombre();
+    }
+
+    @Override
+    public String getBichomonName() {
+        return bichoC.getEspecie().getNombre();
+    }
+
 }
