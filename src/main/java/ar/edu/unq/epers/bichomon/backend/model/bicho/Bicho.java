@@ -87,4 +87,7 @@ public class Bicho {
 	public String toString(){
 		return id +" Especie: "+ especie.toString();
 	}
+
+    public Entrenador getOwner() {return this.owner;
+    }
 }
