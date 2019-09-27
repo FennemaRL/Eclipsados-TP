@@ -2,6 +2,7 @@ package ar.edu.unq.epers.bichomon.backend.model.entrenador;
 
 import ar.edu.unq.epers.bichomon.backend.model.Exception.EntrenadorException;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.BichomonError;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.ZonaErronea;
 import net.bytebuddy.asm.Advice;
@@ -45,7 +46,7 @@ public class Entrenador {
     public Bicho getBichoConID(Integer bichoId) {
         //Bicho bichoEncontrar = bichos.stream().findAny(b-> b.getId() == bicho) ;
         Bicho bichoEncontrar = bichos.stream().filter(b-> b.getId() == bichoId).findAny().orElse(null) ;
-        if (bichoEncontrar == null) throw new EntrenadorException(this, bichoId);
+        if (bichoEncontrar == null){throw new EntrenadorException(this, bichoId);}
         return bichoEncontrar;
     }
 
@@ -99,11 +100,14 @@ public class Entrenador {
 
 
     public void abandonarBicho(Integer bichoId){
-        Bicho bicho = getBichoConID(bichoId);
+        Bicho bicho = this.getBichoConID(bichoId);
         if(this.bichos.size()>=2){
             ubicacion.adoptar(bicho);
             bicho.abandonar();
             bichos.remove(bicho);
+        }
+        else{
+            throw new BichomonError("Entrenador no puede quedarse sin bichos");
         }
 
     }

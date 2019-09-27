@@ -20,7 +20,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class TestBichoService { // los test no corren en conjunto ya que las tablas siguen persistiendo
-    private Bicho bicho ;
+    private Bicho bartolomon;
     private Ubicacion ubicacion;
     private HibernateEntrenadorDao edao;
     private BichoService bs;
@@ -31,7 +31,8 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
         edao=new HibernateEntrenadorDao();
         bs= new BichoService(edao,new HibernateEspecieDao(),new HibernateBichoDao());
         Especie especie = new Especie("Rayo", TipoBicho.ELECTRICIDAD,3,2,0);
-        bicho = new Bicho(especie);
+        bartolomon = new Bicho(especie);
+
 
 
     }
@@ -41,17 +42,17 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
 
     @Test(expected = NoHayEntrenadorConEseNombre.class)
     public void al_buscar_un_Entrenador_que_no_existe_levanta_una_excepcion(){// busqueda desfavorable entrenador
-        assertEquals(bicho, bs.buscar("pepe1"));
+        assertEquals(bartolomon, bs.buscar("pepe1"));
     }
 
     @Test
     public void se_caputura_en_un_guarderia_con_bichomon(){ // busqueda favorable guarderia
         ubicacion = new Guarderia("Chaparral");
-        ubicacion.adoptar(bicho);
+        ubicacion.adoptar(bartolomon);
         Entrenador entrenador = new Entrenador("Mostaza",ubicacion);
         run(() ->edao.guardar(entrenador)) ;
 
-        assertEquals(bicho.getId(), bs.buscar("Mostaza").getId());
+        assertEquals(bartolomon.getId(), bs.buscar("Mostaza").getId());
     }
     @Test(expected = GuarderiaErrorNoBichomon.class)
     public void se_caputura_en_un_guarderia_sin_bichomon(){ // busqueda desfavorable guarderia
@@ -125,4 +126,28 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
         assertTrue(bs.puedeEvolucionar("lukas",1));
 
     }
+
+
+    //abandonarBichoTest
+    @Test (expected = BichomonError.class)
+    public void el_entrenador_puede_abandonar_un_bicho_siempre_que_no_se_quede_sin_bichos(){
+        RandomBichomon mr =new ProbabilidadNoRandom();
+        ubicacion = new Dojo("Chaparral", mr );
+        Entrenador entrenador = new Entrenador("Mostaza5",ubicacion);
+        Especie chocoMon =new Especie("chocoMon",TipoBicho.CHOCOLATE, 1,1,0);
+        Bicho lisomon = new Bicho(chocoMon);
+        Bicho homermon = new Bicho(chocoMon);
+
+        entrenador.agregarBichomon(lisomon);
+        entrenador.agregarBichomon(homermon);
+
+        run(() ->edao.guardar(entrenador));
+
+        bs.abandonarBicho(entrenador.getNombre(), lisomon.getId());
+
+        bs.abandonarBicho(entrenador.getNombre(),homermon.getId());
+
+        
+    }
+
 }

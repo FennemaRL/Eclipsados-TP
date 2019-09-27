@@ -53,4 +53,10 @@ public class BichoService {
     public void guardarEspecie(Especie esp) {
         run(() -> this.especieDao.guardar(esp));
     }
+
+    public void abandonarBicho(String entrenador, Integer bicho){
+        Entrenador entrenador1 = recuperarEntrenador(entrenador);
+        entrenador1.abandonarBicho(bicho);
+
+    }
 }

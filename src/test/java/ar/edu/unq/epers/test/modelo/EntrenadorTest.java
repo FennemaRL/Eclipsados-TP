@@ -4,6 +4,7 @@ import ar.edu.unq.epers.bichomon.backend.model.Exception.EntrenadorException;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.BichomonError;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Dojo;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Guarderia;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.ZonaErronea;
@@ -39,10 +40,11 @@ public class  EntrenadorTest {
                 //chocoMon.setCondicionesEvolucion(10,0,1, DateTime.parse("2020-11-10"));
 
                 creciente = mock(Guarderia.class);
-                everest = new Dojo();
                 esh = new Entrenador("esh",creciente);
-                roko = new Bicho(chocoMon);
-                riko = new Bicho(chocoMon);
+                roko = mock(Bicho.class);
+                riko = mock(Bicho.class);
+                when(riko.getId()).thenReturn(2);
+                when(roko.getId()).thenReturn(3);
                 esh.agregarBichomon(riko);
                 esh.agregarBichomon(roko);
         }
@@ -74,25 +76,24 @@ public class  EntrenadorTest {
 
          */
 
-        @Test
-        public void el_entrenador_puede_abandonar_un_bicho_siempre_que_no_se_quede_sin_bichos(){
-                esh.abandonarBicho(riko.getId());
+        @Test (expected = EntrenadorException.class)
+        public void el_entrenador_no_puede_abandonar_un_bicho_que_no_posee(){
+                esh.abandonarBicho(7);
+        }
 
-                esh.abandonarBicho(roko.getId());
+        @Test (expected = BichomonError.class)
+        public void el_entrenador_puede_abandonar_un_bicho_siempre_que_no_se_quede_sin_bichos(){
+
+                esh.abandonarBicho(2);
+
+                esh.abandonarBicho(3);
 
                 assertEquals(1, esh.getBichos().size());
         }
 
-        @Test (expected = ZonaErronea.class)
-        public void al_abandonar_un_bicho_en_una_zona_incorrecta_levanta_una_excepcion_y_el_bicho_no_se_abandona(){
-                esh.setUbicacion(everest);
 
-                assertEquals(2, esh.getBichos().size());
 
-                esh.abandonarBicho(roko.getId());
 
-                assertEquals(2, esh.getBichos().size());
-        }
 
 }
 
