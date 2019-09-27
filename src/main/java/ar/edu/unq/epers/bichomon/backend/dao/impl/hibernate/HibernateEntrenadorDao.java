@@ -35,8 +35,14 @@ public class HibernateEntrenadorDao extends HibernateDAO<Entrenador> implements 
             return res;
         }
 
+    @Override
+    public void reset() {
+        Session session = TransactionRunner.getCurrentSession();
+
+        session.close();
+        }
 
 
-    }
+}
 
 

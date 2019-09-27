@@ -5,4 +5,9 @@ import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 
 public class HibernateBichoDao extends HibernateDAO<Bicho> implements BichoDAO {
     public HibernateBichoDao() { super(Bicho.class); }
+
+    @Override
+    public void reset() {
+
+    }
 }

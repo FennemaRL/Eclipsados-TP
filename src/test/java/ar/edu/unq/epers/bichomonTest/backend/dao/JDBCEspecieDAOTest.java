@@ -14,7 +14,7 @@ import java.util.List;
 import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.CHOCOLATE;
 
 import static org.junit.Assert.*;
-
+/*
 public class JDBCEspecieDAOTest {
 
     private JDBCEspecieDAO dao = new JDBCEspecieDAO();
@@ -110,5 +110,5 @@ public class JDBCEspecieDAOTest {
         List<Especie> eList = new ArrayList<>();
         assertEquals(eList, dao.recuperarTodos());
     }
-
 }
+*/
