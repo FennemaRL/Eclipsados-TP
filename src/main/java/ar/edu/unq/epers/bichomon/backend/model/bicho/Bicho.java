@@ -84,7 +84,12 @@ public class Bicho {
 	public void setOwner(Entrenador entrenador) {
 		this.owner = entrenador;
 	}
+	public void abandonar(){this.owner = null;}
 	public String toString(){
 		return id +" Especie: "+ especie.toString();
+	}
+
+	public Entrenador getOwner() {
+		return this.owner;
 	}
 }

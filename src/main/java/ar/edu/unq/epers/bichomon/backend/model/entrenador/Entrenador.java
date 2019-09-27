@@ -3,6 +3,9 @@ package ar.edu.unq.epers.bichomon.backend.model.entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.Exception.EntrenadorException;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.ZonaErronea;
+import net.bytebuddy.asm.Advice;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -65,6 +68,7 @@ public class Entrenador {
     public Ubicacion getUbicacion() {
         return ubicacion;
     }
+    public void setUbicacion (Ubicacion ubicacion){this.ubicacion = ubicacion;}
 
     public String getNombre(){return nombre;}
 
@@ -87,5 +91,20 @@ public class Entrenador {
     private boolean haveMaxCantBichos() {
         //no me encargo, a quien corresponda hagalo
         return false;
+    }
+
+    public List<Bicho> getBichos(){
+        return this.bichos;
+    }
+
+
+    public void abandonarBicho(Integer bichoId){
+        Bicho bicho = getBichoConID(bichoId);
+        if(this.bichos.size()>=2){
+            ubicacion.adoptar(bicho);
+            bicho.abandonar();
+            bichos.remove(bicho);
+        }
+
     }
 }
