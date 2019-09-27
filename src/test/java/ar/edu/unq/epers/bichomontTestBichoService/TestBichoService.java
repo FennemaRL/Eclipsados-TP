@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TestBichoService { // los test no corren en conjunto ya que las tablas siguen persistiendo
     private Bicho bicho ;
@@ -100,5 +101,28 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
         run(() ->edao.guardar(entrenador));
 
         assertEquals(bicho.getEspecie().getNombre(),bs.buscar("Mostaza4").getEspecie().getNombre());
+    }
+
+    @Test
+    public void se_le_pregunta_a_un_entrenador_ssi_su_bichomon_puede_evolucionar(){
+
+        Especie chocoMon =new Especie("chocoMon",TipoBicho.CHOCOLATE, 1,1,0);
+        Especie dobleChocoMon = new Especie("dobleChocoMon",TipoBicho.CHOCOLATE, 2,2,0);
+        chocoMon.setEspecieEvo(dobleChocoMon);
+        chocoMon.setEnergiaIncial(50);
+
+        Bicho ricky = new Bicho(chocoMon);
+
+        RandomBichomon pNR =new ProbabilidadNoRandom();
+        ubicacion = new Dojo("fidelHouse",pNR);
+
+        Entrenador lukas = new Entrenador("lukas",ubicacion);
+        chocoMon.setCondicionesEvolucion(30,0,lukas.getNivel(),2);
+        lukas.agregarBichomon(ricky);
+
+        run(() ->edao.guardar(lukas));
+
+        assertTrue(bs.puedeEvolucionar("lukas",1));
+
     }
 }
