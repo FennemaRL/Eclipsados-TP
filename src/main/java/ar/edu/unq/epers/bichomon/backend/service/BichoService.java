@@ -7,7 +7,7 @@ import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.BichomonError;
 
 import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
-
+//Modificar daos, no existe entrenador, no exisste ubicacion, no existe bicho
 public class BichoService {
 
     private HibernateEntrenadorDao entrenadorDAO;
@@ -57,6 +57,11 @@ public class BichoService {
     public void abandonarBicho(String entrenador, Integer bicho){
         Entrenador entrenador1 = recuperarEntrenador(entrenador);
         entrenador1.abandonarBicho(bicho);
+        actualizarEntrenador(entrenador1);
 
+    }
+
+    private void actualizarEntrenador(Entrenador entrenador) {
+        run(()-> entrenadorDAO.actualizar(entrenador));
     }
 }

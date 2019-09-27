@@ -2,6 +2,7 @@ package ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate;
 
 
 import ar.edu.unq.epers.bichomon.backend.dao.EspecieDAO;
+import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner;
 import org.hibernate.Session;
@@ -58,6 +59,11 @@ public class HibernateEspecieDao extends HibernateDAO<Especie> implements Especi
 
     @Override
     public void reset() {
+
+    }
+
+    @Override
+    public void actualizar(Entrenador entrenador) {
 
     }
 

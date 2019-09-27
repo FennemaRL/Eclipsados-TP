@@ -92,4 +92,9 @@ public class Bicho {
 	public Entrenador getOwner() {
 		return this.owner;
 	}
+
+    public void aumentarEnergiaPorCombate() {
+		this.energiaDeCombate += Math.random() * (5.01 - 0.99);
+    }
+
 }
