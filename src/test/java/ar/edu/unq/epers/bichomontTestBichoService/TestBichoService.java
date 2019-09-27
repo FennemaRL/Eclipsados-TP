@@ -1,6 +1,7 @@
 package ar.edu.unq.epers.bichomontTestBichoService;
 
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.*;
+import ar.edu.unq.epers.bichomon.backend.model.Exception.EntrenadorException;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
@@ -8,16 +9,19 @@ import ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho;
 import ar.edu.unq.epers.bichomon.backend.model.random.RandomBichomon;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.*;
 import ar.edu.unq.epers.bichomon.backend.service.BichoService;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class TestBichoService { // los test no corren en conjunto ya que las tablas siguen persistiendo
     private Bicho bicho ;
@@ -110,19 +114,70 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
         Especie dobleChocoMon = new Especie("dobleChocoMon",TipoBicho.CHOCOLATE, 2,2,0);
         chocoMon.setEspecieEvo(dobleChocoMon);
         chocoMon.setEnergiaIncial(50);
-
         Bicho ricky = new Bicho(chocoMon);
+        Date dt = new Date(2001,10,10);
+        ricky.setFechaCaptura(dt);
+        ricky.setEnergia(50);
 
         RandomBichomon pNR =new ProbabilidadNoRandom();
         ubicacion = new Dojo("fidelHouse",pNR);
 
         Entrenador lukas = new Entrenador("lukas",ubicacion);
-        chocoMon.setCondicionesEvolucion(30,0,lukas.getNivel(),2);
+        chocoMon.setCondicionesEvolucion(30,0,lukas.getNivel(),0);
         lukas.agregarBichomon(ricky);
 
         run(() ->edao.guardar(lukas));
 
-        assertTrue(bs.puedeEvolucionar("lukas",1));
+        assertTrue(bs.puedeEvolucionar("lukas",ricky.getId()));
+
+    }
+    @Test
+    public void se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar(){
+
+        Especie chocoMon =new Especie("chocoMon",TipoBicho.CHOCOLATE, 1,1,0);
+        Especie dobleChocoMon = new Especie("dobleChocoMon",TipoBicho.CHOCOLATE, 2,2,0);
+        chocoMon.setEspecieEvo(dobleChocoMon);
+        chocoMon.setEnergiaIncial(50);
+
+        Bicho ricky = new Bicho(chocoMon);
+        Date dt = new Date(2020,10,10);
+        ricky.setFechaCaptura(dt);
+
+        RandomBichomon pNR =new ProbabilidadNoRandom();
+        ubicacion = new Dojo("fidelHouse",pNR);
+
+        Entrenador lukas = new Entrenador("lukas",ubicacion);
+        chocoMon.setCondicionesEvolucion(90,10,10,20);
+        lukas.agregarBichomon(ricky);
+
+        run(() ->edao.guardar(lukas));
+
+        assertFalse(bs.puedeEvolucionar("lukas",ricky.getId()));
+
+    }
+
+    @Test (expected = EntrenadorException.class)
+    public void si_se_le_pregunta_a_un_entrenador_si_un_bichomon_puede_evolucionar_y_no_es_suyo_se_devuelve_una_exception(){
+
+        Especie chocoMon =new Especie("chocoMon",TipoBicho.CHOCOLATE, 1,1,0);
+        Especie dobleChocoMon = new Especie("dobleChocoMon",TipoBicho.CHOCOLATE, 2,2,0);
+        chocoMon.setEspecieEvo(dobleChocoMon);
+        chocoMon.setEnergiaIncial(50);
+
+        Bicho ricky = new Bicho(chocoMon);
+        Date dt = new Date(2020,10,10);
+        ricky.setFechaCaptura(dt);
+
+        RandomBichomon pNR =new ProbabilidadNoRandom();
+        ubicacion = new Dojo("fidelHouse",pNR);
+
+        Entrenador lukas = new Entrenador("lukas",ubicacion);
+        chocoMon.setCondicionesEvolucion(90,10,10,20);
+        lukas.agregarBichomon(ricky);
+
+        run(() ->edao.guardar(lukas));
+
+        assertFalse(bs.puedeEvolucionar("lukas",ricky.getId()*2));
 
     }
 }

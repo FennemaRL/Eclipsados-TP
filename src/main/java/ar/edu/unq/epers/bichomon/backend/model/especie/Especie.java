@@ -3,7 +3,9 @@ package ar.edu.unq.epers.bichomon.backend.model.especie;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 
 import javax.persistence.*;
+import java.io.Console;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Representa una {@link Especie} de bicho.
@@ -161,11 +163,13 @@ public class Especie {
 
 	public boolean cumpleCondicion(Bicho bicho) {
 		int diffDais = (int) (new Date().getTime() - bicho.getFechaCaptura().getTime());
-
-		return (bicho.getEnergia()>nivelDeEnergiaNecesario ||
-				bicho.getVictorias()> cantidadDeVictoriasNecesarias ||
-				diffDais >= tiempoAtranscurrir ||
-				bicho.getNivelEntrenador()> nivelDelEntrenadorNecesario);
+		long days = (int) TimeUnit.MILLISECONDS.toDays(diffDais);
+		System.out.println(days);
+		long daysAComparar = TimeUnit.MILLISECONDS.toDays(tiempoAtranscurrir);
+		return (bicho.getEnergia()>=nivelDeEnergiaNecesario &&
+				bicho.getVictorias()>= cantidadDeVictoriasNecesarias &&
+				days >= daysAComparar &&
+				bicho.getNivelEntrenador()>= nivelDelEntrenadorNecesario);
 	}
 	public void setEspecieRaiz(Especie e){
 		especieRaiz= e;
