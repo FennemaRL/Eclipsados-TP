@@ -13,6 +13,8 @@ public class Nivel {
     @Column(name="niveles")
     private List<Integer> niveles;
 
+    public Nivel(){}
+
     public Nivel (List<Integer> niveles){//la lista tiene que estar ordenada de menor a mayor
         this.niveles = niveles;
 

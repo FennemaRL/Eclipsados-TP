@@ -4,7 +4,10 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-		<!-- Database connection settings -->
+		<!--		Eschema
+                Drop SCHEMA IF EXISTS epers_bichomon_hibernate;
+                CREATE SCHEMA epers_bichomon_hibernate;-->
+                <!-- Database connection settings -->
 		<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
 		<property name="connection.url">jdbc:mysql://localhost:3306/epers_bichomon_hibernate</property>
 		<property name="connection.username">root</property>

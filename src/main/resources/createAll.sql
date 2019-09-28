@@ -13,5 +13,6 @@ CREATE TABLE specie(
 )
 ENGINE = InnoDB;
 
+
 Drop SCHEMA IF EXISTS epers_bichomon_hibernate;
 CREATE SCHEMA epers_bichomon_hibernate;

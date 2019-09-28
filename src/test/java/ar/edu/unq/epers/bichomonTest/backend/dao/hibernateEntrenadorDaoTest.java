@@ -5,14 +5,19 @@ import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.ErrorRecuperar;
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateEntrenadorDao;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
+import ar.edu.unq.epers.bichomon.backend.model.entrenador.ExperienciaValor;
+import ar.edu.unq.epers.bichomon.backend.model.entrenador.Nivel;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Guarderia;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
+import ar.edu.unq.epers.bichomon.backend.service.runner.SessionFactoryProvider;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import javax.persistence.PersistenceException;
+import java.util.ArrayList;
 import java.util.Date;
 
 import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.CHOCOLATE;
@@ -27,11 +32,18 @@ public class hibernateEntrenadorDaoTest { //falta testear cosas y agregar constr
     @Before
     public void crearModelo() {
         ubi = new Guarderia("1114");
-        pepe = new Entrenador("pepe", ubi);
+        ArrayList<Integer> num = new ArrayList<>();
+        num.add(40);num.add(50);num.add(90);
+        pepe = new Entrenador("pepe", ubi,0,new ExperienciaValor(1,1,1),new Nivel());
         Bicho bartolo = new Bicho(new Especie("arnaldo", TipoBicho.AGUA,1,1,0));
         bartolo.setFechaCaptura(new Date());
         pepe.agregarBichomon(bartolo);
     }
+    @After
+    public void reset(){
+        SessionFactoryProvider.destroy();
+    }
+
     @Test
     public void test_al_guardar_y_luego_recuperar_se_obtiene_objetos_similares(){
 
@@ -42,9 +54,9 @@ public class hibernateEntrenadorDaoTest { //falta testear cosas y agregar constr
         assertEquals(pepe.getUbicacion().getNombreUbicacion(), pep2.getUbicacion().getNombreUbicacion());
         assertEquals(pepe.getNombre(), pep2.getNombre());
     }
-    @Test(expected = ErrorRecuperar.class)
+    @Test
     public void al_recuperar_un_nombre_inexistente_no_recupera_y_levanta_excepcion(){ // test desfavorable recuperar
-        run(() ->this.dao.recuperar("pejelagarto3"));
+        assertEquals(null,run(() ->this.dao.recuperar("pejelagarto3")));
     }
 
     @Test (expected= PersistenceException.class) //arreglar en clase

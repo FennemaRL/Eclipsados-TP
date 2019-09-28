@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class
-ResultadoCombate {
+public class ResultadoCombate {
 
 
     private Bicho nuevoCampeon = null;

@@ -21,8 +21,10 @@ public class Entrenador {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Bicho> bichos;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="ID_expgen")
     private ExperienciaValor expGen;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="ID_nivelgen")
     private Nivel nivelGen;
 
     @ManyToOne(cascade = CascadeType.ALL)

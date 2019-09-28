@@ -18,6 +18,7 @@ public class Dojo extends Ubicacion{
     @ManyToOne( cascade = CascadeType.ALL)
     private RandomBichomon random ;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="id_historial")
     private Set<Historial> historial = new LinkedHashSet<>();
 
     public Dojo(){

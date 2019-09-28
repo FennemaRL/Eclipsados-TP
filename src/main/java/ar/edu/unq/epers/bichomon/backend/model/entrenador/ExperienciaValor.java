@@ -15,6 +15,7 @@ public class ExperienciaValor {
     private int puntosCapturar;
     private int puntosEvolucion;
 
+    public ExperienciaValor(){}
 
     public ExperienciaValor(int combatir, int captura, int evolucion){
         puntosCapturar = captura;
