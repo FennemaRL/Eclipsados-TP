@@ -2,7 +2,12 @@ package ar.edu.unq.epers.bichomon.backend.model.entrenador;
 
 import ar.edu.unq.epers.bichomon.backend.model.Exception.EntrenadorException;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.BichomonError;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Guarderia;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.ZonaErronea;
+import net.bytebuddy.asm.Advice;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,6 +24,9 @@ public class Entrenador {
     private Integer nivel;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Bicho> bichos;
+
+    private ExperienciaValor expGen;
+    private Nivel nivelGen;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Ubicacion ubicacion;
@@ -39,10 +47,19 @@ public class Entrenador {
         ubicacion = u;
     }
 
+    public Entrenador(String nombre, Ubicacion ubicacion, int experiencia ,ExperienciaValor expGen, Nivel nivelGen) {
+        this.nombre = nombre;
+        this.ubicacion = ubicacion;
+        this.experiencia = experiencia;
+        this.expGen = expGen;
+        this.nivelGen = nivelGen;
+
+    }
+
     public Bicho getBichoConID(Integer bichoId) {
         //Bicho bichoEncontrar = bichos.stream().findAny(b-> b.getId() == bicho) ;
         Bicho bichoEncontrar = bichos.stream().filter(b-> b.getId() == bichoId).findAny().orElse(null) ;
-        if (bichoEncontrar == null) throw new EntrenadorException(this, bichoId);
+        if (bichoEncontrar == null){throw new EntrenadorException(this, bichoId);}
         return bichoEncontrar;
     }
 
@@ -54,7 +71,7 @@ public class Entrenador {
 
 
 
-    public Integer getNivel() { return this.nivel; }
+    public Integer getNivel() { return nivelGen.getNivel(this.experiencia); }
 
     public boolean tieneBichoConId(Integer bichoId){
         return bichos.stream().filter(b-> b.getId() == bichoId).findAny().orElse(null) != null;
@@ -65,6 +82,7 @@ public class Entrenador {
     public Ubicacion getUbicacion() {
         return ubicacion;
     }
+    public void setUbicacion (Ubicacion ubicacion){this.ubicacion = ubicacion;}
 
     public String getNombre(){return nombre;}
 
@@ -87,5 +105,35 @@ public class Entrenador {
     private boolean haveMaxCantBichos() {
         //no me encargo, a quien corresponda hagalo
         return false;
+    }
+
+    public List<Bicho> getBichos(){
+        return this.bichos;
+    }
+
+
+    public void abandonarBicho(Integer bichoId){
+        Bicho bicho = this.getBichoConID(bichoId);
+        if(this.bichos.size()>=2){
+            ubicacion.adoptar(bicho);
+            bicho.abandonar();
+            bichos.remove(bicho);
+        }
+        else{
+            throw new BichomonError("Entrenador no puede quedarse sin bichos");
+        }
+
+    }
+
+    public void aumentarExpPorCombate() {
+        this.experiencia += expGen.getPuntosCombatir();
+    }
+
+    public void setExperienciaValor(ExperienciaValor expGen){
+        this.expGen = expGen;
+    }
+
+    public void setNivelGen(Nivel nivelGen) {
+        this.nivelGen = nivelGen;
     }
 }

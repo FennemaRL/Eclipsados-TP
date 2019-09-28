@@ -41,7 +41,7 @@ public class BichoService {
     }
 
     public boolean puedeEvolucionar(String entrenador, Integer bicho){
-        Entrenador entrenador1 = (Entrenador) entrenadorDAO.recuperar(entrenador);
+        Entrenador entrenador1 = (Entrenador) run(() ->entrenadorDAO.recuperar(entrenador));
         Bicho elBicho = entrenador1.getBichoConID(bicho);
         return (elBicho.puedeEvolucionar());
     }
@@ -52,5 +52,11 @@ public class BichoService {
 
     public void guardarEspecie(Especie esp) {
         run(() -> this.especieDao.guardar(esp));
+    }
+
+    public void abandonarBicho(String entrenador, Integer bicho){
+        Entrenador entrenador1 = recuperarEntrenador(entrenador);
+        entrenador1.abandonarBicho(bicho);
+
     }
 }

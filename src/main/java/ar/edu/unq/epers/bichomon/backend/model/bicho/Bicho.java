@@ -84,10 +84,16 @@ public class Bicho {
 	public void setOwner(Entrenador entrenador) {
 		this.owner = entrenador;
 	}
+	public void abandonar(){this.owner = null;}
 	public String toString(){
 		return id +" Especie: "+ especie.toString();
 	}
 
-    public Entrenador getOwner() {return this.owner;
+	public Entrenador getOwner() {
+		return this.owner;
+	}
+
+    public void aumentarEnergiaPorCombate() {
+		this.energiaDeCombate += Math.random() * (5.01 - 0.99);
     }
 }

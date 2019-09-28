@@ -7,8 +7,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/bicho/Bicho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/bicho/Bicho.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/entrenador/Entrenador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/entrenador/Entrenador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Dojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Dojo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Ubicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Ubicacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/EntrenadorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/EntrenadorTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +57,39 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.EntrenadorTest.un_entrenador_con_105_exp_es_lvl2">
+    <configuration name="EntrenadorTest.un_entrenador_con_105_exp_es_lvl2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Eclipsados-TP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unq.epers.test.modelo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.test.modelo" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.test.modelo.EntrenadorTest" />
+      <option name="METHOD_NAME" value="un_entrenador_con_105_exp_es_lvl2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EntrenadorTest.un_entrenador_con_un_experiencia_es_lvl_1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Eclipsados-TP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unq.epers.test.modelo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.test.modelo" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.test.modelo.EntrenadorTest" />
+      <option name="METHOD_NAME" value="un_entrenador_con_un_experiencia_es_lvl_1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ResultadoCombateTest.bicho_pepe_energia_gana_a_bicho_juan_Y_Guarda_Historial" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Eclipsados-TP" />
       <extension name="coverage">
@@ -74,6 +108,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EntrenadorTest.un_entrenador_con_105_exp_es_lvl2" />
+        <item itemvalue="JUnit.EntrenadorTest.un_entrenador_con_un_experiencia_es_lvl_1" />
         <item itemvalue="JUnit.ResultadoCombateTest.bicho_pepe_energia_gana_a_bicho_juan_Y_Guarda_Historial" />
       </list>
     </recent_temporary>

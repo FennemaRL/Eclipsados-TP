@@ -53,7 +53,6 @@ public class Dojo extends Ubicacion{
             Historial historial = new Historial (entrenadorC,bichoC,fecha);
             this.historial.add(historial);
             ResultadoCombate resultado =new ResultadoCombate(bichoC);
-
             return resultado;
         }
         if(!entrenadorC.tieneBichoConId(bichoC.getId())){
@@ -70,6 +69,10 @@ public class Dojo extends Ubicacion{
 
             ResultadoCombate resultado = new ResultadoCombate(bichomon,bichoC);
             posibleCambioGanador(resultado,entrenador);
+            entrenador.aumentarExpPorCombate();
+            bichoC.aumentarEnergiaPorCombate();
+            bichomon.aumentarEnergiaPorCombate();
+            this.entrenadorC.aumentarExpPorCombate();
             return resultado;
         }
 

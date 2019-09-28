@@ -7,6 +7,7 @@ public class EntrenadorException extends  RuntimeException{
     private Entrenador entrenador;
     private Integer iDBichomon;
 
+
     public EntrenadorException (Entrenador entrenador, Integer bichomonID ){
         this.entrenador = entrenador;
         iDBichomon = bichomonID;

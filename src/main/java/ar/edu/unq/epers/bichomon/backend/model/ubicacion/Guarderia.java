@@ -34,4 +34,8 @@ public class Guarderia extends Ubicacion{
     public void adoptar(Bicho bichoadoptado) {
     bichos.add(bichoadoptado);
     }
+
+    public List<Bicho> getBichos(){
+        return this.bichos;
+    }
 }

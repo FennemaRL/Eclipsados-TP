@@ -139,4 +139,15 @@ public class UbicacionTest {
         assertTrue(bicho == null);
     }
 
+    @Test
+    public void se_trata_de_abandonar_un_poquemon_en_una_guarderia(){
+        Bicho a = mock(Bicho.class);
+        Guarderia guarderia= new Guarderia("safe");
+        Especie esmock= mock(Especie.class);
+        when(a.getEspecie()).thenReturn(esmock);
+        when(esmock.getNombre()).thenReturn("papa");
+        guarderia.adoptar(a);
+        assertEquals(1,guarderia.getBichos().size());
+    }
+
 }
