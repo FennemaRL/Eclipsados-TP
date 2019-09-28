@@ -1,4 +1,4 @@
-package ar.edu.unq.epers.test.modelo;
+/*package ar.edu.unq.epers.test.modelo;
 
 import ar.edu.unq.epers.bichomon.backend.model.Exception.EntrenadorException;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
@@ -38,6 +38,7 @@ public class  EntrenadorTest {
         private List<Integer> niveles;
         @Before
         public void prepare() {
+<<<<<<< HEAD
 
                 niveles = new ArrayList<Integer>();
                 niveles.add(1);
@@ -57,6 +58,8 @@ public class  EntrenadorTest {
 
                 //chocoMon.setCondicionesEvolucion(10,0,1, DateTime.parse("2020-11-10"));
 
+/*=======
+>>>>>>> 64b633764b445ded51599d6b0c18fd5fe7907f83
                 creciente = mock(Guarderia.class);
                 esh = new Entrenador("esh",creciente);
                 roko = mock(Bicho.class);
@@ -69,10 +72,12 @@ public class  EntrenadorTest {
 
 
         @Test
-        public void un_entrenador_tiene_un_bichomon() {
+        public void al_pedir_el_bicho_con_id_3_devuelve_a_roko(){
+                when(roko.getId()).thenReturn(3);
 
-                assertEquals(lukas.getBichoConID(leo.getId()),leo);
+                assertEquals(roko, esh.getBichoConID(3));
         }
+<<<<<<< HEAD
         @Test
         public void un_entrenador_con_un_experiencia_es_lvl_1(){
                 assertEquals(new Integer(1), lukas.getNivel());
@@ -85,23 +90,19 @@ public class  EntrenadorTest {
         /*
         @Test
         public void el_entrenador_sabe_si_su_bichomon_puede_evolucionar(){
+=======
+>>>>>>> 64b633764b445ded51599d6b0c18fd5fe7907f83
 
-                assertTrue(lukas.puedeEvolucionarBichoConID(1));
+        @Test (expected = EntrenadorException.class)
+        public void al_pedir_el_bicho_con_id_99_devuelve_null(){
+                esh.getBichoConID(99);
         }
 
         @Test
-        public  void el_entrenador_sabe_si_puede_evolucionar_a_un_bichomon_por_los_requisitos_de_su_especie(){
-                chocoMon.setCondicionesEvolucion(30,1,10,DateTime.parse("2015-11-10"));
-                assertFalse(lukas.puedeEvolucionarBichoConID(1));
+        public void al_agregar_un_bicho_se_setea_el_Owner_de_ese_bicho(){
+                verify(roko,atLeast(1)).setOwner(esh);
         }
 
-        @Test (expected = EntrenadorException.class)
-        public void el_entrenador_no_puede_acceder_a_bichos_que_no_posee(){
-                lukas.puedeEvolucionarBichoConID(2);
-        }
-
-
-         */
 
         @Test (expected = EntrenadorException.class)
         public void el_entrenador_no_puede_abandonar_un_bicho_que_no_posee(){
@@ -113,6 +114,7 @@ public class  EntrenadorTest {
 
                 esh.abandonarBicho(2);
 
+                verify(riko, atLeast(1)).abandonar();
                 esh.abandonarBicho(3);
 
                 assertEquals(1, esh.getBichos().size());
@@ -123,6 +125,5 @@ public class  EntrenadorTest {
 
 
 }
-
-
+*/
 

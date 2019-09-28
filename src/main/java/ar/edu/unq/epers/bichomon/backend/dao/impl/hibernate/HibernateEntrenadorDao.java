@@ -42,6 +42,12 @@ public class HibernateEntrenadorDao extends HibernateDAO<Entrenador> implements 
         session.close();
         }
 
+    @Override
+    public void actualizar(Entrenador entrenador) {
+        Session session = TransactionRunner.getCurrentSession();
+        session.update(entrenador);
+    }
+
 
 }
 

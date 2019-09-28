@@ -183,11 +183,12 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
     }
 
 
-    //abandonarBichoTest
+    //abandonarBichoTests
+
+
     @Test (expected = BichomonError.class)
     public void el_entrenador_puede_abandonar_un_bicho_siempre_que_no_se_quede_sin_bichos(){
-        RandomBichomon mr =new ProbabilidadNoRandom();
-        ubicacion = new Dojo("Chaparral", mr );
+        ubicacion = new Guarderia("Chaparral");
         Entrenador entrenador = new Entrenador("Mostaza5",ubicacion);
         Especie chocoMon =new Especie("chocoMon",TipoBicho.CHOCOLATE, 1,1,0);
         Bicho lisomon = new Bicho(chocoMon);
@@ -202,7 +203,44 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
 
         bs.abandonarBicho(entrenador.getNombre(),homermon.getId());
 
-        
+
     }
+
+    @Test (expected = ZonaErronea.class)
+    public void el_entrenador_no_puede_abandonar_un_bicho_si_no_esta_en_una_guarderia(){
+        RandomBichomon mr =new ProbabilidadNoRandom();
+        ubicacion = new Dojo("Chaparral", mr);
+        Entrenador entrenador = new Entrenador("Mostaza5",ubicacion);
+        Especie chocoMon =new Especie("chocoMon",TipoBicho.CHOCOLATE, 1,1,0);
+        Bicho lisomon = new Bicho(chocoMon);
+        Bicho homermon = new Bicho(chocoMon);
+
+        entrenador.agregarBichomon(lisomon);
+        entrenador.agregarBichomon(homermon);
+
+        run(() ->edao.guardar(entrenador));
+
+        bs.abandonarBicho(entrenador.getNombre(), lisomon.getId());
+        //El cambio de owner sobre el bicho esta testiado en el modelo.
+        bs.abandonarBicho(entrenador.getNombre(),homermon.getId());
+    }
+
+    @Test (expected = EntrenadorException.class)
+    public void el_entrenador_no_puede_abandonar_un_bicho_que_no_tiene(){
+        ubicacion = new Guarderia("Chaparral");
+        Entrenador entrenador = new Entrenador("Mostaza5",ubicacion);
+        Especie chocoMon =new Especie("chocoMon",TipoBicho.CHOCOLATE, 1,1,0);
+        Bicho lisomon = new Bicho(chocoMon);
+        Bicho homermon = new Bicho(chocoMon);
+
+        entrenador.agregarBichomon(lisomon);
+        entrenador.agregarBichomon(homermon);
+
+        run(() ->edao.guardar(entrenador));
+
+        bs.abandonarBicho(entrenador.getNombre(), 99);
+
+    }
+
 
 }

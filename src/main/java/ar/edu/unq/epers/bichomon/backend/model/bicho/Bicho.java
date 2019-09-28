@@ -96,4 +96,5 @@ public class Bicho {
     public void aumentarEnergiaPorCombate() {
 		this.energiaDeCombate += Math.random() * (5.01 - 0.99);
     }
+
 }
