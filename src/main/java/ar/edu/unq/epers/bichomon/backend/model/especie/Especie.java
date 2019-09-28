@@ -1,9 +1,9 @@
 package ar.edu.unq.epers.bichomon.backend.model.especie;
 
+import ar.edu.unq.epers.bichomon.backend.model.Exception.EspecieNoPuedeEvolucionar;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 
 import javax.persistence.*;
-import java.io.Console;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -161,16 +161,6 @@ public class Especie {
 	}
 
 
-	public boolean cumpleCondicion(Bicho bicho) {
-		int diffDais = (int) (new Date().getTime() - bicho.getFechaCaptura().getTime());
-		long days = (int) TimeUnit.MILLISECONDS.toDays(diffDais);
-		System.out.println(days);
-		long daysAComparar = TimeUnit.MILLISECONDS.toDays(tiempoAtranscurrir);
-		return (bicho.getEnergia()>=nivelDeEnergiaNecesario &&
-				bicho.getVictorias()>= cantidadDeVictoriasNecesarias &&
-				days >= daysAComparar &&
-				bicho.getNivelEntrenador()>= nivelDelEntrenadorNecesario);
-	}
 	public void setEspecieRaiz(Especie e){
 		especieRaiz= e;
 	}
@@ -184,7 +174,38 @@ public class Especie {
     }
 	public void setEspecieEvo(Especie evo){this.evo = evo;}
 
-	public boolean puedeEvolucionar(Bicho bicho) {
-		return evo != null && this.cumpleCondicion(bicho);
+	public boolean cumpleCondicion(Boolean condicionACumplir) {
+		return evo != null && condicionACumplir;
+	}
+
+	public Especie evolucionar(Boolean resCondicion) {
+		Especie nuevaEspecie = null;
+		if (cumpleCondicion(resCondicion)) {
+				nuevaEspecie = evo;
+		}
+		else{
+			throw new EspecieNoPuedeEvolucionar("la especie no puede evolucionar");
+		}
+		return nuevaEspecie;
+	}
+
+	private Especie getEspecieEvolucion() {
+		return evo;
+	}
+
+	public long getTiempoTranscurrir() {
+		 return tiempoAtranscurrir;
+	}
+
+	public int getNivelDeEnergiaNecesario() {
+		return nivelDeEnergiaNecesario;
+	}
+
+	public Integer getCantidadDeVictoriasNecesarias() {
+		return cantidadDeVictoriasNecesarias;
+	}
+
+	public Integer getNivelDelEntrenadorNecesario() {
+		return nivelDelEntrenadorNecesario;
 	}
 }

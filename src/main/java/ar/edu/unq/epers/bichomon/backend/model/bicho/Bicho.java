@@ -1,10 +1,13 @@
 package ar.edu.unq.epers.bichomon.backend.model.bicho;
 
+import ar.edu.unq.epers.bichomon.backend.model.condicion.Condicion;
+import ar.edu.unq.epers.bichomon.backend.model.condicion.Energia;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Un {@link Bicho} existente en el sistema, el mismo tiene un nombre
@@ -26,6 +29,9 @@ public class Bicho {
 	@ManyToOne (fetch = FetchType.LAZY)
 	private Entrenador owner;
 
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL )
+	private Set<Condicion> condiciones;
+
 	public Bicho(){}
 
 	//constructor creado para testear la busqueda por id
@@ -33,6 +39,7 @@ public class Bicho {
 		this.especie = especie;
 		this.id = id;
 		victorias = 0;
+		condiciones = new HashSet<Condicion>();
 	}
 
 	/**
@@ -65,12 +72,22 @@ public class Bicho {
 	}
 
     public boolean puedeEvolucionar() {
-		return ( especie.puedeEvolucionar(this));
+
+		return  this.condiciones.stream()
+				.allMatch(c -> c.cumpleCondicion(owner, this));
     }
+
+    public void evolucionar(){
+		especie = especie.evolucionar(this.puedeEvolucionar());
+	}
 
 	public Integer getVictorias() { return this.victorias;}
 
-	public Date getFechaCaptura() {  return this.fechaCaptura; }
+	public long getFechaCaptura() {
+		int diffDais = (int) (new Date().getTime() - this.fechaCaptura.getTime());
+		long days = (int) TimeUnit.MILLISECONDS.toDays(diffDais);
+		return days;
+	}
 
 
 	public Integer getNivelEntrenador() {
@@ -91,6 +108,11 @@ public class Bicho {
 
 	public Entrenador getOwner() {
 		return this.owner;
+	}
+
+
+	public void agregarCondicion(Condicion unaCondicion) {
+		condiciones.add(unaCondicion);
 	}
 
     public void aumentarEnergiaPorCombate() {
