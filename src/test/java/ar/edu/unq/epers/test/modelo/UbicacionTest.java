@@ -99,7 +99,67 @@ public class UbicacionTest {
         verify(esp,times(1)).incrementarEnUnBicho();
         assertEquals(esp, b2.getEspecie());
     }
-    @Test       //arreglar el when y otras cosas
+    @Test
+    public void se_desafia_a_un_dojo_sin_campeon(){
+        Bicho b = mock(Bicho.class);
+        RandomBichomon r = mock(RandomBichomon.class);
+        Entrenador e = mock(Entrenador.class);
+        Especie esp = mock(Especie.class);
+        Ubicacion dojo= new Dojo("Santelmo",r);
+        when(b.getId()).thenReturn(1);
+        when(b.getEspecie()).thenReturn(esp);
+        when(e.tieneBichoConId(1)).thenReturn(true);
+        when(e.getBichoConID(1)).thenReturn(b);
+        when(r.busquedaExitosa(e,dojo)).thenReturn(true);
+        when(esp.getEspecieRaiz()).thenReturn(esp);
+
+        assertEquals(dojo.retar(e,b).getGanador(),b);
+    }
+    @Test
+    public void el_desafiante_pasa_a_ser_el_nuevo_campeon(){
+        Bicho b = mock(Bicho.class);
+        Bicho b2 = mock(Bicho.class);
+        RandomBichomon r = mock(RandomBichomon.class);
+        Entrenador e = mock(Entrenador.class);
+        Entrenador e2 = mock(Entrenador.class);
+        Especie esp = mock(Especie.class);
+        Ubicacion dojo= new Dojo("Santelmo",r);
+
+        when(b.getId()).thenReturn(1);
+        when(b.getEspecie()).thenReturn(esp);
+        when(b.getEnergia()).thenReturn(1);
+        when(b2.getEnergia()).thenReturn(20);
+        when(e.tieneBichoConId(1)).thenReturn(true);
+        when(e.getBichoConID(1)).thenReturn(b);
+        when(e.getNombre()).thenReturn("entrenador1");
+
+        when(e2.getNombre()).thenReturn("entrenador2");
+        when(r.busquedaExitosa(e,dojo)).thenReturn(true);
+        when(esp.getEspecieRaiz()).thenReturn(esp);
+
+        dojo.retar(e,b);
+
+        assertEquals(b2,dojo.retar(e2,b2).getGanador());
+    }
+    @Test(expected =BichomonError.class)
+    public void entrenador_campeon_del_dojo_se_desafia_a_si_mismo(){
+        Bicho b = mock(Bicho.class);
+        RandomBichomon r = mock(RandomBichomon.class);
+        Entrenador e = mock(Entrenador.class);
+        Especie esp = mock(Especie.class);
+        Ubicacion dojo= new Dojo("Santelmo",r);
+        when(b.getId()).thenReturn(1);
+        when(b.getEspecie()).thenReturn(esp);
+        when(e.tieneBichoConId(1)).thenReturn(true);
+        when(e.getNombre()).thenReturn("entrenador1");
+        when(e.getBichoConID(1)).thenReturn(b);
+        when(r.busquedaExitosa(e,dojo)).thenReturn(true);
+        when(esp.getEspecieRaiz()).thenReturn(esp);
+
+        dojo.retar(e,b);
+        dojo.retar(e,b);
+    }
+    @Test
     public void al_intentar_capturar_en_un_pueblo_se_captura_un_bicho_de_especie_a(){ // caso feliz
         Entrenador e = mock(Entrenador.class);
         RandomBichomon r = mock(RandomBichomon.class);
@@ -117,7 +177,7 @@ public class UbicacionTest {
         verify(a,times(1)).incrementarEnUnBicho();
         assertEquals(bicho.getEspecie(),a);
     }
-    @Test (expected = CapturaFallida.class)  //arreglar el when y otras cosas
+    @Test (expected = CapturaFallida.class)
     public void al_intentar_capturar_en_un_pueblo_no_se_captura_(){ // caso malo
         Entrenador e = mock(Entrenador.class);
         RandomBichomon r = mock(RandomBichomon.class);

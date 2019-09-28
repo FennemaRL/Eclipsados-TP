@@ -26,12 +26,7 @@ public class HibernateEntrenadorDao extends HibernateDAO<Entrenador> implements 
             query.setParameter("entrenadornombre",entrenador);
             query.setMaxResults(1);
             Entrenador res=null ;
-            try{
                 res=query.getSingleResult();
-            }
-            catch (NoResultException nre){}
-            if(res == null)
-                throw new ErrorRecuperar("no hay Entrenador con el nombre" +entrenador);
             return res;
         }
 

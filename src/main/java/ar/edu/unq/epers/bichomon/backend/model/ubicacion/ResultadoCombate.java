@@ -23,7 +23,7 @@ ResultadoCombate {
         int round = 0;
         int danioHechoARetador = 0;
         int danioHechoACampeon = 0;
-        while (round < 10 &&
+        while (round <= 20 &&
                 danioHechoARetador <= bRetador.getEnergia() ||
                 danioHechoACampeon <= bCampeon.getEnergia()) {
             if (0 == round % 2) {

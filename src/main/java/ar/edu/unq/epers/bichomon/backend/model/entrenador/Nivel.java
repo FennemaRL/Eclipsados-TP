@@ -1,9 +1,16 @@
 package ar.edu.unq.epers.bichomon.backend.model.entrenador;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
 public class Nivel {
+   @Id
+   @GeneratedValue
+   private int id ;
+    @ElementCollection
+    @CollectionTable(name="niveles")
+    @Column(name="niveles")
     private List<Integer> niveles;
 
     public Nivel (List<Integer> niveles){//la lista tiene que estar ordenada de menor a mayor
@@ -13,7 +20,7 @@ public class Nivel {
 
     public int getNivel(int experiencia){
         int contador = 0 ;
-        while(! (contador == niveles.size()-1) && experiencia>niveles.get(contador)){
+        while(! (contador == niveles.size()) && experiencia>niveles.get(contador)){
             contador += 1;
         }
         if (contador == 0)
@@ -23,4 +30,7 @@ public class Nivel {
     }
 
 
+    public boolean soyNivelMaximo(Integer experiencia) {
+        return niveles.get(niveles.size()-1) <= experiencia;
+    }
 }

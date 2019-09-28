@@ -2,9 +2,12 @@ package ar.edu.unq.epers.test.modelo;
 
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.ResultadoCombate;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Turno;
 import org.junit.Test;
 
 import javax.xml.transform.Result;
+
+import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertFalse;
@@ -26,6 +29,9 @@ public class ResultadoCombateTest {
 
         assertEquals(b, resultado.getGanador());
         assertFalse(resultado.getTurnos().size()==0);
+        List<Turno> turnos =resultado.getTurnos();
+        assertEquals(b,turnos.get(0).getBicho());
+        assertEquals(b2,turnos.get(1).getBicho());
 
     }
 

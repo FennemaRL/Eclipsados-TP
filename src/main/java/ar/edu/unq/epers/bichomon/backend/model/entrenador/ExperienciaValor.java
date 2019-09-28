@@ -1,15 +1,13 @@
 package ar.edu.unq.epers.bichomon.backend.model.entrenador;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
 @Table(name = "Experiencia")
 public class ExperienciaValor {
     @Id
+    @GeneratedValue
     public int id;
 
     @Column
@@ -39,7 +37,7 @@ public class ExperienciaValor {
         this.puntosCapturar = puntosCapturar;
     }
 
-    public int getPuntosEvolucion() {
+    public int getPuntosEvolucionar() {
         return puntosEvolucion;
     }
 

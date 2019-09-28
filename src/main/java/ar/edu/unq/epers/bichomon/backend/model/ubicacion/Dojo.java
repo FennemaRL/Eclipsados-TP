@@ -5,12 +5,9 @@ import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.ResultadoCombate;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.random.RandomBichomon;
-import ar.edu.unq.epers.bichomon.backend.model.random.RandomBusqueda;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class Dojo extends Ubicacion{
@@ -20,8 +17,8 @@ public class Dojo extends Ubicacion{
     private Bicho bichoC;
     @ManyToOne( cascade = CascadeType.ALL)
     private RandomBichomon random ;
-    @ManyToMany
-    private List<Historial> historial = new ArrayList<>();
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Historial> historial = new LinkedHashSet<>();
 
     public Dojo(){
         super();
@@ -54,6 +51,9 @@ public class Dojo extends Ubicacion{
             this.historial.add(historial);
             ResultadoCombate resultado =new ResultadoCombate(bichoC);
             return resultado;
+        }
+        if(entrenadorC.getNombre().equals(entrenador.getNombre())){
+            throw new BichomonError("El campeon no puede desafiarse en su dojo");
         }
         if(!entrenadorC.tieneBichoConId(bichoC.getId())){
             entrenadorC = entrenador;
@@ -90,7 +90,8 @@ public class Dojo extends Ubicacion{
     private void posibleCambioGanador(ResultadoCombate resultado, Entrenador retador) {
         Date fecha = new Date();
         if(resultado.getGanador().getOwner()==retador){
-            (historial.get(historial.size()-1)).setFechaFin(fecha);
+            Historial mod =(Historial) (historial.toArray()[ historial.size()-1 ]);
+                    mod.setFechaFin(fecha);
             Historial historial = new Historial (retador,resultado.getGanador(),fecha);
             this.historial.add(historial);
         }
