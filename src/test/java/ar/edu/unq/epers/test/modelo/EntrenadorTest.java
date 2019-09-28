@@ -32,13 +32,6 @@ public class  EntrenadorTest {
 
         @Before
         public void prepare() {
-                lukas = new Entrenador( 1, "Lukas", 1, 1);
-                chocoMon = new Especie(1,"chocoMon",CHOCOLATE);
-                leo = new Bicho(chocoMon);
-                leo.setEnergia(20);
-                lukas.agregarBichomon(leo);
-                //chocoMon.setCondicionesEvolucion(10,0,1, DateTime.parse("2020-11-10"));
-
                 creciente = mock(Guarderia.class);
                 esh = new Entrenador("esh",creciente);
                 roko = mock(Bicho.class);
@@ -51,30 +44,22 @@ public class  EntrenadorTest {
 
 
         @Test
-        public void un_entrenador_tiene_un_bichomon() {
+        public void al_pedir_el_bicho_con_id_3_devuelve_a_roko(){
+                when(roko.getId()).thenReturn(3);
 
-                assertEquals(lukas.getBichoConID(leo.getId()),leo);
-        }
-        /*
-        @Test
-        public void el_entrenador_sabe_si_su_bichomon_puede_evolucionar(){
-
-                assertTrue(lukas.puedeEvolucionarBichoConID(1));
-        }
-
-        @Test
-        public  void el_entrenador_sabe_si_puede_evolucionar_a_un_bichomon_por_los_requisitos_de_su_especie(){
-                chocoMon.setCondicionesEvolucion(30,1,10,DateTime.parse("2015-11-10"));
-                assertFalse(lukas.puedeEvolucionarBichoConID(1));
+                assertEquals(roko, esh.getBichoConID(3));
         }
 
         @Test (expected = EntrenadorException.class)
-        public void el_entrenador_no_puede_acceder_a_bichos_que_no_posee(){
-                lukas.puedeEvolucionarBichoConID(2);
+        public void al_pedir_el_bicho_con_id_99_devuelve_null(){
+                esh.getBichoConID(99);
         }
 
+        @Test
+        public void al_agregar_un_bicho_se_setea_el_Owner_de_ese_bicho(){
+                verify(roko,atLeast(1)).setOwner(esh);
+        }
 
-         */
 
         @Test (expected = EntrenadorException.class)
         public void el_entrenador_no_puede_abandonar_un_bicho_que_no_posee(){
@@ -86,6 +71,7 @@ public class  EntrenadorTest {
 
                 esh.abandonarBicho(2);
 
+                verify(riko, atLeast(1)).abandonar();
                 esh.abandonarBicho(3);
 
                 assertEquals(1, esh.getBichos().size());

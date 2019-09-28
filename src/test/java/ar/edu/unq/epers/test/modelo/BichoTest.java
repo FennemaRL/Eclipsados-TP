@@ -18,14 +18,20 @@ import static org.mockito.Mockito.*;
 public class BichoTest {
     private Especie rko;
     private Bicho roko;
+    private Entrenador esh;
 
 
     @Before
     public void setUp() {
         rko = mock(Especie.class);
         roko = new Bicho(rko);
+        esh = mock(Entrenador.class);
+
     }
 
+    @Test
+    public void asd(){
 
+    }
 
 }

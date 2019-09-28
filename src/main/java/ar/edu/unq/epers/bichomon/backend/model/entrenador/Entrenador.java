@@ -79,13 +79,14 @@ public class Entrenador {
         return( nombre + " id: "+id +"{"+ b[0] +"}");
     }
 
-    public Bicho capturar() {
+    public Bicho capturar() {  //Falta testiarlo con experiencia y lvl****************************///
         if(haveMaxCantBichos()){
             //romper
         }
         Bicho nuevoBicho = ubicacion.capturar(this);
         nuevoBicho.setFechaCaptura(new Date());
         nuevoBicho.setOwner(this);
+        this.agregarBichomon(nuevoBicho);
         return nuevoBicho;
     }
 
