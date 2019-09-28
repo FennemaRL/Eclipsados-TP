@@ -2,11 +2,12 @@ package ar.edu.unq.epers.bichomon.backend.model.ubicacion;
 
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
+import ar.edu.unq.epers.bichomon.backend.model.entrenador.ResultadoCombate;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.random.RandomBichomon;
-import ar.edu.unq.epers.bichomon.backend.model.random.RandomBusqueda;
 
 import javax.persistence.*;
+import java.util.*;
 
 @Entity
 public class Dojo extends Ubicacion{
@@ -16,6 +17,8 @@ public class Dojo extends Ubicacion{
     private Bicho bichoC;
     @ManyToOne( cascade = CascadeType.ALL)
     private RandomBichomon random ;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Historial> historial = new LinkedHashSet<>();
 
     public Dojo(){
         super();
@@ -39,19 +42,59 @@ public class Dojo extends Ubicacion{
         }
     }
     @Override
-    public void retar(Entrenador entrenador,Bicho bichomon){ //preguntar por esto en clase
+    public ResultadoCombate retar(Entrenador entrenador, Bicho bichomon){ //preguntar por esto en clase
         if(entrenadorC == null){
             entrenadorC = entrenador;
             bichoC =bichomon;
+            Date fecha = new Date();
+            Historial historial = new Historial (entrenadorC,bichoC,fecha);
+            this.historial.add(historial);
+            ResultadoCombate resultado =new ResultadoCombate(bichoC);
+            return resultado;
+        }
+        if(entrenadorC.getNombre().equals(entrenador.getNombre())){
+            throw new BichomonError("El campeon no puede desafiarse en su dojo");
         }
         if(!entrenadorC.tieneBichoConId(bichoC.getId())){
             entrenadorC = entrenador;
             bichoC = bichomon;
+            Date fecha = new Date();
+            Historial historial = new Historial (entrenadorC,bichoC,fecha);
+            this.historial.add(historial);
+            ResultadoCombate resultado =new ResultadoCombate(bichoC);
+
+            return resultado;
         }
         else{
-            //duelo con toda la wea esa ;
+
+            ResultadoCombate resultado = new ResultadoCombate(bichomon,bichoC);
+            posibleCambioGanador(resultado,entrenador);
+            entrenador.aumentarExpPorCombate();
+            bichoC.aumentarEnergiaPorCombate();
+            bichomon.aumentarEnergiaPorCombate();
+            this.entrenadorC.aumentarExpPorCombate();
+            return resultado;
         }
 
+    }
+
+    @Override
+    public String getEntrenadorName() {
+        return entrenadorC.getNombre();
+    }
+
+    @Override
+    public String getBichomonName() {
+        return bichoC.getEspecie().getNombre();
+    }
+    private void posibleCambioGanador(ResultadoCombate resultado, Entrenador retador) {
+        Date fecha = new Date();
+        if(resultado.getGanador().getOwner()==retador){
+            Historial mod =(Historial) (historial.toArray()[ historial.size()-1 ]);
+                    mod.setFechaFin(fecha);
+            Historial historial = new Historial (retador,resultado.getGanador(),fecha);
+            this.historial.add(historial);
+        }
     }
 
 }

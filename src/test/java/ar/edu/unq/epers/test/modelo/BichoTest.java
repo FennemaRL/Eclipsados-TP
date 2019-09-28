@@ -27,6 +27,9 @@ public class BichoTest {
     private Energia energia;
     private Victoria victoria;
 
+    private Entrenador esh;
+
+
 
     @Before
     public void setUp() {
@@ -36,6 +39,7 @@ public class BichoTest {
         victoria = mock(Victoria.class);
         energia = mock (Energia.class);
         roko = new Bicho(rko);
+
         roko.setOwner(leo);
         roko.setFechaCaptura(new Date(2001,10,10));
         roko.setEnergia(50);
@@ -65,6 +69,14 @@ public class BichoTest {
     public void un_bicho_evoluciona_si_cumple_las_condiciones_dadas_por_su_especie(){
         roko.evolucionar();
         assertEquals(roko.getEspecie(), rko2);
+        esh = mock(Entrenador.class);
+
+    }
+
+    @Test
+    public void asd(){
+
+
     }
 
 }

@@ -35,6 +35,16 @@ public class Guarderia extends Ubicacion{
     bichos.add(bichoadoptado);
     }
 
+    @Override
+    public String getEntrenadorName() {
+        return null;
+    }
+
+    @Override
+    public String getBichomonName() {
+        return null;
+    }
+
     public List<Bicho> getBichos(){
         return this.bichos;
     }

@@ -26,7 +26,7 @@ public class Bicho {
 	private int energiaDeCombate;
 	private Date fechaCaptura;
 	private Integer victorias;
-	@ManyToOne (cascade = CascadeType.ALL)
+	@ManyToOne (fetch = FetchType.LAZY)
 	private Entrenador owner;
 
 	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL )
@@ -110,7 +110,13 @@ public class Bicho {
 		return this.owner;
 	}
 
+
 	public void agregarCondicion(Condicion unaCondicion) {
 		condiciones.add(unaCondicion);
 	}
+
+    public void aumentarEnergiaPorCombate() {
+		this.energiaDeCombate += Math.random() * (5.01 - 0.99);
+    }
+
 }
