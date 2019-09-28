@@ -37,8 +37,9 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
     @Before
     public void setUp(){
 
-        edao=new HibernateEntrenadorDao();
-        bs= new BichoService(edao,new HibernateEspecieDao(),new HibernateBichoDao());
+        HibernateEntrenadorDao dao = new HibernateEntrenadorDao();
+        bs= new BichoService(dao,new HibernateEspecieDao(),new HibernateBichoDao());
+        edao=dao;
         Especie especie = new Especie("Rayo", TipoBicho.ELECTRICIDAD,3,2,0);
         bartolomon = new Bicho(especie);
 
@@ -66,7 +67,7 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
     }
     @Test(expected = GuarderiaErrorNoBichomon.class)
     public void se_caputura_en_un_guarderia_sin_bichomon(){ // busqueda desfavorable guarderia
-        ubicacion = new Guarderia("Chaparral");
+        ubicacion = new Guarderia("Chaparral1");
         Entrenador entrenador = new Entrenador("Mostaza1",ubicacion);
         run(() ->edao.guardar(entrenador)) ;
 
@@ -75,7 +76,7 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
     @Test(expected = DojoSinEntrenador.class)
     public void se_caputura_en_un_dojo_sin_campeon(){ // busqueda desfavorable dojo
         ProbabilidadNoRandom mr = new ProbabilidadNoRandom();
-        ubicacion = new Dojo("Chaparral",mr);
+        ubicacion = new Dojo("Chaparral2",mr);
         Entrenador entrenador = new Entrenador("Mostaza2",ubicacion);
         run(() ->edao.guardar(entrenador)) ;
 
@@ -87,7 +88,7 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
         Especie esp =new Especie("bichorita2",TipoBicho.PLANTA, 1,1,0);
         Bicho bicho =new Bicho(esp);
 
-        ubicacion = new Dojo("Chaparral",mr);
+        ubicacion = new Dojo("Chaparral4",mr);
         Entrenador entrenador = new Entrenador("Mostaza4",ubicacion);
         entrenador.agregarBichomon(bicho);
         ubicacion.retar(entrenador,bicho);
@@ -99,11 +100,11 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
     @Test(expected = CapturaFallida.class)
     public void no_se_captura_un_bicho_en_un_dojo(){ //busqueda favorable dojo
         RandomBichomon mr =new ProbabilidadNoRandomFalse();
-        Especie esp =new Especie("bichorita2",TipoBicho.PLANTA, 1,1,0);
+        Especie esp =new Especie("bichorita3",TipoBicho.PLANTA, 1,1,0);
         Bicho bicho =new Bicho(esp);
 
-        ubicacion = new Dojo("Chaparral",mr);
-        Entrenador entrenador = new Entrenador("Mostaza4",ubicacion);
+        ubicacion = new Dojo("Chaparral3",mr);
+        Entrenador entrenador = new Entrenador("Mostaza3",ubicacion);
         entrenador.agregarBichomon(bicho);
         System.out.print(bicho +" bicho?");
         ubicacion.retar(entrenador,bicho);
@@ -112,22 +113,22 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
 
         System.out.print(ubicacion.getEntrenadorName() +" entrenador "+ ubicacion.getBichomonName() +" bichomon ");
 
-        bs.buscar("Mostaza4");
+        bs.buscar("Mostaza3");
     }
     @Test
     public void se_captura_un_bicho_Especie_bichorita_en_un_pueblo(){ //busqueda favorable pueblo
         RandomBichomon mr =new ProbabilidadNoRandom();
         ArrayList<Especie> esp = new ArrayList<>();
-        esp.add(new Especie("bichorita",TipoBicho.PLANTA, 1,1,0));
+        esp.add(new Especie("bichorita8",TipoBicho.PLANTA, 1,1,0));
         ArrayList<Integer> probesp = new ArrayList<>();
         probesp.add(100);
-        ubicacion = new Pueblo("Chaparral",mr,esp,probesp);
-        Entrenador entrenador = new Entrenador("Mostaza3",ubicacion);
+        ubicacion = new Pueblo("Chaparral8",mr,esp,probesp);
+        Entrenador entrenador = new Entrenador("Mostaza8",ubicacion);
 
 
         run(() ->edao.guardar(entrenador));
 
-        Bicho bichocap =bs.buscar("Mostaza3");
+        Bicho bichocap =bs.buscar("Mostaza8");
         assertEquals(esp.get(0).getNombre(),bichocap.getEspecie().getNombre());
         assertEquals(1, bichocap.getEspecie().getCantidadBichos());
     }
@@ -161,8 +162,8 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
     @Test
     public void se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar(){
 
-        Especie chocoMon =new Especie("chocoMon",TipoBicho.CHOCOLATE, 1,1,0);
-        Especie dobleChocoMon = new Especie("dobleChocoMon",TipoBicho.CHOCOLATE, 2,2,0);
+        Especie chocoMon =new Especie("chocoMon1",TipoBicho.CHOCOLATE, 1,1,0);
+        Especie dobleChocoMon = new Especie("dobleChocoMon1",TipoBicho.CHOCOLATE, 2,2,0);
         chocoMon.setEspecieEvo(dobleChocoMon);
         chocoMon.setEnergiaIncial(50);
         Bicho ricky = new Bicho(chocoMon);
@@ -173,24 +174,24 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
         victoria.setPuntos(0);
 
         RandomBichomon pNR =new ProbabilidadNoRandom();
-        ubicacion = new Dojo("fidelHouse",pNR);
+        ubicacion = new Dojo("fidelHouse1",pNR);
 
-        Entrenador lukas = new Entrenador("lukas",ubicacion);
+        Entrenador lukas = new Entrenador("lukas1",ubicacion);
         ricky.agregarCondicion(energia);
         ricky.agregarCondicion(victoria);
         lukas.agregarBichomon(ricky);
 
         run(() ->edao.guardar(lukas));
 
-        assertFalse(bs.puedeEvolucionar("lukas",ricky.getId()));
+        assertFalse(bs.puedeEvolucionar("lukas1",ricky.getId()));
 
     }
 
     @Test (expected = EntrenadorException.class)
     public void si_se_le_pregunta_a_un_entrenador_si_un_bichomon_puede_evolucionar_y_no_es_suyo_se_devuelve_una_exception(){
 
-        Especie chocoMon =new Especie("chocoMon",TipoBicho.CHOCOLATE, 1,1,0);
-        Especie dobleChocoMon = new Especie("dobleChocoMon",TipoBicho.CHOCOLATE, 2,2,0);
+        Especie chocoMon =new Especie("chocoMon2",TipoBicho.CHOCOLATE, 1,1,0);
+        Especie dobleChocoMon = new Especie("dobleChocoMon2",TipoBicho.CHOCOLATE, 2,2,0);
         chocoMon.setEspecieEvo(dobleChocoMon);
         chocoMon.setEnergiaIncial(50);
         energia.setPuntos(30);
@@ -203,16 +204,16 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
         ricky.agregarCondicion(victoria);
 
         RandomBichomon pNR =new ProbabilidadNoRandom();
-        ubicacion = new Dojo("fidelHouse",pNR);
+        ubicacion = new Dojo("fidelHouse2",pNR);
 
-        Entrenador lukas = new Entrenador("lukas",ubicacion);
+        Entrenador lukas = new Entrenador("lukas2",ubicacion);
         ricky.setEnergia(50);
 
         lukas.agregarBichomon(ricky);
 
         run(() ->edao.guardar(lukas));
 
-        assertFalse(bs.puedeEvolucionar("lukas",ricky.getId()*2));
+        assertFalse(bs.puedeEvolucionar("lukas2",ricky.getId()*2));
 
     }
 
@@ -222,9 +223,9 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
 
     @Test (expected = BichomonError.class)
     public void el_entrenador_puede_abandonar_un_bicho_siempre_que_no_se_quede_sin_bichos(){
-        ubicacion = new Guarderia("Chaparral");
-        Entrenador entrenador = new Entrenador("Mostaza5",ubicacion);
-        Especie chocoMon =new Especie("chocoMon",TipoBicho.CHOCOLATE, 1,1,0);
+        ubicacion = new Guarderia("Chaparral6");
+        Entrenador entrenador = new Entrenador("Mostaza6",ubicacion);
+        Especie chocoMon =new Especie("chocoMon6",TipoBicho.CHOCOLATE, 1,1,0);
         Bicho lisomon = new Bicho(chocoMon);
         Bicho homermon = new Bicho(chocoMon);
 
@@ -243,9 +244,9 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
     @Test (expected = ZonaErronea.class)
     public void el_entrenador_no_puede_abandonar_un_bicho_si_no_esta_en_una_guarderia(){
         RandomBichomon mr =new ProbabilidadNoRandom();
-        ubicacion = new Dojo("Chaparral", mr);
-        Entrenador entrenador = new Entrenador("Mostaza5",ubicacion);
-        Especie chocoMon =new Especie("chocoMon",TipoBicho.CHOCOLATE, 1,1,0);
+        ubicacion = new Dojo("Chaparral7", mr);
+        Entrenador entrenador = new Entrenador("Mostaza7",ubicacion);
+        Especie chocoMon =new Especie("chocoMon7",TipoBicho.CHOCOLATE, 1,1,0);
         Bicho lisomon = new Bicho(chocoMon);
         Bicho homermon = new Bicho(chocoMon);
 
@@ -261,9 +262,9 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
 
     @Test (expected = EntrenadorException.class)
     public void el_entrenador_no_puede_abandonar_un_bicho_que_no_tiene(){
-        ubicacion = new Guarderia("Chaparral");
-        Entrenador entrenador = new Entrenador("Mostaza5",ubicacion);
-        Especie chocoMon =new Especie("chocoMon",TipoBicho.CHOCOLATE, 1,1,0);
+        ubicacion = new Guarderia("Chaparral8");
+        Entrenador entrenador = new Entrenador("Mostaza8",ubicacion);
+        Especie chocoMon =new Especie("chocoMon8",TipoBicho.CHOCOLATE, 1,1,0);
         Bicho lisomon = new Bicho(chocoMon);
         Bicho homermon = new Bicho(chocoMon);
 
@@ -279,33 +280,33 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
     @Test
     public void retar_en_un_dojo_sin_campeon(){ // sin campeon
         RandomBichomon mr =new ProbabilidadNoRandom();
-        Especie esp =new Especie("bichorita2",TipoBicho.PLANTA, 1,1,0);
+        Especie esp =new Especie("bichorita11",TipoBicho.PLANTA, 1,1,0);
         Bicho bicho =new Bicho(esp);
 
-        ubicacion = new Dojo("Chaparral",mr);
-        Entrenador entrenador = new Entrenador("Mostaza4",ubicacion);
+        ubicacion = new Dojo("Chaparral11",mr);
+        Entrenador entrenador = new Entrenador("Mostaza11",ubicacion);
         entrenador.agregarBichomon(bicho);
 
         run(() ->edao.guardar(entrenador));
 
-        assertEquals(bicho.getId(),bs.duelo("Mostaza4",bicho.getId()).getGanador().getId());
+        assertEquals(bicho.getId(),bs.duelo("Mostaza11",bicho.getId()).getGanador().getId());
 
     }
     @Test(expected =BichomonError.class)
     public void el_campeon_de_un_dojo_no_se_puede_desafiar_a_si_mismo(){ // mismo campeon
         RandomBichomon mr =new ProbabilidadNoRandom();
-        Especie esp =new Especie("bichorita2",TipoBicho.PLANTA, 1,1,0);
+        Especie esp =new Especie("bichorita12",TipoBicho.PLANTA, 1,1,0);
         Bicho bicho =new Bicho(esp);
 
-        ubicacion = new Dojo("Chaparral",mr);
-        Entrenador entrenador = new Entrenador("Mostaza4",ubicacion);
+        ubicacion = new Dojo("Chaparral12",mr);
+        Entrenador entrenador = new Entrenador("Mostaza12",ubicacion);
         entrenador.agregarBichomon(bicho);
         ubicacion.retar(entrenador,bicho);
 
         run(() ->edao.guardar(entrenador));
 
-        bs.duelo("Mostaza4",bicho.getId());
-        bs.duelo("Mostaza4",bicho.getId());
+        bs.duelo("Mostaza12",bicho.getId());
+        bs.duelo("Mostaza12",bicho.getId());
     }
 
 }

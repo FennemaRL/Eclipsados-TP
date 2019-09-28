@@ -4,15 +4,14 @@ import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class RandomBichomon  {
     @Id
     @GeneratedValue
-    private int id;
+    protected int id;
     public RandomBichomon(){
     }
     public boolean busquedaExitosa(Entrenador e, Ubicacion u) {

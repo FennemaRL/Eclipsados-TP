@@ -7,6 +7,8 @@ import ar.edu.unq.epers.bichomon.backend.model.entrenador.ResultadoCombate;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.BichomonError;
 
+import javax.persistence.EntityNotFoundException;
+
 import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
 //Modificar daos, no existe entrenador, no exisste ubicacion, no existe bicho
 public class BichoService {
@@ -34,9 +36,11 @@ public class BichoService {
 
     private Entrenador recuperarEntrenador(String entrenador) { // Entrenador service
         Entrenador resultante = run(() -> this.entrenadorDAO.recuperar(entrenador));
-        if(resultante == null)
+
+        if(resultante == null){
             throw new NoHayEntrenadorConEseNombre("no hay entrenador con ese nombre");
-            else return resultante;
+        }
+        return resultante;
     }
 
     public boolean puedeEvolucionar(String entrenador, Integer bicho){
