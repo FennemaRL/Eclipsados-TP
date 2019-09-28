@@ -66,7 +66,7 @@ public class HibernateEspecieDao extends HibernateDAO<Especie> implements Especi
     public void actualizar(Entrenador entrenador) {
 
     }
-
+    @Override
     public void guardar(Especie item) {
         Session session = TransactionRunner.getCurrentSession();
         try{

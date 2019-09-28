@@ -7,7 +7,9 @@ import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.random.RandomBichomon;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 public class Dojo extends Ubicacion{
@@ -15,18 +17,20 @@ public class Dojo extends Ubicacion{
     private Entrenador entrenadorC;
     @ManyToOne
     private Bicho bichoC;
+
     @ManyToOne( cascade = CascadeType.ALL)
     private RandomBichomon random ;
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="id_historial")
-    private Set<Historial> historial = new LinkedHashSet<>();
-
+/*
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Historial> historial ;
+*/
     public Dojo(){
         super();
     }
     public Dojo(String name, RandomBichomon rb) {
         super(name);
         random = rb;
+        //historial = new LinkedHashSet<>();
     }
 
     @Override
@@ -49,7 +53,7 @@ public class Dojo extends Ubicacion{
             bichoC =bichomon;
             Date fecha = new Date();
             Historial historial = new Historial (entrenadorC,bichoC,fecha);
-            this.historial.add(historial);
+            //this.historial.add(historial);
             ResultadoCombate resultado =new ResultadoCombate(bichoC);
             return resultado;
         }
@@ -61,7 +65,7 @@ public class Dojo extends Ubicacion{
             bichoC = bichomon;
             Date fecha = new Date();
             Historial historial = new Historial (entrenadorC,bichoC,fecha);
-            this.historial.add(historial);
+            //this.historial.add(historial);
             ResultadoCombate resultado =new ResultadoCombate(bichoC);
 
             return resultado;
@@ -88,14 +92,14 @@ public class Dojo extends Ubicacion{
     public String getBichomonName() {
         return bichoC.getEspecie().getNombre();
     }
-    private void posibleCambioGanador(ResultadoCombate resultado, Entrenador retador) {
+    private void posibleCambioGanador(ResultadoCombate resultado, Entrenador retador) {/*
         Date fecha = new Date();
         if(resultado.getGanador().getOwner()==retador){
             Historial mod =(Historial) (historial.toArray()[ historial.size()-1 ]);
                     mod.setFechaFin(fecha);
             Historial historial = new Historial (retador,resultado.getGanador(),fecha);
             this.historial.add(historial);
-        }
+        }*/
     }
 
 }

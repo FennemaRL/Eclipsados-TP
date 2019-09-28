@@ -21,10 +21,8 @@ public class Entrenador {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Bicho> bichos;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="ID_expgen")
     private ExperienciaValor expGen;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="ID_nivelgen")
     private Nivel nivelGen;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -48,8 +46,8 @@ public class Entrenador {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
         this.experiencia = experiencia;
-        this.expGen = expGen;
-        this.nivelGen = nivelGen;
+        //this.expGen = expGen;
+        //this.nivelGen = nivelGen;
         bichos = new ArrayList<Bicho>();
 
     }
@@ -72,7 +70,7 @@ public class Entrenador {
 
 
 
-    public Integer getNivel() { return nivelGen.getNivel(this.experiencia); }
+    public Integer getNivel() { return 1;}// nivelGen.getNivel(this.experiencia); }
 
     public boolean tieneBichoConId(Integer bichoId){
         return bichos.stream().filter(b-> b.getId() == bichoId).findAny().orElse(null) != null;
@@ -110,7 +108,7 @@ public class Entrenador {
     }
 
     private boolean haveMaxCantBichos() {
-        if(nivelGen.soyNivelMaximo(experiencia))
+        if(false )//nivelGen.soyNivelMaximo(experiencia))
             return true;
         else{
             return tengoCantidadMaximaPorNivel();
@@ -119,7 +117,7 @@ public class Entrenador {
 
     private boolean tengoCantidadMaximaPorNivel() {
         int cantBichos =bichos.size();
-        switch (nivelGen.getNivel(experiencia)){
+        switch (1){//nivelGen.getNivel(experiencia)){
             case 1 : return cantBichos == 2;
             case 2 : return cantBichos == 3;
             case 3 : return cantBichos == 4;
@@ -147,17 +145,17 @@ public class Entrenador {
     }
 
     public void aumentarExpPorCombate() {
-        this.experiencia += expGen.getPuntosCombatir();
+        //this.experiencia += expGen.getPuntosCombatir();
     }
-    private void aumentarExpPorCapturar(){this.experiencia += expGen.getPuntosCapturar();}
-    private void aumentarExpPorEvolucionar(){this.experiencia += expGen.getPuntosEvolucionar();}
+    private void aumentarExpPorCapturar(){}//this.experiencia += expGen.getPuntosCapturar();}
+    private void aumentarExpPorEvolucionar(){}//this.experiencia += expGen.getPuntosEvolucionar();}
 
 
     public void setExperienciaValor(ExperienciaValor expGen){
-        this.expGen = expGen;
+        //this.expGen = expGen;
     }
 
     public void setNivelGen(Nivel nivelGen) {
-        this.nivelGen = nivelGen;
+        //this.nivelGen = nivelGen;
     }
 }

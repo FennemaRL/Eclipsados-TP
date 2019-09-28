@@ -35,8 +35,10 @@
 		<mapping class="ar.edu.unq.epers.bichomon.backend.model.random.RandomBichomon"/>
 		<mapping class="ar.edu.unq.epers.bichomontTestBichoService.ProbabilidadNoRandom"/>
 		<mapping class="ar.edu.unq.epers.bichomontTestBichoService.ProbabilidadNoRandomFalse"/>
+
 		<mapping class="ar.edu.unq.epers.bichomon.backend.model.ubicacion.Historial"/>
 		<mapping class="ar.edu.unq.epers.bichomon.backend.model.entrenador.ExperienciaValor" />
 		<mapping class="ar.edu.unq.epers.bichomon.backend.model.entrenador.Nivel" />
+
 	</session-factory>
 </hibernate-configuration>

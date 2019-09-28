@@ -43,7 +43,7 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
     }
     @After
     public void tearDown(){
-        SessionFactoryProvider.destroy();
+        //SessionFactoryProvider.destroy();
     }
 
     @Test(expected = NoHayEntrenadorConEseNombre.class)

@@ -10,7 +10,7 @@ public class Historial {
     @Id
     @GeneratedValue
     private int id;
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Entrenador entrenador;
     @ManyToOne (fetch = FetchType.LAZY)
     private Bicho bicho;
