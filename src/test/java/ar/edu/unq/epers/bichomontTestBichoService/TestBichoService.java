@@ -3,6 +3,8 @@ package ar.edu.unq.epers.bichomontTestBichoService;
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.*;
 import ar.edu.unq.epers.bichomon.backend.model.Exception.EntrenadorException;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
+import ar.edu.unq.epers.bichomon.backend.model.condicion.Energia;
+import ar.edu.unq.epers.bichomon.backend.model.condicion.Victoria;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho;
@@ -28,6 +30,8 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
     private Ubicacion ubicacion;
     private HibernateEntrenadorDao edao;
     private BichoService bs;
+    private Energia energia = new Energia();
+    private Victoria victoria= new Victoria();
 
     @Before
     public void setUp(){
@@ -119,12 +123,13 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
         Date dt = new Date(2001,10,10);
         ricky.setFechaCaptura(dt);
         ricky.setEnergia(50);
+        energia.setPuntos(30);
 
         RandomBichomon pNR =new ProbabilidadNoRandom();
         ubicacion = new Dojo("fidelHouse",pNR);
 
         Entrenador lukas = new Entrenador("lukas",ubicacion);
-        chocoMon.setCondicionesEvolucion(30,0,lukas.getNivel(),0);
+        ricky.agregarCondicion(energia);
         lukas.agregarBichomon(ricky);
 
         run(() ->edao.guardar(lukas));
@@ -139,16 +144,19 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
         Especie dobleChocoMon = new Especie("dobleChocoMon",TipoBicho.CHOCOLATE, 2,2,0);
         chocoMon.setEspecieEvo(dobleChocoMon);
         chocoMon.setEnergiaIncial(50);
-
         Bicho ricky = new Bicho(chocoMon);
-        Date dt = new Date(2020,10,10);
+        Date dt = new Date(2001,10,10);
         ricky.setFechaCaptura(dt);
+        ricky.setEnergia(50);
+        energia.setPuntos(30);
+        victoria.setPuntos(0);
 
         RandomBichomon pNR =new ProbabilidadNoRandom();
         ubicacion = new Dojo("fidelHouse",pNR);
 
         Entrenador lukas = new Entrenador("lukas",ubicacion);
-        chocoMon.setCondicionesEvolucion(90,10,10,20);
+        ricky.agregarCondicion(energia);
+        ricky.agregarCondicion(victoria);
         lukas.agregarBichomon(ricky);
 
         run(() ->edao.guardar(lukas));
@@ -164,16 +172,21 @@ public class TestBichoService { // los test no corren en conjunto ya que las tab
         Especie dobleChocoMon = new Especie("dobleChocoMon",TipoBicho.CHOCOLATE, 2,2,0);
         chocoMon.setEspecieEvo(dobleChocoMon);
         chocoMon.setEnergiaIncial(50);
+        energia.setPuntos(30);
+        victoria.setPuntos(0);
 
         Bicho ricky = new Bicho(chocoMon);
         Date dt = new Date(2020,10,10);
         ricky.setFechaCaptura(dt);
+        ricky.agregarCondicion(energia);
+        ricky.agregarCondicion(victoria);
 
         RandomBichomon pNR =new ProbabilidadNoRandom();
         ubicacion = new Dojo("fidelHouse",pNR);
 
         Entrenador lukas = new Entrenador("lukas",ubicacion);
-        chocoMon.setCondicionesEvolucion(90,10,10,20);
+        ricky.setEnergia(50);
+
         lukas.agregarBichomon(ricky);
 
         run(() ->edao.guardar(lukas));

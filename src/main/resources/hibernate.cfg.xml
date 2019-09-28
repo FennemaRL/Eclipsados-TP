@@ -32,6 +32,12 @@
 		<mapping class="ar.edu.unq.epers.bichomon.backend.model.random.RandomBichomon"/>
 		<mapping class="ar.edu.unq.epers.bichomontTestBichoService.ProbabilidadNoRandom"/>
 
+		<mapping class="ar.edu.unq.epers.bichomon.backend.model.condicion.Condicion"/>
+		<mapping class="ar.edu.unq.epers.bichomon.backend.model.condicion.Edad"/>
+		<mapping class="ar.edu.unq.epers.bichomon.backend.model.condicion.Energia"/>
+		<mapping class="ar.edu.unq.epers.bichomon.backend.model.condicion.Nivel"/>
+		<mapping class="ar.edu.unq.epers.bichomon.backend.model.condicion.Victoria"/>
+
 
 	</session-factory>
 </hibernate-configuration>
