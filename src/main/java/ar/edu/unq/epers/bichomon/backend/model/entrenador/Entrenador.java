@@ -70,7 +70,7 @@ public class Entrenador {
 
 
 
-    public Integer getNivel() { return 1;}// nivelGen.getNivel(this.experiencia); }
+    public Integer getNivel() { return  nivelGen.getNivel(this.experiencia); }
 
     public boolean tieneBichoConId(Integer bichoId){
         return bichos.stream().filter(b-> b.getId() == bichoId).findAny().orElse(null) != null;

@@ -26,7 +26,7 @@ import java.util.Date;
 import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
 import static org.junit.Assert.*;
 
-public class TestBichoService { // los test no corren en conjunto ya que las tablas siguen persistiendo
+public class TestBichoService { // no te calentes en testearlo no anda :/
     private Bicho bartolomon;
     private Ubicacion ubicacion;
     private HibernateEntrenadorDao edao;
