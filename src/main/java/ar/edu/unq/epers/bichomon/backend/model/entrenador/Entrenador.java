@@ -6,9 +6,7 @@ import ar.edu.unq.epers.bichomon.backend.model.ubicacion.BichomonError;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class Entrenador {
@@ -19,11 +17,13 @@ public class Entrenador {
     private String nombre;
     private Integer experiencia;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Bicho> bichos;
+    private Set<Bicho> bichos;
+
     @ManyToOne(cascade = CascadeType.ALL)
     private ExperienciaValor expGen;
+
     @ManyToOne(cascade = CascadeType.ALL)
-    private Nivel nivelGen;
+    private NivelEntrenador nivelEntrenadorGen;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Ubicacion ubicacion;
@@ -33,22 +33,22 @@ public class Entrenador {
         this.id= id;
         this.nombre = nombre;
         this.experiencia= exp;
-        bichos = new ArrayList<Bicho>();
+        bichos = new HashSet<>();
     }
     public Entrenador( String nombre, Ubicacion u){
         this.nombre = nombre;
         this.experiencia= 0;
-        bichos = new ArrayList<Bicho>();
+        bichos = new HashSet<Bicho>();
         ubicacion = u;
     }
 
-    public Entrenador(String nombre, Ubicacion ubicacion, int experiencia ,ExperienciaValor expGen, Nivel nivelGen) {
+    public Entrenador(String nombre, Ubicacion ubicacion, ExperienciaValor expGen, NivelEntrenador nivelEntrenadorGen) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
-        this.experiencia = experiencia;
-        //this.expGen = expGen;
-        //this.nivelGen = nivelGen;
-        bichos = new ArrayList<Bicho>();
+        this.experiencia = 1;
+        this.expGen = expGen;
+        this.nivelEntrenadorGen = nivelEntrenadorGen;
+        bichos = new HashSet<Bicho>();
 
     }
 
@@ -70,7 +70,7 @@ public class Entrenador {
 
 
 
-    public Integer getNivel() { return  nivelGen.getNivel(this.experiencia); }
+    public Integer getNivel() { return  nivelEntrenadorGen.getNivel(this.experiencia); }
 
     public boolean tieneBichoConId(Integer bichoId){
         return bichos.stream().filter(b-> b.getId() == bichoId).findAny().orElse(null) != null;
@@ -108,7 +108,7 @@ public class Entrenador {
     }
 
     private boolean haveMaxCantBichos() {
-        if(false )//nivelGen.soyNivelMaximo(experiencia))
+        if(nivelEntrenadorGen.soyNivelMaximo(experiencia))
             return true;
         else{
             return tengoCantidadMaximaPorNivel();
@@ -117,7 +117,7 @@ public class Entrenador {
 
     private boolean tengoCantidadMaximaPorNivel() {
         int cantBichos =bichos.size();
-        switch (1){//nivelGen.getNivel(experiencia)){
+        switch (nivelEntrenadorGen.getNivel(experiencia)){
             case 1 : return cantBichos == 2;
             case 2 : return cantBichos == 3;
             case 3 : return cantBichos == 4;
@@ -126,7 +126,7 @@ public class Entrenador {
         }
     }
 
-    public List<Bicho> getBichos(){
+    public Set<Bicho> getBichos(){
         return this.bichos;
     }
 
@@ -144,18 +144,13 @@ public class Entrenador {
 
     }
 
-    public void aumentarExpPorCombate() {
-        //this.experiencia += expGen.getPuntosCombatir();
-    }
-    private void aumentarExpPorCapturar(){}//this.experiencia += expGen.getPuntosCapturar();}
-    private void aumentarExpPorEvolucionar(){}//this.experiencia += expGen.getPuntosEvolucionar();}
+    public void aumentarExpPorCombate() {this.experiencia += expGen.getPuntosCombatir();}
+    private void aumentarExpPorCapturar(){this.experiencia += expGen.getPuntosCapturar();}
+    public void aumentarExpPorEvolucionar(){this.experiencia += expGen.getPuntosEvolucionar();}
 
 
-    public void setExperienciaValor(ExperienciaValor expGen){
-        //this.expGen = expGen;
-    }
+    public void setExperienciaValor(ExperienciaValor expGen){this.expGen = expGen; }
 
-    public void setNivelGen(Nivel nivelGen) {
-        //this.nivelGen = nivelGen;
+    public void setNivelGen(NivelEntrenador nivelEntrenadorGen) {//this.nivelEntrenadorGen = nivelEntrenadorGen;
     }
 }

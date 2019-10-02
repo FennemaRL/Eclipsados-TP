@@ -42,12 +42,9 @@
 		<mapping class="ar.edu.unq.epers.bichomon.backend.model.condicion.Victoria"/>
 
 
-
-		<mapping class="ar.edu.unq.epers.bichomontTestBichoService.ProbabilidadNoRandomFalse"/>
-
 		<mapping class="ar.edu.unq.epers.bichomon.backend.model.ubicacion.Historial"/>
 		<mapping class="ar.edu.unq.epers.bichomon.backend.model.entrenador.ExperienciaValor" />
-		<mapping class="ar.edu.unq.epers.bichomon.backend.model.entrenador.Nivel" />
+		<mapping class="ar.edu.unq.epers.bichomon.backend.model.entrenador.NivelEntrenador" />
 
 	</session-factory>
 </hibernate-configuration>

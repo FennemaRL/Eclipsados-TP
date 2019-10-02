@@ -7,7 +7,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue(value="Nivel")
+@DiscriminatorValue(value="NivelEntrenador")
 public class Nivel extends Condicion {
 
     public Nivel(){

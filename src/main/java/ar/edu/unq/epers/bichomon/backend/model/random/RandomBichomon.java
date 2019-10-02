@@ -12,6 +12,7 @@ public class RandomBichomon  {
     @Id
     @GeneratedValue
     protected int id;
+
     public RandomBichomon(){
     }
     public boolean busquedaExitosa(Entrenador e, Ubicacion u) {

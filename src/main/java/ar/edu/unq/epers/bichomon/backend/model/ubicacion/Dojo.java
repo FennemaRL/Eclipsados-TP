@@ -20,31 +20,37 @@ public class Dojo extends Ubicacion{
 
     @ManyToOne( cascade = CascadeType.ALL)
     private RandomBichomon random ;
-/*
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)  // no lo guardamos por que rompe el dao de entrenador
     private Set<Historial> historial ;
-*/
+
     public Dojo(){
         super();
     }
     public Dojo(String name, RandomBichomon rb) {
         super(name);
         random = rb;
-        //historial = new LinkedHashSet<>();
+        historial = new LinkedHashSet<>();
     }
 
     @Override
     public Bicho capturar(Entrenador e) {
         Bicho br = null;
-        if(entrenadorC != null && entrenadorC.tieneBichoConId(bichoC.getId()) && random.busquedaExitosa(e,this)){
+        Boolean busqueda = random.busquedaExitosa(e,this);
+        Boolean contieneBicho=entrenadorC != null && entrenadorC.tieneBichoConId(bichoC.getId());
+        if( contieneBicho && busqueda){
             Especie esp = bichoC.getEspecie().getEspecieRaiz();
             br = new Bicho(esp);
             esp.incrementarEnUnBicho();
-            return br;
+
         }
-        else{
+        if (!contieneBicho){
             throw new DojoSinEntrenador("No se puede capturar en esta zona todavia ya que no posee campeon");
         }
+        if(!busqueda){
+            throw new CapturaFallida("tu capura ha sido fallida");
+        }
+        return br;
     }
     @Override
     public ResultadoCombate retar(Entrenador entrenador, Bicho bichomon){ //preguntar por esto en clase
@@ -53,7 +59,7 @@ public class Dojo extends Ubicacion{
             bichoC =bichomon;
             Date fecha = new Date();
             Historial historial = new Historial (entrenadorC,bichoC,fecha);
-            //this.historial.add(historial);
+            this.historial.add(historial);
             ResultadoCombate resultado =new ResultadoCombate(bichoC);
             return resultado;
         }
@@ -65,7 +71,7 @@ public class Dojo extends Ubicacion{
             bichoC = bichomon;
             Date fecha = new Date();
             Historial historial = new Historial (entrenadorC,bichoC,fecha);
-            //this.historial.add(historial);
+            this.historial.add(historial);
             ResultadoCombate resultado =new ResultadoCombate(bichoC);
 
             return resultado;
@@ -92,14 +98,14 @@ public class Dojo extends Ubicacion{
     public String getBichomonName() {
         return bichoC.getEspecie().getNombre();
     }
-    private void posibleCambioGanador(ResultadoCombate resultado, Entrenador retador) {/*
+    private void posibleCambioGanador(ResultadoCombate resultado, Entrenador retador) {
         Date fecha = new Date();
         if(resultado.getGanador().getOwner()==retador){
             Historial mod =(Historial) (historial.toArray()[ historial.size()-1 ]);
                     mod.setFechaFin(fecha);
             Historial historial = new Historial (retador,resultado.getGanador(),fecha);
             this.historial.add(historial);
-        }*/
+        }
     }
 
 }

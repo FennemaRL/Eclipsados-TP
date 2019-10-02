@@ -4,25 +4,25 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 @Entity(name="LvlEntrenador")
-public class Nivel {
+public class NivelEntrenador {
    @Id
    @GeneratedValue
    private int id ;
-    @ElementCollection
+    @ElementCollection(fetch=FetchType.EAGER)
     @CollectionTable(name="niveles")
     @Column(name="niveles")
     private List<Integer> niveles;
 
-    public Nivel(){}
+    public NivelEntrenador(){}
 
-    public Nivel (List<Integer> niveles){//la lista tiene que estar ordenada de menor a mayor
+    public NivelEntrenador(List<Integer> niveles){//la lista tiene que estar ordenada de menor a mayor
         this.niveles = niveles;
 
     }
 
     public int getNivel(int experiencia){
         int contador = 0 ;
-        while(! (contador == niveles.size()) && experiencia>niveles.get(contador)){
+        while((!( contador == niveles.size())) && experiencia>niveles.get(contador)){
             contador += 1;
         }
         if (contador == 0)

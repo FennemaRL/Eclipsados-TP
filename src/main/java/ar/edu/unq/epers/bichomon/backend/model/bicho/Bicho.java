@@ -37,8 +37,8 @@ public class Bicho {
 	//constructor creado para testear la busqueda por id
 	public Bicho(Especie especie){
 		this.especie = especie;
-		this.id = id;
 		victorias = 0;
+		energiaDeCombate= 1;
 		condiciones = new HashSet<Condicion>();
 	}
 
@@ -72,10 +72,9 @@ public class Bicho {
 	}
 
     public boolean puedeEvolucionar() {
-
-		return  this.condiciones.stream()
-				.allMatch(c -> c.cumpleCondicion(owner, this));
-    }
+		return this.condiciones.stream()
+				.allMatch(c ->c.cumpleCondicion(owner, this));
+	}
 
     public void evolucionar(){
 		especie = especie.evolucionar(this.puedeEvolucionar());

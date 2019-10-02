@@ -13,7 +13,7 @@ public abstract class Condicion {
 
     @Id
     @GeneratedValue
-    public int id;
+    protected int id;
 
     @Column
     public int puntos;

@@ -14,6 +14,7 @@ public class Guarderia extends Ubicacion{
     @ManyToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Bicho> bichos ;
+
     public Guarderia (){}
     public Guarderia(String name) {
         super(name);

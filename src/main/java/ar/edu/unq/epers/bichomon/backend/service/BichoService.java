@@ -35,18 +35,27 @@ public class BichoService {
     }
 
     private Entrenador recuperarEntrenador(String entrenador) { // Entrenador service
-        Entrenador resultante = run(() -> this.entrenadorDAO.recuperar(entrenador));
-
-        if(resultante == null){
+        try {
+            Entrenador resultante = run(() -> this.entrenadorDAO.recuperar(entrenador));
+            return resultante;
+        } catch (Exception e) {
             throw new NoHayEntrenadorConEseNombre("no hay entrenador con ese nombre");
         }
-        return resultante;
     }
 
     public boolean puedeEvolucionar(String entrenador, Integer bicho){
         Entrenador entrenador1 =  recuperarEntrenador(entrenador);
         Bicho elBicho = entrenador1.getBichoConID(bicho);
         return (elBicho.puedeEvolucionar());
+    }
+
+    public Bicho evolucionar(String entrenador, int bicho) {
+        Entrenador entre = recuperarEntrenador(entrenador);
+        Bicho bichoo= entre.getBichoConID(bicho);
+        bichoo.evolucionar();
+        entre.aumentarExpPorEvolucionar();
+        actualizarEntrenador(entre);
+        return bichoo;
     }
 
     public void abandonarBicho(String entrenador, Integer bicho){
@@ -58,8 +67,9 @@ public class BichoService {
 
     public ResultadoCombate duelo(String entrenador, int bichoid){
         Entrenador entrenador1 = recuperarEntrenador(entrenador);
+        ResultadoCombate rc = entrenador1.duelear(bichoid);
         actualizarEntrenador(entrenador1);
-        return entrenador1.duelear(bichoid);
+        return rc;
     }
     private void actualizarEntrenador(Entrenador entrenador) {
         run(()-> entrenadorDAO.actualizar(entrenador));

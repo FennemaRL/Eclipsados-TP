@@ -1,15 +1,13 @@
 package ar.edu.unq.epers.bichomonTest.backend.dao;
 
 
-import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.ErrorRecuperar;
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateEntrenadorDao;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.ExperienciaValor;
-import ar.edu.unq.epers.bichomon.backend.model.entrenador.Nivel;
+import ar.edu.unq.epers.bichomon.backend.model.entrenador.NivelEntrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho;
-import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Guarderia;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Pueblo;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 import ar.edu.unq.epers.bichomon.backend.service.runner.SessionFactoryProvider;
@@ -22,7 +20,6 @@ import javax.persistence.PersistenceException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.CHOCOLATE;
 import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
 import static org.junit.Assert.assertEquals;
 
@@ -38,7 +35,7 @@ public class hibernateEntrenadorDaoTest { //falta testear cosas y agregar constr
         ArrayList<Integer> num = new ArrayList<>();
         num.add(40);num.add(50);num.add(90);
         dao= new HibernateEntrenadorDao();
-        pepe = new Entrenador("pepe", ubi,0,new ExperienciaValor(1,1,1),new Nivel());
+        pepe = new Entrenador("pepe", ubi, new ExperienciaValor(1,1,1),new NivelEntrenador());
         Bicho bartolo = new Bicho(new Especie("arnaldo", TipoBicho.AGUA,1,1,0));
         bartolo.setFechaCaptura(new Date());
         pepe.agregarBichomon(bartolo);
@@ -51,7 +48,7 @@ public class hibernateEntrenadorDaoTest { //falta testear cosas y agregar constr
 
     @Test
     public void test_al_guardar_y_luego_recuperar_se_obtiene_objetos_similares(){
-        Entrenador pepa = new Entrenador("pepa", ubi,0,new ExperienciaValor(1,1,1),new Nivel());
+        Entrenador pepa = new Entrenador("pepa", ubi, new ExperienciaValor(1,1,1),new NivelEntrenador());
         run(() ->this.dao.guardar(pepa)); // modificar la fecha manaña por que es demasiado larga :S
 
         Entrenador pep2 = run(() ->this.dao.recuperar("pepa"));

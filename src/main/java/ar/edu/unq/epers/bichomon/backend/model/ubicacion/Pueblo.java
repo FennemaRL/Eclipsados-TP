@@ -15,8 +15,10 @@ public class Pueblo extends Ubicacion{
 
     @ManyToOne ( cascade = CascadeType.ALL)
     private RandomBichomon random;
+
     @ManyToMany ( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Especie> especies;
+
     @ElementCollection
     @CollectionTable(name="especiesProbabilidad", joinColumns=@JoinColumn(name="nombreUbicacion"))
     @Column(name="probabilidad")

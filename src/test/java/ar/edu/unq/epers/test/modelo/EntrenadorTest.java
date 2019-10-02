@@ -4,7 +4,7 @@ import ar.edu.unq.epers.bichomon.backend.model.Exception.EntrenadorException;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.ExperienciaValor;
-import ar.edu.unq.epers.bichomon.backend.model.entrenador.Nivel;
+import ar.edu.unq.epers.bichomon.backend.model.entrenador.NivelEntrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.BichomonError;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Dojo;
@@ -24,7 +24,7 @@ public class  EntrenadorTest {
         private Entrenador lukas;
         private Bicho leo;
         private Especie chocoMon;
-        private Nivel nivelGen;
+        private NivelEntrenador nivelEntrenadorGen;
         private ExperienciaValor expGen;
         private Entrenador esh;
         private Entrenador master;
@@ -42,8 +42,8 @@ public class  EntrenadorTest {
                 niveles.add(100);
                 niveles.add(400);
                 expGen = new ExperienciaValor(10,10,15);
-                nivelGen = new Nivel(niveles);
-                master = new Entrenador("lucas",creciente,8000,expGen,nivelGen);
+                nivelEntrenadorGen = new NivelEntrenador(niveles);
+                master = new Entrenador("lucas",creciente, expGen, nivelEntrenadorGen);
 
                 chocoMon = new Especie(1,"chocoMon",CHOCOLATE);
                 leo = new Bicho(chocoMon);
@@ -62,7 +62,7 @@ public class  EntrenadorTest {
                  when(roko.getId()).thenReturn(3);
                  esh.agregarBichomon(riko);
                  esh.agregarBichomon(roko);
-                 lukas = new Entrenador("lucas",creciente,1,expGen,nivelGen);
+                 lukas = new Entrenador("lucas",creciente, expGen, nivelEntrenadorGen);
                  when(creciente.capturar(lukas)).thenReturn(riko);
                  System.out.println(creciente.capturar(lukas));
 
@@ -80,14 +80,16 @@ public class  EntrenadorTest {
                 assertEquals(new Integer(1), lukas.getNivel());
         }
         @Test
-        public void un_entrenador_con_8000_exp_es_lvl3 (){
-
+        public void un_entrenador_con_800_exp_es_lvl3 (){
+                for (int i=0 ;i <41 ;i +=1)
+                        master.aumentarExpPorCombate();
                 assertEquals(new Integer(3), master.getNivel());
         }
 
         @Test(expected = BichomonError.class)
         public void entrenador_de_nivel_1_no_puede_tener_mas_de__bichomones(){
             lukas.capturar();
+            when(lukas.getUbicacion().capturar(lukas)).thenReturn(mock(Bicho.class));
             lukas.capturar();
             lukas.capturar();
 
