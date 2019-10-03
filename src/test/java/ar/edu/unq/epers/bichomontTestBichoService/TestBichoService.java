@@ -66,6 +66,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
     }
 
     @Test
+    //buscar
     public void se_caputura_en_un_guarderia_con_bichomon(){ // busqueda favorable guarderia
         ubicacion = new Guarderia("Chaparral");
         ubicacion.adoptar(bartolomon);
@@ -89,7 +90,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         Entrenador entrenador = new Entrenador("Mostaza2",ubicacion,dadorDeExperiencia,dadorDeNivel);
         run(() ->edao.guardar(entrenador)) ;
 
-       bs.buscar("Mostaza2");
+        bs.buscar("Mostaza2");
     }
     @Test
     public void se_captura_un_bicho_Especie_bichorita_en_un_dojo(){ //busqueda favorable dojo
@@ -122,7 +123,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
 
         System.out.print(ubicacion.getEntrenadorName() +" entrenador "+ ubicacion.getBichomonName() +" bichomon ");
 
-            bs.buscar("Mostaza3");
+        bs.buscar("Mostaza3");
     }
     @Test
     public void se_captura_un_bicho_Especie_bichorita_en_un_pueblo(){ //busqueda favorable pueblo
@@ -144,9 +145,9 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         assertEquals(1, bichocap.getEspecie().getCantidadBichos());
     }
 
-
+    //evolucionar
     @Test
-    public void se_le_pregunta_a_un_entrenador_ssi_su_bichomon_puede_evolucionar(){
+    public void se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar(){ //caso bueno evolucionar
 
         Especie chocoMon =new Especie("chocoMon",TipoBicho.CHOCOLATE, 1,1,0);
         Especie dobleChocoMon = new Especie("dobleChocoMon",TipoBicho.CHOCOLATE, 2,2,0);
@@ -168,10 +169,11 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         run(() ->edao.guardar(lukas));
 
         assertTrue(bs.puedeEvolucionar("lukas",ricky.getId()));
+        assertNotSame(chocoMon,bs.evolucionar("lukas",ricky.getId()));
 
     }
     @Test(expected = EspecieNoPuedeEvolucionar.class)
-    public void se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar(){
+    public void se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar_y_no_puede(){//caso malo evolucionar
 
         Especie chocoMon =new Especie("chocoMon1",TipoBicho.CHOCOLATE, 1,1,0);
         Especie dobleChocoMon = new Especie("dobleChocoMon1",TipoBicho.CHOCOLATE, 2,2,0);
@@ -333,8 +335,9 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         bicho2.setEnergia(500);
         Entrenador entrenador2 = new Entrenador("Mostaza13",ubicacion,dadorDeExperiencia,dadorDeNivel);
         entrenador.agregarBichomon(bicho);
+        entrenador2.agregarBichomon(bicho2);
         run(() ->edao.guardar(entrenador2));
-        ResultadoCombate rc1 =bs.duelo("Mostaza12",bicho2.getId());
+        ResultadoCombate rc1 =bs.duelo("Mostaza12",bicho.getId());
 
         ResultadoCombate rc =bs.duelo("Mostaza13",bicho2.getId());
 
