@@ -15,6 +15,7 @@ import ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho;
 import ar.edu.unq.epers.bichomon.backend.model.random.RandomBichomon;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.*;
 import ar.edu.unq.epers.bichomon.backend.service.BichoService;
+import ar.edu.unq.epers.bichomon.backend.service.EntrenadorService;
 import ar.edu.unq.epers.bichomon.backend.service.runner.SessionFactoryProvider;
 import org.junit.After;
 import org.junit.Before;
@@ -30,9 +31,9 @@ import static org.junit.Assert.*;
 public class TestBichoService { // no te calentes en testearlo no anda :/
     private Bicho bartolomon;
     private Ubicacion ubicacion;
-    private HibernateEntrenadorDao edao;
     private BichoService bs;
     private Energia energia;
+    EntrenadorService es ;
     private ArrayList<Integer> niveles;
     private Victoria victoria;
     private ExperienciaValor dadorDeExperiencia;
@@ -42,8 +43,8 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
     public void setUp(){
 
         HibernateEntrenadorDao dao = new HibernateEntrenadorDao();
-        bs= new BichoService(dao,new HibernateEspecieDao(),new HibernateBichoDao());
-        edao=dao;
+        es = new EntrenadorService(dao);
+        bs= new BichoService(es);
         Especie especie = new Especie("Rayo", TipoBicho.ELECTRICIDAD,3,2,0);
         bartolomon = new Bicho(especie);
         niveles =  new ArrayList<>();
@@ -71,7 +72,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         ubicacion = new Guarderia("Chaparral");
         ubicacion.adoptar(bartolomon);
         Entrenador entrenador = new Entrenador("Mostaza",ubicacion,dadorDeExperiencia,dadorDeNivel);
-        run(() ->edao.guardar(entrenador)) ;
+        es.guardar(entrenador) ;
 
         assertEquals(bartolomon.getId(), bs.buscar("Mostaza").getId());
     }
@@ -79,7 +80,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
     public void se_caputura_en_un_guarderia_sin_bichomon(){ // busqueda desfavorable guarderia
         ubicacion = new Guarderia("Chaparral1");
         Entrenador entrenador = new Entrenador("Mostaza1",ubicacion,dadorDeExperiencia,dadorDeNivel);
-        run(() ->edao.guardar(entrenador)) ;
+        es.guardar(entrenador) ;
 
         bs.buscar("Mostaza1");
     }
@@ -88,7 +89,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         ProbabilidadNoRandom mr = new ProbabilidadNoRandom();
         ubicacion = new Dojo("Chaparral2",mr);
         Entrenador entrenador = new Entrenador("Mostaza2",ubicacion,dadorDeExperiencia,dadorDeNivel);
-        run(() ->edao.guardar(entrenador)) ;
+        es.guardar(entrenador) ;
 
         bs.buscar("Mostaza2");
     }
@@ -103,7 +104,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         entrenador.agregarBichomon(bicho);
         ubicacion.retar(entrenador,bicho);
 
-        run(() ->edao.guardar(entrenador));
+        es.guardar(entrenador);
 
         assertEquals(bicho.getEspecie().getNombre(),bs.buscar("Mostaza4").getEspecie().getNombre());
     }
@@ -119,7 +120,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         System.out.print(bicho +" bicho?");
         ubicacion.retar(entrenador,bicho);
 
-        run(() ->edao.guardar(entrenador));
+        es.guardar(entrenador);
 
         System.out.print(ubicacion.getEntrenadorName() +" entrenador "+ ubicacion.getBichomonName() +" bichomon ");
 
@@ -138,7 +139,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         Entrenador entrenador = new Entrenador("Mostaza8",ubicacion,dadorDeExperiencia,dadorDeNivel);
 
 
-        run(() ->edao.guardar(entrenador));
+        es.guardar(entrenador);
 
         Bicho bichocap =bs.buscar("Mostaza8");
         assertEquals(esp.get(0).getNombre(),bichocap.getEspecie().getNombre());
@@ -166,7 +167,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         ricky.agregarCondicion(energia);
         lukas.agregarBichomon(ricky);
 
-        run(() ->edao.guardar(lukas));
+        es.guardar(lukas);
 
         assertTrue(bs.puedeEvolucionar("lukas",ricky.getId()));
         assertNotSame(chocoMon,bs.evolucionar("lukas",ricky.getId()));
@@ -194,7 +195,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         ricky.agregarCondicion(victoria);
         lukas.agregarBichomon(ricky);
 
-        run(() ->edao.guardar(lukas));
+        es.guardar(lukas);
 
         assertFalse(bs.puedeEvolucionar("lukas1",ricky.getId()));
         bs.evolucionar("lukas1",ricky.getId());
@@ -225,7 +226,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
 
         lukas.agregarBichomon(ricky);
 
-        run(() ->edao.guardar(lukas));
+        es.guardar(lukas);
 
         assertFalse(bs.puedeEvolucionar("lukas2",ricky.getId()*2));
 
@@ -246,7 +247,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         entrenador.agregarBichomon(lisomon);
         entrenador.agregarBichomon(homermon);
 
-        run(() ->edao.guardar(entrenador));
+        es.guardar(entrenador);
 
         bs.abandonarBicho(entrenador.getNombre(), lisomon.getId());
 
@@ -267,7 +268,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         entrenador.agregarBichomon(lisomon);
         entrenador.agregarBichomon(homermon);
 
-        run(() ->edao.guardar(entrenador));
+        es.guardar(entrenador);
 
         bs.abandonarBicho(entrenador.getNombre(), lisomon.getId());
         //El cambio de owner sobre el bicho esta testeado en el modelo.
@@ -285,7 +286,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         entrenador.agregarBichomon(lisomon);
         entrenador.agregarBichomon(homermon);
 
-        run(() ->edao.guardar(entrenador));
+        es.guardar(entrenador);
 
         bs.abandonarBicho(entrenador.getNombre(), 99);
 
@@ -301,7 +302,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         Entrenador entrenador = new Entrenador("Mostaza11",ubicacion,dadorDeExperiencia,dadorDeNivel);
         entrenador.agregarBichomon(bicho);
 
-        run(() ->edao.guardar(entrenador));
+        es.guardar(entrenador);
 
         assertEquals(bicho.getId(),bs.duelo("Mostaza11",bicho.getId()).getGanador().getId());
 
@@ -316,7 +317,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         Entrenador entrenador = new Entrenador("Mostaza12",ubicacion,dadorDeExperiencia,dadorDeNivel);
         entrenador.agregarBichomon(bicho);
 
-        run(() ->edao.guardar(entrenador));
+        es.guardar(entrenador);
 
         bs.duelo("Mostaza12",bicho.getId());
         bs.duelo("Mostaza12",bicho.getId());
@@ -330,13 +331,13 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         ubicacion = new Dojo("Chaparral12",mr);
         Entrenador entrenador = new Entrenador("Mostaza12",ubicacion,dadorDeExperiencia,dadorDeNivel);
         entrenador.agregarBichomon(bicho);
-        run(() ->edao.guardar(entrenador));
+        es.guardar(entrenador);
         Bicho bicho2 =new Bicho(esp);
         bicho2.setEnergia(500);
         Entrenador entrenador2 = new Entrenador("Mostaza13",ubicacion,dadorDeExperiencia,dadorDeNivel);
         entrenador.agregarBichomon(bicho);
         entrenador2.agregarBichomon(bicho2);
-        run(() ->edao.guardar(entrenador2));
+        es.guardar(entrenador2);
         ResultadoCombate rc1 =bs.duelo("Mostaza12",bicho.getId());
 
         ResultadoCombate rc =bs.duelo("Mostaza13",bicho2.getId());

@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Ubicacion {
-
+    @Column (unique = true)
     protected String nombreUbicacion;
 
     @Id

@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02e7e95f-293e-49f2-b925-8227486de6ff" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Ubicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Ubicacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/BichoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/BichoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestBichoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestBichoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestEntrenadorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestEntrenadorService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -20,21 +20,12 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestBichoService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4590">
-              <caret line="309" column="34" selection-start-line="309" selection-start-column="34" selection-end-line="309" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestEntrenadorService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+            <state relative-caret-position="700">
+              <caret line="295" column="23" lean-forward="true" selection-start-line="295" selection-start-column="23" selection-end-line="295" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -55,7 +46,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/especie/EntrenadorService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/BichoService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Ubicacion.java" />
         <option value="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestBichoService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/EntrenadorService.java" />
         <option value="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestEntrenadorService.java" />
       </list>
     </option>
@@ -83,6 +79,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -100,6 +97,94 @@
               <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bichomon" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bichomon" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bichomon" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bichomon" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="bicho" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bichomon" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="entrenador" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bichomon" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="ubicacion" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bichomon" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bichomon" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="especie" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
@@ -142,7 +227,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -153,6 +237,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ar.edu.unq.epers.bichomon.backend.service.especie" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -166,8 +255,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestBichoService.se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar">
-    <configuration name="TestBichoService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TestBichoService.el_entrenador_no_puede_abandonar_un_bicho_si_no_esta_en_una_guarderia">
+    <configuration name="TestBichoService.el_entrenador_no_puede_abandonar_un_bicho_si_no_esta_en_una_guarderia" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <extension name="coverage">
         <pattern>
@@ -177,28 +266,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomontTestBichoService" />
       <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomontTestBichoService.TestBichoService" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestBichoService.se_caputura_en_un_guarderia_con_bichomon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomontTestBichoService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomontTestBichoService" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomontTestBichoService.TestBichoService" />
-      <option name="METHOD_NAME" value="se_caputura_en_un_guarderia_con_bichomon" />
+      <option name="METHOD_NAME" value="el_entrenador_no_puede_abandonar_un_bicho_si_no_esta_en_una_guarderia" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestBichoService.se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestBichoService.retar_en_un_dojo_sin_campeon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <extension name="coverage">
         <pattern>
@@ -208,7 +282,54 @@
       </extension>
       <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomontTestBichoService" />
       <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomontTestBichoService.TestBichoService" />
-      <option name="METHOD_NAME" value="se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar" />
+      <option name="METHOD_NAME" value="retar_en_un_dojo_sin_campeon" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestEntrenadorService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bichomon-go" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unq.epers.bichomontTestBichoService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomontTestBichoService" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomontTestBichoService.TestEntrenadorService" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestEntrenadorService.Al_recuperar_un_entrenador_inexistente_levanta_una_exepcion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bichomon-go" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unq.epers.bichomontTestBichoService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomontTestBichoService" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomontTestBichoService.TestEntrenadorService" />
+      <option name="METHOD_NAME" value="Al_recuperar_un_entrenador_inexistente_levanta_una_exepcion" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestEntrenadorService.al_recuperar_un_entrenador_inexistente_levanta_una_exepcion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bichomon-go" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unq.epers.bichomontTestBichoService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomontTestBichoService" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomontTestBichoService.TestEntrenadorService" />
+      <option name="METHOD_NAME" value="al_recuperar_un_entrenador_inexistente_levanta_una_exepcion" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -216,9 +337,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestBichoService.se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar" />
-        <item itemvalue="JUnit.TestBichoService" />
-        <item itemvalue="JUnit.TestBichoService.se_caputura_en_un_guarderia_con_bichomon" />
+        <item itemvalue="JUnit.TestBichoService.el_entrenador_no_puede_abandonar_un_bicho_si_no_esta_en_una_guarderia" />
+        <item itemvalue="JUnit.TestBichoService.retar_en_un_dojo_sin_campeon" />
+        <item itemvalue="JUnit.TestEntrenadorService.al_recuperar_un_entrenador_inexistente_levanta_una_exepcion" />
+        <item itemvalue="JUnit.TestEntrenadorService" />
+        <item itemvalue="JUnit.TestEntrenadorService.Al_recuperar_un_entrenador_inexistente_levanta_una_exepcion" />
       </list>
     </recent_temporary>
   </component>
@@ -233,50 +356,52 @@
       <option name="presentableId" value="Default" />
       <updated>1570125395048</updated>
       <workItem from="1570125399795" duration="861000" />
-      <workItem from="1570115503576" duration="6918000" />
+      <workItem from="1570115503576" duration="8716000" />
+      <workItem from="1570134034582" duration="649000" />
+      <workItem from="1570134890844" duration="6049000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestBichoService_se_caputura_en_un_guarderia_con_bichomon - 2019.10.03 at 15h 01m 18s.xml">
-      <configuration name="TestBichoService.se_caputura_en_un_guarderia_con_bichomon" configurationId="JUnit" />
+    <history-entry file="TestEntrenadorService_Al_recuperar_un_entrenador_inexistente_levanta_una_exepcion - 2019.10.03 at 16h 55m 43s.xml">
+      <configuration name="TestEntrenadorService.Al_recuperar_un_entrenador_inexistente_levanta_una_exepcion" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestBichoService_se_caputura_en_un_guarderia_con_bichomon - 2019.10.03 at 12h 03m 05s.xml">
-      <configuration name="TestBichoService.se_caputura_en_un_guarderia_con_bichomon" configurationId="JUnit" />
+    <history-entry file="TestEntrenadorService_Al_recuperar_un_entrenador_inexistente_levanta_una_exepcion - 2019.10.03 at 16h 59m 52s.xml">
+      <configuration name="TestEntrenadorService.Al_recuperar_un_entrenador_inexistente_levanta_una_exepcion" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestBichoService_se_caputura_en_un_guarderia_con_bichomon - 2019.10.03 at 12h 05m 46s.xml">
-      <configuration name="TestBichoService.se_caputura_en_un_guarderia_con_bichomon" configurationId="JUnit" />
+    <history-entry file="TestEntrenadorService_al_recuperar_un_entrenador_inexistente_levanta_una_exepcion - 2019.10.03 at 17h 02m 58s.xml">
+      <configuration name="TestEntrenadorService.al_recuperar_un_entrenador_inexistente_levanta_una_exepcion" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestBichoService_se_caputura_en_un_guarderia_con_bichomon - 2019.10.03 at 12h 06m 16s.xml">
-      <configuration name="TestBichoService.se_caputura_en_un_guarderia_con_bichomon" configurationId="JUnit" />
+    <history-entry file="TestEntrenadorService_al_recuperar_un_entrenador_inexistente_levanta_una_exepcion - 2019.10.03 at 17h 44m 27s.xml">
+      <configuration name="TestEntrenadorService.al_recuperar_un_entrenador_inexistente_levanta_una_exepcion" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestBichoService_se_caputura_en_un_guarderia_con_bichomon - 2019.10.03 at 12h 07m 54s.xml">
-      <configuration name="TestBichoService.se_caputura_en_un_guarderia_con_bichomon" configurationId="JUnit" />
+    <history-entry file="TestEntrenadorService_al_recuperar_un_entrenador_inexistente_levanta_una_exepcion - 2019.10.03 at 17h 46m 47s.xml">
+      <configuration name="TestEntrenadorService.al_recuperar_un_entrenador_inexistente_levanta_una_exepcion" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestBichoService_se_caputura_en_un_guarderia_con_bichomon - 2019.10.03 at 12h 14m 10s.xml">
-      <configuration name="TestBichoService.se_caputura_en_un_guarderia_con_bichomon" configurationId="JUnit" />
+    <history-entry file="TestEntrenadorService_al_recuperar_un_entrenador_inexistente_levanta_una_exepcion - 2019.10.03 at 17h 53m 31s.xml">
+      <configuration name="TestEntrenadorService.al_recuperar_un_entrenador_inexistente_levanta_una_exepcion" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestBichoService_se_caputura_en_un_guarderia_con_bichomon - 2019.10.03 at 12h 25m 02s.xml">
-      <configuration name="TestBichoService.se_caputura_en_un_guarderia_con_bichomon" configurationId="JUnit" />
+    <history-entry file="TestEntrenadorService - 2019.10.03 at 18h 47m 26s.xml">
+      <configuration name="TestEntrenadorService" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestBichoService - 2019.10.03 at 12h 41m 12s.xml">
-      <configuration name="TestBichoService" configurationId="JUnit" />
+    <history-entry file="TestEntrenadorService_al_recuperar_un_entrenador_inexistente_levanta_una_exepcion - 2019.10.03 at 18h 56m 34s.xml">
+      <configuration name="TestEntrenadorService.al_recuperar_un_entrenador_inexistente_levanta_una_exepcion" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestBichoService - 2019.10.03 at 15h 21m 59s.xml">
-      <configuration name="TestBichoService" configurationId="JUnit" />
+    <history-entry file="TestEntrenadorService_al_recuperar_un_entrenador_inexistente_levanta_una_exepcion - 2019.10.03 at 19h 18m 00s.xml">
+      <configuration name="TestEntrenadorService.al_recuperar_un_entrenador_inexistente_levanta_una_exepcion" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestBichoService_se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar - 2019.10.03 at 15h 33m 59s.xml">
-      <configuration name="TestBichoService.se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar" configurationId="JUnit" />
+    <history-entry file="TestBichoService_retar_en_un_dojo_sin_campeon - 2019.10.03 at 19h 23m 34s.xml">
+      <configuration name="TestBichoService.retar_en_un_dojo_sin_campeon" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7779000" />
+    <option name="totallyTimeSpent" value="16275000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1873" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25261998" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25813568" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Persistence" order="3" side_tool="true" />
@@ -335,24 +460,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/UbicacionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14">
-          <caret line="19" column="101" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="101" />
+        <state relative-caret-position="1105">
+          <caret line="118" column="34" selection-start-line="118" selection-start-column="34" selection-end-line="118" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestBichoService.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/EntrenadorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4590">
-          <caret line="309" column="34" selection-start-line="309" selection-start-column="34" selection-end-line="309" selection-end-column="59" />
+        <state>
+          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/entrenador/Entrenador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/especie/Especie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Ubicacion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/BichoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="26" column="44" lean-forward="true" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
+          <folding>
+            <element signature="e#816#817#0" expanded="true" />
+            <element signature="e#866#867#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/EntrenadorService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" column="61" selection-start-line="16" selection-start-column="61" selection-end-line="16" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#892#893#0" expanded="true" />
+            <element signature="e#941#942#0" expanded="true" />
+            <element signature="e#992#993#0" expanded="true" />
+            <element signature="e#1044#1045#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/bicho/Bicho.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-643">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="32" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestEntrenadorService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+        <state relative-caret-position="377">
+          <caret line="33" column="78" lean-forward="true" selection-start-line="33" selection-start-column="78" selection-end-line="33" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#870#871#0" expanded="true" />
+            <element signature="e#917#918#0" expanded="true" />
+            <element signature="e#762#763#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="92" selection-start-line="11" selection-start-column="92" selection-end-line="11" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestBichoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="295" column="23" lean-forward="true" selection-start-line="295" selection-start-column="23" selection-end-line="295" selection-end-column="23" />
         </state>
       </provider>
     </entry>

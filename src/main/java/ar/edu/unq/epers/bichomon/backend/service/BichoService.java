@@ -13,65 +13,49 @@ import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner
 //Modificar daos, no existe entrenador, no exisste ubicacion, no existe bicho
 public class BichoService {
 
-    private HibernateEntrenadorDao entrenadorDAO;
+    private EntrenadorService entrenadorService;
 
-    private HibernateEspecieDao especieDao;
-
-    private HibernateBichoDao bichoDao;
-
-    public BichoService(HibernateEntrenadorDao entrenadorDAO, HibernateEspecieDao especieDao, HibernateBichoDao bichoDao) {
-        this.entrenadorDAO = entrenadorDAO;
-        this.especieDao = especieDao;
-        this.bichoDao = bichoDao;
+    public BichoService(EntrenadorService entrenadorServis) {
+        this.entrenadorService = entrenadorServis;
     }
 
     public Bicho buscar(String entrenador){
 
         Bicho bicho = null;
-        Entrenador  entre = recuperarEntrenador(entrenador);
+        Entrenador  entre = entrenadorService.recuperar(entrenador);
         bicho = entre.capturar();//romper si tengo mas de los que puedo
-        actualizarEntrenador(entre);
+        entrenadorService.actualizar(entre);
        return bicho;
     }
 
-    private Entrenador recuperarEntrenador(String entrenador) { // Entrenador service
-        try {
-            Entrenador resultante = run(() -> this.entrenadorDAO.recuperar(entrenador));
-            return resultante;
-        } catch (Exception e) {
-            throw new NoHayEntrenadorConEseNombre("no hay entrenador con ese nombre");
-        }
-    }
 
     public boolean puedeEvolucionar(String entrenador, Integer bicho){
-        Entrenador entrenador1 =  recuperarEntrenador(entrenador);
+        Entrenador entrenador1 =  entrenadorService.recuperar(entrenador);
         Bicho elBicho = entrenador1.getBichoConID(bicho);
         return (elBicho.puedeEvolucionar());
     }
 
     public Bicho evolucionar(String entrenador, int bicho) {
-        Entrenador entre = recuperarEntrenador(entrenador);
+        Entrenador entre = entrenadorService.recuperar(entrenador);
         Bicho bichoo= entre.getBichoConID(bicho);
         bichoo.evolucionar();
         entre.aumentarExpPorEvolucionar();
-        actualizarEntrenador(entre);
+        entrenadorService.actualizar(entre);
         return bichoo;
     }
 
     public void abandonarBicho(String entrenador, Integer bicho){
-        Entrenador entrenador1 = recuperarEntrenador(entrenador);
+        Entrenador entrenador1 = entrenadorService.recuperar(entrenador);
         entrenador1.abandonarBicho(bicho);
-        actualizarEntrenador(entrenador1);
+        entrenadorService.actualizar(entrenador1);
 
     }
 
     public ResultadoCombate duelo(String entrenador, int bichoid){
-        Entrenador entrenador1 = recuperarEntrenador(entrenador);
+        Entrenador entrenador1 = entrenadorService.recuperar(entrenador);
         ResultadoCombate rc = entrenador1.duelear(bichoid);
-        actualizarEntrenador(entrenador1);
+        entrenadorService.actualizar(entrenador1);
         return rc;
     }
-    private void actualizarEntrenador(Entrenador entrenador) {
-        run(()-> entrenadorDAO.actualizar(entrenador));
-    }
+
 }
