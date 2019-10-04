@@ -21,62 +21,25 @@ import static org.mockito.Mockito.*;
 
 public class BichoTest {
     private Especie rko;
-    private Especie rko2;
     private Bicho roko;
     private Entrenador leo;
-    private Energia energia;
-    private Victoria victoria;
-
-    private Entrenador esh;
 
 
 
     @Before
     public void setUp() {
         rko = mock(Especie.class);
-        rko2 = mock(Especie.class);
         leo = mock(Entrenador.class);
-        victoria = mock(Victoria.class);
-        energia = mock (Energia.class);
         roko = new Bicho(rko);
 
-        roko.setOwner(leo);
-        roko.setFechaCaptura(new Date(2001,10,10));
-        roko.setEnergia(50);
-
-        when(energia.cumpleCondicion(leo,roko)).thenReturn(true);
-        when(victoria.cumpleCondicion(leo,roko)).thenReturn(true);
-        when(leo.getNivel()).thenReturn(10);
-        when(rko.evolucionar(true)).thenReturn(rko2);
-        roko.agregarCondicion(energia);
-        roko.agregarCondicion(victoria);
     }
-
+/*
     @Test
     public void un_bicho_puede_evolucionar_si_cumple_las_condiciones_dadas_por_su_especie(){
-
-        assertTrue(roko.puedeEvolucionar());
-    }
-
-    @Test
-    public void un_bicho_puede_no_evolucionar_si_no_cumple_las_condiciones_dadas_por_su_especie(){
-
-        when(victoria.cumpleCondicion(leo,roko)).thenReturn(false);
-        assertFalse(roko.puedeEvolucionar());
-    }
-
-    @Test
-    public void un_bicho_evoluciona_si_cumple_las_condiciones_dadas_por_su_especie(){
+        roko.puedeEvolucionar();
+        verify(rko.puedeEvolucionar(roko,leo));
         roko.evolucionar();
-        assertEquals(roko.getEspecie(), rko2);
-        esh = mock(Entrenador.class);
-
-    }
-
-    @Test
-    public void asd(){
-
-
-    }
+        verify(rko.evolucionar(roko,leo));
+    }*/
 
 }

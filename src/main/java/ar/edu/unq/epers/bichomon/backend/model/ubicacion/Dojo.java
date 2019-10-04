@@ -54,36 +54,25 @@ public class Dojo extends Ubicacion{
     }
     @Override
     public ResultadoCombate retar(Entrenador entrenador, Bicho bichomon){ //preguntar por esto en clase
-        if(entrenadorC == null){
+        if(entrenadorC == null || !entrenadorC.tieneBichoConId(bichoC.getId()) && ! entrenadorC.getNombre().equals(entrenador.getNombre())){
             entrenadorC = entrenador;
             bichoC =bichomon;
             Date fecha = new Date();
             Historial historial = new Historial (entrenadorC,bichoC,fecha);
             this.historial.add(historial);
-            ResultadoCombate resultado =new ResultadoCombate(bichoC);
-            return resultado;
+            return new ResultadoCombate(bichoC);
+
         }
         if(entrenadorC.getNombre().equals(entrenador.getNombre())){
             throw new BichomonError("El campeon no puede desafiarse en su dojo");
         }
-        if(!entrenadorC.tieneBichoConId(bichoC.getId())){
-            entrenadorC = entrenador;
-            bichoC = bichomon;
-            Date fecha = new Date();
-            Historial historial = new Historial (entrenadorC,bichoC,fecha);
-            this.historial.add(historial);
-            ResultadoCombate resultado =new ResultadoCombate(bichoC);
-
-            return resultado;
-        }
         else{
-
             ResultadoCombate resultado = new ResultadoCombate(bichomon,bichoC);
-            posibleCambioGanador(resultado,entrenador);
             entrenador.aumentarExpPorCombate();
             bichoC.aumentarEnergiaPorCombate();
             bichomon.aumentarEnergiaPorCombate();
             this.entrenadorC.aumentarExpPorCombate();
+            posibleCambioGanador(resultado,entrenador);
             return resultado;
         }
 
@@ -92,6 +81,11 @@ public class Dojo extends Ubicacion{
     @Override
     public String getEntrenadorName() {
         return entrenadorC.getNombre();
+    }
+
+    @Override
+    public Entrenador getCampeon(){
+        return entrenadorC;
     }
 
     @Override

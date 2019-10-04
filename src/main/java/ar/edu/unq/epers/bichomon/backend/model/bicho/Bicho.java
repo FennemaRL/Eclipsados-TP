@@ -29,17 +29,13 @@ public class Bicho {
 	@ManyToOne (fetch = FetchType.LAZY)
 	private Entrenador owner;
 
-	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL )
-	private Set<Condicion> condiciones;
 
 	public Bicho(){}
 
-	//constructor creado para testear la busqueda por id
 	public Bicho(Especie especie){
 		this.especie = especie;
 		victorias = 0;
 		energiaDeCombate= 1;
-		condiciones = new HashSet<Condicion>();
 	}
 
 	/**
@@ -72,22 +68,20 @@ public class Bicho {
 	}
 
     public boolean puedeEvolucionar() {
-		return this.condiciones.stream()
-				.allMatch(c ->c.cumpleCondicion(owner, this));
+		return especie.puedeEvolucionar(this,owner) ;
 	}
 
     public void evolucionar(){
-		especie = especie.evolucionar(this.puedeEvolucionar());
+		especie = especie.evolucionar(this,owner);
 	}
 
 	public Integer getVictorias() { return this.victorias;}
 
 	public long getFechaCaptura() {
 		int diffDais = (int) (new Date().getTime() - this.fechaCaptura.getTime());
-		long days = (int) TimeUnit.MILLISECONDS.toDays(diffDais);
-		return days;
-	}
+		return (int) TimeUnit.MILLISECONDS.toDays(diffDais);
 
+	}
 
 	public Integer getNivelEntrenador() {
 		return owner.getNivel();
@@ -107,11 +101,6 @@ public class Bicho {
 
 	public Entrenador getOwner() {
 		return this.owner;
-	}
-
-
-	public void agregarCondicion(Condicion unaCondicion) {
-		condiciones.add(unaCondicion);
 	}
 
     public void aumentarEnergiaPorCombate() {

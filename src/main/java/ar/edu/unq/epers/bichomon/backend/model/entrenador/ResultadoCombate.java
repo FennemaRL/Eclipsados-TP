@@ -26,14 +26,14 @@ public class ResultadoCombate {
                 danioHechoARetador <= bRetador.getEnergia() ||
                 danioHechoACampeon <= bCampeon.getEnergia()) {
             if (0 == round % 2) {
-                int dañoact = (int) (bRetador.getEnergia() * Math.random() * (1.01 - 0.49));
-                danioHechoACampeon += dañoact;
-                turnos.add(new Turno(bRetador,dañoact));
+                int danioact = (int) (bRetador.getEnergia() * Math.random() * (1.01 - 0.49));
+                danioHechoACampeon += danioact;
+                turnos.add(new Turno(bRetador,danioact));
             }
             if (1 == round % 2) {
-                int dañoact = (int) (bCampeon.getEnergia() * Math.random() * (1.01 - 0.49));
-                danioHechoARetador += dañoact;
-                turnos.add(new Turno(bCampeon,dañoact));
+                int danioact = (int) (bCampeon.getEnergia() * Math.random() * (1.01 - 0.49));
+                danioHechoARetador += danioact;
+                turnos.add(new Turno(bCampeon,danioact));
             }
             round++;
         }
@@ -53,6 +53,7 @@ public class ResultadoCombate {
 
     public Bicho getGanador() { return this.nuevoCampeon;
     }
+    public Bicho getPerdedor() {return this.nuevoPerdedor;}
     public List getTurnos(){
         return this.turnos;
     }

@@ -2,9 +2,13 @@ package ar.edu.unq.epers.bichomon.backend.model.especie;
 
 import ar.edu.unq.epers.bichomon.backend.model.Exception.EspecieNoPuedeEvolucionar;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
+import ar.edu.unq.epers.bichomon.backend.model.condicion.Condicion;
+import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -29,6 +33,8 @@ public class Especie {
 	
 	private int cantidadBichos;
 
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL )
+	private Set<Condicion> condiciones;
 
 	//variables temporales a resolver posteriormente para determinar si puede evolucionar
 	private Integer nivelDeEnergiaNecesario;
@@ -60,6 +66,7 @@ public class Especie {
 		this.peso = peso;
 		this.altura = altura;
 		this.cantidadBichos=cant_bichos;
+		this.condiciones = new HashSet<>();
 	}
 
 	public Especie(int i, String nombre, TipoBicho tipo) {
@@ -165,28 +172,31 @@ public class Especie {
 		especieRaiz= e;
 	}
     public Especie getEspecieRaiz() {
-		return (especieRaiz.nombre == this.nombre)? especieRaiz: especieRaiz.getEspecieRaiz();
+		return (especieRaiz.nombre.equals(this.nombre))? especieRaiz: especieRaiz.getEspecieRaiz();
 
     }
 
     public void incrementarEnUnBicho() {
 		cantidadBichos = cantidadBichos +1;
     }
+
 	public void setEspecieEvo(Especie evo){this.evo = evo;}
 
-	public boolean cumpleCondicion(Boolean condicionACumplir) {
-		return evo != null && condicionACumplir;
-	}
-
-	public Especie evolucionar(Boolean resCondicion) {
+	public Especie evolucionar(Bicho bicho, Entrenador entrenador) {
 		Especie nuevaEspecie = null;
-		if (cumpleCondicion(resCondicion)) {
+		if (puedeEvolucionar(bicho,entrenador)) {
 				nuevaEspecie = evo;
+				evo.incrementarEnUnBicho();
+				this.decrementarUnBicho();
 		}
 		else{
 			throw new EspecieNoPuedeEvolucionar("la especie no puede evolucionar");
 		}
 		return nuevaEspecie;
+	}
+
+	private void decrementarUnBicho() {
+		cantidadBichos -=1;
 	}
 
 	private Especie getEspecieEvolucion() {
@@ -207,5 +217,13 @@ public class Especie {
 
 	public Integer getNivelDelEntrenadorNecesario() {
 		return nivelDelEntrenadorNecesario;
+	}
+
+	public boolean puedeEvolucionar(Bicho bicho, Entrenador owner) {
+		return evo != null && this.condiciones.stream()
+				.allMatch(c ->c.cumpleCondicion(owner, bicho));
+	}
+	public void nuevaCondicion(Condicion condicion){
+		condiciones.add(condicion);
 	}
 }

@@ -28,13 +28,12 @@ import java.util.Date;
 import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
 import static org.junit.Assert.*;
 
-public class TestBichoService { // no te calentes en testearlo no anda :/
+public class TestBichoService {
     private Bicho bartolomon;
     private Ubicacion ubicacion;
     private BichoService bs;
     private Energia energia;
-    EntrenadorService es ;
-    private ArrayList<Integer> niveles;
+    private EntrenadorService es ;
     private Victoria victoria;
     private ExperienciaValor dadorDeExperiencia;
     private NivelEntrenador dadorDeNivel;
@@ -47,7 +46,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         bs= new BichoService(es);
         Especie especie = new Especie("Rayo", TipoBicho.ELECTRICIDAD,3,2,0);
         bartolomon = new Bicho(especie);
-        niveles =  new ArrayList<>();
+        ArrayList<Integer>  niveles =  new ArrayList<>();
         niveles.add (2);niveles.add (3);
         dadorDeNivel =new NivelEntrenador(niveles);
         dadorDeExperiencia =new ExperienciaValor();
@@ -122,7 +121,6 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
 
         es.guardar(entrenador);
 
-        System.out.print(ubicacion.getEntrenadorName() +" entrenador "+ ubicacion.getBichomonName() +" bichomon ");
 
         bs.buscar("Mostaza3");
     }
@@ -164,7 +162,7 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         ubicacion = new Dojo("fidelHouse",pNR);
 
         Entrenador lukas = new Entrenador("lukas",ubicacion,dadorDeExperiencia,dadorDeNivel);
-        ricky.agregarCondicion(energia);
+        chocoMon.nuevaCondicion(energia);
         lukas.agregarBichomon(ricky);
 
         es.guardar(lukas);
@@ -191,8 +189,8 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         ubicacion = new Dojo("fidelHouse1",pNR);
 
         Entrenador lukas = new Entrenador("lukas1",ubicacion);
-        ricky.agregarCondicion(energia);
-        ricky.agregarCondicion(victoria);
+        chocoMon.nuevaCondicion(energia);
+        chocoMon.nuevaCondicion(victoria);
         lukas.agregarBichomon(ricky);
 
         es.guardar(lukas);
@@ -215,8 +213,8 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         Bicho ricky = new Bicho(chocoMon);
         Date dt = new Date(2020,10,10);
         ricky.setFechaCaptura(dt);
-        ricky.agregarCondicion(energia);
-        ricky.agregarCondicion(victoria);
+        chocoMon.nuevaCondicion(energia);
+        chocoMon.nuevaCondicion(victoria);
 
         RandomBichomon pNR =new ProbabilidadNoRandom();
         ubicacion = new Dojo("fidelHouse2",pNR);
@@ -305,6 +303,35 @@ public class TestBichoService { // no te calentes en testearlo no anda :/
         es.guardar(entrenador);
 
         assertEquals(bicho.getId(),bs.duelo("Mostaza11",bicho.getId()).getGanador().getId());
+
+    }
+    @Test(expected = ZonaErronea.class)
+    public void se_trata_de_retar_en_un_pueblo(){
+        RandomBichomon mr =new ProbabilidadNoRandom();
+        Especie esp =new Especie("bichorita11",TipoBicho.PLANTA, 1,1,0);
+        Bicho bicho =new Bicho(esp);
+
+        ubicacion = new Pueblo("Chaparral11",mr);
+        Entrenador entrenador = new Entrenador("Mostaza11",ubicacion,dadorDeExperiencia,dadorDeNivel);
+        entrenador.agregarBichomon(bicho);
+
+        es.guardar(entrenador);
+
+        bs.duelo("Mostaza11",bicho.getId());
+
+    }
+    @Test(expected = ZonaErronea.class)
+    public void se_trata_de_retar_en_una_guarderia(){
+        Especie esp =new Especie("bichorita11",TipoBicho.PLANTA, 1,1,0);
+        Bicho bicho =new Bicho(esp);
+
+        ubicacion = new Guarderia("Chaparral11");
+        Entrenador entrenador = new Entrenador("Mostaza11",ubicacion,dadorDeExperiencia,dadorDeNivel);
+        entrenador.agregarBichomon(bicho);
+
+        es.guardar(entrenador);
+
+        bs.duelo("Mostaza11",bicho.getId());
 
     }
     @Test(expected =BichomonError.class)

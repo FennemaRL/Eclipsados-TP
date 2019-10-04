@@ -29,7 +29,7 @@ public class Entrenador {
     private Ubicacion ubicacion;
 
     public Entrenador(){}
-    public Entrenador(int id, String nombre, Integer exp, Integer lvl){
+    public Entrenador(int id, String nombre, Integer exp){
         this.id= id;
         this.nombre = nombre;
         this.experiencia= exp;
@@ -38,7 +38,7 @@ public class Entrenador {
     public Entrenador( String nombre, Ubicacion u){
         this.nombre = nombre;
         this.experiencia= 0;
-        bichos = new HashSet<Bicho>();
+        bichos = new HashSet<>();
         ubicacion = u;
     }
 
@@ -48,7 +48,7 @@ public class Entrenador {
         this.experiencia = 1;
         this.expGen = expGen;
         this.nivelEntrenadorGen = nivelEntrenadorGen;
-        bichos = new HashSet<Bicho>();
+        bichos = new HashSet<>();
 
     }
 
@@ -91,7 +91,7 @@ public class Entrenador {
         return( nombre + " id: "+id +"{"+ b[0] +"}");
     }
 
-    public ar.edu.unq.epers.bichomon.backend.model.entrenador.ResultadoCombate duelear(int idBicho){
+    public ResultadoCombate duelear(int idBicho){
         return ubicacion.retar(this, getBichoConID(idBicho));
     }
 
@@ -151,6 +151,5 @@ public class Entrenador {
 
     public void setExperienciaValor(ExperienciaValor expGen){this.expGen = expGen; }
 
-    public void setNivelGen(NivelEntrenador nivelEntrenadorGen) {//this.nivelEntrenadorGen = nivelEntrenadorGen;
-    }
+    public void setNivelGen(NivelEntrenador nivelEntrenadorGen) {this.nivelEntrenadorGen = nivelEntrenadorGen;  }
 }

@@ -38,4 +38,8 @@ public abstract class Ubicacion {
     public abstract String getEntrenadorName();
 
     public abstract String getBichomonName();
+
+    public Entrenador getCampeon(){
+        throw new ZonaErronea("Esta no es un dojo"+this.nombreUbicacion);
+    }
 }

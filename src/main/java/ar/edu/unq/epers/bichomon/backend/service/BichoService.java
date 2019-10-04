@@ -6,6 +6,7 @@ import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.ResultadoCombate;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.BichomonError;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Dojo;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -53,8 +54,13 @@ public class BichoService {
 
     public ResultadoCombate duelo(String entrenador, int bichoid){
         Entrenador entrenador1 = entrenadorService.recuperar(entrenador);
+        Entrenador campeon = null;
+        if(entrenador1.getUbicacion().getClass().equals(Dojo.class))
+            campeon = entrenador1.getUbicacion().getCampeon();
         ResultadoCombate rc = entrenador1.duelear(bichoid);
         entrenadorService.actualizar(entrenador1);
+        if(campeon !=null)
+            entrenadorService.actualizar(campeon);
         return rc;
     }
 

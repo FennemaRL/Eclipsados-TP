@@ -87,7 +87,7 @@ public class  EntrenadorTest {
         }
 
         @Test(expected = BichomonError.class)
-        public void entrenador_de_nivel_1_no_puede_tener_mas_de__bichomones(){
+        public void entrenador_de_nivel_1_no_puede_tener_mas_de_2_bichomones(){
             lukas.capturar();
             when(lukas.getUbicacion().capturar(lukas)).thenReturn(mock(Bicho.class));
             lukas.capturar();
