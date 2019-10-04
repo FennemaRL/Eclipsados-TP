@@ -5,7 +5,6 @@ import ar.edu.unq.epers.bichomon.backend.model.random.RandomBichomon;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.GuarderiaErrorNoBichomon;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
-import ar.edu.unq.epers.bichomon.backend.model.random.RandomBusqueda;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.*;
 import org.junit.Before;
 import org.junit.Test;

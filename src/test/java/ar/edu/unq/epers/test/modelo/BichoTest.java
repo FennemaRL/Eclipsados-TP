@@ -20,22 +20,12 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class BichoTest {
-    private Especie rko;
-    private Bicho roko;
-    private Entrenador leo;
-
-
-
-    @Before
-    public void setUp() {
-        rko = mock(Especie.class);
-        leo = mock(Entrenador.class);
-        roko = new Bicho(rko);
-
-    }
 /*
     @Test
     public void un_bicho_puede_evolucionar_si_cumple_las_condiciones_dadas_por_su_especie(){
+        Especie rko; = mock(Especie.class);
+        Entrenador leo; = mock(Entrenador.class);
+        Bicho roko; = new Bicho(rko);
         roko.puedeEvolucionar();
         verify(rko.puedeEvolucionar(roko,leo));
         roko.evolucionar();
