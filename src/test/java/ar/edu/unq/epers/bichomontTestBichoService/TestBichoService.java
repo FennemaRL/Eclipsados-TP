@@ -40,7 +40,7 @@ public class TestBichoService {
 
     @Before
     public void setUp(){
-
+        SessionFactoryProvider.destroy();
         HibernateEntrenadorDao dao = new HibernateEntrenadorDao();
         es = new EntrenadorService(dao);
         bs= new BichoService(es);
@@ -54,10 +54,6 @@ public class TestBichoService {
         //condition
         energia = new Energia();
         victoria= new Victoria();
-    }
-    @After
-    public void tearDown(){
-        SessionFactoryProvider.destroy();
     }
 
     @Test(expected = NoHayEntrenadorConEseNombre.class)

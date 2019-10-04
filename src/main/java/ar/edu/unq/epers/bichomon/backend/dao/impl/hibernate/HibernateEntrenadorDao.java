@@ -36,9 +36,9 @@ public class HibernateEntrenadorDao extends HibernateDAO<Entrenador> implements 
         }
 
     @Override
-    public void actualizar(Entrenador entrenador) {
+    public void actualizar(Object t) {
         Session session = TransactionRunner.getCurrentSession();
-        session.update(entrenador);
+        session.update(t);
     }
 
 

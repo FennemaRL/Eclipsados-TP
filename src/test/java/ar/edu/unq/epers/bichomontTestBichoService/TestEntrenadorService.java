@@ -20,15 +20,12 @@ public class TestEntrenadorService {
     private Entrenador entrenador;
     @Before
     public void setup(){
+        SessionFactoryProvider.destroy();
         es =new EntrenadorService(new HibernateEntrenadorDao());
         Ubicacion guarde = new Guarderia("1116");
         entrenador = new Entrenador("pepe",guarde);
 
         es.guardar(entrenador);
-    }
-    @After
-    public void destroy(){
-        SessionFactoryProvider.destroy();
     }
     @Test(expected = NoHayEntrenadorConEseNombre.class)
     public void al_recuperar_un_entrenador_inexistente_levanta_una_exepcion(){

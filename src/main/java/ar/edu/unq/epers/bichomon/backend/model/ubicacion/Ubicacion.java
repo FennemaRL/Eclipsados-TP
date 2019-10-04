@@ -42,4 +42,10 @@ public abstract class Ubicacion {
     public Entrenador getCampeon(){
         throw new ZonaErronea("Esta no es un dojo"+this.nombreUbicacion);
     }
+
+    public String getNombre(){return this.nombreUbicacion;}
+
+    public int getid() {
+        return id;
+    }
 }

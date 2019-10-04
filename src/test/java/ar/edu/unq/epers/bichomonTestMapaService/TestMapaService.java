@@ -1,0 +1,52 @@
+package ar.edu.unq.epers.bichomonTestMapaService;
+
+import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateEntrenadorDao;
+import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Dojo;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Guarderia;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
+import ar.edu.unq.epers.bichomon.backend.service.EntrenadorService;
+import ar.edu.unq.epers.bichomon.backend.service.MapaService;
+import ar.edu.unq.epers.bichomon.backend.service.runner.SessionFactoryProvider;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.security.Guard;
+
+public class TestMapaService {
+
+    private Entrenador esh;
+    private Ubicacion guarderia2;
+    private Ubicacion guarderia1;
+
+    private HibernateEntrenadorDao dao;
+    private EntrenadorService entrenadorService;
+    private MapaService mapaService;
+
+
+
+
+    @Before
+    public void setUp(){
+        guarderia1 = new Guarderia("guarderia1");
+        guarderia2 = new Guarderia("guarderia2");
+
+        esh = new Entrenador("esh", guarderia1);
+
+        dao = new HibernateEntrenadorDao();
+        entrenadorService = new EntrenadorService(dao);
+        mapaService = new MapaService(entrenadorService);
+
+        }
+    @After
+    public void tearDown(){
+        SessionFactoryProvider.destroy();
+    }
+
+    @Test
+    public void al_mover_al_entrenador_de_guarderia1_a_guarderia2_su_ubicacion_actual_pasa_a_ser_guarderia2(){
+        mapaService.mover("esh","guarderia2");
+    }
+
+}

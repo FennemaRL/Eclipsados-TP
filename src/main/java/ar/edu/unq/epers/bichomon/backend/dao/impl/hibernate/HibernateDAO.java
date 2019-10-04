@@ -31,7 +31,7 @@ public abstract class HibernateDAO<T> {
 
     abstract public void reset();
 
-    public abstract void actualizar(Entrenador entrenador);
+    public abstract void actualizar(Object t);
 
     public void clear(){
         Session session = TransactionRunner.getCurrentSession();
