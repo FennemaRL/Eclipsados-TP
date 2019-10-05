@@ -1,17 +1,19 @@
 package ar.edu.unq.epers.bichomonTestMapaService;
 
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateEntrenadorDao;
+import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateUbicacionDao;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Dojo;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Guarderia;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 import ar.edu.unq.epers.bichomon.backend.service.EntrenadorService;
 import ar.edu.unq.epers.bichomon.backend.service.MapaService;
+import ar.edu.unq.epers.bichomon.backend.service.UbicacionService;
 import ar.edu.unq.epers.bichomon.backend.service.runner.SessionFactoryProvider;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import static org.junit.Assert.assertEquals;
 import java.security.Guard;
 
 public class TestMapaService {
@@ -22,6 +24,7 @@ public class TestMapaService {
 
     private HibernateEntrenadorDao dao;
     private EntrenadorService entrenadorService;
+    private UbicacionService ubicacionService;
     private MapaService mapaService;
 
 
@@ -36,7 +39,12 @@ public class TestMapaService {
 
         dao = new HibernateEntrenadorDao();
         entrenadorService = new EntrenadorService(dao);
-        mapaService = new MapaService(entrenadorService);
+        ubicacionService = new UbicacionService(new HibernateUbicacionDao());
+        mapaService = new MapaService(entrenadorService, ubicacionService);
+
+        entrenadorService.guardar(esh);
+        ubicacionService.guardar(guarderia2);
+
 
         }
     @After
@@ -47,6 +55,8 @@ public class TestMapaService {
     @Test
     public void al_mover_al_entrenador_de_guarderia1_a_guarderia2_su_ubicacion_actual_pasa_a_ser_guarderia2(){
         mapaService.mover("esh","guarderia2");
+        Entrenador entrenador2 = entrenadorService.recuperar("esh");
+        assertEquals("guarderia2", entrenador2.getUbicacion().getNombreUbicacion());
     }
 
 }
