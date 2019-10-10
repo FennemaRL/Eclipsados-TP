@@ -68,7 +68,5 @@ public class Pueblo extends Ubicacion{
         return null;
     }
 
-    public Integer getCantEntrenadores(){
-        return cantEntrenadores;
-    }
+
 }

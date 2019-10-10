@@ -13,6 +13,7 @@ import javax.persistence.*;
 public abstract class Ubicacion {
     @Column (unique = true)
     protected String nombreUbicacion;
+    protected int cantidadEntrenadores;
 
     @Id
     @GeneratedValue
@@ -20,6 +21,7 @@ public abstract class Ubicacion {
     public Ubicacion(){}
     public Ubicacion(String name) {
         nombreUbicacion = name;
+        cantidadEntrenadores =0;
     }
 
     public abstract Bicho capturar(Entrenador e);
@@ -47,5 +49,9 @@ public abstract class Ubicacion {
 
     public int getid() {
         return id;
+    }
+
+    public int getCantidadEntrenadores(){
+        return cantidadEntrenadores;
     }
 }
