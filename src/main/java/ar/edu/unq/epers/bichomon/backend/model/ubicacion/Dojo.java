@@ -13,9 +13,9 @@ import java.util.Set;
 
 @Entity
 public class Dojo extends Ubicacion{
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Entrenador entrenadorC;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Bicho bichoC;
 
     @ManyToOne( cascade = CascadeType.ALL)

@@ -7,6 +7,7 @@ import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 
 import javax.persistence.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 public class Entrenador {
@@ -152,4 +153,10 @@ public class Entrenador {
     public void setExperienciaValor(ExperienciaValor expGen){this.expGen = expGen; }
 
     public void setNivelGen(NivelEntrenador nivelEntrenadorGen) {this.nivelEntrenadorGen = nivelEntrenadorGen;  }
+
+    public ResultadoCombate duelear() {
+        return ubicacion.retar(this, bichos.stream().collect(Collectors
+                .toCollection(ArrayList::new)).get(0) );
+
+    }
 }

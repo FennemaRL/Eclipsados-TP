@@ -1,5 +1,6 @@
 package ar.edu.unq.epers.bichomon.backend.service;
 
+import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 
@@ -22,5 +23,8 @@ public class MapaService {
         //decrementar e incrementar entrenadores en ubicaciones
         //y actualizar ubicacion 0, ubicacion 1 se actualiza x cascade
         entrenadorService.actualizar(entrenador1);
+    }
+    public Bicho campeonHistorico(String dojo){
+        return ubicacionService.campeonHistorico(dojo);
     }
 }

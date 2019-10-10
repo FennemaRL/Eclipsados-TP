@@ -42,6 +42,7 @@ public class TestBichoService {
     public void setUp(){
         SessionFactoryProvider.destroy();
         HibernateEntrenadorDao dao = new HibernateEntrenadorDao();
+        dao.clear();
         es = new EntrenadorService(dao);
         bs= new BichoService(es);
         Especie especie = new Especie("Rayo", TipoBicho.ELECTRICIDAD,3,2,0);

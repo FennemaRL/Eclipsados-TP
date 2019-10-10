@@ -1,8 +1,7 @@
 package ar.edu.unq.epers.bichomon.backend.service;
 
-import ar.edu.unq.epers.bichomon.backend.dao.UbicacionDao;
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateUbicacionDao;
-import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.NoHayEntrenadorConEseNombre;
+import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 
 
@@ -22,4 +21,7 @@ public class UbicacionService {
     public void actualizar(Ubicacion ubicacion){run(()-> dao.actualizar(ubicacion));
     }
 
+    public Bicho campeonHistorico(String dojo) {
+        return run(()-> dao.campeonHistorico(dojo));
+    }
 }

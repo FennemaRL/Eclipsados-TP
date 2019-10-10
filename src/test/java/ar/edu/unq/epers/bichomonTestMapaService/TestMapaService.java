@@ -2,7 +2,12 @@ package ar.edu.unq.epers.bichomonTestMapaService;
 
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateEntrenadorDao;
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateUbicacionDao;
+import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
+import ar.edu.unq.epers.bichomon.backend.model.entrenador.ExperienciaValor;
+import ar.edu.unq.epers.bichomon.backend.model.entrenador.NivelEntrenador;
+import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
+import ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Dojo;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Guarderia;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
@@ -10,11 +15,17 @@ import ar.edu.unq.epers.bichomon.backend.service.EntrenadorService;
 import ar.edu.unq.epers.bichomon.backend.service.MapaService;
 import ar.edu.unq.epers.bichomon.backend.service.UbicacionService;
 import ar.edu.unq.epers.bichomon.backend.service.runner.SessionFactoryProvider;
+import ar.edu.unq.epers.bichomontTestBichoService.ProbabilidadNoRandom;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 import java.security.Guard;
+import java.util.ArrayList;
 
 public class TestMapaService {
 
@@ -49,6 +60,7 @@ public class TestMapaService {
         }
     @After
     public void tearDown(){
+        run(()-> dao.clear());
         SessionFactoryProvider.destroy();
     }
 
@@ -58,5 +70,49 @@ public class TestMapaService {
         Entrenador entrenador2 = entrenadorService.recuperar("esh");
         assertEquals("guarderia2", entrenador2.getUbicacion().getNombreUbicacion());
     }
+
+    @Test
+    public void dojo_con_campeon_historico() throws InterruptedException { //
+        ProbabilidadNoRandom pr = new ProbabilidadNoRandom();
+        Dojo dojo = new Dojo("unqui", pr);
+        ArrayList<Integer> niveles = new ArrayList<>();
+        niveles.add(2);
+        niveles.add(3);
+        NivelEntrenador dadorDeNivel = new NivelEntrenador(niveles);
+        ExperienciaValor dadorDeExperiencia = new ExperienciaValor();
+        Entrenador pepe = new Entrenador("pepe", dojo, dadorDeExperiencia, dadorDeNivel);
+        Especie especie = new Especie("Kalu", TipoBicho.AIRE, 1, 2, 0);
+        Bicho kalu = new Bicho(especie);
+        Entrenador pepe2 = new Entrenador("pepe2", dojo, dadorDeExperiencia, dadorDeNivel);
+        Bicho kalu2 = new Bicho(especie);
+        kalu2.setEnergia(500);
+        pepe2.agregarBichomon(kalu2);
+        pepe.agregarBichomon(kalu);
+        pepe.duelear();
+        Thread.sleep(2000);
+        pepe2.duelear();
+        entrenadorService.guardar(pepe2);
+
+        assertEquals(kalu2.getId(), mapaService.campeonHistorico("unqui").getId() );
+    }
+    @Test
+    public void dojo_sin_campeon_historico()  { //funca
+        ProbabilidadNoRandom pr = new ProbabilidadNoRandom();
+        Dojo dojo = new Dojo("unqui", pr);
+        ubicacionService.guardar(dojo);
+
+        assertNull(mapaService.campeonHistorico("unqui"));
+
+    }
+    @Test
+    public void guarderia_campeon_historico()  { //funca
+        ProbabilidadNoRandom pr = new ProbabilidadNoRandom();
+        Guarderia dojo = new Guarderia("unqui");
+        ubicacionService.guardar(dojo);
+
+        assertNull(mapaService.campeonHistorico("unqui"));
+
+    }
+
 
 }

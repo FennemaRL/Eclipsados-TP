@@ -26,7 +26,7 @@ public class Bicho {
 	private int energiaDeCombate;
 	private Date fechaCaptura;
 	private Integer victorias;
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Entrenador owner;
 
 

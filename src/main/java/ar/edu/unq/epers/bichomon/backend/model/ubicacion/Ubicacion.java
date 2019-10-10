@@ -9,7 +9,7 @@ import ar.edu.unq.epers.bichomon.backend.model.entrenador.ResultadoCombate;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Ubicacion {
     @Column (unique = true)
     protected String nombreUbicacion;

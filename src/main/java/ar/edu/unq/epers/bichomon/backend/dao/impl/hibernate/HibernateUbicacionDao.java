@@ -1,13 +1,18 @@
 package ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate;
 
 import ar.edu.unq.epers.bichomon.backend.dao.UbicacionDao;
+import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 import ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.hibernate.transform.Transformers;
 
 import javax.validation.ConstraintViolationException;
+import java.util.Date;
+import java.util.List;
 
 public class HibernateUbicacionDao extends HibernateDAO<Ubicacion> implements UbicacionDao {
 
@@ -50,5 +55,30 @@ public class HibernateUbicacionDao extends HibernateDAO<Ubicacion> implements Ub
         session.update(t);
     }
 
+    public Bicho campeonHistorico(String dojo){
+        Session session = TransactionRunner.getCurrentSession();
+        Date date = new Date();
 
+
+        Query<Bicho> bichoq = session.createSQLQuery("select bicho.id, nombre, especie_id, energiaDeCombate, fechaCaptura, victorias, owner_id " +
+                "from historial inner join ubicacion_historial on (historial.id = historial_id) inner join ubicacion inner join bicho on (historial.bicho_id = bicho.id) " +
+                "Where ubicacion.nombreUbicacion = :dojo "+
+                "ORDER BY TIMEDIFF(COALESCE(historial.fechaFin,:dat3 ), historial.fechaInicio) desc limit 1;").addEntity(Bicho.class);
+        bichoq.setParameter("dojo",dojo);
+        bichoq.setParameter("dat3",date);
+        List<Bicho> bs=bichoq.getResultList();
+        return (bs.size() == 0)? null : bs.get(0);
+
+    }
+
+    public List<Entrenador> campeones() {
+        Session session = TransactionRunner.getCurrentSession();
+        Date date = new Date();
+        Query<Entrenador> entrenadorq = session.createSQLQuery("select entrenador.* " +
+                "from historial inner join ubicacion_historial on (historial.id = historial_id)inner join ubicacion on(ubicacion.id = dojo_id) inner join entrenador on (historial.entrenador_id = entrenador.id) " +
+                " group by entrenador.id " +
+                " ORDER BY TIMEDIFF(COALESCE(historial.fechaFin,:dat3 ), historial.fechaInicio) desc limit 10;").addEntity(Entrenador.class);
+        entrenadorq.setParameter("dat3",date);
+        return entrenadorq.getResultList();
+    }
 }
