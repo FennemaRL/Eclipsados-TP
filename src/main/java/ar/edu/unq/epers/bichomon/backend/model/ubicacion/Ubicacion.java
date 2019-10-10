@@ -54,4 +54,8 @@ public abstract class Ubicacion {
     public int getCantidadEntrenadores(){
         return cantidadEntrenadores;
     }
+
+    public void setCantidadEntrenadores(int i){
+        cantidadEntrenadores= i;
+    };
 }

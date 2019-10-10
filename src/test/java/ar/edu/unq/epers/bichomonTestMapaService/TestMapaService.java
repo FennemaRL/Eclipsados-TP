@@ -48,7 +48,9 @@ public class TestMapaService {
         entrenadorService = new EntrenadorService(dao);
 
         ubiService = new UbicacionService(ubiDao);
+        guarderia2.setCantidadEntrenadores(5);
         ubiService.guardar(guarderia1);
+
         mapaService = new MapaService(entrenadorService, ubiService);
 
         ubicacionService = new UbicacionService(new HibernateUbicacionDao());
@@ -76,6 +78,8 @@ public class TestMapaService {
     public void una_ubicacion_sabe_cuantos_entrenadores_hay_en_la_misma(){
 
         assertEquals(mapaService.cantidadEntrenadores("guarderia1"),0);
+        assertEquals(mapaService.cantidadEntrenadores("guarderia2"),5);
     }
+
 
 }
