@@ -14,7 +14,7 @@ import ar.edu.unq.epers.bichomon.backend.service.runner.SessionFactoryProvider;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import static org.junit.Assert.assertEquals;
 import java.security.Guard;
 
 import static org.junit.Assert.assertEquals;
@@ -28,6 +28,7 @@ public class TestMapaService {
     private HibernateEntrenadorDao dao;
     private HibernateUbicacionDao ubiDao;
     private EntrenadorService entrenadorService;
+    private UbicacionService ubicacionService;
     private MapaService mapaService;
     private UbicacionService ubiService;
 
@@ -45,9 +46,17 @@ public class TestMapaService {
 
         ubiDao = new HibernateUbicacionDao();
         entrenadorService = new EntrenadorService(dao);
+
         ubiService = new UbicacionService(ubiDao);
         ubiService.guardar(guarderia1);
         mapaService = new MapaService(entrenadorService, ubiService);
+
+        ubicacionService = new UbicacionService(new HibernateUbicacionDao());
+        mapaService = new MapaService(entrenadorService, ubicacionService);
+
+        entrenadorService.guardar(esh);
+        ubicacionService.guardar(guarderia2);
+
 
 
         }
@@ -59,6 +68,8 @@ public class TestMapaService {
     @Test
     public void al_mover_al_entrenador_de_guarderia1_a_guarderia2_su_ubicacion_actual_pasa_a_ser_guarderia2(){
         mapaService.mover("esh","guarderia2");
+        Entrenador entrenador2 = entrenadorService.recuperar("esh");
+        assertEquals("guarderia2", entrenador2.getUbicacion().getNombreUbicacion());
     }
 
     @Test
