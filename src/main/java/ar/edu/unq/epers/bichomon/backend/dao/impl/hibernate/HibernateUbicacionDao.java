@@ -92,5 +92,16 @@ public class HibernateUbicacionDao extends HibernateDAO<Ubicacion> implements Ub
         especieQ.setMaxResults(1);
 
         return especieQ.uniqueResult();
+
+    }
+    public Bicho campeonDojo (Ubicacion ubi){
+        Session session = TransactionRunner.getCurrentSession();
+        String hql = "Select Ubicacion.bichoCampeon from Ubicacion where Ubicacion.nombreUbicacion = :ubi";
+
+        Query<Bicho> bicho =session.createQuery(hql,Bicho.class);
+        bicho.setParameter("ubi",ubi);
+        bicho.setMaxResults(1);
+
+        return bicho.uniqueResult();
     }
 }

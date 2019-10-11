@@ -13,6 +13,7 @@ import ar.edu.unq.epers.bichomon.backend.model.entrenador.ExperienciaValor;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.NivelEntrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho;
+import ar.edu.unq.epers.bichomon.backend.model.random.RandomBichomon;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Dojo;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Guarderia;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
@@ -25,6 +26,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.CHOCOLATE;
 import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
 import static org.junit.Assert.assertEquals;
 
@@ -166,5 +168,22 @@ public class  TestMapaService {
         assertEquals(mapaService.cantidadEntrenadores("guarderia2"),5);
     }
 
+    @Test
+    public void campeon_retorna_el_campeon_del_dojo(){
+        RandomBichomon rb = new RandomBichomon();
+        NivelEntrenador nivelGen = new NivelEntrenador();
+        ExperienciaValor expGen = new ExperienciaValor();
+        Ubicacion dojojo = new Dojo ("dojojo",rb);
+        Especie esp = new Especie(1,"chocoMon",CHOCOLATE);
+        Bicho bicho = new Bicho(esp);
+        Entrenador ent = new Entrenador("sada",dojojo,expGen,nivelGen);
 
+        ent.agregarBichomon(bicho);
+
+        ent.duelear();
+        ubicacionService.guardar(dojojo);
+
+        assertEquals(bicho.getId(),mapaService.campeon(dojojo).getId());
+
+    }
 }
