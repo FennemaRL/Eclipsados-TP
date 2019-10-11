@@ -41,7 +41,6 @@ public class Dojo extends Ubicacion{
         if( contieneBicho && busqueda){
             Especie esp = bichoC.getEspecie().getEspecieRaiz();
             br = new Bicho(esp);
-            esp.incrementarEnUnBicho();
 
         }
         if (!contieneBicho){
@@ -63,8 +62,9 @@ public class Dojo extends Ubicacion{
             return new ResultadoCombate(bichoC);
 
         }
+        System.out.print(null == null +"null es igual a null");
         if(entrenadorC.getNombre().equals(entrenador.getNombre())){
-            throw new BichomonError("El campeon no puede desafiarse en su dojo");
+            throw new BichomonError("El campeon "+entrenadorC.getNombre()+"no puede desafiarse en su dojo");
         }
         else{
             ResultadoCombate resultado = new ResultadoCombate(bichomon,bichoC);
@@ -96,8 +96,10 @@ public class Dojo extends Ubicacion{
         Date fecha = new Date();
         if(resultado.getGanador().getOwner()==retador){
             Historial mod =(Historial) (historial.toArray()[ historial.size()-1 ]);
-                    mod.setFechaFin(fecha);
+            mod.setFechaFin(fecha);
             Historial historial = new Historial (retador,resultado.getGanador(),fecha);
+            entrenadorC = retador;
+            bichoC = resultado.getGanador();
             this.historial.add(historial);
         }
     }

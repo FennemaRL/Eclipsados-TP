@@ -46,6 +46,7 @@ public class Guarderia extends Ubicacion{
         return null;
     }
 
+
     public List<Bicho> getBichos(){
         return this.bichos;
     }

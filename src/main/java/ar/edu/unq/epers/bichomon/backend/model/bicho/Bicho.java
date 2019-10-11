@@ -34,6 +34,7 @@ public class Bicho {
 
 	public Bicho(Especie especie){
 		this.especie = especie;
+		especie.incrementarEnUnBicho();
 		victorias = 0;
 		energiaDeCombate= 1;
 	}

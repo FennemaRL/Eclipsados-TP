@@ -6,7 +6,7 @@ import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import javax.persistence.*;
 import java.util.Date;
 @Entity
-public class  Historial {
+public class   Historial {
     @Id
     @GeneratedValue
     private int id;

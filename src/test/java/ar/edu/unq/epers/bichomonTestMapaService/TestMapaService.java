@@ -1,5 +1,6 @@
 package ar.edu.unq.epers.bichomonTestMapaService;
 
+import ar.edu.unq.epers.bichomon.backend.dao.UbicacionDao;
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateEntrenadorDao;
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateUbicacionDao;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
@@ -27,6 +28,8 @@ import static org.junit.Assert.assertNull;
 import java.security.Guard;
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertEquals;
+
 public class TestMapaService {
 
     private Entrenador esh;
@@ -34,9 +37,11 @@ public class TestMapaService {
     private Ubicacion guarderia1;
 
     private HibernateEntrenadorDao dao;
+    private HibernateUbicacionDao ubiDao;
     private EntrenadorService entrenadorService;
     private UbicacionService ubicacionService;
     private MapaService mapaService;
+    private UbicacionService ubiService;
 
 
 
@@ -49,12 +54,20 @@ public class TestMapaService {
         esh = new Entrenador("esh", guarderia1);
 
         dao = new HibernateEntrenadorDao();
+
+        ubiDao = new HibernateUbicacionDao();
         entrenadorService = new EntrenadorService(dao);
+
+        ubiService = new UbicacionService(ubiDao);
+        ubiService.guardar(guarderia1);
+        mapaService = new MapaService(entrenadorService, ubiService);
+
         ubicacionService = new UbicacionService(new HibernateUbicacionDao());
         mapaService = new MapaService(entrenadorService, ubicacionService);
 
         entrenadorService.guardar(esh);
         ubicacionService.guardar(guarderia2);
+
 
 
         }
@@ -113,6 +126,10 @@ public class TestMapaService {
         assertNull(mapaService.campeonHistorico("unqui"));
 
     }
+    @Test
+    public void una_ubicacion_sabe_cuantos_entrenadores_hay_en_la_misma(){
 
+        assertEquals(mapaService.cantidadEntrenadores("guarderia1"),0);
+    }
 
 }

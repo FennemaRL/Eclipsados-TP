@@ -9,6 +9,7 @@ public class MapaService {
     private EntrenadorService entrenadorService;
     private UbicacionService ubicacionService;
 
+
     public MapaService(EntrenadorService entrenadorService1, UbicacionService ubicacionService1) {
         entrenadorService = entrenadorService1;
         ubicacionService = ubicacionService1;
@@ -24,7 +25,16 @@ public class MapaService {
         //y actualizar ubicacion 0, ubicacion 1 se actualiza x cascade
         entrenadorService.actualizar(entrenador1);
     }
+
     public Bicho campeonHistorico(String dojo){
         return ubicacionService.campeonHistorico(dojo);
     }
+
+
+    public int cantidadEntrenadores(String unaUbicacion) {
+        Ubicacion ubicacion = ubicacionService.recuperar(unaUbicacion);
+        return(ubicacion.getCantidadEntrenadores());
+    }
+
+
 }

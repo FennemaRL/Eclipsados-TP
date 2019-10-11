@@ -3,6 +3,7 @@ package ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate;
 import ar.edu.unq.epers.bichomon.backend.dao.UbicacionDao;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
+import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 import ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner;
 import org.hibernate.SQLQuery;
@@ -80,5 +81,16 @@ public class HibernateUbicacionDao extends HibernateDAO<Ubicacion> implements Ub
                 " ORDER BY TIMEDIFF(COALESCE(historial.fechaFin,:dat3 ), historial.fechaInicio) desc limit 10;").addEntity(Entrenador.class);
         entrenadorq.setParameter("dat3",date);
         return entrenadorq.getResultList();
+    }
+
+    public Especie especieLider() {
+        Session session = TransactionRunner.getCurrentSession();
+        String hql = "Select especie from Historial as historial join historial.bicho as bicho join bicho.especie as especie" +
+                " group by especie.id " +
+                " order by count(especie.id) desc";
+        Query<Especie> especieQ =session.createQuery(hql,Especie.class);
+        especieQ.setMaxResults(1);
+
+        return especieQ.uniqueResult();
     }
 }
