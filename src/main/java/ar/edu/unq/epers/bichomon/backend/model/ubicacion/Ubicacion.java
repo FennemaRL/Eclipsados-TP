@@ -18,10 +18,15 @@ public abstract class Ubicacion {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     protected int id;
+
+    private int cantidadDeEntrenadores;
+
     public Ubicacion(){}
     public Ubicacion(String name) {
         nombreUbicacion = name;
-        cantidadEntrenadores =0;
+
+        cantidadDeEntrenadores = 0;
+
     }
 
     public abstract Bicho capturar(Entrenador e);
@@ -51,11 +56,15 @@ public abstract class Ubicacion {
         return id;
     }
 
-    public int getCantidadEntrenadores(){
-        return cantidadEntrenadores;
-    }
 
-    public void setCantidadEntrenadores(int i){
-        cantidadEntrenadores= i;
+    public int getCantidadDeEntrenadores(){ return this.cantidadDeEntrenadores;}
+
+    public void incrementarCantidadDeEntrenadores(){this.cantidadDeEntrenadores++;};
+
+    public void decrementarCantidadDeEntrenadores(){this.cantidadDeEntrenadores--;}
+
+    public void setCantidadDeEntrenadores(int i){
+        this.cantidadDeEntrenadores= i;
     };
+
 }

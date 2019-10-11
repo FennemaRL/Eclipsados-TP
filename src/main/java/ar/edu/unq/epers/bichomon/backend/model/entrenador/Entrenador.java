@@ -41,6 +41,7 @@ public class Entrenador {
         this.experiencia= 0;
         bichos = new HashSet<>();
         ubicacion = u;
+        u.incrementarCantidadDeEntrenadores();
     }
 
     public Entrenador(String nombre, Ubicacion ubicacion, ExperienciaValor expGen, NivelEntrenador nivelEntrenadorGen) {
@@ -82,7 +83,11 @@ public class Entrenador {
     public Ubicacion getUbicacion() {
         return ubicacion;
     }
-    public void setUbicacion(Ubicacion ubicacion){this.ubicacion = ubicacion;}
+    public void setUbicacion(Ubicacion ubicacion){
+        this.ubicacion.decrementarCantidadDeEntrenadores();
+        this.ubicacion = ubicacion;
+        this.ubicacion.incrementarCantidadDeEntrenadores();
+    }
 
     public String getNombre(){return nombre;}
 

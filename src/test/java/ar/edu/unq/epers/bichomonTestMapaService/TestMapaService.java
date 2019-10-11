@@ -1,9 +1,13 @@
 package ar.edu.unq.epers.bichomonTestMapaService;
 
-import ar.edu.unq.epers.bichomon.backend.dao.UbicacionDao;
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateEntrenadorDao;
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateUbicacionDao;
+
+import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.NoHayEntrenadorConEseNombre;
+import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.NoHayUbicacionConEseNombre;
+
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
+
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.ExperienciaValor;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.NivelEntrenador;
@@ -23,14 +27,18 @@ import org.junit.Test;
 
 import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
 import static org.junit.Assert.assertEquals;
+
+import static org.junit.Assert.assertSame;
+
 import static org.junit.Assert.assertNull;
+
 
 import java.security.Guard;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestMapaService {
+public class  TestMapaService {
 
     private Entrenador esh;
     private Ubicacion guarderia2;
@@ -59,7 +67,7 @@ public class TestMapaService {
         entrenadorService = new EntrenadorService(dao);
 
         ubiService = new UbicacionService(ubiDao);
-        guarderia2.setCantidadEntrenadores(5);
+        guarderia2.setCantidadDeEntrenadores(5);
         ubiService.guardar(guarderia1);
 
         mapaService = new MapaService(entrenadorService, ubiService);
@@ -87,6 +95,29 @@ public class TestMapaService {
     }
 
     @Test
+    public void al_mover_al_entrenador_la_cantidad_de_entrenadores_en_cada_ubicacion_cambia(){
+        assertEquals(1,guarderia1.getCantidadDeEntrenadores());
+        assertEquals(0,guarderia2.getCantidadDeEntrenadores());
+
+        mapaService.mover("esh","guarderia2");
+        Ubicacion guarderia11 = ubicacionService.recuperar("guarderia1");
+        Ubicacion guarderia22 = ubicacionService.recuperar("guarderia2");
+
+        assertEquals(0, guarderia11.getCantidadDeEntrenadores());
+        assertEquals(1,guarderia22.getCantidadDeEntrenadores());
+    }
+
+    @Test (expected = NoHayEntrenadorConEseNombre.class)
+    public void al_mover_un_entrenador_que_no_existe_salta_NoHayEntrenadorConEseNombre_Exception(){
+        mapaService.mover("ash", "guarderia2");
+    }
+
+    @Test (expected = NoHayUbicacionConEseNombre.class)
+    public void al_mover_a_una_ubicacion_que_no_existe_salta_NoHayUbicacionConEseNombre_Exception(){
+        mapaService.mover("esh", "guarderia8");
+    }
+
+
     public void dojo_con_campeon_historico() throws InterruptedException { //
         ProbabilidadNoRandom pr = new ProbabilidadNoRandom();
         Dojo dojo = new Dojo("unqui", pr);
