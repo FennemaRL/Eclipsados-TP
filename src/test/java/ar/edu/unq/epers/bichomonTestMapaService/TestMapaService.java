@@ -76,7 +76,6 @@ public class TestMapaService {
     @After
     public void tearDown(){
         run(()-> dao.clear());
-        SessionFactoryProvider.destroy();
     }
 
     @Test

@@ -37,12 +37,15 @@ public class BichoService {
     }
 
     public Bicho evolucionar(String entrenador, int bicho) {
-        Entrenador entre = entrenadorService.recuperar(entrenador);
-        Bicho bichoo= entre.getBichoConID(bicho);
-        bichoo.evolucionar();
-        entre.aumentarExpPorEvolucionar();
-        entrenadorService.actualizar(entre);
-        return bichoo;
+        return run(() -> {
+            Entrenador entre = entrenadorService.recuperar(entrenador);
+            Bicho bichoo= entre.getBichoConID(bicho);
+            bichoo.evolucionar();
+            entre.aumentarExpPorEvolucionar();
+            entrenadorService.actualizar(entre);
+            return bichoo;
+        }
+        );
     }
 
     public void abandonarBicho(String entrenador, Integer bicho){

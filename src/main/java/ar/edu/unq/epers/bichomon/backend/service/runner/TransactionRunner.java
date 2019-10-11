@@ -17,6 +17,10 @@ public class TransactionRunner {
 
 	
 	public static <T> T run(Supplier<T> bloque) {
+		if(session != null){
+			return bloque.get();
+		}
+
 		Transaction tx = null;
 		
 		try {
