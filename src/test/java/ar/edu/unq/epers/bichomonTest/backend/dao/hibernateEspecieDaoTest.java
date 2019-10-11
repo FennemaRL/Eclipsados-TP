@@ -29,8 +29,8 @@ public class hibernateEspecieDaoTest{
         this.pejelagarto.setCantidadBichos(0);
     }
     @After
-    public void reset(){
-        SessionFactoryProvider.destroy();
+    public void tearDown(){
+        run(()-> dao.clear());
     }
 
     @Test

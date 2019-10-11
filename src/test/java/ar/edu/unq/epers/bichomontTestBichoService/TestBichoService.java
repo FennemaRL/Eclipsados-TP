@@ -37,12 +37,12 @@ public class TestBichoService {
     private Victoria victoria;
     private ExperienciaValor dadorDeExperiencia;
     private NivelEntrenador dadorDeNivel;
+    private HibernateEntrenadorDao dao;
 
     @Before
     public void setUp(){
-        SessionFactoryProvider.destroy();
-        HibernateEntrenadorDao dao = new HibernateEntrenadorDao();
-        run(()->dao.clear());
+        dao = new HibernateEntrenadorDao();
+
         es = new EntrenadorService(dao);
         bs= new BichoService(es);
         Especie especie = new Especie("Rayo", TipoBicho.ELECTRICIDAD,3,2,0);
@@ -56,6 +56,10 @@ public class TestBichoService {
         energia = new Energia();
         victoria= new Victoria();
     }
+    @After
+    public void tearDown(){
+        run(()-> dao.clear());
+    }
 
     @Test(expected = NoHayEntrenadorConEseNombre.class)
     public void al_buscar_un_Entrenador_que_no_existe_levanta_una_excepcion(){// busqueda desfavorable entrenador
@@ -68,7 +72,7 @@ public class TestBichoService {
         ubicacion = new Guarderia("Chaparral");
         ubicacion.adoptar(bartolomon);
         Entrenador entrenador = new Entrenador("Mostaza",ubicacion,dadorDeExperiencia,dadorDeNivel);
-        es.guardar(entrenador) ;
+        es.guardar(entrenador);
 
         assertEquals(bartolomon.getId(), bs.buscar("Mostaza").getId());
     }

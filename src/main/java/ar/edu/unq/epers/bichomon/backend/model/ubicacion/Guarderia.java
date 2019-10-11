@@ -28,7 +28,7 @@ public class Guarderia extends Ubicacion{
     public Bicho capturar(Entrenador entre) {
         List<Bicho> bichosFiltrados ;
 
-        bichosFiltrados= bichos.stream().filter(bicho -> ! bicho.getOwner().getNombre().equals(entre.getNombre())).collect(Collectors.toList());;
+        bichosFiltrados= bichos.stream().filter(bicho -> bicho.getOwner() == null || ! bicho.getOwner().getNombre().equals(entre.getNombre())).collect(Collectors.toList());;
 
         if(bichosFiltrados.size() == 0)
             throw new GuarderiaErrorNoBichomon("la guarderia " + this.getNombreUbicacion() + " no posee bichomones");

@@ -10,7 +10,7 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class RandomBichomon  {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     protected int id;
 
     public RandomBichomon(){

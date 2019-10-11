@@ -1,7 +1,12 @@
 package ar.edu.unq.epers.bichomon.backend.service;
 
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateUbicacionDao;
+
+import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.NoHayEntrenadorConEseNombre;
+import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.NoHayUbicacionConEseNombre;
+
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
+
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 
 
@@ -12,7 +17,11 @@ public class UbicacionService {
     public UbicacionService(HibernateUbicacionDao hibernateUbicacionDao){dao =hibernateUbicacionDao;}
 
     public Ubicacion recuperar(String ubicacion) {
+        try {
             return run(() -> this.dao.recuperarUbicacion(ubicacion));
+        } catch (Exception e) {
+            throw new NoHayUbicacionConEseNombre("no hay ubicacion con ese nombre");
+        }
     }
 
     public void guardar(Ubicacion ubicacion){
