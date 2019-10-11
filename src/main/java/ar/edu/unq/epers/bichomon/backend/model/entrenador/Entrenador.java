@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @Entity
 public class Entrenador {
     @Id
-    @GeneratedValue (strategy = javax.persistence.GenerationType.IDENTITY )
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     @Column (unique = true)
     private String nombre;

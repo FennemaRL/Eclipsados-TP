@@ -8,7 +8,7 @@ import java.util.Date;
 @Entity
 public class   Historial {
     @Id
-    @GeneratedValue (strategy = javax.persistence.GenerationType.IDENTITY )
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     @ManyToOne(fetch = FetchType.LAZY,cascade =CascadeType.ALL)
     private Entrenador entrenador;

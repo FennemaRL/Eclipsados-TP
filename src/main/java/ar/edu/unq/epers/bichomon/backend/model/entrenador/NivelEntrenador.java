@@ -6,7 +6,7 @@ import java.util.List;
 @Entity(name="LvlEntrenador")
 public class NivelEntrenador {
    @Id
-   @GeneratedValue (strategy = javax.persistence.GenerationType.IDENTITY )
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
    private int id ;
     @ElementCollection(fetch=FetchType.EAGER)
     @CollectionTable(name="niveles")
