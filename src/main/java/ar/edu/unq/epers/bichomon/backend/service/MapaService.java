@@ -18,9 +18,9 @@ public class MapaService {
         Ubicacion ubicacion0 = entrenador1.getUbicacion();
         Ubicacion ubicacion1 = ubicacionService.recuperar(ubicacion);
 
-        entrenador1.setUbicacion(ubicacion1);
-        //decrementar e incrementar entrenadores en ubicaciones
-        //y actualizar ubicacion 0, ubicacion 1 se actualiza x cascade
+        entrenador1.setUbicacion(ubicacion1); //set ubicacion incrementa y decrementa entrenadores en ubicaciones
+
+        ubicacionService.actualizar(ubicacion0); //ubicacion 1 ses actualiza por cascade
         entrenadorService.actualizar(entrenador1);
     }
 }

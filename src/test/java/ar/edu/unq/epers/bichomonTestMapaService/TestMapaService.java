@@ -14,9 +14,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+
 import java.security.Guard;
 
-public class TestMapaService {
+public class  TestMapaService {
 
     private Entrenador esh;
     private Ubicacion guarderia2;
@@ -57,6 +59,19 @@ public class TestMapaService {
         mapaService.mover("esh","guarderia2");
         Entrenador entrenador2 = entrenadorService.recuperar("esh");
         assertEquals("guarderia2", entrenador2.getUbicacion().getNombreUbicacion());
+    }
+
+    @Test
+    public void al_mover_al_entrenador_la_cantidad_de_entrenadores_en_cada_ubicacion_cambia(){
+        assertEquals(1,guarderia1.getCantidadDeEntrenadores());
+        assertEquals(0,guarderia2.getCantidadDeEntrenadores());
+
+        mapaService.mover("esh","guarderia2");
+        Ubicacion guarderia11 = ubicacionService.recuperar("guarderia1");
+        Ubicacion guarderia22 = ubicacionService.recuperar("guarderia2");
+
+        assertEquals(0, guarderia11.getCantidadDeEntrenadores());
+        assertEquals(1,guarderia22.getCantidadDeEntrenadores());
     }
 
 }

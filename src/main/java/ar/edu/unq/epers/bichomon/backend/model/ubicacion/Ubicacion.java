@@ -17,9 +17,13 @@ public abstract class Ubicacion {
     @Id
     @GeneratedValue
     protected int id;
+
+    private int cantidadDeEntrenadores;
+
     public Ubicacion(){}
     public Ubicacion(String name) {
         nombreUbicacion = name;
+        cantidadDeEntrenadores = 0;
     }
 
     public abstract Bicho capturar(Entrenador e);
@@ -48,4 +52,10 @@ public abstract class Ubicacion {
     public int getid() {
         return id;
     }
+
+    public int getCantidadDeEntrenadores(){ return this.cantidadDeEntrenadores;}
+
+    public void incrementarCantidadDeEntrenadores(){this.cantidadDeEntrenadores++;};
+
+    public void decrementarCantidadDeEntrenadores(){this.cantidadDeEntrenadores--;}
 }
