@@ -374,6 +374,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+
     <configuration name="TestLeaderBoardService.historial_de_campenes_mas_longevo_de_los_dojos_habiendo_mas_de_diez_entrenadores_que_combatieron_en_estos_dojos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <extension name="coverage">
@@ -385,6 +386,7 @@
       <option name="PACKAGE_NAME" value="ar.edu.unq.epers.BichomonTestLeaderBoardService" />
       <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.BichomonTestLeaderBoardService.TestLeaderBoardService" />
       <option name="METHOD_NAME" value="historial_de_campenes_mas_longevo_de_los_dojos_habiendo_mas_de_diez_entrenadores_que_combatieron_en_estos_dojos" />
+
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -392,6 +394,7 @@
     </configuration>
     <recent_temporary>
       <list>
+
         <item itemvalue="JUnit.TestLeaderBoardService.especieLider_sin_dojos_ni_entrenadores" />
         <item itemvalue="JUnit.TestLeaderBoardService.especieLider_con_dojos_y_entrenadores_repetidos" />
         <item itemvalue="JUnit.TestLeaderBoardService.especieLider_con_dojos_y_entrenadores" />
@@ -405,6 +408,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+
       <changelist id="a58abd9e-b937-488d-9e2d-8f0868320bb1" name="Default Changelist" comment="" />
       <created>1570722039331</created>
       <option name="number" value="Default" />

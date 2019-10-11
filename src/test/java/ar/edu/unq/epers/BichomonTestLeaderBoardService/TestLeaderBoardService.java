@@ -199,7 +199,7 @@ public class TestLeaderBoardService {
     public void especieLider_sin_dojos_ni_entrenadores(){
         lbs.especieLider();
     }
-    
+
     @Test
     public void especieLider_con_dojos_y_entrenadores() { //test especieLider
 
