@@ -12,7 +12,7 @@ import javax.persistence.*;
 public abstract class Condicion {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = javax.persistence.GenerationType.IDENTITY )
     protected int id;
 
     @Column

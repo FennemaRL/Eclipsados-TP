@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 @Entity
 public class Bicho {
 	@Id
-	@GeneratedValue
+	@GeneratedValue (strategy = javax.persistence.GenerationType.IDENTITY )
 	private Integer id;
 	private String nombre;
 	@ManyToOne (cascade = CascadeType.ALL)

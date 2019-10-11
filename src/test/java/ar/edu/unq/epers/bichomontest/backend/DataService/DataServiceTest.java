@@ -36,7 +36,7 @@ public class DataServiceTest {
         ds.eliminarDatos();
 
         assertEquals(eList,dao.recuperarTodos());
-    }*/
+    }
     @Test (expected = JDBCEspecieDAOError.class) //test desfavorable
     public void levanta_excepcion_al_tratar_de_cargar_datos_Con_el_Data_service_al_haber_una_especie_con_el_mismo_Nombre(){
         this.dao.guardar(new Especie("Fortmon", TipoBicho.ELECTRICIDAD,1,1,0));
@@ -47,6 +47,6 @@ public class DataServiceTest {
         this.ds.eliminarDatos();
         List<Especie> eList = new ArrayList<>();
         assertEquals(eList, dao.recuperarTodos() );
-    }
+    }*/
     
 }

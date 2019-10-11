@@ -16,7 +16,7 @@ public abstract class Ubicacion {
     protected int cantidadEntrenadores;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = javax.persistence.GenerationType.IDENTITY )
     protected int id;
     public Ubicacion(){}
     public Ubicacion(String name) {

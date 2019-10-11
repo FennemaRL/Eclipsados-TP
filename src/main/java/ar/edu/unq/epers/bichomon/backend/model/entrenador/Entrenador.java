@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @Entity
 public class Entrenador {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = javax.persistence.GenerationType.IDENTITY )
     private int id;
     @Column (unique = true)
     private String nombre;
@@ -136,7 +136,6 @@ public class Entrenador {
         Bicho bicho = this.getBichoConID(bichoId);
         if(this.bichos.size()>=2){
             ubicacion.adoptar(bicho);
-            bicho.abandonar();
             bichos.remove(bicho);
         }
         else{
