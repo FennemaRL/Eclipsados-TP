@@ -35,4 +35,5 @@ public class TestUbicacionService {
 
         assertEquals(guarderia.getNombre(),mismaUbicacion.getNombre());
     }
+
 }

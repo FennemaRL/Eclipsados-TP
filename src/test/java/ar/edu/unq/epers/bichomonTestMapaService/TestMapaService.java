@@ -2,6 +2,8 @@ package ar.edu.unq.epers.bichomonTestMapaService;
 
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateEntrenadorDao;
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateUbicacionDao;
+import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.NoHayEntrenadorConEseNombre;
+import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.NoHayUbicacionConEseNombre;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Dojo;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Guarderia;
@@ -72,6 +74,16 @@ public class  TestMapaService {
 
         assertEquals(0, guarderia11.getCantidadDeEntrenadores());
         assertEquals(1,guarderia22.getCantidadDeEntrenadores());
+    }
+
+    @Test (expected = NoHayEntrenadorConEseNombre.class)
+    public void al_mover_un_entrenador_que_no_existe_salta_NoHayEntrenadorConEseNombre_Exception(){
+        mapaService.mover("ash", "guarderia2");
+    }
+
+    @Test (expected = NoHayUbicacionConEseNombre.class)
+    public void al_mover_a_una_ubicacion_que_no_existe_salta_NoHayUbicacionConEseNombre_Exception(){
+        mapaService.mover("esh", "guarderia8");
     }
 
 }
