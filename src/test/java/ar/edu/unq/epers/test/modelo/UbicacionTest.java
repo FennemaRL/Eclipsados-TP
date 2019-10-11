@@ -24,21 +24,41 @@ public class UbicacionTest {
         rm = mock (RandomBichomon.class);
     }
     @Test(expected = GuarderiaErrorNoBichomon.class)
-    public void guarderia_no_tiene_bichomones_y_lanza_una_excepcion_al_capturar(){
+    public void guarderia_no_tiene_bichomones_y_lanza_una_excepcion_al_capturar(){ //
         Ubicacion guar= new Guarderia("chaparral");
         Entrenador e = mock(Entrenador.class);
         guar.capturar(e);
     }
-    @Test
-    public void guarderia_guarderia_adopta_bichomones_y_los_retorna_cuando_se_captura_en_ella(){
+    @Test(expected = GuarderiaErrorNoBichomon.class)
+    public void guarderia_guarderia_adopta_bichomones_y_los_retorna_cuando_se_captura_en_ella(){ //faltan cosas en los mocks
+        Bicho a = mock(Bicho.class);
+        Bicho b = mock(Bicho.class);
+        Ubicacion guar= new Guarderia("chaparral");
+        Entrenador e = mock(Entrenador.class);
+        Entrenador e1 = mock(Entrenador.class);
+        guar.adoptar(a);
+        guar.adoptar(b);
+        when(e.getNombre()).thenReturn("pepo");
+        when(e1.getNombre()).thenReturn("pepe");
+        when(a.getOwner()).thenReturn(e1);
+        when(b.getOwner()).thenReturn(e1);
+
+        assertEquals(a,guar.capturar(e));
+        guar.capturar(e1);
+    }
+    @Test(expected = GuarderiaErrorNoBichomon.class)
+    public void guarderia_guarderia_adopta_bichomon_y_no_lo_retorna_poque_lo_quiere_capturar_su_anterior_dueño(){ //faltan cosas en los mocks
         Bicho a = mock(Bicho.class);
         Bicho b = mock(Bicho.class);
         Ubicacion guar= new Guarderia("chaparral");
         Entrenador e = mock(Entrenador.class);
         guar.adoptar(a);
         guar.adoptar(b);
-        assertEquals(a,guar.capturar(e));
-        assertFalse(a.equals(guar.capturar(e)));
+        when(e.getNombre()).thenReturn("pepe");
+        when(b.getOwner()).thenReturn(e);
+        when(a.getOwner()).thenReturn(e);
+
+        guar.capturar(e);
     }
     @Test(expected = DojoSinEntrenador.class)
     public void dojo_no_tiene_campeon_y_lanza_una_excepcion_a_la_hora_de_capturar(){

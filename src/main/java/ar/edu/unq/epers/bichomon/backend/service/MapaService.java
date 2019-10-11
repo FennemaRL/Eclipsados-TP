@@ -1,5 +1,6 @@
 package ar.edu.unq.epers.bichomon.backend.service;
 
+import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 
@@ -7,6 +8,7 @@ public class MapaService {
 
     private EntrenadorService entrenadorService;
     private UbicacionService ubicacionService;
+
 
     public MapaService(EntrenadorService entrenadorService1, UbicacionService ubicacionService1) {
         entrenadorService = entrenadorService1;
@@ -23,4 +25,16 @@ public class MapaService {
         ubicacionService.actualizar(ubicacion0); //ubicacion 1 ses actualiza por cascade
         entrenadorService.actualizar(entrenador1);
     }
+
+    public Bicho campeonHistorico(String dojo){
+        return ubicacionService.campeonHistorico(dojo);
+    }
+
+
+    public int cantidadEntrenadores(String unaUbicacion) {
+        Ubicacion ubicacion = ubicacionService.recuperar(unaUbicacion);
+        return(ubicacion.getCantidadDeEntrenadores());
+    }
+
+
 }

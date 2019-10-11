@@ -9,13 +9,14 @@ import ar.edu.unq.epers.bichomon.backend.model.entrenador.ResultadoCombate;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Ubicacion {
     @Column (unique = true)
     protected String nombreUbicacion;
+    protected int cantidadEntrenadores;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = javax.persistence.GenerationType.IDENTITY )
     protected int id;
 
     private int cantidadDeEntrenadores;
@@ -23,7 +24,9 @@ public abstract class Ubicacion {
     public Ubicacion(){}
     public Ubicacion(String name) {
         nombreUbicacion = name;
+
         cantidadDeEntrenadores = 0;
+
     }
 
     public abstract Bicho capturar(Entrenador e);
@@ -53,9 +56,15 @@ public abstract class Ubicacion {
         return id;
     }
 
+
     public int getCantidadDeEntrenadores(){ return this.cantidadDeEntrenadores;}
 
     public void incrementarCantidadDeEntrenadores(){this.cantidadDeEntrenadores++;};
 
     public void decrementarCantidadDeEntrenadores(){this.cantidadDeEntrenadores--;}
+
+    public void setCantidadDeEntrenadores(int i){
+        this.cantidadDeEntrenadores= i;
+    };
+
 }

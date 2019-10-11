@@ -116,7 +116,6 @@ public class  EntrenadorTest {
 
                 esh.abandonarBicho(2);
 
-                verify(riko, atLeast(1)).abandonar();
                 esh.abandonarBicho(3);
 
                 assertEquals(1, esh.getBichos().size());

@@ -16,6 +16,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -56,9 +57,10 @@ public class hibernateEntrenadorDaoTest { //falta testear cosas y agregar constr
         assertEquals(pepa.getUbicacion().getNombreUbicacion(), pep2.getUbicacion().getNombreUbicacion());
         assertEquals(pepa.getNombre(), pep2.getNombre());
     }
-    @Test
+    @Test (expected = NoResultException.class)
     public void al_recuperar_un_nombre_inexistente_no_recupera_y_levanta_excepcion(){ // test desfavorable recuperar
-        assertEquals(null,run(() ->this.dao.recuperar("pejelagarto3")));
+        Entrenador  entrenador = run(() ->this.dao.recuperar("pejelagarto3"));
+
     }
 
     @Test (expected= PersistenceException.class) //arreglar en clase

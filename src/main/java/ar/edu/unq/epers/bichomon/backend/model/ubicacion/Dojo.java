@@ -13,10 +13,10 @@ import java.util.Set;
 
 @Entity
 public class Dojo extends Ubicacion{
-    @ManyToOne
-    private Entrenador entrenadorC;
-    @ManyToOne
-    private Bicho bichoC;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Entrenador entrenadorCampeon;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Bicho bichoCampeon;
 
     @ManyToOne( cascade = CascadeType.ALL)
     private RandomBichomon random ;
@@ -37,11 +37,10 @@ public class Dojo extends Ubicacion{
     public Bicho capturar(Entrenador e) {
         Bicho br = null;
         Boolean busqueda = random.busquedaExitosa(e,this);
-        Boolean contieneBicho=entrenadorC != null && entrenadorC.tieneBichoConId(bichoC.getId());
+        Boolean contieneBicho= entrenadorCampeon != null && entrenadorCampeon.tieneBichoConId(bichoCampeon.getId());
         if( contieneBicho && busqueda){
-            Especie esp = bichoC.getEspecie().getEspecieRaiz();
+            Especie esp = bichoCampeon.getEspecie().getEspecieRaiz();
             br = new Bicho(esp);
-            esp.incrementarEnUnBicho();
 
         }
         if (!contieneBicho){
@@ -54,24 +53,25 @@ public class Dojo extends Ubicacion{
     }
     @Override
     public ResultadoCombate retar(Entrenador entrenador, Bicho bichomon){ //preguntar por esto en clase
-        if(entrenadorC == null || !entrenadorC.tieneBichoConId(bichoC.getId()) && ! entrenadorC.getNombre().equals(entrenador.getNombre())){
-            entrenadorC = entrenador;
-            bichoC =bichomon;
+        if(entrenadorCampeon == null || !entrenadorCampeon.tieneBichoConId(bichoCampeon.getId()) && ! entrenadorCampeon.getNombre().equals(entrenador.getNombre())){
+            entrenadorCampeon = entrenador;
+            bichoCampeon =bichomon;
             Date fecha = new Date();
-            Historial historial = new Historial (entrenadorC,bichoC,fecha);
+            Historial historial = new Historial (entrenadorCampeon, bichoCampeon,fecha);
             this.historial.add(historial);
-            return new ResultadoCombate(bichoC);
+            return new ResultadoCombate(bichoCampeon);
 
         }
-        if(entrenadorC.getNombre().equals(entrenador.getNombre())){
-            throw new BichomonError("El campeon no puede desafiarse en su dojo");
+        System.out.print(null == null +"null es igual a null");
+        if(entrenadorCampeon.getNombre().equals(entrenador.getNombre())){
+            throw new BichomonError("El campeon "+ entrenadorCampeon.getNombre()+"no puede desafiarse en su dojo");
         }
         else{
-            ResultadoCombate resultado = new ResultadoCombate(bichomon,bichoC);
+            ResultadoCombate resultado = new ResultadoCombate(bichomon, bichoCampeon);
             entrenador.aumentarExpPorCombate();
-            bichoC.aumentarEnergiaPorCombate();
+            bichoCampeon.aumentarEnergiaPorCombate();
             bichomon.aumentarEnergiaPorCombate();
-            this.entrenadorC.aumentarExpPorCombate();
+            this.entrenadorCampeon.aumentarExpPorCombate();
             posibleCambioGanador(resultado,entrenador);
             return resultado;
         }
@@ -80,24 +80,26 @@ public class Dojo extends Ubicacion{
 
     @Override
     public String getEntrenadorName() {
-        return entrenadorC.getNombre();
+        return entrenadorCampeon.getNombre();
     }
 
     @Override
     public Entrenador getCampeon(){
-        return entrenadorC;
+        return entrenadorCampeon;
     }
 
     @Override
     public String getBichomonName() {
-        return bichoC.getEspecie().getNombre();
+        return bichoCampeon.getEspecie().getNombre();
     }
     private void posibleCambioGanador(ResultadoCombate resultado, Entrenador retador) {
         Date fecha = new Date();
         if(resultado.getGanador().getOwner()==retador){
             Historial mod =(Historial) (historial.toArray()[ historial.size()-1 ]);
-                    mod.setFechaFin(fecha);
+            mod.setFechaFin(fecha);
             Historial historial = new Historial (retador,resultado.getGanador(),fecha);
+            entrenadorCampeon = retador;
+            bichoCampeon = resultado.getGanador();
             this.historial.add(historial);
         }
     }

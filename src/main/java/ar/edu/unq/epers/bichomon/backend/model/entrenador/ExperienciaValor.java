@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Table(name = "Experiencia")
 public class ExperienciaValor {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = javax.persistence.GenerationType.IDENTITY )
     public int id;
 
     @Column

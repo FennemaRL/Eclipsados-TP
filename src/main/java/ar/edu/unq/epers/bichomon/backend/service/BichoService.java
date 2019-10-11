@@ -54,13 +54,8 @@ public class BichoService {
 
     public ResultadoCombate duelo(String entrenador, int bichoid){
         Entrenador entrenador1 = entrenadorService.recuperar(entrenador);
-        Entrenador campeon = null;
-        if(entrenador1.getUbicacion().getClass().equals(Dojo.class))
-            campeon = entrenador1.getUbicacion().getCampeon();
         ResultadoCombate rc = entrenador1.duelear(bichoid);
         entrenadorService.actualizar(entrenador1);
-        if(campeon !=null)
-            entrenadorService.actualizar(campeon);
         return rc;
     }
 

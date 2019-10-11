@@ -7,11 +7,12 @@ import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 
 import javax.persistence.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 public class Entrenador {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = javax.persistence.GenerationType.IDENTITY )
     private int id;
     @Column (unique = true)
     private String nombre;
@@ -140,7 +141,6 @@ public class Entrenador {
         Bicho bicho = this.getBichoConID(bichoId);
         if(this.bichos.size()>=2){
             ubicacion.adoptar(bicho);
-            bicho.abandonar();
             bichos.remove(bicho);
         }
         else{
@@ -157,4 +157,10 @@ public class Entrenador {
     public void setExperienciaValor(ExperienciaValor expGen){this.expGen = expGen; }
 
     public void setNivelGen(NivelEntrenador nivelEntrenadorGen) {this.nivelEntrenadorGen = nivelEntrenadorGen;  }
+
+    public ResultadoCombate duelear() {
+        return ubicacion.retar(this, bichos.stream().collect(Collectors
+                .toCollection(ArrayList::new)).get(0) );
+
+    }
 }

@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 @Entity
 public class Bicho {
 	@Id
-	@GeneratedValue
+	@GeneratedValue (strategy = javax.persistence.GenerationType.IDENTITY )
 	private Integer id;
 	private String nombre;
 	@ManyToOne (cascade = CascadeType.ALL)
@@ -26,7 +26,7 @@ public class Bicho {
 	private int energiaDeCombate;
 	private Date fechaCaptura;
 	private Integer victorias;
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Entrenador owner;
 
 
@@ -34,6 +34,7 @@ public class Bicho {
 
 	public Bicho(Especie especie){
 		this.especie = especie;
+		especie.incrementarEnUnBicho();
 		victorias = 0;
 		energiaDeCombate= 1;
 	}

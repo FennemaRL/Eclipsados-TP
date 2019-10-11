@@ -50,7 +50,6 @@ public class Pueblo extends Ubicacion{
             espl.addAll(especies);
             Especie esp = random.especiePorProbabilidad(espl, especiesProbabilidad);
             br = new Bicho(esp);
-            esp.incrementarEnUnBicho();
         }
         if (!resultadoCaptura){
             throw new CapturaFallida("no se capturo nada");
@@ -68,7 +67,5 @@ public class Pueblo extends Ubicacion{
         return null;
     }
 
-    public Integer getCantEntrenadores(){
-        return cantEntrenadores;
-    }
+
 }
