@@ -37,8 +37,8 @@ public class MapaService {
     }
 
 
-    public Bicho campeon(Ubicacion ubi) {
-        return ubicacionService.recuperarCampeon(ubi);
+    public Bicho campeon(String ubi) {
+        return ubicacionService.recuperar(ubi).getBichoCampeon();
     }
 
 }

@@ -67,4 +67,8 @@ public abstract class Ubicacion {
         this.cantidadDeEntrenadores= i;
     };
 
+    public  Bicho getBichoCampeon(){
+        throw new ZonaErronea("Esta no es un dojo"+this.nombreUbicacion);
+    }
+
 }

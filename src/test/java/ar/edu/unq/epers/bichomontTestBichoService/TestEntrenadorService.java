@@ -12,20 +12,27 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
 import static org.junit.Assert.assertEquals;
 
 public class TestEntrenadorService {
 
     private EntrenadorService es;
     private Entrenador entrenador;
+    private HibernateEntrenadorDao dao;
+
     @Before
     public void setup(){
-        SessionFactoryProvider.destroy();
-        es =new EntrenadorService(new HibernateEntrenadorDao());
+        dao = new HibernateEntrenadorDao();
+        es =new EntrenadorService(dao);
         Ubicacion guarde = new Guarderia("1116");
         entrenador = new Entrenador("pepe",guarde);
 
         es.guardar(entrenador);
+    }
+    @After
+    public void tearDown(){
+        run(()-> dao.clear());
     }
     @Test(expected = NoHayEntrenadorConEseNombre.class)
     public void al_recuperar_un_entrenador_inexistente_levanta_una_exepcion(){

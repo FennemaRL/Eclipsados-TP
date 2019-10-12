@@ -187,10 +187,9 @@ public class UbicacionTest {
         List<Especie> le = new ArrayList<>();
         le.add(a);le.add(b);
         List ep = new ArrayList<Integer>();
-        ep.add(14);ep.add(86);
+        ep.add(86);ep.add(14);
         Ubicacion pueblo = new Pueblo("1114",r,le,ep);
         when(r.busquedaExitosa(e,pueblo)).thenReturn(true);
-        when(r.especiePorProbabilidad(le,ep)).thenReturn(le.get(0));
 
         Bicho bicho =pueblo.capturar(e);
         verify(a,times(1)).incrementarEnUnBicho();

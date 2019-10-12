@@ -89,6 +89,14 @@ public class Dojo extends Ubicacion{
     }
 
     @Override
+    public Bicho getBichoCampeon() {
+        if(bichoCampeon != null && entrenadorCampeon.tieneBichoConId(bichoCampeon.getId()))
+            return bichoCampeon;
+        else
+             throw new DojoSinEntrenador("No se puede capturar en esta zona todavia ya que no posee campeon");
+    }
+
+    @Override
     public String getBichomonName() {
         return bichoCampeon.getEspecie().getNombre();
     }

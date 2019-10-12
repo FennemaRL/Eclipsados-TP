@@ -21,12 +21,11 @@ public class BichoService {
     }
 
     public Bicho buscar(String entrenador){
-
-        Bicho bicho = null;
-        Entrenador  entre = entrenadorService.recuperar(entrenador);
-        bicho = entre.capturar();//romper si tengo mas de los que puedo
-        entrenadorService.actualizar(entre);
-       return bicho;
+        return run(()->{Bicho bicho = null;
+            Entrenador  entre = entrenadorService.recuperar(entrenador);
+            bicho = entre.capturar();//romper si tengo mas de los que puedo
+            entrenadorService.actualizar(entre);
+            return bicho;});
     }
 
 
@@ -37,26 +36,32 @@ public class BichoService {
     }
 
     public Bicho evolucionar(String entrenador, int bicho) {
-        Entrenador entre = entrenadorService.recuperar(entrenador);
-        Bicho bichoo= entre.getBichoConID(bicho);
-        bichoo.evolucionar();
-        entre.aumentarExpPorEvolucionar();
-        entrenadorService.actualizar(entre);
-        return bichoo;
+        return run(() -> {
+            Entrenador entre = entrenadorService.recuperar(entrenador);
+            Bicho bichoo= entre.getBichoConID(bicho);
+            bichoo.evolucionar();
+            entre.aumentarExpPorEvolucionar();
+            entrenadorService.actualizar(entre);
+            return bichoo;
+        }
+        );
     }
 
     public void abandonarBicho(String entrenador, Integer bicho){
-        Entrenador entrenador1 = entrenadorService.recuperar(entrenador);
-        entrenador1.abandonarBicho(bicho);
-        entrenadorService.actualizar(entrenador1);
+        run(()->{
+            Entrenador entrenador1 = entrenadorService.recuperar(entrenador);
+            entrenador1.abandonarBicho(bicho);
+            entrenadorService.actualizar(entrenador1);
+        });
 
     }
 
     public ResultadoCombate duelo(String entrenador, int bichoid){
-        Entrenador entrenador1 = entrenadorService.recuperar(entrenador);
+        return run(()->{
+            Entrenador entrenador1 = entrenadorService.recuperar(entrenador);
         ResultadoCombate rc = entrenador1.duelear(bichoid);
         entrenadorService.actualizar(entrenador1);
-        return rc;
+        return rc;});
     }
 
 }

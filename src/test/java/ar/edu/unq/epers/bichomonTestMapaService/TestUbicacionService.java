@@ -10,20 +10,27 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
 import static org.junit.Assert.assertEquals;
 
 public class TestUbicacionService {
 
     private UbicacionService ubService;
     private Ubicacion guarderia;
+    private HibernateUbicacionDao dao;
 
     @Before
     public void setUp(){
-        SessionFactoryProvider.destroy();
-        ubService = new UbicacionService(new HibernateUbicacionDao());
+        dao = new HibernateUbicacionDao();
+        ubService = new UbicacionService(dao);
         guarderia = new Guarderia("guarderia");
 
         ubService.guardar(guarderia);
+    }
+
+    @After
+    public void tearDown(){
+        run(()-> dao.clear());
     }
 
 

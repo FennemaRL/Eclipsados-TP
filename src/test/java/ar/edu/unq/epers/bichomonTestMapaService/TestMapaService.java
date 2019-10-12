@@ -15,6 +15,7 @@ import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho;
 import ar.edu.unq.epers.bichomon.backend.model.random.RandomBichomon;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Dojo;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.DojoSinEntrenador;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Guarderia;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 import ar.edu.unq.epers.bichomon.backend.service.EntrenadorService;
@@ -76,9 +77,9 @@ public class  TestMapaService {
 
         ubicacionService = new UbicacionService(new HibernateUbicacionDao());
         mapaService = new MapaService(entrenadorService, ubicacionService);
-
+/*
         entrenadorService.guardar(esh);
-        ubicacionService.guardar(guarderia2);
+        ubicacionService.guardar(guarderia2);*/
 
 
 
@@ -86,9 +87,8 @@ public class  TestMapaService {
     @After
     public void tearDown(){
         run(()-> dao.clear());
-        SessionFactoryProvider.destroy();
     }
-
+/*
     @Test
     public void al_mover_al_entrenador_de_guarderia1_a_guarderia2_su_ubicacion_actual_pasa_a_ser_guarderia2(){
         mapaService.mover("esh","guarderia2");
@@ -119,7 +119,7 @@ public class  TestMapaService {
         mapaService.mover("esh", "guarderia8");
     }
 
-
+   @Test
     public void dojo_con_campeon_historico() throws InterruptedException { //
         ProbabilidadNoRandom pr = new ProbabilidadNoRandom();
         Dojo dojo = new Dojo("unqui", pr);
@@ -167,23 +167,35 @@ public class  TestMapaService {
         assertEquals(mapaService.cantidadEntrenadores("guarderia1"),0);
         assertEquals(mapaService.cantidadEntrenadores("guarderia2"),5);
     }
-
+*/
     @Test
     public void campeon_retorna_el_campeon_del_dojo(){
         RandomBichomon rb = new RandomBichomon();
-        NivelEntrenador nivelGen = new NivelEntrenador();
+        ArrayList<Integer> niveles = new ArrayList<>();
+        niveles.add(2);
+        niveles.add(3);
+        NivelEntrenador dadorDeNivel = new NivelEntrenador(niveles);
         ExperienciaValor expGen = new ExperienciaValor();
-        Ubicacion dojojo = new Dojo ("dojojo",rb);
-        Especie esp = new Especie(1,"chocoMon",CHOCOLATE);
+        Ubicacion dojojo = new Dojo ("Varela",rb);
+        Especie esp = new Especie("papa",CHOCOLATE,0,0,0);
         Bicho bicho = new Bicho(esp);
-        Entrenador ent = new Entrenador("sada",dojojo,expGen,nivelGen);
+        Entrenador ent = new Entrenador("sada",dojojo,expGen,dadorDeNivel);
 
         ent.agregarBichomon(bicho);
 
         ent.duelear();
         ubicacionService.guardar(dojojo);
 
-        assertEquals(bicho.getId(),mapaService.campeon(dojojo).getId());
+        assertEquals(bicho.getId(),mapaService.campeon("Varela").getId());
+
+    }
+    @Test(expected = DojoSinEntrenador.class)
+    public void no_retorna_el_campeon_del_dojo(){
+        RandomBichomon rb = new RandomBichomon();
+        Ubicacion dojojo = new Dojo ("Varela",rb);
+        ubicacionService.guardar(dojojo);
+
+        mapaService.campeon("Varela").getId();
 
     }
 }

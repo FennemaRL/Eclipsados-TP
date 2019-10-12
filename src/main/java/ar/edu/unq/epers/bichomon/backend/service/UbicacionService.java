@@ -34,7 +34,4 @@ public class UbicacionService {
         return run(()-> dao.campeonHistorico(dojo));
     }
 
-    public Bicho recuperarCampeon(Ubicacion ubi) {
-        return run(()-> dao.campeonDojo(ubi));
-    }
 }

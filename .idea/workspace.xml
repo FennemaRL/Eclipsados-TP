@@ -5,9 +5,22 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateUbicacionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateUbicacionDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Dojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Dojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Guarderia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Guarderia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Pueblo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Pueblo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Ubicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Ubicacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/BichoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/BichoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/MapaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/MapaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/UbicacionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/UbicacionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/runner/TransactionRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/runner/TransactionRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/hibernateEntrenadorDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/hibernateEntrenadorDaoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/hibernateEspecieDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/hibernateEspecieDaoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestMapaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestMapaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestUbicacionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestUbicacionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestBichoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestBichoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestEntrenadorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestEntrenadorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/UbicacionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/UbicacionTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +37,7 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
-  <component name="ProjectId" id="1S4pVRkcOJGuQZvFYi0bJBHsp5O" />
+  <component name="ProjectId" id="1S4WBrVpOjZQNTkRACZQwvw4Cd8" />
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
   </component>
@@ -40,23 +53,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestMapaService.campeon_retorna_el_campeon_del_dojo">
-    <configuration name="TestMapaService.al_mover_al_entrenador_de_guarderia1_a_guarderia2_su_ubicacion_actual_pasa_a_ser_guarderia2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomonTestMapaService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTestMapaService" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTestMapaService.TestMapaService" />
-      <option name="METHOD_NAME" value="al_mover_al_entrenador_de_guarderia1_a_guarderia2_su_ubicacion_actual_pasa_a_ser_guarderia2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.TestMapaService.no_retorna_el_campeon_del_dojo">
     <configuration name="TestMapaService.al_mover_al_entrenador_la_cantidad_de_entrenadores_en_cada_ubicacion_cambia" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <extension name="coverage">
@@ -68,23 +65,13 @@
       <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTestMapaService" />
       <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTestMapaService.TestMapaService" />
       <option name="METHOD_NAME" value="al_mover_al_entrenador_la_cantidad_de_entrenadores_en_cada_ubicacion_cambia" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="TestMapaService.al_mover_un_entrenador_que_no_existe_salta_NoHayEntrenadorConEseNombre_Exception" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomonTestMapaService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTestMapaService" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTestMapaService.TestMapaService" />
-      <option name="METHOD_NAME" value="al_mover_un_entrenador_que_no_existe_salta_NoHayEntrenadorConEseNombre_Exception" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -105,12 +92,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestMapaService.dojo_sin_campeon_historico" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bichomon-go" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unq.epers.bichomonTestMapaService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTestMapaService" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTestMapaService.TestMapaService" />
+      <option name="METHOD_NAME" value="dojo_sin_campeon_historico" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestMapaService.no_retorna_el_campeon_del_dojo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bichomon-go" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unq.epers.bichomonTestMapaService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTestMapaService" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTestMapaService.TestMapaService" />
+      <option name="METHOD_NAME" value="no_retorna_el_campeon_del_dojo" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestMapaService.no_retorna_el_campeon_del_dojo" />
         <item itemvalue="JUnit.TestMapaService.campeon_retorna_el_campeon_del_dojo" />
         <item itemvalue="JUnit.TestMapaService.al_mover_un_entrenador_que_no_existe_salta_NoHayEntrenadorConEseNombre_Exception" />
         <item itemvalue="JUnit.TestMapaService.al_mover_al_entrenador_la_cantidad_de_entrenadores_en_cada_ubicacion_cambia" />
-        <item itemvalue="JUnit.TestMapaService.al_mover_al_entrenador_de_guarderia1_a_guarderia2_su_ubicacion_actual_pasa_a_ser_guarderia2" />
+        <item itemvalue="JUnit.TestMapaService.dojo_sin_campeon_historico" />
       </list>
     </recent_temporary>
   </component>
@@ -120,10 +140,11 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="8ed2de0a-4182-48c7-8b27-6d19f05070ce" name="Default Changelist" comment="" />
-      <created>1570832745193</created>
+      <changelist id="6637d09c-0a3f-4236-97e1-84c2bb6e1e80" name="Default Changelist" comment="" />
+      <created>1570823215736</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1570832745193</updated>
+      <updated>1570823215736</updated>
     </task>
     <servers />
   </component>
@@ -132,10 +153,28 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestMapaService.java</url>
+          <line>188</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Dojo.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

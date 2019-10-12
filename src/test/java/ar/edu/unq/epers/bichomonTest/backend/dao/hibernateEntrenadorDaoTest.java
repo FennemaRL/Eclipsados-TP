@@ -42,8 +42,8 @@ public class hibernateEntrenadorDaoTest { //falta testear cosas y agregar constr
         pepe.agregarBichomon(bartolo);
     }
     @After
-    public void reset(){
-        SessionFactoryProvider.destroy();
+    public void tearDown(){
+        run(()-> dao.clear());
     }
 
 
