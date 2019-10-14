@@ -46,6 +46,7 @@ public class TestLeaderBoardService {
     private Bicho b11;
     private Especie esp;
     private Especie esp1;
+    private ProbabilidadNoRandom pn;
 
     @Before
     public void setup(){
@@ -54,7 +55,7 @@ public class TestLeaderBoardService {
         lbs = new LeaderBoardService(daou);
 
 
-        ProbabilidadNoRandom pn = new ProbabilidadNoRandom();
+        pn = new ProbabilidadNoRandom();
         dojo = new Dojo("1114", pn);
         dojo1 = new Dojo("1114bis", pn);
         ArrayList<Integer> niveles = new ArrayList<>();
@@ -120,17 +121,25 @@ public class TestLeaderBoardService {
         b8.setEnergia(2160);
         b9.setEnergia(4320);
         //dojo2
+        Ubicacion dojo10= new Dojo("dojo3",pn);
+        Ubicacion dojo2 = new Dojo("dojo4",pn);
+        Ubicacion dojo3 = new Dojo("dojo5",pn);
+        Ubicacion dojo4 = new Dojo("dojo6",pn);
+        Ubicacion dojo5 = new Dojo("dojo7",pn);
+        Ubicacion dojo6 = new Dojo("dojo8",pn);
+        Ubicacion dojo7 = new Dojo("dojo9",pn);
+        Ubicacion dojo8 = new Dojo("dojo10",pn);
+        Ubicacion dojo9 = new Dojo("dojo11",pn);
 
-
-        Entrenador pepe1 = new Entrenador("pepe1", dojo, dadorDeExperiencia, dadorDeNivel);
-        Entrenador pepe2 = new Entrenador("pepe2", dojo, dadorDeExperiencia, dadorDeNivel);
-        Entrenador pepe3 = new Entrenador("pepe3", dojo, dadorDeExperiencia, dadorDeNivel);
-        Entrenador pepe4 = new Entrenador("pepe4", dojo, dadorDeExperiencia, dadorDeNivel);
-        Entrenador pepe5 = new Entrenador("pepe5", dojo, dadorDeExperiencia, dadorDeNivel);
-        Entrenador pepe6 = new Entrenador("pepe6", dojo, dadorDeExperiencia, dadorDeNivel);
-        Entrenador pepe7 = new Entrenador("pepe7", dojo, dadorDeExperiencia, dadorDeNivel);
-        Entrenador pepe8 = new Entrenador("pepe8", dojo, dadorDeExperiencia, dadorDeNivel);
-        Entrenador pepe9 = new Entrenador("pepe9", dojo, dadorDeExperiencia, dadorDeNivel);
+        Entrenador pepe1 = new Entrenador("pepe1", dojo10, dadorDeExperiencia, dadorDeNivel);
+        Entrenador pepe2 = new Entrenador("pepe2", dojo2, dadorDeExperiencia, dadorDeNivel);
+        Entrenador pepe3 = new Entrenador("pepe3", dojo3, dadorDeExperiencia, dadorDeNivel);
+        Entrenador pepe4 = new Entrenador("pepe4", dojo4, dadorDeExperiencia, dadorDeNivel);
+        Entrenador pepe5 = new Entrenador("pepe5", dojo5, dadorDeExperiencia, dadorDeNivel);
+        Entrenador pepe6 = new Entrenador("pepe6", dojo6, dadorDeExperiencia, dadorDeNivel);
+        Entrenador pepe7 = new Entrenador("pepe7", dojo7, dadorDeExperiencia, dadorDeNivel);
+        Entrenador pepe8 = new Entrenador("pepe8", dojo8, dadorDeExperiencia, dadorDeNivel);
+        Entrenador pepe9 = new Entrenador("pepe9", dojo9, dadorDeExperiencia, dadorDeNivel);
 
 
         pepe1.agregarBichomon(b1);
@@ -193,17 +202,34 @@ public class TestLeaderBoardService {
             e.printStackTrace();
         }
         pepe8.duelear();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         pepe9.duelear();
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         pepa.duelear();
 
         pepa1.duelear();
         us.guardar(dojo);
         us.guardar(dojo1);
+        us.guardar(dojo2);
+        us.guardar(dojo3);
+        us.guardar(dojo4);
+        us.guardar(dojo5);
+        us.guardar(dojo6);
+        us.guardar(dojo7);
+        us.guardar(dojo8);
+        us.guardar(dojo9);
+        us.guardar(dojo10);
 
         List<Entrenador> esperado = new ArrayList<>();
 
-        esperado.add(pepe9);
-        esperado.add(pepa1);
         esperado.add(pepe);
         esperado.add(pepe1);
         esperado.add(pepe2);
@@ -212,7 +238,8 @@ public class TestLeaderBoardService {
         esperado.add(pepe5);
         esperado.add(pepe6);
         esperado.add(pepe7);
-
+        esperado.add(pepe8);
+        esperado.add(pepe9);
 
         List<Entrenador> resultante = lbs.campeones();
         assertEquals(esperado.get(0).getNombre(), resultante.get(0).getNombre());

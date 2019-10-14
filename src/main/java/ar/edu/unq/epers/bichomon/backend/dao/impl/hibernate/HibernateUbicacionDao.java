@@ -55,41 +55,34 @@ public class HibernateUbicacionDao extends HibernateDAO<Ubicacion> implements Ub
         session.update(t);
     }
 
-    public Bicho campeonHistorico(String dojo){
+    public Bicho campeonHistorico(String dojo){  //finish
         Session session = TransactionRunner.getCurrentSession();
-        Date date = new Date();
 
-        String hql ="from bicho b";
-
+        String hql ="select b from Dojo d inner join d.historial as h inner join h.bicho as b " +
+                " where nombreUbicacion = :dojo" +
+                " order by h.diferencia desc";
         Query<Bicho> bichoq = session.createQuery(hql, Bicho.class);
         bichoq.setParameter("dojo",dojo);
-        bichoq.setParameter("dat3",date);
+        bichoq.setMaxResults(1);
+
         List<Bicho> bs=bichoq.getResultList();
         return (bs.size() == 0)? null : bs.get(0);
 
     }
 
-    public List<Entrenador> campeones() {
+    public List<Entrenador> campeones() { // finish
         Session session = TransactionRunner.getCurrentSession();
-        String hql ="select e from Historial as h inner join h.entrenador as e " +
+        String hql ="select e from Historial as h inner join h.entrenador as e  inner join e.bichos as b " +
+                " where h.fechaFin = null and b.id = h.bicho" +
                 " group by e.id " +
                 " order by h.diferencia desc";
         Query query = session.createQuery(hql,  Entrenador.class);
         query.setMaxResults(10);
-        /*
-        String hql1 ="select h from Historial as h inner join h.entrenador as e " +
-                " group by e.id " +
-                " order by h.diferencia desc";
-        Query query1 = session.createQuery(hql1, Historial.class);
 
-        System.out.print("\n                            ress h \n\n");
-        query1.getResultList().forEach(r-> System.out.print("\n"+r));
-        query.setMaxResults(10);
-        */
         return query.getResultList();
     }
 
-    public Especie especieLider() {
+    public Especie especieLider() { // see this
         Session session = TransactionRunner.getCurrentSession();
         String hql = "Select especie from Historial as historial join historial.bicho as bicho join bicho.especie as especie" +
                 " group by especie.id " +

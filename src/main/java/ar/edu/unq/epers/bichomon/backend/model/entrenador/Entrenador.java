@@ -51,7 +51,7 @@ public class Entrenador {
         this.expGen = expGen;
         this.nivelEntrenadorGen = nivelEntrenadorGen;
         bichos = new HashSet<>();
-
+        ubicacion.incrementarCantidadDeEntrenadores();
     }
 
     public Bicho getBichoConID(Integer bichoId) {

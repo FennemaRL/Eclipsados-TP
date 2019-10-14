@@ -99,14 +99,14 @@ public class  TestMapaService {
     @Test
     public void al_mover_al_entrenador_la_cantidad_de_entrenadores_en_cada_ubicacion_cambia(){
         assertEquals(1,guarderia1.getCantidadDeEntrenadores());
-        assertEquals(0,guarderia2.getCantidadDeEntrenadores());
+        assertEquals(5,guarderia2.getCantidadDeEntrenadores());
 
         mapaService.mover("esh","guarderia2");
         Ubicacion guarderia11 = ubicacionService.recuperar("guarderia1");
         Ubicacion guarderia22 = ubicacionService.recuperar("guarderia2");
 
         assertEquals(0, guarderia11.getCantidadDeEntrenadores());
-        assertEquals(1,guarderia22.getCantidadDeEntrenadores());
+        assertEquals(6,guarderia22.getCantidadDeEntrenadores());
     }
 
     @Test (expected = NoHayEntrenadorConEseNombre.class)
@@ -164,8 +164,8 @@ public class  TestMapaService {
     @Test
     public void una_ubicacion_sabe_cuantos_entrenadores_hay_en_la_misma(){
 
-        assertEquals(mapaService.cantidadEntrenadores("guarderia1"),0);
-        assertEquals(mapaService.cantidadEntrenadores("guarderia2"),5);
+        assertEquals(1,mapaService.cantidadEntrenadores("guarderia1"));
+        assertEquals(5,mapaService.cantidadEntrenadores("guarderia2"));
     }
 
     @Test
@@ -195,7 +195,7 @@ public class  TestMapaService {
         Ubicacion dojojo = new Dojo ("Varela",rb);
         ubicacionService.guardar(dojojo);
 
-        mapaService.campeon("Varela").getId();
+        mapaService.campeon("Varela");
 
     }
 }

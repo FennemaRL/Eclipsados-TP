@@ -43,6 +43,7 @@ public class  EntrenadorTest {
                 niveles.add(400);
                 expGen = new ExperienciaValor(10,10,15);
                 nivelEntrenadorGen = new NivelEntrenador(niveles);
+                creciente = mock(Guarderia.class);
                 master = new Entrenador("lucas",creciente, expGen, nivelEntrenadorGen);
 
                 chocoMon = new Especie(1,"chocoMon",CHOCOLATE);
@@ -53,7 +54,7 @@ public class  EntrenadorTest {
 
                 chocoMon.setCondicionesEvolucion(10,0,1, 0);
 
-                creciente = mock(Guarderia.class);
+
 
                  esh = new Entrenador("esh",creciente);
                  roko = mock(Bicho.class);
@@ -107,7 +108,7 @@ public class  EntrenadorTest {
 
 
         @Test (expected = EntrenadorException.class)
-        public void el_entrenador_no_puede_abandonar_un_bicho_que_no_posee(){
+        public void     el_entrenador_no_puede_abandonar_un_bicho_que_no_posee(){
                 esh.abandonarBicho(7);
         }
 
