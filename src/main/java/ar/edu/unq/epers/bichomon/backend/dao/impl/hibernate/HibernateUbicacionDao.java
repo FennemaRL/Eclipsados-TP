@@ -4,12 +4,11 @@ import ar.edu.unq.epers.bichomon.backend.dao.UbicacionDao;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Historial;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 import ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import org.hibernate.transform.Transformers;
 
 import javax.validation.ConstraintViolationException;
 import java.util.Date;
@@ -60,11 +59,9 @@ public class HibernateUbicacionDao extends HibernateDAO<Ubicacion> implements Ub
         Session session = TransactionRunner.getCurrentSession();
         Date date = new Date();
 
+        String hql ="from bicho b";
 
-        Query<Bicho> bichoq = session.createSQLQuery("select bicho.id, nombre, especie_id, energiaDeCombate, fechaCaptura, victorias, owner_id " +
-                "from historial inner join ubicacion_historial on (historial.id = historial_id) inner join ubicacion inner join bicho on (historial.bicho_id = bicho.id) " +
-                "Where ubicacion.nombreUbicacion = :dojo "+
-                "ORDER BY TIMEDIFF(COALESCE(historial.fechaFin,:dat3 ), historial.fechaInicio) desc limit 1;").addEntity(Bicho.class);
+        Query<Bicho> bichoq = session.createQuery(hql, Bicho.class);
         bichoq.setParameter("dojo",dojo);
         bichoq.setParameter("dat3",date);
         List<Bicho> bs=bichoq.getResultList();
@@ -74,13 +71,22 @@ public class HibernateUbicacionDao extends HibernateDAO<Ubicacion> implements Ub
 
     public List<Entrenador> campeones() {
         Session session = TransactionRunner.getCurrentSession();
-        Date date = new Date();
-        Query<Entrenador> entrenadorq = session.createSQLQuery("select entrenador.* " +
-                "from historial inner join ubicacion_historial on (historial.id = historial_id)inner join ubicacion on(ubicacion.id = dojo_id) inner join entrenador on (historial.entrenador_id = entrenador.id) " +
-                " group by entrenador.id " +
-                " ORDER BY TIMEDIFF(COALESCE(historial.fechaFin,:dat3 ), historial.fechaInicio) desc limit 10;").addEntity(Entrenador.class);
-        entrenadorq.setParameter("dat3",date);
-        return entrenadorq.getResultList();
+        String hql ="select e from Historial as h inner join h.entrenador as e " +
+                " group by e.id " +
+                " order by h.diferencia desc";
+        Query query = session.createQuery(hql,  Entrenador.class);
+        query.setMaxResults(10);
+        /*
+        String hql1 ="select h from Historial as h inner join h.entrenador as e " +
+                " group by e.id " +
+                " order by h.diferencia desc";
+        Query query1 = session.createQuery(hql1, Historial.class);
+
+        System.out.print("\n                            ress h \n\n");
+        query1.getResultList().forEach(r-> System.out.print("\n"+r));
+        query.setMaxResults(10);
+        */
+        return query.getResultList();
     }
 
     public Especie especieLider() {

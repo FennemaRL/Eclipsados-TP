@@ -94,7 +94,7 @@ public class Entrenador {
     public String toString(){
         final String[] b = {" "};
         bichos.forEach(bicho -> b[0] = b[0] + bicho.toString()+ " ");
-        return( nombre + " id: "+id +"{"+ b[0] +"}");
+        return( "Entrenador :"+nombre + " id: "+id +"{"+ b[0] +"}");
     }
 
     public ResultadoCombate duelear(int idBicho){

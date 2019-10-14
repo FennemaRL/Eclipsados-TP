@@ -77,9 +77,9 @@ public class  TestMapaService {
 
         ubicacionService = new UbicacionService(new HibernateUbicacionDao());
         mapaService = new MapaService(entrenadorService, ubicacionService);
-/*
+
         entrenadorService.guardar(esh);
-        ubicacionService.guardar(guarderia2);*/
+        ubicacionService.guardar(guarderia2);
 
 
 
@@ -88,7 +88,7 @@ public class  TestMapaService {
     public void tearDown(){
         run(()-> dao.clear());
     }
-/*
+
     @Test
     public void al_mover_al_entrenador_de_guarderia1_a_guarderia2_su_ubicacion_actual_pasa_a_ser_guarderia2(){
         mapaService.mover("esh","guarderia2");
@@ -167,7 +167,7 @@ public class  TestMapaService {
         assertEquals(mapaService.cantidadEntrenadores("guarderia1"),0);
         assertEquals(mapaService.cantidadEntrenadores("guarderia2"),5);
     }
-*/
+
     @Test
     public void campeon_retorna_el_campeon_del_dojo(){
         RandomBichomon rb = new RandomBichomon();

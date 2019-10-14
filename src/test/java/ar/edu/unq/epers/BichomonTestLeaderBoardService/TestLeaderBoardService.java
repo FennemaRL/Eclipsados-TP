@@ -17,11 +17,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.LockSupport;
 
 import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
+import static java.lang.Thread.sleep;
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -93,7 +96,7 @@ public class TestLeaderBoardService {
 
 
     @Test
-    public void historial_de_campenes_mas_longevo_de_los_dojos_habiendo_mas_de_diez_entrenadores_que_combatieron_en_estos_dojos() throws InterruptedException { //test campeones
+    public void historial_de_campenes_mas_longevo_de_los_dojos_habiendo_mas_de_diez_entrenadores_que_combatieron_en_estos_dojos() { //test campeones
 
         Bicho b1 = new Bicho(esp);
         Bicho b2 = new Bicho(esp);
@@ -142,29 +145,58 @@ public class TestLeaderBoardService {
 
 
         pepe.duelear();
-        TimeUnit.SECONDS.sleep(9);
+        try {
+            Thread.sleep(900);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         pepe1.duelear();
-        TimeUnit.SECONDS.sleep(8);
+        try {
+            Thread.sleep(800);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         pepe2.duelear();
-        TimeUnit.SECONDS.sleep(7);
+        try {
+            Thread.sleep(700);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         pepe3.duelear();
-        TimeUnit.SECONDS.sleep(6);
+        try {
+            Thread.sleep(600);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         pepe4.duelear();
-        TimeUnit.SECONDS.sleep(5);
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         pepe5.duelear();
-        TimeUnit.SECONDS.sleep(4);
+        try {
+            Thread.sleep(450);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         pepe6.duelear();
-        TimeUnit.SECONDS.sleep(3);
+        try {
+            Thread.sleep(400);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         pepe7.duelear();
-        TimeUnit.SECONDS.sleep(2);
+        try {
+            Thread.sleep(350);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         pepe8.duelear();
-        TimeUnit.SECONDS.sleep(1);
         pepe9.duelear();
-
         pepa.duelear();
-        TimeUnit.SECONDS.sleep(10);
-        pepa1.duelear();
 
+        pepa1.duelear();
         us.guardar(dojo);
         us.guardar(dojo1);
 
@@ -172,7 +204,6 @@ public class TestLeaderBoardService {
 
         esperado.add(pepe9);
         esperado.add(pepa1);
-        esperado.add(pepa);
         esperado.add(pepe);
         esperado.add(pepe1);
         esperado.add(pepe2);
@@ -180,6 +211,8 @@ public class TestLeaderBoardService {
         esperado.add(pepe4);
         esperado.add(pepe5);
         esperado.add(pepe6);
+        esperado.add(pepe7);
+
 
         List<Entrenador> resultante = lbs.campeones();
         assertEquals(esperado.get(0).getNombre(), resultante.get(0).getNombre());
