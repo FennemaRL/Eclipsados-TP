@@ -30,15 +30,10 @@ import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.CHOCOLAT
 import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
 import static org.junit.Assert.assertEquals;
 
-import static org.junit.Assert.assertSame;
 
 import static org.junit.Assert.assertNull;
 
-
-import java.security.Guard;
 import java.util.ArrayList;
-
-import static org.junit.Assert.assertEquals;
 
 public class  TestMapaService {
 
@@ -136,7 +131,7 @@ public class  TestMapaService {
         pepe2.agregarBichomon(kalu2);
         pepe.agregarBichomon(kalu);
         pepe.duelear();
-        Thread.sleep(2000);
+        Thread.sleep(20000);
         pepe2.duelear();
         entrenadorService.guardar(pepe2);
 

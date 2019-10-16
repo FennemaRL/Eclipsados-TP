@@ -16,4 +16,7 @@ public class EspecieServiceh {
     public List<Especie> populares() {
         return run(()-> dao.populares());
     }
+    public List<Especie> impopulares(){
+        return run(()-> dao.impopulares());
+    }
 }

@@ -58,9 +58,10 @@ public abstract class HibernateDAO<T> {
 
     public List<Especie> impopulares(){
         Session session = TransactionRunner.getCurrentSession();
-        String hql ="select e from Guarderia g  inner join g.bichos as b inner join b.especie e " +
-                " group by e.id " +
-                " order by sum() desc";
+        String hql ="select e from Guarderia g  inner join g.bichos as b inner join b.especie as e " +
+                " where b.especie = e.id " +
+                " group by b.especie " +
+                " order by count(b.especie) desc";
         Query query = session.createQuery(hql,  Especie.class);
         query.setMaxResults(10);
 
