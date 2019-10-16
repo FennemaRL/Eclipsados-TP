@@ -141,7 +141,7 @@ public class  TestMapaService {
         pepe2.duelear();
         entrenadorService.guardar(pepe2);
 
-        assertEquals(kalu2.getId(), mapaService.campeonHistorico("unqui").getId() );
+        assertEquals(kalu.getId(), mapaService.campeonHistorico("unqui").getId() );
     }
     @Test
     public void dojo_sin_campeon_historico()  { //funca

@@ -4,6 +4,7 @@ package ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -41,5 +42,16 @@ public abstract class HibernateDAO<T> {
             session.createNativeQuery("truncate table " + tabla).executeUpdate();
         });
         session.createNativeQuery("SET FOREIGN_KEY_CHECKS=1;").executeUpdate();
+    }
+
+    public  List<Entrenador> lideres(){
+        Session session = TransactionRunner.getCurrentSession();
+        String hql ="select e from Entrenador e  inner join e.bichos as b " +
+                " group by e.id " +
+                " order by sum(b.energiaDeCombate) desc";
+        Query query = session.createQuery(hql,  Entrenador.class);
+        query.setMaxResults(10);
+
+        return query.getResultList();
     }
 }

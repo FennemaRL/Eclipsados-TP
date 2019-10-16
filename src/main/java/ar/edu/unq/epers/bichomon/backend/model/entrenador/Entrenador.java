@@ -163,4 +163,15 @@ public class Entrenador {
                 .toCollection(ArrayList::new)).get(0) );
 
     }
+    @Override
+    public boolean equals(Object o ){
+        if(o== null ||(o.getClass() != this.getClass()))
+            return false;
+        else
+            return ((Entrenador )o).getId() == id ;
+    }
+
+    private int getId() {
+        return id;
+    }
 }

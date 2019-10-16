@@ -31,4 +31,8 @@ public class LeaderBoardService {
        else
            return esp;
     }
+
+    public List<Entrenador> lideres() {
+        return run(()-> dao.lideres());
+    }
 }
