@@ -226,4 +226,17 @@ public class Especie {
 	public void nuevaCondicion(Condicion condicion){
 		condiciones.add(condicion);
 	}
+
+	@Override
+	public String toString(){
+		return nombre;
+	}
+	@Override
+	public boolean equals(Object o){
+		if(o == null || o.getClass()!= this.getClass())
+			return false;
+		else
+			return id == ((Especie) o).getId();
+
+	}
 }

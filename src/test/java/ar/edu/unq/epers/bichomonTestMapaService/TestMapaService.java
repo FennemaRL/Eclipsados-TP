@@ -21,7 +21,6 @@ import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 import ar.edu.unq.epers.bichomon.backend.service.EntrenadorService;
 import ar.edu.unq.epers.bichomon.backend.service.MapaService;
 import ar.edu.unq.epers.bichomon.backend.service.UbicacionService;
-import ar.edu.unq.epers.bichomon.backend.service.runner.SessionFactoryProvider;
 import ar.edu.unq.epers.bichomontTestBichoService.ProbabilidadNoRandom;
 import org.junit.After;
 import org.junit.Before;

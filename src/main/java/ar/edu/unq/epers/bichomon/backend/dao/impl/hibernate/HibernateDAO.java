@@ -2,6 +2,7 @@ package ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate;
 
 
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
+import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -50,6 +51,28 @@ public abstract class HibernateDAO<T> {
                 " group by e.id " +
                 " order by sum(b.energiaDeCombate) desc";
         Query query = session.createQuery(hql,  Entrenador.class);
+        query.setMaxResults(10);
+
+        return query.getResultList();
+    }
+
+    public List<Especie> impopulares(){
+        Session session = TransactionRunner.getCurrentSession();
+        String hql ="select e from Guarderia g  inner join g.bichos as b inner join b.especie e " +
+                " group by e.id " +
+                " order by sum() desc";
+        Query query = session.createQuery(hql,  Especie.class);
+        query.setMaxResults(10);
+
+        return query.getResultList();
+    }
+
+    public List<Especie> populares(){
+        Session session = TransactionRunner.getCurrentSession();
+        String hql ="select esp from Entrenador e  inner join e.bichos as b inner join b.especie esp" +
+                " group by b.especie " +
+                " order by count(b.especie) desc";
+        Query query = session.createQuery(hql,  Especie.class);
         query.setMaxResults(10);
 
         return query.getResultList();

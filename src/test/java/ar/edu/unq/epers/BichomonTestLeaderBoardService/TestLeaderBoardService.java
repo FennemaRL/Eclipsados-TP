@@ -19,16 +19,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.LockSupport;
 
 import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
-import static java.lang.Thread.sleep;
 import static junit.framework.TestCase.assertEquals;
-import static org.junit.Assert.assertNull;
 
 public class TestLeaderBoardService {
 
