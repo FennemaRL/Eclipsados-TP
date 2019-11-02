@@ -13,11 +13,11 @@ public class EntrenadorService {
     }
 
     public Entrenador recuperar(String entrenador) {
-        try {
-            return run(() -> this.dao.recuperar(entrenador));
-        } catch (Exception e) {
-            throw new NoHayEntrenadorConEseNombre("no hay entrenador con ese nombre");
-        }
+            Entrenador entrenador1 = run(() -> this.dao.recuperar(entrenador));
+            if (entrenador1 == null){
+                throw new NoHayEntrenadorConEseNombre("no hay entrenador con ese nombre");
+            }
+            return entrenador1;
     }
     public void guardar(Entrenador entrenador){
         run(()-> dao.guardar(entrenador));

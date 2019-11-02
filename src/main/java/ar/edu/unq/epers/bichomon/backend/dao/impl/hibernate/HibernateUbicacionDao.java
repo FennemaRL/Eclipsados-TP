@@ -50,9 +50,9 @@ public class HibernateUbicacionDao extends HibernateDAO<Ubicacion> implements Ub
     }
 
     @Override
-    public void actualizar(Object t) {
+    public void actualizar(Ubicacion ubicacion) {
         Session session = TransactionRunner.getCurrentSession();
-        session.update(t);
+        session.update(ubicacion);
     }
 
     public Bicho campeonHistorico(String dojo){  //finish

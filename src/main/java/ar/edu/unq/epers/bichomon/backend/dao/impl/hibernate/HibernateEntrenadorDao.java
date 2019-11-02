@@ -25,7 +25,7 @@ public class HibernateEntrenadorDao extends HibernateDAO<Entrenador> implements 
 
             query.setParameter("entrenadornombre",entrenador);
             query.setMaxResults(1);
-            return query.getSingleResult();
+            return query.uniqueResult();
         }
 
     @Override
@@ -36,9 +36,9 @@ public class HibernateEntrenadorDao extends HibernateDAO<Entrenador> implements 
         }
 
     @Override
-    public void actualizar(Object t) {
+    public void actualizar(Entrenador entrenador) {
         Session session = TransactionRunner.getCurrentSession();
-        session.update(t);
+        session.update(entrenador);
     }
 
 

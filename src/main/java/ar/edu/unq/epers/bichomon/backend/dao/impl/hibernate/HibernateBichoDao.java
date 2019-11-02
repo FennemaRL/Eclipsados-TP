@@ -13,7 +13,7 @@ public class HibernateBichoDao extends HibernateDAO<Bicho> implements BichoDAO {
     }
 
     @Override
-    public void actualizar(Object t) {
+    public void actualizar(Bicho bicho) {
 
     }
 
