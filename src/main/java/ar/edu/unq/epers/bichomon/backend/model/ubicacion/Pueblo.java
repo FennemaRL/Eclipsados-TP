@@ -44,6 +44,10 @@ public class Pueblo extends Ubicacion{
         random =r;
     }
 
+    public Pueblo(String nombre) {
+        this.nombreUbicacion =nombre;
+    }
+
     @Override
     public Bicho capturar(Entrenador e) {
         Bicho br =null;

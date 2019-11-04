@@ -9,8 +9,8 @@
         <module name="bichomon-go" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="bichomon-go" target="1.8" />
+    <bytecodeTargetLevel target="12">
+      <module name="bichomon-go" target="12" />
     </bytecodeTargetLevel>
   </component>
 </project>

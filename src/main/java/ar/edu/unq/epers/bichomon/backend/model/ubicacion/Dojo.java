@@ -33,6 +33,10 @@ public class Dojo extends Ubicacion{
         historial = new LinkedHashSet<>();
     }
 
+    public Dojo(String nombre) {
+        this.nombreUbicacion = nombre;
+    }
+
     @Override
     public Bicho capturar(Entrenador e) {
         Bicho br = null;
