@@ -2,15 +2,11 @@ package ar.edu.unq.epers.bichomon.backend.dao.impl.neo4j;
 
 
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.*;
+import ar.edu.unq.epers.bichomon.backend.service.Transporte;
 import ar.edu.unq.epers.bichomon.backend.service.UbicacionService;
-import org.neo4j.driver.v1.AuthTokens;
-import org.neo4j.driver.v1.Driver;
-import org.neo4j.driver.v1.GraphDatabase;
-import org.neo4j.driver.v1.Session;
-import org.neo4j.driver.v1.StatementResult;
-import org.neo4j.driver.v1.Value;
-import org.neo4j.driver.v1.Values;
+import org.neo4j.driver.v1.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,7 +17,7 @@ public class UbicacionNeoDao {
     public UbicacionNeoDao(UbicacionService su){
         this.driver = GraphDatabase.driver( "bolt://localhost:11002", AuthTokens.basic( "neo4j", "password" ) );
         this.su=su;
-    }                                                                                           //BichomonG                 Viejo1234!
+    }
     public void crearNodo(Ubicacion ubicacion) {
         Session session = this.driver.session();
         try {
@@ -43,26 +39,26 @@ public class UbicacionNeoDao {
         }
     }
 
-    public void crearRelacionPorMedioDe(String tipodetransporte, Ubicacion ubicacionViajaDesde, Ubicacion ubicacionViajaHasta) {
+    public void crearRelacionDeUbiAUbi(Transporte medioDetransporte, Ubicacion ubicacionViajaDesde, Ubicacion ubicacionViajaHasta) {
         Session session = this.driver.session();
-
         try {
             String q ="MATCH (fromUbicacion:Ubicacion{nombre:{elfromUNombre}})" +
                       "MATCH (toUbicacion:Ubicacion{nombre:{eltoUNombre}})  " +
-                      "MERGE (fromUbicacion)-[:seViajaA]->(toUbicacion)" ;
-            session.run(q,Values.parameters("elfromUNombre",ubicacionViajaDesde.getNombre(),"eltoUNombre",ubicacionViajaHasta.getNombre()));
+                      "MERGE (fromUbicacion)-[r:"+medioDetransporte.name().toLowerCase()+ "]->(toUbicacion)" +
+                    "  SET r.tipo={eltipo}" ;
+            session.run(q,Values.parameters("elfromUNombre",ubicacionViajaDesde.getNombre(),"eltoUNombre",ubicacionViajaHasta.getNombre(),"eltipo",medioDetransporte.name().toLowerCase()));
         }
         finally {
             session.close();
         }
     }
-    public List<Ubicacion> seViajaDesde(Ubicacion ubicacion){
+    public List<Ubicacion> conectados(Ubicacion ubicacion, Transporte medioDetransporte){
         Session session = this.driver.session();
 
         try {
-            String q = "MATCH (fromUbicacion:Ubicacion{nombre:{elfromUNombre}})" +
-                    "MATCH (fromUbicacion)-[r:seViajaA]->(toUbicacion)  " +
-                    "RETURN toUbicacion";
+            String q = "MATCH (fromUbicacion:Ubicacion{nombre:{elfromUNombre}}) " +
+                    "MATCH (fromUbicacion)-[:"+medioDetransporte.name().toLowerCase()+"]->(toUbicacion)  " +
+                    "RETURN toUbicacion ";
             StatementResult result =session.run(q, Values.parameters("elfromUNombre", ubicacion.getNombre()));
             return result.list((record -> {
                 Value ub = record.get(0);
@@ -75,6 +71,35 @@ public class UbicacionNeoDao {
         }
     }
 
-    public void borrartodo() {
+    public void borrarTodo() {
+        Session session = this.driver.session();
+
+        try {
+            String q ="MATCH (u:Ubicacion)-[relacion]-(u2:Ubicacion)" +
+                      " DELETE u,u2,relacion";
+            session.run(q);
+        }
+        finally {
+            session.close();
+        }
+    }
+
+    public List<String> estaConectado(Ubicacion ubicacionfrom, Ubicacion ubicacionTo) {
+        Session session = this.driver.session();
+
+        try {
+            String q = "MATCH (fromUbicacion:Ubicacion{nombre:{elfromUNombre}}) " +
+                    "MATCH (toUbicacion:Ubicacion{nombre:{eltoUNombre}}) " +
+                    "MATCH (fromUbicacion)-[r]->(toUbicacion)  " +
+                    "RETURN r";
+            StatementResult result =session.run(q, Values.parameters("elfromUNombre", ubicacionfrom.getNombre().toLowerCase(),"eltoUNombre",ubicacionTo.getNombre().toLowerCase()));
+            return result.list((record -> {
+                Value ub = record.get(0);
+                return ub.get("tipo").asString();
+            }));
+        }
+        finally {
+            session.close();
+        }
     }
 }

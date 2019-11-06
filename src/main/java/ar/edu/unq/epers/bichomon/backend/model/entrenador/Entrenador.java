@@ -28,6 +28,7 @@ public class Entrenador {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Ubicacion ubicacion;
+    private int dollars = 0;
 
     public Entrenador(){}
     public Entrenador(int id, String nombre, Integer exp){
@@ -173,5 +174,15 @@ public class Entrenador {
 
     private int getId() {
         return id;
+    }
+    public void setBichoDollars(int i){dollars = i;}
+    public void pagar(int i){
+        if(dollars < i)
+            throw new BichomonError("El entrenador no posee esa cantidad de dollars");
+        else
+            dollars -=i;
+    }
+    public int cantBichoDollars() {
+        return dollars;
     }
 }

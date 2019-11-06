@@ -121,5 +121,13 @@ public class  EntrenadorTest {
 
                 assertEquals(1, esh.getBichos().size());
         }
+        @Test
+        public void bichoDollars(){
+                assertEquals(0, esh.cantBichoDollars());
+        }
+        @Test(expected = BichomonError.class)
+        public void bichoDollars_Bancarrota(){
+                esh.pagar(2);
+        }
 
 }

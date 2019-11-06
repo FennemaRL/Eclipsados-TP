@@ -6,6 +6,7 @@ import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateUbicacionDa
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.NoHayEntrenadorConEseNombre;
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.NoHayUbicacionConEseNombre;
 
+import ar.edu.unq.epers.bichomon.backend.dao.impl.neo4j.UbicacionNeoDao;
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
@@ -14,13 +15,8 @@ import ar.edu.unq.epers.bichomon.backend.model.entrenador.NivelEntrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho;
 import ar.edu.unq.epers.bichomon.backend.model.random.RandomBichomon;
-import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Dojo;
-import ar.edu.unq.epers.bichomon.backend.model.ubicacion.DojoSinEntrenador;
-import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Guarderia;
-import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
-import ar.edu.unq.epers.bichomon.backend.service.EntrenadorService;
-import ar.edu.unq.epers.bichomon.backend.service.MapaService;
-import ar.edu.unq.epers.bichomon.backend.service.UbicacionService;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.*;
+import ar.edu.unq.epers.bichomon.backend.service.*;
 import ar.edu.unq.epers.bichomontTestBichoService.ProbabilidadNoRandom;
 import org.junit.After;
 import org.junit.Before;
@@ -44,11 +40,9 @@ public class  TestMapaService {
     private HibernateEntrenadorDao dao;
     private HibernateUbicacionDao ubiDao;
     private EntrenadorService entrenadorService;
-    private UbicacionService ubicacionService;
-    private MapaService mapaService;
     private UbicacionService ubiService;
-
-
+    private MapaService mapaService;
+    private UbicacionNeoDao neo;
 
 
     @Before
@@ -66,14 +60,11 @@ public class  TestMapaService {
         ubiService = new UbicacionService(ubiDao);
         guarderia2.setCantidadDeEntrenadores(5);
         ubiService.guardar(guarderia1);
-
-        mapaService = new MapaService(entrenadorService, ubiService);
-
-        ubicacionService = new UbicacionService(new HibernateUbicacionDao());
-        mapaService = new MapaService(entrenadorService, ubicacionService);
+        neo = new UbicacionNeoDao(ubiService);
+        mapaService = new MapaService(entrenadorService, ubiService,neo);
 
         entrenadorService.guardar(esh);
-        ubicacionService.guardar(guarderia2);
+        ubiService.guardar(guarderia2);
 
 
 
@@ -81,13 +72,32 @@ public class  TestMapaService {
     @After
     public void tearDown(){
         run(()-> dao.clear());
+        neo.borrarTodo();
     }
 
-    @Test
-    public void al_mover_al_entrenador_de_guarderia1_a_guarderia2_su_ubicacion_actual_pasa_a_ser_guarderia2(){
+    @Test(expected = UbicacionMuyLejana.class)
+    public void al_mover_al_entrenador_de_guarderia1_a_guarderia2_falla_por_que_no_estan_relacionadas_directamente(){//ubicacionMuyLejana
+        neo.crearNodo(guarderia2);
+        neo.crearNodo(guarderia1);
         mapaService.mover("esh","guarderia2");
-        Entrenador entrenador2 = entrenadorService.recuperar("esh");
-        assertEquals("guarderia2", entrenador2.getUbicacion().getNombreUbicacion());
+    }
+    @Test(expected = BichomonError.class)
+    public void al_mover_al_entrenador_de_guarderia1_a_guarderia2_falla_por_que_esta_pobre_el_entrenador(){//no bichodollars
+        neo.crearNodo(guarderia2);
+        neo.crearNodo(guarderia1);
+        neo.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia1,guarderia2);
+        mapaService.mover("esh","guarderia2");
+    }
+    @Test
+    public void al_mover_al_entrenador_de_guarderia1_a_guarderia2_su_ubicacion_actual_pasa_a_ser_guarderia2(){//caso bueno :)
+        neo.crearNodo(guarderia2);
+        neo.crearNodo(guarderia1);
+        neo.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia1,guarderia2);
+        esh.setBichoDollars(30);
+        entrenadorService.actualizar(esh);
+        mapaService.mover("esh","guarderia2");
+        Entrenador e = entrenadorService.recuperar("esh");
+        assertEquals(guarderia2.getNombre(),e.getUbicacion().getNombre());
     }
 
     @Test
@@ -95,9 +105,16 @@ public class  TestMapaService {
         assertEquals(1,guarderia1.getCantidadDeEntrenadores());
         assertEquals(5,guarderia2.getCantidadDeEntrenadores());
 
+        neo.crearNodo(guarderia2);
+        neo.crearNodo(guarderia1);
+        neo.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia1,guarderia2);
+        esh.setBichoDollars(30);
+        entrenadorService.actualizar(esh);
         mapaService.mover("esh","guarderia2");
-        Ubicacion guarderia11 = ubicacionService.recuperar("guarderia1");
-        Ubicacion guarderia22 = ubicacionService.recuperar("guarderia2");
+
+        mapaService.mover("esh","guarderia2");
+        Ubicacion guarderia11 = ubiService.recuperar("guarderia1");
+        Ubicacion guarderia22 = ubiService.recuperar("guarderia2");
 
         assertEquals(0, guarderia11.getCantidadDeEntrenadores());
         assertEquals(6,guarderia22.getCantidadDeEntrenadores());
@@ -141,7 +158,7 @@ public class  TestMapaService {
     public void dojo_sin_campeon_historico()  { //funca
         ProbabilidadNoRandom pr = new ProbabilidadNoRandom();
         Dojo dojo = new Dojo("unqui", pr);
-        ubicacionService.guardar(dojo);
+        ubiService.guardar(dojo);
 
         assertNull(mapaService.campeonHistorico("unqui"));
 
@@ -150,7 +167,7 @@ public class  TestMapaService {
     public void guarderia_campeon_historico()  { //funca
         ProbabilidadNoRandom pr = new ProbabilidadNoRandom();
         Guarderia dojo = new Guarderia("unqui");
-        ubicacionService.guardar(dojo);
+        ubiService.guardar(dojo);
 
         assertNull(mapaService.campeonHistorico("unqui"));
 
@@ -178,7 +195,7 @@ public class  TestMapaService {
         ent.agregarBichomon(bicho);
 
         ent.duelear();
-        ubicacionService.guardar(dojojo);
+        ubiService.guardar(dojojo);
 
         assertEquals(bicho.getId(),mapaService.campeon("Varela").getId());
 
@@ -187,9 +204,11 @@ public class  TestMapaService {
     public void no_retorna_el_campeon_del_dojo(){
         RandomBichomon rb = new RandomBichomon();
         Ubicacion dojojo = new Dojo ("Varela",rb);
-        ubicacionService.guardar(dojojo);
+        ubiService.guardar(dojojo);
 
         mapaService.campeon("Varela");
 
     }
+
+
 }
