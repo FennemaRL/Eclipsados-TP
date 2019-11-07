@@ -181,11 +181,9 @@ public class UbicacionTest {
         RandomBichomon r = mock(RandomBichomon.class);
         Especie a = mock(Especie.class);
         Especie b = mock(Especie.class);
-        List<Especie> le = new ArrayList<>();
-        le.add(a);le.add(b);
-        List ep = new ArrayList<Integer>();
-        ep.add(86);ep.add(14);
-        Ubicacion pueblo = new Pueblo("1114",r,le,ep);
+        List<EspecieConProv> le = new ArrayList<>();
+        le.add(new EspecieConProv(a,86));le.add(new EspecieConProv(b,14));
+        Ubicacion pueblo = new Pueblo("1114",r,le);
         when(r.busquedaExitosa(e,pueblo)).thenReturn(true);
         Bicho bicho =pueblo.capturar(e);
         verify(a,times(1)).incrementarEnUnBicho();
@@ -198,17 +196,16 @@ public class UbicacionTest {
         Especie a = mock(Especie.class);
         Especie b = mock(Especie.class);
         Ubicacion u= mock(Ubicacion.class);
-        List<Especie> le = new ArrayList<>();
-        le.add(a);le.add(b);
-        List ep = new ArrayList<Integer>();
-        ep.add(14);ep.add(86);
-        Ubicacion pueblo = new Pueblo("1114",r,le,ep);
+        List<EspecieConProv> le = new ArrayList<>();
+        le.add(new EspecieConProv(a,14));le.add(new EspecieConProv(b,86));
+        Ubicacion pueblo = new Pueblo("1114",r,le);
+
         when(r.busquedaExitosa(e,u)).thenReturn(false);
-        when(r.especiePorProbabilidad(le,ep)).thenReturn(le.get(0));
+        when(r.especiePorProbabilidad(le)).thenReturn(le.get(0).getEsp());
 
         Bicho bicho =pueblo.capturar(e);
         verify(r,times(1)).busquedaExitosa(e,u);      //preguntar si usar excepcion o null
-        verify(r,times(0)).especiePorProbabilidad(le,ep);
+        verify(r,times(0)).especiePorProbabilidad(le);
         verify(a,times(0)).incrementarEnUnBicho();
         assertTrue(bicho == null);
     }

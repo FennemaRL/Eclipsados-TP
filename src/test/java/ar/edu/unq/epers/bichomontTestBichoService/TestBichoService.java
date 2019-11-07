@@ -127,11 +127,9 @@ public class TestBichoService {
     @Test
     public void se_captura_un_bicho_Especie_bichorita_en_un_pueblo(){ //busqueda favorable pueblo
         RandomBichomon mr =new ProbabilidadNoRandom();
-        ArrayList<Especie> esp = new ArrayList<>();
-        esp.add(new Especie("bichorita8",TipoBicho.PLANTA, 1,1,0));
-        ArrayList<Integer> probesp = new ArrayList<>();
-        probesp.add(100);
-        ubicacion = new Pueblo("Chaparral8",mr,esp,probesp);
+        ArrayList<EspecieConProv> esp = new ArrayList<>();
+        esp.add(new EspecieConProv(new Especie("bichorita8",TipoBicho.PLANTA, 1,1,0),100));
+        ubicacion = new Pueblo("Chaparral8",mr,esp);
         ArrayList<Integer> niveles = new ArrayList<Integer>();
         niveles.add (2);niveles.add (3);
         Entrenador entrenador = new Entrenador("Mostaza8",ubicacion,dadorDeExperiencia,dadorDeNivel);
@@ -140,7 +138,7 @@ public class TestBichoService {
         es.guardar(entrenador);
 
         Bicho bichocap =bs.buscar("Mostaza8");
-        assertEquals(esp.get(0).getNombre(),bichocap.getEspecie().getNombre());
+        assertEquals(esp.get(0).getEsp().getNombre(),bichocap.getEspecie().getNombre());
         assertEquals(1, bichocap.getEspecie().getCantidadBichos());
     }
 

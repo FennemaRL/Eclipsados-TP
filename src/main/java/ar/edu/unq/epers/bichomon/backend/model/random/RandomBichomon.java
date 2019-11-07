@@ -2,6 +2,7 @@ package ar.edu.unq.epers.bichomon.backend.model.random;
 
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.EspecieConProv;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 
 import javax.persistence.*;
@@ -20,6 +21,10 @@ public class RandomBichomon  {
     }
 
     public Especie especiePorProbabilidad(List<Especie> especiesUbicacion, List<Integer> probabilidad) {
+        return null;
+    }
+
+    public Especie especiePorProbabilidad(List<EspecieConProv> le) {
         return null;
     }
 }

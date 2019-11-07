@@ -19,12 +19,8 @@ public class Pueblo extends Ubicacion{
     private RandomBichomon random;
 
     @ManyToMany ( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Especie> especies;
+    private Set<EspecieConProv> especies;
 
-    @ElementCollection
-    @CollectionTable(name="especiesProbabilidad", joinColumns=@JoinColumn(name="nombreUbicacion"))
-    @Column(name="probabilidad")
-    private List<Integer> especiesProbabilidad;
     private int cantEntrenadores;
     public Pueblo(){}
     public Pueblo(String name,RandomBichomon rb) {
@@ -32,14 +28,10 @@ public class Pueblo extends Ubicacion{
         random = rb;
     }
 
-    public Pueblo(String s, RandomBichomon r, List<Especie> le, List ep) {
-        //prec : la lista lb y la pb estan relacionadas donde cada posicion de una Especie tiene la misma posicion para su probabilidad de aparicion
-        //          No puede haber bichos sin probabilidad ni viceversa y suma de todas las prioridades tiene que ser siempre 100)
-        //          las probabilidades van en orden
+    public Pueblo(String s, RandomBichomon r, List<EspecieConProv> le ) {
         super(s);
         especies = new LinkedHashSet<>();
         especies.addAll(le);
-        especiesProbabilidad = ep;
         cantEntrenadores=0;
         random =r;
     }
@@ -53,8 +45,6 @@ public class Pueblo extends Ubicacion{
         Bicho br =null;
         Boolean resultadoCaptura=random.busquedaExitosa(e, this);
         if(resultadoCaptura){
-            List<Especie> espl  = new ArrayList<>();
-            espl.addAll(especies);
             Especie esp = especiePorProbabilidad();
             br = new Bicho(esp);
         }
@@ -67,12 +57,12 @@ public class Pueblo extends Ubicacion{
     private Especie especiePorProbabilidad() {
         int random  = (int) (Math.random() * (101 - 0));
         Map<Integer,Especie> probEspecie= new HashMap<>();
-        List<Especie> especies = this.especies.stream().collect(Collectors.toList());
-        int cambioEspecie = 0;
-        for(int i=0; i < especiesProbabilidad.get(cambioEspecie); i++){
-            if(i> especiesProbabilidad.get(cambioEspecie))
-                cambioEspecie += 1;
-            probEspecie.put(i,especies.get(cambioEspecie));
+        int total = 1;
+        for(EspecieConProv esp : especies){
+            for(int i = 1 ; i < esp.getProv() ; i++){
+                probEspecie.put(total,esp.getEsp());
+                total++;
+            }
         }
         return probEspecie.get(random);
     }
