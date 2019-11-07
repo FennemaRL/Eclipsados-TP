@@ -26,8 +26,8 @@ public class Bicho {
 	private int energiaDeCombate;
 	private Date fechaCaptura;
 	private Integer victorias;
-	@ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Entrenador owner;
+	@ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Entrenador> owner;
 
 
 	public Bicho(){}
@@ -69,11 +69,11 @@ public class Bicho {
 	}
 
     public boolean puedeEvolucionar() {
-		return especie.puedeEvolucionar(this,owner) ;
+		return especie.puedeEvolucionar(this,owner.get(0)) ;
 	}
 
     public void evolucionar(){
-		especie = especie.evolucionar(this,owner);
+		especie = especie.evolucionar(this,owner.get(0));
 	}
 
 	public Integer getVictorias() { return this.victorias;}
@@ -85,7 +85,7 @@ public class Bicho {
 	}
 
 	public Integer getNivelEntrenador() {
-		return owner.getNivel();
+		return owner.get(0).getNivel();
 	}
 
 	public void setFechaCaptura(Date unaFecha) {
@@ -93,7 +93,7 @@ public class Bicho {
 	}
 
 	public void setOwner(Entrenador entrenador) {
-		this.owner = entrenador;
+		this.owner.add(entrenador);
 	}
 	public void abandonar(){this.owner = null;}
 	public String toString(){
@@ -101,11 +101,14 @@ public class Bicho {
 	}
 
 	public Entrenador getOwner() {
-		return this.owner;
+		return this.owner.get(0);
 	}
 
     public void aumentarEnergiaPorCombate() {
 		this.energiaDeCombate += Math.random() * (5.01 - 0.99);
     }
 
+	public boolean tuvodueño(Entrenador entre) {
+		return  (! owner.isEmpty()) && owner.stream().anyMatch(e->e.getNombre().equals(entre.getNombre()));
+	}
 }

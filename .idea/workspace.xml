@@ -8,9 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c01c4c85-9738-4fe6-a001-179eb35b7637" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/MapaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/MapaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/Neo4jUbicacionDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/Neo4jUbicacionDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestMapaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestMapaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/bicho/Bicho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/bicho/Bicho.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Guarderia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Guarderia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/UbicacionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/UbicacionTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,14 +39,33 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestMapaService.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/bicho/Bicho.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="237" column="46" selection-start-line="237" selection-start-column="46" selection-end-line="237" selection-end-column="46" />
+            <state relative-caret-position="445">
+              <caret line="110" column="28" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="28" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#2401#2402#0" expanded="true" />
+                <element signature="e#2424#2425#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/UbicacionTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="41" column="47" lean-forward="true" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Guarderia.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="36" column="34" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -127,6 +146,9 @@
         <option value="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/Neo4jUbicacionDaoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/MapaService.java" />
         <option value="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestMapaService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/bicho/Bicho.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/UbicacionTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Guarderia.java" />
       </list>
     </option>
   </component>
@@ -230,6 +252,28 @@
               <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
               <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bichomon" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="bicho" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bichomon" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="ubicacion" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -254,16 +298,7 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="epers" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="epers" type="462c0819:PsiDirectoryNode" />
-              <item name="bichomonTestMapaService" type="462c0819:PsiDirectoryNode" />
+              <item name="modelo" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -302,23 +337,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestMapaService.mover_mas_corto_sin_conexion">
-    <configuration name="Neo4jUbicacionDaoTest.ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomonTest.backend.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTest.backend.dao" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTest.backend.dao.Neo4jUbicacionDaoTest" />
-      <option name="METHOD_NAME" value="ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.UbicacionTest">
     <configuration name="TestMapaService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <extension name="coverage">
@@ -330,38 +349,6 @@
       <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTestMapaService" />
       <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTestMapaService.TestMapaService" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestMapaService.al_mover_al_entrenador_de_guarderia1_a_guarderia2_falla_por_que_no_estan_relacionadas_directamente" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomonTestMapaService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTestMapaService" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTestMapaService.TestMapaService" />
-      <option name="METHOD_NAME" value="al_mover_al_entrenador_de_guarderia1_a_guarderia2_falla_por_que_no_estan_relacionadas_directamente" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestMapaService.mover_mas_corto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomonTestMapaService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTestMapaService" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTestMapaService.TestMapaService" />
-      <option name="METHOD_NAME" value="mover_mas_corto" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -382,13 +369,60 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UbicacionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bichomon-go" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unq.epers.test.modelo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.test.modelo" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.test.modelo.UbicacionTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UbicacionTest.guarderia_guarderia_adopta_bichomon_y_no_lo_retorna_poque_lo_quiere_capturar_su_anterior_dueño" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bichomon-go" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unq.epers.test.modelo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.test.modelo" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.test.modelo.UbicacionTest" />
+      <option name="METHOD_NAME" value="guarderia_guarderia_adopta_bichomon_y_no_lo_retorna_poque_lo_quiere_capturar_su_anterior_dueño" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UbicacionTest.guarderia_guarderia_adopta_bichomones_y_los_retorna_cuando_se_captura_en_ella" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bichomon-go" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unq.epers.test.modelo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.test.modelo" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.test.modelo.UbicacionTest" />
+      <option name="METHOD_NAME" value="guarderia_guarderia_adopta_bichomones_y_los_retorna_cuando_se_captura_en_ella" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UbicacionTest" />
+        <item itemvalue="JUnit.UbicacionTest.guarderia_guarderia_adopta_bichomones_y_los_retorna_cuando_se_captura_en_ella" />
+        <item itemvalue="JUnit.UbicacionTest.guarderia_guarderia_adopta_bichomon_y_no_lo_retorna_poque_lo_quiere_capturar_su_anterior_dueño" />
         <item itemvalue="JUnit.TestMapaService.mover_mas_corto_sin_conexion" />
         <item itemvalue="JUnit.TestMapaService" />
-        <item itemvalue="JUnit.TestMapaService.mover_mas_corto" />
-        <item itemvalue="JUnit.Neo4jUbicacionDaoTest.ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono" />
-        <item itemvalue="JUnit.TestMapaService.al_mover_al_entrenador_de_guarderia1_a_guarderia2_falla_por_que_no_estan_relacionadas_directamente" />
       </list>
     </recent_temporary>
   </component>
@@ -410,29 +444,11 @@
       <workItem from="1573058520571" duration="4184000" />
       <workItem from="1573065859237" duration="24324000" />
       <workItem from="1573128602974" duration="801000" />
-      <workItem from="1573134258641" duration="7637000" />
+      <workItem from="1573134258641" duration="10248000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Neo4jUbicacionDaoTest_ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono - 2019.11.07 at 00h 38m 35s.xml">
-      <configuration name="Neo4jUbicacionDaoTest.ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestMapaService_mover_mas_corto - 2019.11.07 at 11h 45m 27s.xml">
-      <configuration name="TestMapaService.mover_mas_corto" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestMapaService_mover_mas_corto - 2019.11.07 at 11h 51m 35s.xml">
-      <configuration name="TestMapaService.mover_mas_corto" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestMapaService_mover_mas_corto - 2019.11.07 at 11h 54m 24s.xml">
-      <configuration name="TestMapaService.mover_mas_corto" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestMapaService - 2019.11.07 at 12h 24m 11s.xml">
-      <configuration name="TestMapaService" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestMapaService_mover_mas_corto - 2019.11.07 at 12h 45m 04s.xml">
-      <configuration name="TestMapaService.mover_mas_corto" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestMapaService_mover_mas_corto - 2019.11.07 at 12h 50m 37s.xml">
       <configuration name="TestMapaService.mover_mas_corto" configurationId="JUnit" />
     </history-entry>
@@ -445,12 +461,31 @@
     <history-entry file="TestMapaService_mover_mas_corto_sin_conexion - 2019.11.07 at 13h 37m 16s.xml">
       <configuration name="TestMapaService.mover_mas_corto_sin_conexion" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="UbicacionTest - 2019.11.07 at 17h 11m 59s.xml">
+      <configuration name="UbicacionTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UbicacionTest_guarderia_guarderia_adopta_bichomon_y_no_lo_retorna_poque_lo_quiere_capturar_su_anterior_dueño - 2019.11.07 at 17h 15m 25s.xml">
+      <configuration name="UbicacionTest.guarderia_guarderia_adopta_bichomon_y_no_lo_retorna_poque_lo_quiere_capturar_su_anterior_dueño" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UbicacionTest_guarderia_guarderia_adopta_bichomon_y_no_lo_retorna_poque_lo_quiere_capturar_su_anterior_dueño - 2019.11.07 at 17h 16m 57s.xml">
+      <configuration name="UbicacionTest.guarderia_guarderia_adopta_bichomon_y_no_lo_retorna_poque_lo_quiere_capturar_su_anterior_dueño" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UbicacionTest_guarderia_guarderia_adopta_bichomon_y_no_lo_retorna_poque_lo_quiere_capturar_su_anterior_dueño - 2019.11.07 at 17h 30m 18s.xml">
+      <configuration name="UbicacionTest.guarderia_guarderia_adopta_bichomon_y_no_lo_retorna_poque_lo_quiere_capturar_su_anterior_dueño" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UbicacionTest_guarderia_guarderia_adopta_bichomon_y_no_lo_retorna_poque_lo_quiere_capturar_su_anterior_dueño - 2019.11.07 at 17h 31m 52s.xml">
+      <configuration name="UbicacionTest.guarderia_guarderia_adopta_bichomon_y_no_lo_retorna_poque_lo_quiere_capturar_su_anterior_dueño" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UbicacionTest_guarderia_guarderia_adopta_bichomones_y_los_retorna_cuando_se_captura_en_ella - 2019.11.07 at 17h 34m 00s.xml">
+      <configuration name="UbicacionTest.guarderia_guarderia_adopta_bichomones_y_los_retorna_cuando_se_captura_en_ella" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95296000" />
+    <option name="totallyTimeSpent" value="97907000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1872" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19812362" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -540,17 +575,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/EntrenadorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="128" column="33" selection-start-line="128" selection-start-column="33" selection-end-line="128" selection-end-column="33" />
-          <folding>
-            <element signature="e#4531#4532#0" expanded="true" />
-            <element signature="e#4571#4572#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestEntrenadorService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -621,13 +645,6 @@
           <folding>
             <element signature="e#1178#1179#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Ubicacion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -788,6 +805,52 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/EntrenadorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="127" column="45" lean-forward="true" selection-start-line="127" selection-start-column="45" selection-end-line="127" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Ubicacion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-12/lib/src.zip!/java.base/java/util/stream/Stream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="1047" column="12" selection-start-line="1047" selection-start-column="12" selection-end-line="1047" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/bicho/Bicho.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="110" column="28" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="28" />
+          <folding>
+            <element signature="e#2401#2402#0" expanded="true" />
+            <element signature="e#2424#2425#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Guarderia.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="36" column="34" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/UbicacionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="41" column="47" lean-forward="true" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
         </state>
       </provider>
     </entry>

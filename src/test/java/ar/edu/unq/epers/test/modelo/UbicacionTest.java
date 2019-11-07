@@ -38,25 +38,22 @@ public class UbicacionTest {
         Entrenador e1 = mock(Entrenador.class);
         guar.adoptar(a);
         guar.adoptar(b);
-        when(e.getNombre()).thenReturn("pepo");
-        when(e1.getNombre()).thenReturn("pepe");
-        when(a.getOwner()).thenReturn(e1);
-        when(b.getOwner()).thenReturn(e1);
+        when(a.tuvodueño(e)).thenReturn(false);
+        when(b.tuvodueño(e1)).thenReturn(true);
 
         assertEquals(a,guar.capturar(e));
         guar.capturar(e1);
     }
     @Test(expected = GuarderiaErrorNoBichomon.class)
-    public void guarderia_guarderia_adopta_bichomon_y_no_lo_retorna_poque_lo_quiere_capturar_su_anterior_dueño(){ //faltan cosas en los mocks
+    public void guarderia_guarderia_adopta_bichomon_y_no_lo_retorna_poque_lo_quiere_capturar_su_anterior_dueño(){
         Bicho a = mock(Bicho.class);
         Bicho b = mock(Bicho.class);
         Ubicacion guar= new Guarderia("chaparral");
         Entrenador e = mock(Entrenador.class);
         guar.adoptar(a);
         guar.adoptar(b);
-        when(e.getNombre()).thenReturn("pepe");
-        when(b.getOwner()).thenReturn(e);
-        when(a.getOwner()).thenReturn(e);
+        when(b.tuvodueño(e)).thenReturn(true);
+        when(a.tuvodueño(e)).thenReturn(true);
 
         guar.capturar(e);
     }
@@ -190,7 +187,6 @@ public class UbicacionTest {
         ep.add(86);ep.add(14);
         Ubicacion pueblo = new Pueblo("1114",r,le,ep);
         when(r.busquedaExitosa(e,pueblo)).thenReturn(true);
-
         Bicho bicho =pueblo.capturar(e);
         verify(a,times(1)).incrementarEnUnBicho();
         assertEquals(bicho.getEspecie(),a);
