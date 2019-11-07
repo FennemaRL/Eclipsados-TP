@@ -220,18 +220,20 @@ public class  TestMapaService {
         neo.crearNodo(guarderia3);
         neo.crearNodo(guarderia4);
         ubiService.guardar(guarderia3);
-        ubiService.guardar(guarderia3);
+        ubiService.guardar(guarderia4);
         neo.crearRelacionDeUbiAUbi(Transporte.AEREO,guarderia1,guarderia3);
-        neo.crearRelacionDeUbiAUbi(Transporte.AEREO,guarderia3,guarderia2);
-        neo.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia3,guarderia4);
+        neo.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia1,guarderia3);
+        neo.crearRelacionDeUbiAUbi(Transporte.MARITIMO,guarderia3,guarderia2);
+        neo.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia3,guarderia2);
+        neo.crearRelacionDeUbiAUbi(Transporte.MARITIMO,guarderia3,guarderia4);
         neo.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia4,guarderia2);
 
         esh.setBichoDollars(30);
         entrenadorService.actualizar(esh);
-        mapaService.mover("esh","guarderia2");
+        mapaService.moverMasCorto("esh","guarderia2");
         Entrenador e = entrenadorService.recuperar("esh");
-        assertEquals(0,e.cantBichoDollars());
         assertEquals(guarderia2.getNombre(),e.getUbicacion().getNombre());
+        assertEquals(20,e.cantBichoDollars());
     }
 
 

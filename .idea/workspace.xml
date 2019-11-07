@@ -8,7 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c01c4c85-9738-4fe6-a001-179eb35b7637" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/neo4j/UbicacionNeoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/neo4j/UbicacionNeoDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/MapaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/MapaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/Neo4jUbicacionDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/Neo4jUbicacionDaoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestMapaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestMapaService.java" afterDir="false" />
@@ -26,11 +25,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/MapaService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="27" column="58" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
+            <state relative-caret-position="459">
+              <caret line="93" column="19" lean-forward="true" selection-start-line="93" selection-start-column="19" selection-end-line="93" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2133#2134#0" expanded="true" />
+                <element signature="e#2195#2196#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestMapaService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="222" column="37" selection-start-line="222" selection-start-column="37" selection-end-line="222" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,17 +63,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/runner/TransactionRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
+            <state relative-caret-position="782">
               <caret line="49" column="26" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/neo4j/UbicacionNeoDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="129" column="40" selection-start-line="129" selection-start-column="40" selection-end-line="129" selection-end-column="40" />
+            <state relative-caret-position="1989">
+              <caret line="123" column="34" selection-start-line="123" selection-start-column="34" selection-end-line="123" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/Neo4jUbicacionDaoTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
+            <state relative-caret-position="745">
+              <caret line="106" column="77" selection-start-line="106" selection-start-column="77" selection-end-line="106" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -95,6 +108,7 @@
       <find>neo</find>
       <find>crear</find>
       <find>size</find>
+      <find>toti</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -107,12 +121,12 @@
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Dojo.java" />
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/Transporte.java" />
         <option value="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/EntrenadorTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/MapaService.java" />
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/UbicacionMuyLejana.java" />
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/entrenador/Entrenador.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestMapaService.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/Neo4jUbicacionDaoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/neo4j/UbicacionNeoDao.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/Neo4jUbicacionDaoTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestMapaService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/MapaService.java" />
       </list>
     </option>
   </component>
@@ -288,7 +302,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.Neo4jUbicacionDaoTest.ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono">
+  <component name="RunManager" selected="JUnit.TestMapaService">
     <configuration name="Neo4jUbicacionDaoTest.ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamente" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <extension name="coverage">
@@ -336,22 +350,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestMapaService.al_mover_a_una_ubicacion_que_no_existe_salta_NoHayUbicacionConEseNombre_Exception" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomonTestMapaService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTestMapaService" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTestMapaService.TestMapaService" />
-      <option name="METHOD_NAME" value="al_mover_a_una_ubicacion_que_no_existe_salta_NoHayUbicacionConEseNombre_Exception" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TestMapaService.al_mover_al_entrenador_de_guarderia1_a_guarderia2_falla_por_que_no_estan_relacionadas_directamente" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <extension name="coverage">
@@ -368,13 +366,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestMapaService.mover_mas_corto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bichomon-go" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unq.epers.bichomonTestMapaService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTestMapaService" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTestMapaService.TestMapaService" />
+      <option name="METHOD_NAME" value="mover_mas_corto" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestMapaService" />
+        <item itemvalue="JUnit.TestMapaService.mover_mas_corto" />
         <item itemvalue="JUnit.Neo4jUbicacionDaoTest.ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono" />
         <item itemvalue="JUnit.TestMapaService.al_mover_al_entrenador_de_guarderia1_a_guarderia2_falla_por_que_no_estan_relacionadas_directamente" />
         <item itemvalue="JUnit.Neo4jUbicacionDaoTest.ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamente" />
-        <item itemvalue="JUnit.TestMapaService" />
-        <item itemvalue="JUnit.TestMapaService.al_mover_a_una_ubicacion_que_no_existe_salta_NoHayUbicacionConEseNombre_Exception" />
       </list>
     </recent_temporary>
   </component>
@@ -394,29 +408,13 @@
       <workItem from="1573001479698" duration="9468000" />
       <workItem from="1573045942374" duration="10611000" />
       <workItem from="1573058520571" duration="4184000" />
-      <workItem from="1573065859237" duration="23283000" />
+      <workItem from="1573065859237" duration="24324000" />
+      <workItem from="1573128602974" duration="801000" />
+      <workItem from="1573134258641" duration="4371000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Neo4jUbicacionDaoTest_ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono - 2019.11.06 at 22h 07m 20s.xml">
-      <configuration name="Neo4jUbicacionDaoTest.ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Neo4jUbicacionDaoTest_ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono - 2019.11.06 at 22h 12m 06s.xml">
-      <configuration name="Neo4jUbicacionDaoTest.ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Neo4jUbicacionDaoTest_ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono - 2019.11.06 at 22h 16m 40s.xml">
-      <configuration name="Neo4jUbicacionDaoTest.ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Neo4jUbicacionDaoTest_ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono - 2019.11.06 at 22h 41m 14s.xml">
-      <configuration name="Neo4jUbicacionDaoTest.ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Neo4jUbicacionDaoTest_ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono - 2019.11.06 at 22h 44m 31s.xml">
-      <configuration name="Neo4jUbicacionDaoTest.ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Neo4jUbicacionDaoTest_ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono - 2019.11.06 at 23h 55m 37s.xml">
-      <configuration name="Neo4jUbicacionDaoTest.ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="Neo4jUbicacionDaoTest_ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono - 2019.11.07 at 00h 00m 16s.xml">
       <configuration name="Neo4jUbicacionDaoTest.ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono" configurationId="JUnit" />
     </history-entry>
@@ -429,15 +427,33 @@
     <history-entry file="Neo4jUbicacionDaoTest_ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono - 2019.11.07 at 00h 31m 54s.xml">
       <configuration name="Neo4jUbicacionDaoTest.ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="Neo4jUbicacionDaoTest_ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono - 2019.11.07 at 00h 38m 35s.xml">
+      <configuration name="Neo4jUbicacionDaoTest.ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestMapaService_mover_mas_corto - 2019.11.07 at 11h 45m 27s.xml">
+      <configuration name="TestMapaService.mover_mas_corto" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestMapaService_mover_mas_corto - 2019.11.07 at 11h 51m 35s.xml">
+      <configuration name="TestMapaService.mover_mas_corto" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestMapaService_mover_mas_corto - 2019.11.07 at 11h 54m 24s.xml">
+      <configuration name="TestMapaService.mover_mas_corto" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestMapaService - 2019.11.07 at 12h 24m 11s.xml">
+      <configuration name="TestMapaService" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestMapaService_mover_mas_corto - 2019.11.07 at 12h 45m 04s.xml">
+      <configuration name="TestMapaService.mover_mas_corto" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85817000" />
+    <option name="totallyTimeSpent" value="92030000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1872" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19370861" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19812362" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -692,33 +708,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestMapaService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2856">
-          <caret line="222" column="37" selection-start-line="222" selection-start-column="37" selection-end-line="222" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/MapaService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="27" column="58" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/EntrenadorService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/neo4j/driver/neo4j-java-driver/1.4.4/neo4j-java-driver-1.4.4.jar!/org/neo4j/driver/v1/types/Relationship.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -747,29 +736,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/Neo4jUbicacionDaoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/runner/TransactionRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
+        <state relative-caret-position="782">
           <caret line="49" column="26" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/neo4j/UbicacionNeoDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="129" column="40" selection-start-line="129" selection-start-column="40" selection-end-line="129" selection-end-column="40" />
+        <state relative-caret-position="1989">
+          <caret line="123" column="34" selection-start-line="123" selection-start-column="34" selection-end-line="123" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/Neo4jUbicacionDaoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="745">
+          <caret line="106" column="77" selection-start-line="106" selection-start-column="77" selection-end-line="106" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestMapaService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="222" column="37" selection-start-line="222" selection-start-column="37" selection-end-line="222" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/EntrenadorService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/MapaService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="93" column="19" lean-forward="true" selection-start-line="93" selection-start-column="19" selection-end-line="93" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2133#2134#0" expanded="true" />
+            <element signature="e#2195#2196#0" expanded="true" />
           </folding>
         </state>
       </provider>

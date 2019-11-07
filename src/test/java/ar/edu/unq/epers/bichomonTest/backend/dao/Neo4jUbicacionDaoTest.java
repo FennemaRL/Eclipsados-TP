@@ -104,7 +104,7 @@ public class Neo4jUbicacionDaoTest {
         neodao.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia4,guarderia5);
         neodao.crearRelacionDeUbiAUbi(Transporte.MARITIMO,guarderia4,guarderia5);
 
-        assertTrue(0==neodao.estaConectadop2p(guarderia,guarderia5).size());
+        assertEquals(0,neodao.estaConectadop2p(guarderia,guarderia5).size());
         assertTrue(0< neodao.estaConectadoN(guarderia,guarderia5).size());
 
     }
