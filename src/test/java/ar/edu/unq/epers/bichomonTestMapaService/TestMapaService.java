@@ -212,7 +212,7 @@ public class  TestMapaService {
 
     }
     @Test
-    public void mover_mas_corto(){
+    public void mover_mas_corto(){ // caso bueno
         Guarderia guarderia3 = new Guarderia("toti");
         Guarderia guarderia4 = new Guarderia("toti2");
         neo.crearNodo(guarderia2);
@@ -234,6 +234,18 @@ public class  TestMapaService {
         Entrenador e = entrenadorService.recuperar("esh");
         assertEquals(guarderia2.getNombre(),e.getUbicacion().getNombre());
         assertEquals(20,e.cantBichoDollars());
+    }
+    @Test(expected = UbicacionMuyLejana.class)
+    public void mover_mas_corto_sin_conexion(){ // caso malo testear
+        Guarderia guarderia3 = new Guarderia("toti");
+        neo.crearNodo(guarderia2);
+        neo.crearNodo(guarderia1);
+        neo.crearNodo(guarderia3);
+        ubiService.guardar(guarderia3);
+        neo.crearRelacionDeUbiAUbi(Transporte.AEREO,guarderia1,guarderia3);
+        neo.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia1,guarderia3);
+
+        mapaService.moverMasCorto("esh","guarderia2");
     }
 
 
