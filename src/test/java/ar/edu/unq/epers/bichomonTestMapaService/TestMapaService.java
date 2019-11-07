@@ -92,11 +92,14 @@ public class  TestMapaService {
     public void al_mover_al_entrenador_de_guarderia1_a_guarderia2_su_ubicacion_actual_pasa_a_ser_guarderia2(){//caso bueno :)
         neo.crearNodo(guarderia2);
         neo.crearNodo(guarderia1);
+        neo.crearRelacionDeUbiAUbi(Transporte.MARITIMO,guarderia1,guarderia2);
         neo.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia1,guarderia2);
+        neo.crearRelacionDeUbiAUbi(Transporte.AEREO,guarderia1,guarderia2);
         esh.setBichoDollars(30);
         entrenadorService.actualizar(esh);
         mapaService.mover("esh","guarderia2");
         Entrenador e = entrenadorService.recuperar("esh");
+        assertEquals(25,e.cantBichoDollars());
         assertEquals(guarderia2.getNombre(),e.getUbicacion().getNombre());
     }
 
@@ -112,7 +115,6 @@ public class  TestMapaService {
         entrenadorService.actualizar(esh);
         mapaService.mover("esh","guarderia2");
 
-        mapaService.mover("esh","guarderia2");
         Ubicacion guarderia11 = ubiService.recuperar("guarderia1");
         Ubicacion guarderia22 = ubiService.recuperar("guarderia2");
 
@@ -208,6 +210,28 @@ public class  TestMapaService {
 
         mapaService.campeon("Varela");
 
+    }
+    @Test
+    public void mover_mas_corto(){
+        Guarderia guarderia3 = new Guarderia("toti");
+        Guarderia guarderia4 = new Guarderia("toti2");
+        neo.crearNodo(guarderia2);
+        neo.crearNodo(guarderia1);
+        neo.crearNodo(guarderia3);
+        neo.crearNodo(guarderia4);
+        ubiService.guardar(guarderia3);
+        ubiService.guardar(guarderia3);
+        neo.crearRelacionDeUbiAUbi(Transporte.AEREO,guarderia1,guarderia3);
+        neo.crearRelacionDeUbiAUbi(Transporte.AEREO,guarderia3,guarderia2);
+        neo.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia3,guarderia4);
+        neo.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia4,guarderia2);
+
+        esh.setBichoDollars(30);
+        entrenadorService.actualizar(esh);
+        mapaService.mover("esh","guarderia2");
+        Entrenador e = entrenadorService.recuperar("esh");
+        assertEquals(0,e.cantBichoDollars());
+        assertEquals(guarderia2.getNombre(),e.getUbicacion().getNombre());
     }
 
 

@@ -28,7 +28,7 @@ public class MapaService {
         Entrenador entrenador1 = entrenadorService.recuperar(entrenador);
         Ubicacion ubicacion0 = entrenador1.getUbicacion();
         Ubicacion ubicacion1 = ubicacionService.recuperar(ubicacion);
-        List<String> rutas = map.estaConectado(ubicacion0,ubicacion1);
+        List<String> rutas = map.estaConectadop2p(ubicacion0,ubicacion1);
         if(0 < rutas.size()){
             entrenador1.pagar(this.rutaLowCost(rutas));
             entrenador1.setUbicacion(ubicacion1); //set ubicacion incrementa y decrementa entrenadores en ubicaciones

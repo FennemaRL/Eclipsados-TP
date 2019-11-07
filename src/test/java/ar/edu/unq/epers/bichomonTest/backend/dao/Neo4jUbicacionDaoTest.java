@@ -49,7 +49,7 @@ public class Neo4jUbicacionDaoTest {
         neodao.crearRelacionDeUbiAUbi(Transporte.AEREO,guarderia,guarderia2);
         neodao.crearRelacionDeUbiAUbi(Transporte.MARITIMO,guarderia2,guarderia);
 
-        List<Ubicacion> fub = neodao.conectados(guarderia,Transporte.AEREO);
+        List<Ubicacion> fub = neodao.conectadosp2p(guarderia,Transporte.AEREO);
         assertEquals(1,fub.size());
         assertEquals(guarderia2.getNombre(), fub.get(0).getNombre());
     }
@@ -67,7 +67,45 @@ public class Neo4jUbicacionDaoTest {
         neodao.crearRelacionDeUbiAUbi(Transporte.MARITIMO,guarderia2,guarderia);
 
 
-        assertTrue(0<neodao.estaConectado(guarderia,guarderia2).size());
-        assertTrue(0<neodao.estaConectado(guarderia2,guarderia).size());
+        assertTrue(0<neodao.estaConectadop2p(guarderia,guarderia2).size());
+        assertTrue(0<neodao.estaConectadop2p(guarderia2,guarderia).size());
+    }
+    @Test
+    public void ubicaciona_esta_conectada_con_ubicacionb_por_cualquier_medio_directamenteono() {
+
+        Ubicacion guarderia = new Guarderia("1114bis1");
+        Ubicacion guarderia2 = new Dojo("1114bis2");
+        Ubicacion guarderia3 = new Dojo("1114bis3");
+        Ubicacion guarderia4 = new Dojo("1114bis4");
+        Ubicacion guarderia5 = new Dojo("1114bis5");
+        neodao.crearNodo(guarderia);
+        neodao.crearNodo(guarderia2);
+        neodao.crearNodo(guarderia3);
+        neodao.crearNodo(guarderia4);
+        neodao.crearNodo(guarderia5);
+
+        neodao.crearRelacionDeUbiAUbi(Transporte.AEREO,guarderia,guarderia2);
+        neodao.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia,guarderia2);
+        neodao.crearRelacionDeUbiAUbi(Transporte.MARITIMO,guarderia,guarderia2);
+
+        neodao.crearRelacionDeUbiAUbi(Transporte.AEREO,guarderia2,guarderia5);
+        neodao.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia2,guarderia5);
+        neodao.crearRelacionDeUbiAUbi(Transporte.MARITIMO,guarderia2,guarderia5);
+
+        neodao.crearRelacionDeUbiAUbi(Transporte.AEREO,guarderia,guarderia3);
+        neodao.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia,guarderia3);
+        neodao.crearRelacionDeUbiAUbi(Transporte.MARITIMO,guarderia,guarderia3);
+
+        neodao.crearRelacionDeUbiAUbi(Transporte.AEREO,guarderia3,guarderia4);
+        neodao.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia3,guarderia4);
+        neodao.crearRelacionDeUbiAUbi(Transporte.MARITIMO,guarderia3,guarderia4);
+
+        neodao.crearRelacionDeUbiAUbi(Transporte.AEREO,guarderia4,guarderia5);
+        neodao.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia4,guarderia5);
+        neodao.crearRelacionDeUbiAUbi(Transporte.MARITIMO,guarderia4,guarderia5);
+
+        assertTrue(0==neodao.estaConectadop2p(guarderia,guarderia5).size());
+        assertTrue(0< neodao.estaConectadoN(guarderia,guarderia5).size());
+
     }
 }

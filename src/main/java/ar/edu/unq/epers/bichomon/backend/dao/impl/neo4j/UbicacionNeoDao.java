@@ -52,7 +52,7 @@ public class UbicacionNeoDao {
             session.close();
         }
     }
-    public List<Ubicacion> conectados(Ubicacion ubicacion, Transporte medioDetransporte){
+    public List<Ubicacion> conectadosp2p(Ubicacion ubicacion, Transporte medioDetransporte){
         Session session = this.driver.session();
 
         try {
@@ -84,7 +84,7 @@ public class UbicacionNeoDao {
         }
     }
 
-    public List<String> estaConectado(Ubicacion ubicacionfrom, Ubicacion ubicacionTo) {
+    public List<String> estaConectadop2p(Ubicacion ubicacionfrom, Ubicacion ubicacionTo) {
         Session session = this.driver.session();
 
         try {
@@ -101,5 +101,40 @@ public class UbicacionNeoDao {
         finally {
             session.close();
         }
+    }
+    public List<List<String>> estaConectadoN(Ubicacion ubicacionfrom, Ubicacion ubicacionTo) {
+        Session session = this.driver.session();
+        boolean rutanoencontrada ;
+        try {
+            StatementResult result;
+            int saltos  = 1;
+            do  {
+                String q ="MATCH (fromUbicacion:Ubicacion{nombre:{elfromUNombre}}) " +
+                        "MATCH (toUbicacion:Ubicacion{nombre:{eltoUNombre}}) " +
+                        "MATCH (fromUbicacion)-[r:maritimo|aereo|terrestre*"+saltos+"]->(toUbicacion)  " +
+                        "RETURN r";
+                result = session.run(q, Values.parameters("elfromUNombre", ubicacionfrom.getNombre().toLowerCase(), "eltoUNombre", ubicacionTo.getNombre().toLowerCase()));
+                rutanoencontrada =  ! result.hasNext();
+                saltos ++;
+            }
+            while ( rutanoencontrada && saltos <= 16);
+            List<List<String>> ret = new ArrayList<>();
+            while(result.hasNext()){
+                Value ruta = result.next().get(0);
+                List<String> parte = new ArrayList<>();
+                for(int i =0 ; i< ruta.size(); i++){
+                    String mediot = ruta.get(i).get("tipo").asString();
+                    parte.add(mediot);
+                }
+                ret.add(parte);
+                System.out.println(parte);
+            }
+            return ret;
+        }
+        finally {
+            session.close();
+        }
+
+
     }
 }
