@@ -57,9 +57,9 @@ public class hibernateEntrenadorDaoTest { //falta testear cosas y agregar constr
         assertEquals(pepa.getUbicacion().getNombreUbicacion(), pep2.getUbicacion().getNombreUbicacion());
         assertEquals(pepa.getNombre(), pep2.getNombre());
     }
-    @Test (expected = NoResultException.class)
-    public void al_recuperar_un_nombre_inexistente_no_recupera_y_levanta_excepcion(){ // test desfavorable recuperar
-        Entrenador  entrenador = run(() ->this.dao.recuperar("pejelagarto3"));
+    @Test
+    public void al_recuperar_un_nombre_inexistente_no_recupera_y_retorna_null(){ // test desfavorable recuperar
+        run(() ->this.dao.recuperar("pejelagarto3"));
 
     }
 

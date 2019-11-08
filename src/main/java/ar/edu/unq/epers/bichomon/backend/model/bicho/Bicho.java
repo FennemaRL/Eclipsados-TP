@@ -37,6 +37,7 @@ public class Bicho {
 		especie.incrementarEnUnBicho();
 		victorias = 0;
 		energiaDeCombate= 1;
+		owner = new ArrayList<>();
 	}
 
 	/**
@@ -84,10 +85,6 @@ public class Bicho {
 
 	}
 
-	public Integer getNivelEntrenador() {
-		return owner.get(0).getNivel();
-	}
-
 	public void setFechaCaptura(Date unaFecha) {
 		this.fechaCaptura = unaFecha;
 	}
@@ -95,7 +92,6 @@ public class Bicho {
 	public void setOwner(Entrenador entrenador) {
 		this.owner.add(entrenador);
 	}
-	public void abandonar(){this.owner = null;}
 	public String toString(){
 		return id +" Especie: "+ especie.toString();
 	}
