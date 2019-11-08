@@ -12,8 +12,11 @@ public class EspecieConProv {
     public Especie getEsp() {
         return esp;
     }
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL )
     private Especie esp ;
+    public EspecieConProv(){
+
+    }
 
     public int getProv() {
         return prov;

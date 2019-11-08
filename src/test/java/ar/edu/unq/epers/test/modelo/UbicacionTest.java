@@ -182,7 +182,7 @@ public class UbicacionTest {
         Especie a = mock(Especie.class);
         Especie b = mock(Especie.class);
         List<EspecieConProv> le = new ArrayList<>();
-        le.add(new EspecieConProv(a,86));le.add(new EspecieConProv(b,14));
+        le.add(new EspecieConProv(a,99));le.add(new EspecieConProv(b,1));
         Ubicacion pueblo = new Pueblo("1114",r,le);
         when(r.busquedaExitosa(e,pueblo)).thenReturn(true);
         Bicho bicho =pueblo.capturar(e);
