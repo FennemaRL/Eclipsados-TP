@@ -8,9 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c01c4c85-9738-4fe6-a001-179eb35b7637" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/bicho/Bicho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/bicho/Bicho.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/hibernateEntrenadorDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/hibernateEntrenadorDaoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateUbicacionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateUbicacionDao.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -26,10 +25,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/EspecieServiceh.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestEspecieService/TestEspecieService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="-3116">
+              <caret line="222" column="16" selection-start-line="222" selection-start-column="16" selection-end-line="222" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/BichomonTestLeaderBoardService/TestLeaderBoardService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="291">
+              <caret line="262" column="25" selection-start-line="262" selection-start-column="21" selection-end-line="262" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -37,69 +45,48 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/LeaderBoardService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="22" column="24" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="24" />
+            <state relative-caret-position="272">
+              <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/BichomonTestLeaderBoardService/TestLeaderBoardService.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateUbicacionDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3995">
-              <caret line="262" column="57" selection-start-line="262" selection-start-column="57" selection-end-line="262" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/hibernateEntrenadorDaoTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateEntrenadorDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+            <state relative-caret-position="383">
+              <caret line="88" column="38" selection-start-line="88" selection-start-column="38" selection-end-line="88" selection-end-column="38" />
               <folding>
-                <element signature="e#0#51#0" expanded="true" />
+                <element signature="e#0#47#0" expanded="true" />
+                <element signature="e#0#130#1" expanded="true" />
+                <element signature="e#0#169#1" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/entrenador/Entrenador.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/EspecieServiceh.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="69" column="21" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/bicho/Bicho.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="93" column="5" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
+            <state relative-caret-position="153">
+              <caret line="16" column="34" lean-forward="true" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
               <folding>
-                <element signature="e#2408#2409#0" expanded="true" />
-                <element signature="e#2441#2442#0" expanded="true" />
+                <element signature="e#500#501#0" expanded="true" />
+                <element signature="e#548#549#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateEspecieDao.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="377">
+              <caret line="74" column="37" selection-start-line="74" selection-start-column="37" selection-end-line="74" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#106#1" expanded="true" />
+                <element signature="e#0#153#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -121,6 +108,7 @@
       <find>size</find>
       <find>toti</find>
       <find>especielider</find>
+      <find>esp1</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -147,12 +135,14 @@
         <option value="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/EntrenadorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/bicho/Bicho.java" />
         <option value="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/hibernateEntrenadorDaoTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateUbicacionDao.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="308" />
-    <option name="y" value="-20" />
+    <option name="x" value="554" />
+    <option name="y" value="117" />
     <option name="width" value="1364" />
     <option name="height" value="766" />
   </component>
@@ -322,6 +312,15 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="epers" type="462c0819:PsiDirectoryNode" />
+              <item name="bichomonTestEspecieService" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bichomon-go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Eclipsados-TP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="epers" type="462c0819:PsiDirectoryNode" />
               <item name="BichomonTestLeaderBoardService" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -380,26 +379,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.hibernateEntrenadorDaoTest">
-    <configuration name="All in bichomon-go" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EntrenadorTest.entrenadorConNivelDiez" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TestLeaderBoardService.especieLider_con_dojos_y_entrenadores">
+    <configuration name="TestEspecieService.populares_retorna_las_10_de_11_especies_mas_populares_entre_los_entrenadores" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.test.modelo.*" />
+          <option name="PATTERN" value="ar.edu.unq.epers.bichomonTestEspecieService.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.test.modelo" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.test.modelo.EntrenadorTest" />
-      <option name="METHOD_NAME" value="entrenadorConNivelDiez" />
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTestEspecieService" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTestEspecieService.TestEspecieService" />
+      <option name="METHOD_NAME" value="populares_retorna_las_10_de_11_especies_mas_populares_entre_los_entrenadores" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -420,7 +411,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UbicacionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestLeaderBoardService.especieLider_con_dojos_y_entrenadores" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bichomon-go" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unq.epers.BichomonTestLeaderBoardService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.BichomonTestLeaderBoardService" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.BichomonTestLeaderBoardService.TestLeaderBoardService" />
+      <option name="METHOD_NAME" value="especieLider_con_dojos_y_entrenadores" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UbicacionTest.al_intentar_capturar_en_un_pueblo_se_captura_un_bicho_de_especie_a" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <extension name="coverage">
         <pattern>
@@ -430,7 +437,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="ar.edu.unq.epers.test.modelo" />
       <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.test.modelo.UbicacionTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="al_intentar_capturar_en_un_pueblo_se_captura_un_bicho_de_especie_a" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -452,11 +460,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestLeaderBoardService.especieLider_con_dojos_y_entrenadores" />
+        <item itemvalue="JUnit.TestEspecieService.populares_retorna_las_10_de_11_especies_mas_populares_entre_los_entrenadores" />
+        <item itemvalue="JUnit.UbicacionTest.al_intentar_capturar_en_un_pueblo_se_captura_un_bicho_de_especie_a" />
         <item itemvalue="JUnit.hibernateEntrenadorDaoTest" />
         <item itemvalue="JUnit.TestLeaderBoardService" />
-        <item itemvalue="JUnit.EntrenadorTest.entrenadorConNivelDiez" />
-        <item itemvalue="JUnit.All in bichomon-go" />
-        <item itemvalue="JUnit.UbicacionTest" />
       </list>
     </recent_temporary>
   </component>
@@ -478,32 +486,11 @@
       <workItem from="1573058520571" duration="4184000" />
       <workItem from="1573065859237" duration="24324000" />
       <workItem from="1573128602974" duration="801000" />
-      <workItem from="1573134258641" duration="22660000" />
+      <workItem from="1573134258641" duration="25444000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="EntrenadorTest_entrenadorConNivelDiez - 2019.11.07 at 21h 11m 58s.xml">
-      <configuration name="EntrenadorTest.entrenadorConNivelDiez" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EntrenadorTest_entrenadorConNivelDiez - 2019.11.07 at 21h 12m 28s.xml">
-      <configuration name="EntrenadorTest.entrenadorConNivelDiez" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EntrenadorTest_entrenadorConNivelDiez - 2019.11.07 at 21h 13m 01s.xml">
-      <configuration name="EntrenadorTest.entrenadorConNivelDiez" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EntrenadorTest_entrenadorConNivelDiez - 2019.11.07 at 21h 16m 09s.xml">
-      <configuration name="EntrenadorTest.entrenadorConNivelDiez" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EntrenadorTest_entrenadorConNivelDiez - 2019.11.07 at 21h 16m 16s.xml">
-      <configuration name="EntrenadorTest.entrenadorConNivelDiez" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EntrenadorTest_entrenadorConNivelDiez - 2019.11.07 at 21h 16m 31s.xml">
-      <configuration name="EntrenadorTest.entrenadorConNivelDiez" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestLeaderBoardService - 2019.11.07 at 21h 23m 39s.xml">
-      <configuration name="TestLeaderBoardService" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="hibernateEntrenadorDaoTest - 2019.11.07 at 21h 29m 05s.xml">
       <configuration name="hibernateEntrenadorDaoTest" configurationId="JUnit" />
     </history-entry>
@@ -513,9 +500,30 @@
     <history-entry file="hibernateEntrenadorDaoTest - 2019.11.07 at 22h 45m 52s.xml">
       <configuration name="hibernateEntrenadorDaoTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="UbicacionTest_al_intentar_capturar_en_un_pueblo_se_captura_un_bicho_de_especie_a - 2019.11.07 at 22h 49m 33s.xml">
+      <configuration name="UbicacionTest.al_intentar_capturar_en_un_pueblo_se_captura_un_bicho_de_especie_a" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestEspecieService_populares_retorna_las_10_de_11_especies_mas_populares_entre_los_entrenadores - 2019.11.07 at 22h 55m 02s.xml">
+      <configuration name="TestEspecieService.populares_retorna_las_10_de_11_especies_mas_populares_entre_los_entrenadores" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestEspecieService_populares_retorna_las_10_de_11_especies_mas_populares_entre_los_entrenadores - 2019.11.07 at 22h 59m 09s.xml">
+      <configuration name="TestEspecieService.populares_retorna_las_10_de_11_especies_mas_populares_entre_los_entrenadores" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestEspecieService_populares_retorna_las_10_de_11_especies_mas_populares_entre_los_entrenadores - 2019.11.07 at 23h 12m 34s.xml">
+      <configuration name="TestEspecieService.populares_retorna_las_10_de_11_especies_mas_populares_entre_los_entrenadores" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestEspecieService_populares_retorna_las_10_de_11_especies_mas_populares_entre_los_entrenadores - 2019.11.07 at 23h 19m 17s.xml">
+      <configuration name="TestEspecieService.populares_retorna_las_10_de_11_especies_mas_populares_entre_los_entrenadores" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestLeaderBoardService_especieLider_con_dojos_y_entrenadores - 2019.11.07 at 23h 23m 44s.xml">
+      <configuration name="TestLeaderBoardService.especieLider_con_dojos_y_entrenadores" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestLeaderBoardService_especieLider_con_dojos_y_entrenadores - 2019.11.07 at 23h 31m 15s.xml">
+      <configuration name="TestLeaderBoardService.especieLider_con_dojos_y_entrenadores" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110319000" />
+    <option name="totallyTimeSpent" value="113103000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1872" height="1096" extended-state="6" />
@@ -576,17 +584,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Dojo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
-          <folding>
-            <element signature="e#1168#1169#0" expanded="true" />
-            <element signature="e#1203#1204#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/data/DataServiceImp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="734">
@@ -820,13 +817,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/UbicacionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3179">
-          <caret line="203" column="72" selection-start-line="203" selection-start-column="72" selection-end-line="203" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Pueblo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="524">
@@ -851,13 +841,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestEspecieService/TestEspecieService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="458" selection-start-line="458" selection-end-line="458" />
         </state>
       </provider>
     </entry>
@@ -923,24 +906,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/EspecieServiceh.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/persistence/javax.persistence-api/2.2/javax.persistence-api-2.2-sources.jar!/javax/persistence/NoResultException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="230">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/LeaderBoardService.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/hibernateEntrenadorDaoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateEntrenadorDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="22" column="24" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/BichomonTestLeaderBoardService/TestLeaderBoardService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3995">
-          <caret line="262" column="57" selection-start-line="262" selection-start-column="57" selection-end-line="262" selection-end-column="57" />
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -962,27 +948,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/persistence/javax.persistence-api/2.2/javax.persistence-api-2.2-sources.jar!/javax/persistence/NoResultException.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/test/modelo/UbicacionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+        <state relative-caret-position="-711">
+          <caret line="47" column="64" selection-start-line="47" selection-start-column="64" selection-end-line="47" selection-end-column="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateEntrenadorDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/EspecieServiceh.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+        <state relative-caret-position="153">
+          <caret line="16" column="34" lean-forward="true" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#500#501#0" expanded="true" />
+            <element signature="e#548#549#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/hibernateEntrenadorDaoTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="377">
+          <caret line="74" column="37" selection-start-line="74" selection-start-column="37" selection-end-line="74" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#106#1" expanded="true" />
+            <element signature="e#0#153#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestEspecieService/TestEspecieService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3116">
+          <caret line="222" column="16" selection-start-line="222" selection-start-column="16" selection-end-line="222" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateUbicacionDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="88" column="38" selection-start-line="88" selection-start-column="38" selection-end-line="88" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+            <element signature="e#0#130#1" expanded="true" />
+            <element signature="e#0#169#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/LeaderBoardService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/BichomonTestLeaderBoardService/TestLeaderBoardService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="262" column="25" selection-start-line="262" selection-start-column="21" selection-end-line="262" selection-end-column="25" />
         </state>
       </provider>
     </entry>

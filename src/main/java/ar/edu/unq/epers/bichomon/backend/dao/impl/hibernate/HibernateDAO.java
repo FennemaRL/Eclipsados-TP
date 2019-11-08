@@ -72,7 +72,7 @@ public abstract class HibernateDAO<T> {
         Session session = TransactionRunner.getCurrentSession();
         String hql ="select esp from Entrenador e  inner join e.bichos as b inner join b.especie esp" +
                 " group by b.especie " +
-                " order by count(b.especie) desc";
+                " order by count(b.id) desc";
         Query query = session.createQuery(hql,  Especie.class);
         query.setMaxResults(10);
 

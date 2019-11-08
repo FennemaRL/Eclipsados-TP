@@ -85,8 +85,8 @@ public class HibernateUbicacionDao extends HibernateDAO<Ubicacion> implements Ub
     public Especie especieLider() { // see this
         Session session = TransactionRunner.getCurrentSession();
         String hql = "Select especie from Historial as historial join historial.bicho as bicho join bicho.especie as especie" +
-                " group by bicho.id " +
-                " order by count(especie.id) desc";
+                " group by especie.id " +
+                " order by count(bicho.id) desc";
         Query<Especie> especieQ =session.createQuery(hql,Especie.class);
         especieQ.setMaxResults(1);
 
