@@ -45,6 +45,7 @@
 		<mapping class="ar.edu.unq.epers.bichomon.backend.model.ubicacion.Historial"/>
 		<mapping class="ar.edu.unq.epers.bichomon.backend.model.entrenador.ExperienciaValor" />
 		<mapping class="ar.edu.unq.epers.bichomon.backend.model.entrenador.NivelEntrenador" />
+		<mapping class="ar.edu.unq.epers.bichomon.backend.model.ubicacion.EspecieConProv"/>
 
 	</session-factory>
 </hibernate-configuration>

@@ -12,6 +12,7 @@ import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Guarderia;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -128,6 +129,25 @@ public class  EntrenadorTest {
         @Test(expected = BichomonError.class)
         public void bichoDollars_Bancarrota(){
                 esh.pagar(2);
+        }
+        @Test
+        public void entrenadorConNivelDiez(){
+                ArrayList<Integer> niveles = new ArrayList<>();
+                niveles.add(99);
+                niveles.add(400);
+                niveles.add(1000);
+                for (int i=2000 ;i<9000 ; i +=1000 ) {
+                        niveles.add(i);
+                }
+                expGen = new ExperienciaValor(200000,10,15);
+                nivelEntrenadorGen = new NivelEntrenador(niveles);
+                creciente = mock(Guarderia.class);
+                master = new Entrenador("lucas",creciente, expGen, nivelEntrenadorGen);
+
+                master.aumentarExpPorCombate();
+
+                assertEquals((Integer) 10,master.getNivel());
+
         }
 
 }

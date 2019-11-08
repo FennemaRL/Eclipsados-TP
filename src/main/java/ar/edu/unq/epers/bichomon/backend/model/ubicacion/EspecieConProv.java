@@ -2,11 +2,17 @@ package ar.edu.unq.epers.bichomon.backend.model.ubicacion;
 
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 
+import javax.persistence.*;
+
+@Entity
 public class EspecieConProv {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    int id;
     public Especie getEsp() {
         return esp;
     }
-
+    @ManyToOne
     private Especie esp ;
 
     public int getProv() {

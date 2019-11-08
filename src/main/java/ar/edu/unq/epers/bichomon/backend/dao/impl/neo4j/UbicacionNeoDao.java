@@ -117,7 +117,7 @@ public class UbicacionNeoDao {
                 rutanoencontrada =  ! result.hasNext();
                 saltos ++;
             }
-            while ( rutanoencontrada && saltos <= 16);
+            while ( rutanoencontrada && saltos <= 6);
             List<List<String>> ret = new ArrayList<>();
             while(result.hasNext()){
                 Value ruta = result.next().get(0);
