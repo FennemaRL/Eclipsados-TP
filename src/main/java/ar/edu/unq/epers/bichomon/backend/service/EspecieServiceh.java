@@ -2,10 +2,11 @@ package ar.edu.unq.epers.bichomon.backend.service;
 
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateEspecieDao;
 import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
+import ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner;
 
 import java.util.List;
 
-import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
+import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.runInSession;
 
 public class EspecieServiceh {
     private HibernateEspecieDao dao;
@@ -14,9 +15,9 @@ public class EspecieServiceh {
     }
 
     public List<Especie> populares() {
-        return run(()-> dao.populares());
+        return TransactionRunner.runInSession(()-> dao.populares());
     }
     public List<Especie> impopulares(){
-        return run(()-> dao.impopulares());
+        return TransactionRunner.runInSession(()-> dao.impopulares());
     }
 }

@@ -24,7 +24,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
+import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.runInSession;
 import static org.junit.Assert.*;
 
 public class TestBichoService {
@@ -57,7 +57,7 @@ public class TestBichoService {
     }
     @After
     public void tearDown(){
-        run(()-> dao.clear());
+        runInSession(()-> dao.clear());
     }
 
     @Test(expected = NoHayEntrenadorConEseNombre.class)

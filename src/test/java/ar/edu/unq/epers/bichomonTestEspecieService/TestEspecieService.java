@@ -20,9 +20,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
+import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.runInSession;
 import static junit.framework.TestCase.assertEquals;
 
 public class TestEspecieService {
@@ -216,7 +215,7 @@ public class TestEspecieService {
     }
     @After
     public void tear(){
-        run(()->daoe.clear());
+        runInSession(()->daoe.clear());
     }
 
     @Test

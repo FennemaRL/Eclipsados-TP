@@ -8,7 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
+import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.runInSession;
 import static org.junit.Assert.assertEquals;
 
 public class TestUbicacionService {
@@ -28,7 +28,7 @@ public class TestUbicacionService {
 
     @After
     public void tearDown(){
-        run(()-> dao.clear());
+        runInSession(()-> dao.clear());
     }
 
 

@@ -4,15 +4,13 @@ import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateEntrenadorD
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.NoHayEntrenadorConEseNombre;
 import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Guarderia;
-import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Pueblo;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 import ar.edu.unq.epers.bichomon.backend.service.EntrenadorService;
-import ar.edu.unq.epers.bichomon.backend.service.runner.SessionFactoryProvider;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
+import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.runInSession;
 import static org.junit.Assert.assertEquals;
 
 public class TestEntrenadorService {
@@ -32,7 +30,7 @@ public class TestEntrenadorService {
     }
     @After
     public void tearDown(){
-        run(()-> dao.clear());
+        runInSession(()-> dao.clear());
     }
     @Test(expected = NoHayEntrenadorConEseNombre.class)
     public void al_recuperar_un_entrenador_inexistente_levanta_una_exepcion(){

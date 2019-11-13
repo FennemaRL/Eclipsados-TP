@@ -2,15 +2,15 @@ package ar.edu.unq.epers.bichomon.backend.service;
 
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.HibernateUbicacionDao;
 
-import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.NoHayEntrenadorConEseNombre;
 import ar.edu.unq.epers.bichomon.backend.dao.impl.hibernate.NoHayUbicacionConEseNombre;
 
 import ar.edu.unq.epers.bichomon.backend.model.bicho.Bicho;
 
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
+import ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner;
 
 
-import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
+import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.runInSession;
 
 public class UbicacionService {
     private HibernateUbicacionDao dao;
@@ -18,20 +18,21 @@ public class UbicacionService {
 
     public Ubicacion recuperar(String ubicacion) {
         try {
-            return run(() -> this.dao.recuperarUbicacion(ubicacion));
+            return TransactionRunner.runInSession(() -> this.dao.recuperarUbicacion(ubicacion));
         } catch (Exception e) {
             throw new NoHayUbicacionConEseNombre("no hay ubicacion con ese nombre");
         }
     }
 
     public void guardar(Ubicacion ubicacion){
-        run(()-> dao.guardar(ubicacion));
+        runInSession(()-> dao.guardar(ubicacion));
     }
-    public void actualizar(Ubicacion ubicacion){run(()-> dao.actualizar(ubicacion));
+    public void actualizar(Ubicacion ubicacion){
+        runInSession(()-> dao.actualizar(ubicacion));
     }
 
     public Bicho campeonHistorico(String dojo) {
-        return run(()-> dao.campeonHistorico(dojo));
+        return TransactionRunner.runInSession(()-> dao.campeonHistorico(dojo));
     }
 
 }

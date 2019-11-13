@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
+import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.runInSession;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -32,7 +32,7 @@ public class Neo4jUbicacionDaoTest {
     }
     @After
     public void teard(){
-        run(()->dao.clear());
+        runInSession(()->dao.clear());
         //neodao.borrarTodo();
     }
 

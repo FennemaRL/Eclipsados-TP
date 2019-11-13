@@ -22,7 +22,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
+import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.runInSession;
 import static junit.framework.TestCase.assertEquals;
 
 public class TestLeaderBoardService {
@@ -84,7 +84,7 @@ public class TestLeaderBoardService {
     }
     @After
     public void tear(){
-        run(()->daou.clear());
+        runInSession(()->daou.clear());
     }
     @Test
     public void historial_de_campeones_sin_campeones_ni_dojos() { // test campeones

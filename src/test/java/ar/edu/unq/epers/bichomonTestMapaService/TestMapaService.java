@@ -23,7 +23,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.CHOCOLATE;
-import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
+import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.runInSession;
 import static org.junit.Assert.assertEquals;
 
 
@@ -71,7 +71,7 @@ public class  TestMapaService {
         }
     @After
     public void tearDown(){
-        run(()-> dao.clear());
+        runInSession(()-> dao.clear());
         neo.borrarTodo();
     }
 

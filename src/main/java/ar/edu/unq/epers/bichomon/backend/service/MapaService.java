@@ -9,7 +9,7 @@ import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
+import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.runInSession;
 
 public class MapaService {
 
@@ -25,7 +25,7 @@ public class MapaService {
     }
 
     public void mover(String entrenador, String ubicacion) {//terminar
-    run(()->{
+    runInSession(()->{
         Entrenador entrenador1 = entrenadorService.recuperar(entrenador);
         Ubicacion ubicacion0 = entrenador1.getUbicacion();
         Ubicacion ubicacion1 = ubicacionService.recuperar(ubicacion);
@@ -70,7 +70,7 @@ public class MapaService {
     }
 
     public void moverMasCorto(String entrenador, String ubicacion) {
-        run(()->{
+        runInSession(()->{
         Entrenador entrenador1 = entrenadorService.recuperar(entrenador);
         Ubicacion ubicacion0 = entrenador1.getUbicacion();
         Ubicacion ubicacion1 = ubicacionService.recuperar(ubicacion);

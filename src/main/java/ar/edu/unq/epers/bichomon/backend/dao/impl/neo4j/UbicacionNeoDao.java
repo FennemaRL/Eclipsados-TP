@@ -15,7 +15,7 @@ public class UbicacionNeoDao {
     private UbicacionService su;
 
     public UbicacionNeoDao(UbicacionService su){
-        this.driver = GraphDatabase.driver( "bolt://localhost:7687", AuthTokens.basic( "neo4j", "password" ) );
+        this.driver = GraphDatabase.driver( "bolt://localhost:11002", AuthTokens.basic( "neo4j", "password" ) );
         this.su=su;
     }
     public void crearNodo(Ubicacion ubicacion) {
@@ -24,7 +24,6 @@ public class UbicacionNeoDao {
             String q ="";
             String[] p = ubicacion.getClass().getName().toLowerCase().split("[.]");
             String tipo =p[(p.length)-1];
-            String c = "create constrain on (u:Ubicacion) assert u.nombre is unique ";
             if (tipo.equals("pueblo"))
                     q = "Merge (n:Ubicacion:Pueblo {nombre: {elNombre}}) ";
             if (tipo.equals("dojo"))
@@ -32,7 +31,7 @@ public class UbicacionNeoDao {
             if (tipo.equals("guarderia"))
                     q = "Merge (n:Ubicacion:Guarderia {nombre: {elNombre}}) ";
 
-            session.run(c+q,Values.parameters("elNombre",ubicacion.getNombre()));
+            session.run(q,Values.parameters("elNombre",ubicacion.getNombre()));
         }
 
         finally {

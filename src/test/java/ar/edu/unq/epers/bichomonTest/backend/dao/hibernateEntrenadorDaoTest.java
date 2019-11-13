@@ -10,18 +10,17 @@ import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
 import ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Pueblo;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
-import ar.edu.unq.epers.bichomon.backend.service.runner.SessionFactoryProvider;
+import ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner;
 import ar.edu.unq.epers.bichomontTestBichoService.ProbabilidadNoRandom;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.run;
+import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.runInSession;
 import static org.junit.Assert.assertEquals;
 
 public class hibernateEntrenadorDaoTest { //falta testear cosas y agregar constrains pero lo basico de guardar
@@ -43,31 +42,31 @@ public class hibernateEntrenadorDaoTest { //falta testear cosas y agregar constr
     }
     @After
     public void tearDown(){
-        run(()-> dao.clear());
+        runInSession(()-> dao.clear());
     }
 
 
     @Test
     public void test_al_guardar_y_luego_recuperar_se_obtiene_objetos_similares(){
         Entrenador pepa = new Entrenador("pepa", ubi, new ExperienciaValor(1,1,1),new NivelEntrenador());
-        run(() ->this.dao.guardar(pepa)); // modificar la fecha manaña por que es demasiado larga :S
+        runInSession(() ->this.dao.guardar(pepa)); // modificar la fecha manaña por que es demasiado larga :S
 
-        Entrenador pep2 = run(() ->this.dao.recuperar("pepa"));
+        Entrenador pep2 = TransactionRunner.runInSession(() ->this.dao.recuperar("pepa"));
 
         assertEquals(pepa.getUbicacion().getNombreUbicacion(), pep2.getUbicacion().getNombreUbicacion());
         assertEquals(pepa.getNombre(), pep2.getNombre());
     }
     @Test
     public void al_recuperar_un_nombre_inexistente_no_recupera_y_retorna_null(){ // test desfavorable recuperar
-        run(() ->this.dao.recuperar("pejelagarto3"));
+        TransactionRunner.runInSession(() ->this.dao.recuperar("pejelagarto3"));
 
     }
 
     @Test (expected= PersistenceException.class) //arreglar en clase
     public void al_guardar_dos_objetos_con_el_mismo_nombre_levanta_excepcion_por_constraint_Nombre() { // test contraint nombre
-        run(() ->this.dao.guardar(this.pepe));
+        runInSession(() ->this.dao.guardar(this.pepe));
         Entrenador et = new Entrenador("pepe",ubi);
-        run(() ->this.dao.guardar(et));
+        runInSession(() ->this.dao.guardar(et));
     }
 
 }

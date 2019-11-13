@@ -6,48 +6,60 @@ import org.hibernate.Transaction;
 import java.util.function.Supplier;
 
 public class TransactionRunner {
-	private static Session session;
+	private static ThreadLocal<Session> CONTEXTO = new ThreadLocal<>();
 
-	public static void run(Runnable bloque) {
-		run(()->{
+	public static void runInSession(Runnable bloque) {
+		runInSession(()->{
 			bloque.run();
 			return null;
 		});
 	}
 
 	
-	public static <T> T run(Supplier<T> bloque) {
-		if(session != null){
+	public static <T> T runInSession(Supplier<T> bloque) {
+		if(CONTEXTO.get() != null){
 			return bloque.get();
 		}
-
-		Transaction tx = null;
-		
 		try {
-			session = SessionFactoryProvider.getInstance().createSession();
-			tx = session.beginTransaction();
+			comenzarTransaccion();
 
 			//codigo de negocio
 			T resultado = bloque.get();
 			
-			tx.commit();
+			commit();
 			return resultado;
 		} catch (RuntimeException e) {
+			rollback();
 			//solamente puedo cerrar la transaccion si fue abierta antes,
 			//puede haberse roto el metodo ANTES de abrir una transaccion
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
 			throw e;
-		} finally {
-			if (session != null) {
-				session.close();
-				session = null;
-			}
 		}
 	}
 
+	private static void rollback() {
+		Session session = CONTEXTO.get();
+		if (session != null) {
+			session.getTransaction().rollback();
+			session.close();
+			CONTEXTO.set(null);
+		}
+	}
+
+	private static void commit() {
+		Session session = CONTEXTO.get();
+		session.getTransaction().commit();
+		session.close();
+		CONTEXTO.set(null);
+	}
+
+	private static void comenzarTransaccion() {
+		Session session = SessionFactoryProvider.getInstance().createSession();
+		Transaction tx = session.beginTransaction();
+		CONTEXTO.set(session);
+	}
+
 	public static Session getCurrentSession() {
+		Session session = CONTEXTO.get();
 		if (session == null) {
 			throw new RuntimeException("No hay ninguna session en el contexto");
 		}
