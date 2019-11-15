@@ -18,22 +18,22 @@ import ar.edu.unq.epers.bichomon.backend.model.random.RandomBichomon;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.*;
 import ar.edu.unq.epers.bichomon.backend.service.*;
 import ar.edu.unq.epers.bichomontTestBichoService.ProbabilidadNoRandom;
+import org.hibernate.exception.ConstraintViolationException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static ar.edu.unq.epers.bichomon.backend.model.especie.TipoBicho.CHOCOLATE;
 import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.runInSession;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
-
-import static org.junit.Assert.assertNull;
 
 import java.util.ArrayList;
 
 public class  TestMapaService {
 
     private Entrenador esh;
+    private Ubicacion guarderia3;
     private Ubicacion guarderia2;
     private Ubicacion guarderia1;
 
@@ -246,6 +246,23 @@ public class  TestMapaService {
         neo.crearRelacionDeUbiAUbi(Transporte.TERRESTRE,guarderia1,guarderia3);
 
         mapaService.moverMasCorto("esh","guarderia2");
+    }
+
+    @Test
+    public void testCrearUbicacion(){
+        guarderia3 = new Guarderia("guarderia3");
+        guarderia3.setCantidadDeEntrenadores(234875);
+        mapaService.crearUbicacion(guarderia3);
+        assertEquals((mapaService.recuperarUbicacion("guarderia3")).getNombre(), guarderia3.getNombre());
+    }
+
+    @Test (expected = ConstraintViolationException.class)
+    public void noSePuedeCrearUnaUbicacionSiEstaYaExiste(){
+        guarderia3 = new Guarderia("guarderia3");
+        guarderia3.setCantidadDeEntrenadores(234875);
+        mapaService.crearUbicacion(guarderia3);
+        mapaService.crearUbicacion(guarderia3);
+        assertFalse(neo.existeUbicacion(guarderia1));
     }
 
 

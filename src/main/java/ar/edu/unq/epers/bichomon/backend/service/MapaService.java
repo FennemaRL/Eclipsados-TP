@@ -111,7 +111,15 @@ public class MapaService {
         }
     }
 
-    ;
+    public void crearUbicacion(Ubicacion ubicacion) {
+        this.ubicacionService.guardar(ubicacion);
+        this.map.crearUbicacion(ubicacion);
+    }
+
+    public Ubicacion recuperarUbicacion(String ubicacion) {
+        return (ubicacionService.recuperar(ubicacion));
+    }
+
 
 }
 
