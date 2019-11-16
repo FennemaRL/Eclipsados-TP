@@ -15,7 +15,7 @@ public class UbicacionNeoDao {
     private UbicacionService su;
 
     public UbicacionNeoDao(UbicacionService su){
-        this.driver = GraphDatabase.driver( "bolt://localhost:11002", AuthTokens.basic( "neo4j", "password" ) );
+        this.driver = GraphDatabase.driver( "bolt://localhost:7687", AuthTokens.basic( "neo4j", "password" ) );
         this.su=su;
     }
     public void crearNodo(Ubicacion ubicacion) {

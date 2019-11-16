@@ -192,7 +192,7 @@ public class TestBichoService {
         lukas.agregarBichomon(ricky);
 
         es.guardar(lukas);
-
+//este falla
         assertFalse(bs.puedeEvolucionar("lukas1",ricky.getId()));
         bs.evolucionar("lukas1",ricky.getId());
 
