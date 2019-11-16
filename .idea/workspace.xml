@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e0a9ac1a-d9ba-4cd0-b18e-6e4c74f736fd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="8eb83109-b363-428d-884d-9ea8db4cefd9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/neo4j/UbicacionNeoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/neo4j/UbicacionNeoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/bicho/Bicho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/bicho/Bicho.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/MapaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/MapaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestMapaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTestMapaService/TestMapaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestBichoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomontTestBichoService/TestBichoService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,7 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1TfhlU5RAWo4JJ6XI1gLrTJV3Nq" />
+  <component name="ProjectId" id="1Tg6We3vljiP7xFyFvwqbtZbir0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -33,7 +30,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ar.edu.unq.epers.bichomonTestMapaService in bichomon-go">
+  <component name="RunManager" selected="JUnit.TestMapaService.noSePuedeCrearUnaUbicacionSiEstaYaExiste">
     <configuration name="All in bichomon-go" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <option name="PACKAGE_NAME" value="" />
@@ -42,39 +39,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestBichoService.se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomontTestBichoService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomontTestBichoService" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomontTestBichoService.TestBichoService" />
-      <option name="METHOD_NAME" value="se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestBichoService.se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar_y_no_puede" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bichomon-go" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unq.epers.bichomontTestBichoService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomontTestBichoService" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomontTestBichoService.TestBichoService" />
-      <option name="METHOD_NAME" value="se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar_y_no_puede" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestMapaService.mover_mas_corto_sin_conexion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestMapaService.noSePuedeCrearUnaUbicacionSiEstaYaExiste" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <extension name="coverage">
         <pattern>
@@ -84,13 +49,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTestMapaService" />
       <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTestMapaService.TestMapaService" />
-      <option name="METHOD_NAME" value="mover_mas_corto_sin_conexion" />
+      <option name="METHOD_NAME" value="noSePuedeCrearUnaUbicacionSiEstaYaExiste" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ar.edu.unq.epers.bichomonTestMapaService in bichomon-go" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestMapaService.testCrearUbicacion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <extension name="coverage">
         <pattern>
@@ -99,18 +64,18 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTestMapaService" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTestMapaService.TestMapaService" />
+      <option name="METHOD_NAME" value="testCrearUbicacion" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ar.edu.unq.epers.bichomonTestMapaService in bichomon-go" />
-        <item itemvalue="JUnit.TestBichoService.se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar_y_no_puede" />
-        <item itemvalue="JUnit.TestBichoService.se_le_pregunta_a_un_entrenador_si_su_bichomon_puede_evolucionar" />
+        <item itemvalue="JUnit.TestMapaService.noSePuedeCrearUnaUbicacionSiEstaYaExiste" />
+        <item itemvalue="JUnit.TestMapaService.testCrearUbicacion" />
         <item itemvalue="JUnit.All in bichomon-go" />
-        <item itemvalue="JUnit.TestMapaService.mover_mas_corto_sin_conexion" />
       </list>
     </recent_temporary>
   </component>
@@ -119,11 +84,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e0a9ac1a-d9ba-4cd0-b18e-6e4c74f736fd" name="Default Changelist" comment="" />
-      <created>1573857217721</created>
+      <changelist id="8eb83109-b363-428d-884d-9ea8db4cefd9" name="Default Changelist" comment="" />
+      <created>1573869429484</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1573857217721</updated>
+      <updated>1573869429484</updated>
     </task>
     <servers />
   </component>

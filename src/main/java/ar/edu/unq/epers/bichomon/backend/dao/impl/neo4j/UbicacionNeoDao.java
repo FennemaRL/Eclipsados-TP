@@ -18,6 +18,32 @@ public class UbicacionNeoDao {
         this.driver = GraphDatabase.driver( "bolt://localhost:7687", AuthTokens.basic( "neo4j", "password" ) );
         this.su=su;
     }
+
+    public boolean existeUbicacion(Ubicacion unaUbicacion){
+        Session session = this.driver.session();
+
+        try {
+            String q = "MATCH (fromUbicacion:Ubicacion{nombre:{elfromUNombre}}) "+
+                    "return fromUbicacion";
+            StatementResult result =session.run(q, Values.parameters("elfromUNombre", unaUbicacion.getNombre()));
+            return (result.list().size() == 1);
+        }
+
+        finally {
+            session.close();
+        }
+
+    }
+    public void crearUbicacion (Ubicacion unaUbicacion){
+        if (!existeUbicacion(unaUbicacion)){
+            crearNodo(unaUbicacion);
+        }
+        else{
+            throw new ZonaErronea("ya existe ubicacion con ese nombre");
+        }
+    }
+
+
     public void crearNodo(Ubicacion ubicacion) {
         Session session = this.driver.session();
         try {
@@ -78,6 +104,10 @@ public class UbicacionNeoDao {
             String q ="MATCH (u:Ubicacion)-[relacion]-(u2:Ubicacion)" +
                       " DELETE u,u2,relacion";
             session.run(q);
+            String q1 ="MATCH (u:Ubicacion)" +
+                    " DELETE u";
+            session.run(q1);
+
         }
         finally {
             session.close();
