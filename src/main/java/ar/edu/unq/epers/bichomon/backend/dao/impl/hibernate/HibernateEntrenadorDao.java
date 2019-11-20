@@ -30,9 +30,6 @@ public class HibernateEntrenadorDao extends HibernateDAO<Entrenador> implements 
 
     @Override
     public void reset() {
-        Session session = TransactionRunner.getCurrentSession();
-
-        session.close();
         }
 
     @Override

@@ -6,39 +6,46 @@ import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.BichomonError;
 import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static ar.edu.unq.epers.bichomon.backend.service.runner.TransactionRunner.runInSession;
 
-public class MapaService {
+public class MapaService implements Observado {
 
     private EntrenadorService entrenadorService;
     private UbicacionService ubicacionService;
     private UbicacionNeoDao map;
+    private List<Oyente> oyentes;
 
 
     public MapaService(EntrenadorService entrenadorService1, UbicacionService ubicacionService1, UbicacionNeoDao neo) {
         entrenadorService = entrenadorService1;
         ubicacionService = ubicacionService1;
         map = neo;
+        oyentes = new ArrayList<>();
     }
 
-    public void mover(String entrenador, String ubicacion) {//terminar
-    runInSession(()->{
-        Entrenador entrenador1 = entrenadorService.recuperar(entrenador);
-        Ubicacion ubicacion0 = entrenador1.getUbicacion();
-        Ubicacion ubicacion1 = ubicacionService.recuperar(ubicacion);
-        List<String> rutas = map.estaConectadop2p(ubicacion0,ubicacion1);
-        if(0 < rutas.size()){
-            entrenador1.pagar(this.rutaLowCost(rutas));
-            entrenador1.setUbicacion(ubicacion1); //set ubicacion incrementa y decrementa entrenadores en ubicaciones
-            ubicacionService.actualizar(ubicacion0); //ubicacion 1 ses actualiza por cascade
-            entrenadorService.actualizar(entrenador1);
-        }
-        else
-            throw new UbicacionMuyLejana("ubicacionMuyLejana");
-    });
+    public void mover(String entrenador, String ubicacion) {// falta mongo
+        final Entrenador[] entrenador1 = {null};
+        runInSession(()->{
+            entrenador1[0] = entrenadorService.recuperar(entrenador);
+            Ubicacion ubicacion0 = entrenador1[0].getUbicacion();
+            Ubicacion ubicacion1 = ubicacionService.recuperar(ubicacion);
+            List<String> rutas = map.estaConectadop2p(ubicacion0,ubicacion1);
+            if(0 < rutas.size()){
+                entrenador1[0].pagar(this.rutaLowCost(rutas));
+                entrenador1[0].setUbicacion(ubicacion1); //set ubicacion incrementa y decrementa entrenadores en ubicaciones
+                ubicacionService.actualizar(ubicacion0); //ubicacion 1 ses actualiza por cascade
+                entrenadorService.actualizar(entrenador1[0]);
+            }
+            else
+                throw new UbicacionMuyLejana("ubicacionMuyLejana");
+            });
+        Evento ev =new Evento(entrenador1[0],"entrenador arriba a",new Date(), entrenador1[0].getUbicacion().getNombre());
+        oyentes.forEach(oyente -> oyente.nuevoEvento(ev));
     }
 
     private int rutaLowCost(List<String> rutas) {
@@ -120,6 +127,8 @@ public class MapaService {
         return (ubicacionService.recuperar(ubicacion));
     }
 
-
+    public void agregarOyente(Oyente li){
+        oyentes.add(li);
+    }
 }
 

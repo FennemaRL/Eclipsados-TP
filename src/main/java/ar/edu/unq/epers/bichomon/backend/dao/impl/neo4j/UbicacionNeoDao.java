@@ -167,4 +167,22 @@ public class UbicacionNeoDao {
 
 
     }
+
+    public List<String> conectadosp2pnombresytodosLosMedios(Ubicacion ubicacion) {
+        Session session = this.driver.session();
+
+        try {
+            String q = "MATCH (fromUbicacion:Ubicacion{nombre:{elfromUNombre}}) " +
+                    "MATCH (fromUbicacion)-[:maritimo|aereo|terrestre]->(toUbicacion)  " +
+                    "RETURN toUbicacion ";
+            StatementResult result =session.run(q, Values.parameters("elfromUNombre", ubicacion.getNombre()));
+            return result.list((record -> {
+                Value ub = record.get(0);
+                return ub.get("nombre").asString();
+            }));
+        }
+        finally {
+            session.close();
+        }
+    }
 }

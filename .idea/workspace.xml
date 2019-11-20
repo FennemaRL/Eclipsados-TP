@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14dd545e-b83d-4b28-a8fe-1e8c98a36363" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/FeedService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateEntrenadorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/hibernate/HibernateEntrenadorDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/mongoDB/MongoEventoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/mongoDB/MongoEventoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/neo4j/UbicacionNeoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/dao/impl/neo4j/UbicacionNeoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/evento/Evento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/Evento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Ubicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/model/ubicacion/Ubicacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/BichoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/BichoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/MapaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unq/epers/bichomon/backend/service/MapaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/MongoTestDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/bichomonTest/backend/dao/MongoTestDao.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,6 +24,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -24,6 +34,7 @@
   <component name="ProjectId" id="1Trb5xIsxA9hMexVUebJEGhGZSb" />
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="ar.edu.unq.epers.bichomon.backend.service" />
       <recent name="ar.edu.unq.epers.bichomon.backend.model.evento" />
     </key>
   </component>
@@ -39,7 +50,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.TestFeedService.feedUbicaciontest">
     <configuration name="MongoTestDao.se_guarda_y_se_recupera_un_evento" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bichomon-go" />
       <extension name="coverage">
@@ -56,9 +67,76 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestFeedService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bichomon-go" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unq.epers.biochomTestFeedService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.biochomTestFeedService" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.biochomTestFeedService.TestFeedService" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestFeedService.feedUbicaciontest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bichomon-go" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unq.epers.biochomTestFeedService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.biochomTestFeedService" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.biochomTestFeedService.TestFeedService" />
+      <option name="METHOD_NAME" value="feedUbicaciontest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestMapaService.dojo_con_campeon_historico" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bichomon-go" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unq.epers.bichomonTestMapaService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTestMapaService" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTestMapaService.TestMapaService" />
+      <option name="METHOD_NAME" value="dojo_con_campeon_historico" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="hibernateEspecieDaoTest.al_guardar_y_luego_recuperar_se_obtiene_objetos_similares" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bichomon-go" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unq.epers.bichomonTest.backend.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unq.epers.bichomonTest.backend.dao" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unq.epers.bichomonTest.backend.dao.hibernateEspecieDaoTest" />
+      <option name="METHOD_NAME" value="al_guardar_y_luego_recuperar_se_obtiene_objetos_similares" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestFeedService.feedUbicaciontest" />
+        <item itemvalue="JUnit.TestFeedService" />
+        <item itemvalue="JUnit.hibernateEspecieDaoTest.al_guardar_y_luego_recuperar_se_obtiene_objetos_similares" />
         <item itemvalue="JUnit.MongoTestDao.se_guarda_y_se_recupera_un_evento" />
+        <item itemvalue="JUnit.TestMapaService.dojo_con_campeon_historico" />
       </list>
     </recent_temporary>
   </component>
@@ -87,5 +165,19 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ar/edu/unq/epers/biochomTestFeedService/TestFeedService.java</url>
+          <line>103</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -70,5 +70,9 @@ public abstract class Ubicacion {
     public  Bicho getBichoCampeon(){
         throw new ZonaErronea("Esta no es un dojo"+this.nombreUbicacion);
     }
+    @Override
+    public String toString(){
+        return nombreUbicacion;
+    }
 
 }
