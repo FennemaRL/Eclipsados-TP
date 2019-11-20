@@ -15,7 +15,7 @@ public class UbicacionNeoDao {
     private UbicacionService su;
 
     public UbicacionNeoDao(UbicacionService su){
-        this.driver = GraphDatabase.driver( "bolt://localhost:11002", AuthTokens.basic( "neo4j", "password" ) );
+        this.driver = GraphDatabase.driver( "bolt://localhost:7687", AuthTokens.basic( "neo4j", "password" ) );
         this.su=su;
     }
 
@@ -26,7 +26,7 @@ public class UbicacionNeoDao {
             String q = "MATCH (fromUbicacion:Ubicacion{nombre:{elfromUNombre}}) "+
                     "return fromUbicacion";
             StatementResult result =session.run(q, Values.parameters("elfromUNombre", unaUbicacion.getNombre()));
-            return (result.list().get(0).get("nombre").asString() == unaUbicacion.getNombre());
+            return (result.list().size() == 1);
         }
 
         finally {
@@ -104,6 +104,10 @@ public class UbicacionNeoDao {
             String q ="MATCH (u:Ubicacion)-[relacion]-(u2:Ubicacion)" +
                       " DELETE u,u2,relacion";
             session.run(q);
+            String q1 ="MATCH (u:Ubicacion)" +
+                    " DELETE u";
+            session.run(q1);
+
         }
         finally {
             session.close();

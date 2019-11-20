@@ -59,7 +59,7 @@ public class  TestMapaService {
 
         ubiService = new UbicacionService(ubiDao);
         guarderia2.setCantidadDeEntrenadores(5);
-        ubiService.guardar(guarderia1);
+        //ubiService.guardar(guarderia1);
         neo = new UbicacionNeoDao(ubiService);
         mapaService = new MapaService(entrenadorService, ubiService,neo);
 
@@ -72,7 +72,7 @@ public class  TestMapaService {
     @After
     public void tearDown(){
         runInSession(()-> dao.clear());
-        neo.borrarTodo();
+        runInSession(()->neo.borrarTodo());
     }
 
     @Test(expected = UbicacionMuyLejana.class)
