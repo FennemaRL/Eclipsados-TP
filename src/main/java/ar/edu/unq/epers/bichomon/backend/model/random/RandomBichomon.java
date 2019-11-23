@@ -12,7 +12,7 @@ import java.util.List;
 public class RandomBichomon  {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    protected int id;
+    protected long id;
 
     public RandomBichomon(){
     }

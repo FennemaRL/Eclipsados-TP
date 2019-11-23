@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class ExperienciaValor {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    public int id;
+    public long id;
 
     @Column
     private int puntosCombatir;

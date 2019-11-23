@@ -51,7 +51,7 @@ public class hibernateEspecieDaoTest{
     @Test
     public void al_actualizar_los_objetos_son_similares() { // test favorable actualizar
         runInSession(() ->this.dao.guardar(this.pejelagarto));
-        Especie otraMismaEspecie= TransactionRunner.runInSession(() ->this.dao.recuperar(pejelagarto.getId()));
+        Especie otraMismaEspecie= TransactionRunner.runInSession(() ->this.dao.recuperar((int)pejelagarto.getId()));
 
         otraMismaEspecie.setPeso(20);
         otraMismaEspecie.setAltura(400);

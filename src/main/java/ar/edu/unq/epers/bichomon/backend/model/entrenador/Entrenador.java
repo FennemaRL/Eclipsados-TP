@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class Entrenador {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @Column (unique = true)
     private String nombre;
     private Integer experiencia;
@@ -172,7 +172,7 @@ public class Entrenador {
             return ((Entrenador )o).getId() == id ;
     }
 
-    private int getId() {
+    private long getId() {
         return id;
     }
     public void setBichoDollars(int i){dollars = i;}

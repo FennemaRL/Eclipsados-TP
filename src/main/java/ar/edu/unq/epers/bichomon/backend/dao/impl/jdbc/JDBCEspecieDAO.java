@@ -14,6 +14,31 @@ public class JDBCEspecieDAO implements EspecieDAO {
 
     @Override
     public void guardar(Especie especie) {
+
+    }
+
+    @Override
+    public void actualizar(Especie especie) {
+
+    }
+
+    @Override
+    public Especie recuperar(String nombreEspecie) {
+        return null;
+    }
+
+    @Override
+    public List<Especie> recuperarTodos() {
+        return null;
+    }
+
+    @Override
+    public void restart() {
+
+    }
+/*
+    @Override
+    public void guardar(Especie especie) {
         this.executeWithConnection(conn ->{
             PreparedStatement sp = conn.prepareStatement("INSERT INTO specie (nombre, peso, altura, tipo_Bicho, cantidad_Bichos) VALUES(?,?,?,?,?)");
             sp.setString(1, especie.getNombre());
@@ -34,7 +59,7 @@ public class JDBCEspecieDAO implements EspecieDAO {
 
     @Override
     public void actualizar(Especie especie) {
-        if(especie.getId() == null)
+        if( especie.getId() == null)
             throw new JDBCEspecieDAOError("La especie a actualizar no tiene id");
         this.executeWithConnection(conn ->{
             PreparedStatement sp = conn.prepareStatement("UPDATE specie  SET nombre=?, peso=?, altura=?, tipo_Bicho=?, cantidad_Bichos=? WHERE id=? ");
@@ -44,7 +69,7 @@ public class JDBCEspecieDAO implements EspecieDAO {
             sp.setInt(3,especie.getAltura());
             sp.setString(4,especie.getTipo().toString());
             sp.setInt(5,especie.getCantidadBichos());
-            sp.setInt(6,especie.getId());//condition where
+            sp.setInt(6,(int)especie.getId());//condition where
             sp.executeUpdate();
 
             if(sp.getUpdateCount() < 1){
@@ -136,6 +161,6 @@ public class JDBCEspecieDAO implements EspecieDAO {
         } catch (SQLException e) {
             throw new RuntimeException("Error al cerrar la conexion", e);
         }
-    }
+    }*/
 }
 

@@ -35,7 +35,7 @@ public abstract class HibernateDAO<T> {
 
     public abstract void actualizar(T item);
 
-    public void clear(){
+    public void clear1(){
         Session session = TransactionRunner.getCurrentSession();
         List<String> nombreDeTablas = session.createNativeQuery("show tables").getResultList();
         session.createNativeQuery("SET FOREIGN_KEY_CHECKS=0;").executeUpdate();
@@ -43,6 +43,13 @@ public abstract class HibernateDAO<T> {
             session.createNativeQuery("truncate table " + tabla).executeUpdate();
         });
         session.createNativeQuery("SET FOREIGN_KEY_CHECKS=1;").executeUpdate();
+    }
+    public void clear(){
+        Session session = TransactionRunner.getCurrentSession();
+        List<String> nombreDeTablas = session.createNativeQuery("show tables").getResultList();
+        nombreDeTablas.forEach(tabla->{
+            session.createNativeQuery("truncate table " + tabla +" cascade").executeUpdate();
+        });
     }
 
     public  List<Entrenador> lideres(){

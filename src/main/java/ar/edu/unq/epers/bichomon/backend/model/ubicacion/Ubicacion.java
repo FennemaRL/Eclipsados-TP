@@ -17,7 +17,7 @@ public abstract class Ubicacion {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    protected int id;
+    protected long id;
 
     private int cantidadDeEntrenadores;
 
@@ -52,7 +52,7 @@ public abstract class Ubicacion {
 
     public String getNombre(){return this.nombreUbicacion;}
 
-    public int getid() {
+    public long getid() {
         return id;
     }
 

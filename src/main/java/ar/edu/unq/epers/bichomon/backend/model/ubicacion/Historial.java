@@ -10,7 +10,7 @@ import java.util.Date;
 public class   Historial {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @ManyToOne(fetch = FetchType.EAGER,cascade =CascadeType.ALL)
     private Entrenador entrenador;
     @ManyToOne (fetch = FetchType.LAZY,cascade =CascadeType.ALL)

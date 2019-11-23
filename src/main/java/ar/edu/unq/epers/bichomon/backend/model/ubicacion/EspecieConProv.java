@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class EspecieConProv {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    int id;
+    private long id;
     public Especie getEsp() {
         return esp;
     }

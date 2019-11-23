@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class Especie {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	private long id;
 	@Column(unique = true)
 	private String nombre;
 	private int altura;
@@ -148,8 +148,8 @@ public class Especie {
 		this.cantidadBichos = i;
 	}
 
-	public Integer getId() {
-		return id;
+	public long getId() {
+		return  id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
