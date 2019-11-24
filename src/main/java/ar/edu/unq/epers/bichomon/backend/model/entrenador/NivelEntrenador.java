@@ -8,7 +8,7 @@ public class NivelEntrenador {
    @Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    private long id ;
-    @ElementCollection(fetch=FetchType.EAGER)
+    @ElementCollection()
     @CollectionTable(name="niveles")
     @Column(name="niveles")
     private List<Integer> niveles;

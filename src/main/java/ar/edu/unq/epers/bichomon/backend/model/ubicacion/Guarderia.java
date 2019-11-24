@@ -6,22 +6,20 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Entity
 public class Guarderia extends Ubicacion{
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Bicho> bichos ;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    //@Transient
+    private Set<Bicho> bichos ;
 
     public Guarderia (){}
     public Guarderia(String name) {
         super(name);
-        bichos = new ArrayList<>();
+        bichos = new HashSet<>();
     }
 
     @Override
@@ -54,6 +52,6 @@ public class Guarderia extends Ubicacion{
 
 
     public List<Bicho> getBichos(){
-        return this.bichos;
+        return this.bichos.stream().collect(Collectors.toList());
     }
 }

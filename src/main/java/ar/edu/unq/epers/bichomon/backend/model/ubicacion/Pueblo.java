@@ -15,13 +15,14 @@ import java.util.stream.Collectors;
 
 public class Pueblo extends Ubicacion{
 
-    @ManyToOne ( cascade = CascadeType.ALL)
+    //@ManyToOne ( cascade = CascadeType.ALL)
+    @Transient
     private RandomBichomon random;
 
-    @ManyToMany ( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    //@ManyToMany ( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Transient
     private Set<EspecieConProv> especies;
 
-    private int cantEntrenadores;
     public Pueblo(){}
     public Pueblo(String name,RandomBichomon rb) {
         super(name);
@@ -32,7 +33,6 @@ public class Pueblo extends Ubicacion{
         super(s);
         especies = new LinkedHashSet<>();
         especies.addAll(le);
-        cantEntrenadores=0;
         random =r;
     }
 

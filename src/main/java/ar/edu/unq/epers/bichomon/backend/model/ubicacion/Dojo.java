@@ -14,14 +14,18 @@ import java.util.Set;
 @Entity
 public class Dojo extends Ubicacion{
     @ManyToOne(cascade = CascadeType.ALL)
+    //@Transient
     private Entrenador entrenadorCampeon;
     @ManyToOne(cascade = CascadeType.ALL)
+    //@Transient
     private Bicho bichoCampeon;
 
     @ManyToOne( cascade = CascadeType.ALL)
+    //@Transient
     private RandomBichomon random ;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)  // no lo guardamos por que rompe el dao de entrenador
+    //@Transient
     private Set<Historial> historial ;
 
     public Dojo(){

@@ -17,7 +17,7 @@ public class Entrenador {
     @Column (unique = true)
     private String nombre;
     private Integer experiencia;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Bicho> bichos;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -27,7 +27,9 @@ public class Entrenador {
     private NivelEntrenador nivelEntrenadorGen;
 
     @ManyToOne(cascade = CascadeType.ALL)
+    //@Transient
     private Ubicacion ubicacion;
+
     private int dollars = 0;
 
     public Entrenador(){}

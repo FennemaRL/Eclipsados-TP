@@ -15,9 +15,9 @@
 		<property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
 		-->
 		<property name="connection.driver_class">org.postgresql.Driver</property>
-		<property name="dialect">org.hibernate.dialect.PostgreSQL10Dialect</property>
-		<property name="connection.url">jdbc:postgresql://127.0.0.1:26257/epers_bichomon_hibernate?sslmode=disable</property>
-		<property name="connection.username">pepe</property>
+		<property name="dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
+		<property name="connection.url">jdbc:postgresql://127.0.0.1:26257/epers_bichomon_hibernate?useTimezone=true&amp;serverTimezone=UTC&amp;sslmode=disable</property>
+		<property name="connection.username">root</property>
 		<!-- SQL dialect -->
 
 

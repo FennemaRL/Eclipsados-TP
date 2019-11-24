@@ -9,17 +9,16 @@ import ar.edu.unq.epers.bichomon.backend.model.entrenador.ResultadoCombate;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Ubicacion {
     @Column (unique = true)
     protected String nombreUbicacion;
-    protected int cantidadEntrenadores;
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     protected long id;
 
-    private int cantidadDeEntrenadores;
+    protected int cantidadDeEntrenadores;
 
     public Ubicacion(){}
     public Ubicacion(String name) {

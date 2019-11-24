@@ -20,7 +20,8 @@ public class   Historial {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaFin;
 
-    @Formula("(Select (coalesce(h.fechaFin, utc_timestamp()) - h.fechaInicio)  from historial h where h.id = id)")
+    //@Formula("(Select (coalesce(h.fechaFin, utc_timestamp()) - h.fechaInicio)  from historial h where h.id = id)")
+    @Formula("(Select (coalesce(h.fechaFin, NOW()) - h.fechaInicio)  from historial h where h.id = id)")
     private Double diferencia;
 
     public Historial(){}
