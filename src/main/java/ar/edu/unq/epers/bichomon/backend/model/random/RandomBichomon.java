@@ -17,11 +17,7 @@ public class RandomBichomon  {
     public RandomBichomon(){
     }
     public boolean busquedaExitosa(Entrenador e, Ubicacion u) {
-        return false;
-    }
-
-    public Especie especiePorProbabilidad(List<Especie> especiesUbicacion, List<Integer> probabilidad) {
-        return null;
+        return true;
     }
 
     public Especie especiePorProbabilidad(List<EspecieConProv> le) {
