@@ -19,7 +19,8 @@ import java.util.concurrent.TimeUnit;
 public class Bicho {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	private long id;
+	@Transient
 	private String nombre;
 	@ManyToOne (cascade = CascadeType.ALL)
 	private Especie especie;
@@ -65,8 +66,8 @@ public class Bicho {
 		this.energiaDeCombate = energia;
 	}
 
-	public Integer getId() {
-		return this.id;
+	public long getId() {
+		return  this.id;
 	}
 
     public boolean puedeEvolucionar() {

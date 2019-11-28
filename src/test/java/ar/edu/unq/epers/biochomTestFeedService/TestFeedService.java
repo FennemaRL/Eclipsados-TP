@@ -92,9 +92,9 @@ public class TestFeedService {
         ms.mover("pipo","chaparral");
         bs.buscar("pipo");                          //"captura bicho"
         bs.buscar("pipo");                         // "captura bicho"
-        bs.abandonarBicho("pipo",kalu2.getId());  //  "abandona bicho en guarderia"
+        bs.abandonarBicho("pipo", (int) kalu2.getId());  //  "abandona bicho en guarderia"
         ms.mover("pipo","unqui");      //   "entrenador arriba a"
-        bs.duelo("pipo",kalu.getId());          //    "el guachin se corona"
+        bs.duelo("pipo", (int) kalu.getId());          //    "el guachin se corona"
         ms.mover("pipo","chaparral");
 
 

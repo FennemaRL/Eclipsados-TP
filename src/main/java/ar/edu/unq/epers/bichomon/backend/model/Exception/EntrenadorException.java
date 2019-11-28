@@ -5,10 +5,10 @@ import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
 public class EntrenadorException extends  RuntimeException{
 
     private Entrenador entrenador;
-    private Integer iDBichomon;
+    private long iDBichomon;
 
 
-    public EntrenadorException (Entrenador entrenador, Integer bichomonID ){
+    public EntrenadorException (Entrenador entrenador, long bichomonID ){
         this.entrenador = entrenador;
         iDBichomon = bichomonID;
     }

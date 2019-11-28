@@ -45,7 +45,7 @@ public class Dojo extends Ubicacion{
     public Bicho capturar(Entrenador e) {
         Bicho br = null;
         Boolean busqueda = random.busquedaExitosa(e,this);
-        Boolean contieneBicho= entrenadorCampeon != null && entrenadorCampeon.tieneBichoConId(bichoCampeon.getId());
+        Boolean contieneBicho= entrenadorCampeon != null && entrenadorCampeon.tieneBichoConId((int) bichoCampeon.getId());
         if( contieneBicho && busqueda){
             Especie esp = bichoCampeon.getEspecie().getEspecieRaiz();
             br = new Bicho(esp);
@@ -61,7 +61,7 @@ public class Dojo extends Ubicacion{
     }
     @Override
     public ResultadoCombate retar(Entrenador entrenador, Bicho bichomon){ //preguntar por esto en clase
-        if(entrenadorCampeon == null || !entrenadorCampeon.tieneBichoConId(bichoCampeon.getId()) && ! entrenadorCampeon.getNombre().equals(entrenador.getNombre())){
+        if(entrenadorCampeon == null || !entrenadorCampeon.tieneBichoConId((int) bichoCampeon.getId()) && ! entrenadorCampeon.getNombre().equals(entrenador.getNombre())){
             entrenadorCampeon = entrenador;
             bichoCampeon =bichomon;
             Date fecha = new Date();
@@ -98,7 +98,7 @@ public class Dojo extends Ubicacion{
 
     @Override
     public Bicho getBichoCampeon() {
-        if(bichoCampeon != null && entrenadorCampeon.tieneBichoConId(bichoCampeon.getId()))
+        if(bichoCampeon != null && entrenadorCampeon.tieneBichoConId((int) bichoCampeon.getId()))
             return bichoCampeon;
         else
              throw new DojoSinEntrenador("No se puede capturar en esta zona todavia ya que no posee campeon");

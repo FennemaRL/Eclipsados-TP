@@ -57,7 +57,7 @@ public class Entrenador {
         ubicacion.incrementarCantidadDeEntrenadores();
     }
 
-    public Bicho getBichoConID(Integer bichoId) {
+    public Bicho getBichoConID(long bichoId) {
 
         Bicho bichoEncontrar = bichos.stream().filter(b-> b.getId() == bichoId).findAny().orElse(null) ;
 
@@ -100,7 +100,7 @@ public class Entrenador {
         return( "Entrenador :"+nombre + " id: "+id +"{"+ b[0] +"}");
     }
 
-    public ResultadoCombate duelear(int idBicho){
+    public ResultadoCombate duelear(long idBicho){
         return ubicacion.retar(this, getBichoConID(idBicho));
     }
 

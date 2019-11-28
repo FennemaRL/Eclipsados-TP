@@ -60,8 +60,8 @@ public class  EntrenadorTest {
                  esh = new Entrenador("esh",creciente);
                  roko = mock(Bicho.class);
                  riko = mock(Bicho.class);
-                 when(riko.getId()).thenReturn(2);
-                 when(roko.getId()).thenReturn(3);
+                 when(riko.getId()).thenReturn((long)2);
+                 when(roko.getId()).thenReturn((long)3);
                  esh.agregarBichomon(riko);
                  esh.agregarBichomon(roko);
                  lukas = new Entrenador("lucas",creciente, expGen, nivelEntrenadorGen);
@@ -73,7 +73,7 @@ public class  EntrenadorTest {
 
         @Test
         public void al_pedir_el_bicho_con_id_3_devuelve_a_roko(){
-                when(roko.getId()).thenReturn(3);
+                when(roko.getId()).thenReturn((long)3);
 
                 assertEquals(roko, esh.getBichoConID(3));
         }

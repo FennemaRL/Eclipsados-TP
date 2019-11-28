@@ -61,7 +61,7 @@ public class Especie {
 	public Especie( String nombre, TipoBicho tipo,  int peso, int altura, int cant_bichos) {
 		this.nombre = nombre;
 		this.tipo = tipo;
-		especieRaiz = this;
+		especieRaiz = null;
 		this.evo = null;
 		this.peso = peso;
 		this.altura = altura;
@@ -172,7 +172,7 @@ public class Especie {
 		especieRaiz= e;
 	}
     public Especie getEspecieRaiz() {
-		return (especieRaiz.nombre.equals(this.nombre))? especieRaiz: especieRaiz.getEspecieRaiz();
+		return (especieRaiz == null)? especieRaiz : especieRaiz.getEspecieRaiz();
 
     }
 

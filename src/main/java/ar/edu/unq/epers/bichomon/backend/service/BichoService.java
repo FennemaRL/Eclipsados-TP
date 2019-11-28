@@ -65,14 +65,14 @@ public class BichoService implements Observado{
 
     }
 
-    public ResultadoCombate duelo(String entrenador, int bichoid){ // duelo listo
+    public ResultadoCombate duelo(String entrenador, long bichoid){ // duelo listo
         final Entrenador[] entrenador1 = {null};
         ResultadoCombate rc1 = TransactionRunner.runInSession(()->{
             entrenador1[0] = entrenadorService.recuperar(entrenador);
         ResultadoCombate rc = entrenador1[0].duelear(bichoid);
         entrenadorService.actualizar(entrenador1[0]);
         return rc;});
-        if(entrenador1[0].tieneBichoConId(rc1.getGanador().getId())){
+        if(entrenador1[0].tieneBichoConId((int) rc1.getGanador().getId())){
             Evento ne = new Evento(entrenador1[0], "el guachin se corona", new Date(), entrenador1[0].getUbicacion().getNombre());
             oyentes.forEach(oyente -> oyente.nuevoEvento(ne));
         }

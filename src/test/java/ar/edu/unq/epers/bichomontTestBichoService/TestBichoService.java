@@ -165,8 +165,8 @@ public class TestBichoService {
 
         es.guardar(lukas);
 
-        assertTrue(bs.puedeEvolucionar("lukas",ricky.getId()));
-        assertNotSame(chocoMon,bs.evolucionar("lukas",ricky.getId()));
+        assertTrue(bs.puedeEvolucionar("lukas", (int) ricky.getId()));
+        assertNotSame(chocoMon,bs.evolucionar("lukas", (int) ricky.getId()));
 
     }
     @Test(expected = EspecieNoPuedeEvolucionar.class)
@@ -193,8 +193,8 @@ public class TestBichoService {
 
         es.guardar(lukas);
 //este falla
-        assertFalse(bs.puedeEvolucionar("lukas1",ricky.getId()));
-        bs.evolucionar("lukas1",ricky.getId());
+        assertFalse(bs.puedeEvolucionar("lukas1", (int) ricky.getId()));
+        bs.evolucionar("lukas1", (int) ricky.getId());
 
     }
 
@@ -224,7 +224,7 @@ public class TestBichoService {
 
         es.guardar(lukas);
 
-        assertFalse(bs.puedeEvolucionar("lukas2",ricky.getId()*2));
+        assertFalse(bs.puedeEvolucionar("lukas2", (int) (ricky.getId()*2)));
 
     }
 
@@ -245,9 +245,9 @@ public class TestBichoService {
 
         es.guardar(entrenador);
 
-        bs.abandonarBicho(entrenador.getNombre(), lisomon.getId());
+        bs.abandonarBicho(entrenador.getNombre(), (int) lisomon.getId());
 
-        bs.abandonarBicho(entrenador.getNombre(),homermon.getId());
+        bs.abandonarBicho(entrenador.getNombre(), (int) homermon.getId());
 
 
     }
@@ -266,9 +266,9 @@ public class TestBichoService {
 
         es.guardar(entrenador);
 
-        bs.abandonarBicho(entrenador.getNombre(), lisomon.getId());
+        bs.abandonarBicho(entrenador.getNombre(), (int) lisomon.getId());
         //El cambio de owner sobre el bicho esta testeado en el modelo.
-        bs.abandonarBicho(entrenador.getNombre(),homermon.getId());
+        bs.abandonarBicho(entrenador.getNombre(), (int) homermon.getId());
     }
 
     @Test (expected = EntrenadorException.class)
@@ -300,7 +300,7 @@ public class TestBichoService {
 
         es.guardar(entrenador);
 
-        assertEquals(bicho.getId(),bs.duelo("Mostaza11",bicho.getId()).getGanador().getId());
+        assertEquals(bicho.getId(),bs.duelo("Mostaza11", (int) bicho.getId()).getGanador().getId());
 
     }
     @Test(expected = ZonaErronea.class)
@@ -315,7 +315,7 @@ public class TestBichoService {
 
         es.guardar(entrenador);
 
-        bs.duelo("Mostaza11",bicho.getId());
+        bs.duelo("Mostaza11", (int) bicho.getId());
 
     }
     @Test(expected = ZonaErronea.class)
@@ -329,7 +329,7 @@ public class TestBichoService {
 
         es.guardar(entrenador);
 
-        bs.duelo("Mostaza11",bicho.getId());
+        bs.duelo("Mostaza11", (int) bicho.getId());
 
     }
     @Test(expected =BichomonError.class)
@@ -344,8 +344,8 @@ public class TestBichoService {
 
         es.guardar(entrenador);
 
-        bs.duelo("Mostaza12",bicho.getId());
-        bs.duelo("Mostaza12",bicho.getId());
+        bs.duelo("Mostaza12", (int) bicho.getId());
+        bs.duelo("Mostaza12", (int) bicho.getId());
     }
     @Test
     public void el_campeon_de_un_dojo_es_distituido(){ // desplaza3 //completar
@@ -363,9 +363,9 @@ public class TestBichoService {
         entrenador.agregarBichomon(bicho);
         entrenador2.agregarBichomon(bicho2);
         es.guardar(entrenador2);
-        ResultadoCombate rc1 =bs.duelo("Mostaza12",bicho.getId());
+        ResultadoCombate rc1 =bs.duelo("Mostaza12", (int) bicho.getId());
 
-        ResultadoCombate rc =bs.duelo("Mostaza13",bicho2.getId());
+        ResultadoCombate rc =bs.duelo("Mostaza13", (int) bicho2.getId());
 
         assertEquals(bicho.getId(), rc1.getGanador().getId());
         assertEquals(bicho2.getId(), rc.getGanador().getId());
